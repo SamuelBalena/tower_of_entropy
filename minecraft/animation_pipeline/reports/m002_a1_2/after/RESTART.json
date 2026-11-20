@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "detail": "AUTO and default R3 without commands",
+      "test": "restart_auto"
+    },
+    {
+      "pass": true,
+      "detail": "no persisted ON/OFF override",
+      "test": "lifecycle_server_auto"
+    },
+    {
+      "pass": true,
+      "detail": "saved supported sword is activated automatically",
+      "test": "lifecycle_sword_activation"
+    }
+  ],
+  "series": [],
+  "renderErrors": 0
+}

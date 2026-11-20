@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "cases": 125,
+  "maxDirectionComponentError": 5.704974054621176e-16,
+  "source": "Local unmodified vanilla 1.20.1 bow_pulling_2 sprite and R3 draw-space transforms; model attachment only, not projectile physics"
+}

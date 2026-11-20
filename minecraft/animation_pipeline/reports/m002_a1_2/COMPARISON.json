@@ -1,0 +1,824 @@
+{
+  "checks": [
+    {
+      "name": "before_runtime",
+      "pass": true,
+      "detail": {
+        "passed": 178,
+        "total": 178,
+        "errors": 0
+      }
+    },
+    {
+      "name": "after_runtime",
+      "pass": true,
+      "detail": {
+        "passed": 178,
+        "total": 178,
+        "errors": 0
+      }
+    },
+    {
+      "name": "finite_matrices",
+      "pass": true,
+      "detail": {
+        "samples": 2730
+      }
+    },
+    {
+      "name": "no_new_scaling_or_bone_stretch",
+      "pass": true,
+      "detail": {
+        "maxScaleError": 0.0000019442448,
+        "maxBoneLengthError": 6.109476e-7
+      }
+    },
+    {
+      "name": "rigid_grip_constraint",
+      "pass": true,
+      "detail": {
+        "maxGripError": 2.6925372e-7
+      }
+    },
+    {
+      "name": "cancel_a_front_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_a_side_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_a_back_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_b_front_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_b_side_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_b_back_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_c_front_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_sword_c",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_c_side_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_sword_c",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_c_back_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_sword",
+        "UAL_sword_b",
+        "UAL_sword_c",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_heavy_front_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_heavy",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_heavy_side_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_heavy",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "cancel_heavy_back_direct_roll",
+      "pass": true,
+      "detail": [
+        "UAL_idle",
+        "UAL_heavy",
+        "UAL_roll",
+        "UAL_idle"
+      ]
+    },
+    {
+      "name": "UAL_sword_b_support_improved",
+      "pass": true,
+      "detail": {
+        "beforeMeanPositiveGapBlocks": 0.20601623201448666,
+        "afterMeanPositiveGapBlocks": 0.0034050246120079773,
+        "reductionPercent": 98.34720566495531,
+        "afterMinimumSole": -0.008676373399794102,
+        "afterMaximumSole": 0.01876015216112137,
+        "samplesBefore": 76,
+        "samplesAfter": 77
+      }
+    },
+    {
+      "name": "UAL_sword_c_support_improved",
+      "pass": true,
+      "detail": {
+        "beforeMeanPositiveGapBlocks": 0.014218077581796435,
+        "afterMeanPositiveGapBlocks": 0,
+        "reductionPercent": 100,
+        "afterMinimumSole": -0.05379125475883484,
+        "afterMaximumSole": -0.004835017025470734,
+        "samplesBefore": 124,
+        "samplesAfter": 127
+      }
+    },
+    {
+      "name": "air_phases_not_planted",
+      "pass": true,
+      "detail": {
+        "samples": 18,
+        "maxResidualCorrectionBlocks": 0.00051229564
+      }
+    },
+    {
+      "name": "cancel_a_front_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 87.31982320672363
+      }
+    },
+    {
+      "name": "cancel_a_side_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 87.38951175451423
+      }
+    },
+    {
+      "name": "cancel_a_back_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 87.38957304264747
+      }
+    },
+    {
+      "name": "cancel_b_front_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 157.4632997940268
+      }
+    },
+    {
+      "name": "cancel_b_side_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 157.50805323314768
+      }
+    },
+    {
+      "name": "cancel_b_back_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 157.51525083762547
+      }
+    },
+    {
+      "name": "cancel_c_front_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 108.75788130920537
+      }
+    },
+    {
+      "name": "cancel_c_side_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 110.85313489888607
+      }
+    },
+    {
+      "name": "cancel_c_back_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 113.66508270371754
+      }
+    },
+    {
+      "name": "cancel_heavy_front_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 146.63346911237707
+      }
+    },
+    {
+      "name": "cancel_heavy_side_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 146.03748279241628
+      }
+    },
+    {
+      "name": "cancel_heavy_back_not_idle_pose",
+      "pass": true,
+      "detail": {
+        "degreesFromOldIdle": 149.36153074988542
+      }
+    },
+    {
+      "name": "heavy_front_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 176.61623463647555,
+        "after": 11.057122763383108
+      }
+    },
+    {
+      "name": "heavy_side_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 179.76872908653553,
+        "after": 11.578475325608355
+      }
+    },
+    {
+      "name": "heavy_back_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 179.50179541134688,
+        "after": 11.156991660079182
+      }
+    },
+    {
+      "name": "jog_heavy_front_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 174.01074052589536,
+        "after": 13.332702308502805
+      }
+    },
+    {
+      "name": "jog_heavy_side_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 174.30603118950316,
+        "after": 20.479466665245926
+      }
+    },
+    {
+      "name": "jog_heavy_back_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 178.1606958842351,
+        "after": 8.64446372331299
+      }
+    },
+    {
+      "name": "combo_jog_front_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 111.81445100754716,
+        "after": 10.55566240877258
+      }
+    },
+    {
+      "name": "combo_jog_side_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 111.73500293141839,
+        "after": 1.2168786380334562
+      }
+    },
+    {
+      "name": "combo_jog_back_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 111.73500479204002,
+        "after": 1.3302047650418016
+      }
+    },
+    {
+      "name": "heavy_jog_front_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 107.28328705322782,
+        "after": 10.306541005660241
+      }
+    },
+    {
+      "name": "heavy_jog_side_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 115.4162173327389,
+        "after": 14.38232754393776
+      }
+    },
+    {
+      "name": "heavy_jog_back_entry_step_reduced",
+      "pass": true,
+      "detail": {
+        "before": 107.55358097123472,
+        "after": 0.6387946917318502
+      }
+    },
+    {
+      "name": "original_light_rotation_curves_preserved",
+      "pass": true,
+      "detail": {
+        "samples": 6216,
+        "maxDeviationDegrees": 0.00009680452917202966
+      }
+    }
+  ],
+  "feet": {
+    "UAL_sword_b": {
+      "beforeMeanPositiveGapBlocks": 0.20601623201448666,
+      "afterMeanPositiveGapBlocks": 0.0034050246120079773,
+      "reductionPercent": 98.34720566495531,
+      "afterMinimumSole": -0.008676373399794102,
+      "afterMaximumSole": 0.01876015216112137,
+      "samplesBefore": 76,
+      "samplesAfter": 77
+    },
+    "UAL_sword_c": {
+      "beforeMeanPositiveGapBlocks": 0.014218077581796435,
+      "afterMeanPositiveGapBlocks": 0,
+      "reductionPercent": 100,
+      "afterMinimumSole": -0.05379125475883484,
+      "afterMaximumSole": -0.004835017025470734,
+      "samplesBefore": 124,
+      "samplesAfter": 127
+    }
+  },
+  "transitions": [
+    {
+      "scene": "heavy",
+      "angle": "front",
+      "before": {
+        "firstStepDegrees": 176.61623463647555,
+        "maximumStepFirst200ms": 176.61623463647555,
+        "index": 12,
+        "sourcePhase": 0.045999814
+      },
+      "after": {
+        "firstStepDegrees": 11.057122763383108,
+        "maximumStepFirst200ms": 105.85751433586023,
+        "index": 12,
+        "sourcePhase": 0.03599996
+      }
+    },
+    {
+      "scene": "heavy",
+      "angle": "side",
+      "before": {
+        "firstStepDegrees": 179.76872908653553,
+        "maximumStepFirst200ms": 179.76872908653553,
+        "index": 12,
+        "sourcePhase": 0.04899987
+      },
+      "after": {
+        "firstStepDegrees": 11.578475325608355,
+        "maximumStepFirst200ms": 106.30968957144113,
+        "index": 12,
+        "sourcePhase": 0.04199998
+      }
+    },
+    {
+      "scene": "heavy",
+      "angle": "back",
+      "before": {
+        "firstStepDegrees": 179.50179541134688,
+        "maximumStepFirst200ms": 179.50179541134688,
+        "index": 12,
+        "sourcePhase": 0.04199991
+      },
+      "after": {
+        "firstStepDegrees": 11.156991660079182,
+        "maximumStepFirst200ms": 106.47567630384351,
+        "index": 12,
+        "sourcePhase": 0.040000044
+      }
+    },
+    {
+      "scene": "jog_heavy",
+      "angle": "front",
+      "before": {
+        "firstStepDegrees": 174.01074052589536,
+        "maximumStepFirst200ms": 174.01074052589536,
+        "index": 12,
+        "sourcePhase": 0.044000983
+      },
+      "after": {
+        "firstStepDegrees": 13.332702308502805,
+        "maximumStepFirst200ms": 131.1848926360772,
+        "index": 12,
+        "sourcePhase": 0.037001032
+      }
+    },
+    {
+      "scene": "jog_heavy",
+      "angle": "side",
+      "before": {
+        "firstStepDegrees": 174.30603118950316,
+        "maximumStepFirst200ms": 174.30603118950316,
+        "index": 12,
+        "sourcePhase": 0.03700103
+      },
+      "after": {
+        "firstStepDegrees": 20.479466665245926,
+        "maximumStepFirst200ms": 100.09634598862694,
+        "index": 12,
+        "sourcePhase": 0.037001107
+      }
+    },
+    {
+      "scene": "jog_heavy",
+      "angle": "back",
+      "before": {
+        "firstStepDegrees": 178.1606958842351,
+        "maximumStepFirst200ms": 178.1606958842351,
+        "index": 12,
+        "sourcePhase": 0.03500113
+      },
+      "after": {
+        "firstStepDegrees": 8.64446372331299,
+        "maximumStepFirst200ms": 86.26495299301544,
+        "index": 12,
+        "sourcePhase": 0.04900116
+      }
+    },
+    {
+      "scene": "combo_jog",
+      "angle": "front",
+      "before": {
+        "firstStepDegrees": 111.81445100754716,
+        "maximumStepFirst200ms": 111.81445100754716,
+        "index": 71,
+        "sourcePhase": 0.016796887
+      },
+      "after": {
+        "firstStepDegrees": 10.55566240877258,
+        "maximumStepFirst200ms": 46.8340337167313,
+        "index": 72,
+        "sourcePhase": 0.15
+      }
+    },
+    {
+      "scene": "combo_jog",
+      "angle": "side",
+      "before": {
+        "firstStepDegrees": 111.73500293141839,
+        "maximumStepFirst200ms": 111.73500293141839,
+        "index": 71,
+        "sourcePhase": 0.017187476
+      },
+      "after": {
+        "firstStepDegrees": 1.2168786380334562,
+        "maximumStepFirst200ms": 36.50618319490858,
+        "index": 71,
+        "sourcePhase": 0.52565104
+      }
+    },
+    {
+      "scene": "combo_jog",
+      "angle": "back",
+      "before": {
+        "firstStepDegrees": 111.73500479204002,
+        "maximumStepFirst200ms": 111.73500479204002,
+        "index": 71,
+        "sourcePhase": 0.017187476
+      },
+      "after": {
+        "firstStepDegrees": 1.3302047650418016,
+        "maximumStepFirst200ms": 53.43728664809287,
+        "index": 71,
+        "sourcePhase": 0.93216145
+      }
+    },
+    {
+      "scene": "heavy_jog",
+      "angle": "front",
+      "before": {
+        "firstStepDegrees": 107.28328705322782,
+        "maximumStepFirst200ms": 107.28328705322782,
+        "index": 59,
+        "sourcePhase": 0.05078125
+      },
+      "after": {
+        "firstStepDegrees": 10.306541005660241,
+        "maximumStepFirst200ms": 45.710993962521066,
+        "index": 59,
+        "sourcePhase": 0.38138014
+      }
+    },
+    {
+      "scene": "heavy_jog",
+      "angle": "side",
+      "before": {
+        "firstStepDegrees": 115.4162173327389,
+        "maximumStepFirst200ms": 115.4162173327389,
+        "index": 58,
+        "sourcePhase": 0.017187476
+      },
+      "after": {
+        "firstStepDegrees": 14.38232754393776,
+        "maximumStepFirst200ms": 57.015479169051126,
+        "index": 59,
+        "sourcePhase": 0.7733072
+      }
+    },
+    {
+      "scene": "heavy_jog",
+      "angle": "back",
+      "before": {
+        "firstStepDegrees": 107.55358097123472,
+        "maximumStepFirst200ms": 107.55358097123472,
+        "index": 59,
+        "sourcePhase": 0.050000012
+      },
+      "after": {
+        "firstStepDegrees": 0.6387946917318502,
+        "maximumStepFirst200ms": 41.41024519858863,
+        "index": 58,
+        "sourcePhase": 0.17252596
+      }
+    },
+    {
+      "scene": "combo",
+      "angle": "front",
+      "before": {
+        "firstStepDegrees": 27.457334593085555,
+        "maximumStepFirst200ms": 46.93755617497371,
+        "index": 21,
+        "sourcePhase": 0.033999722
+      },
+      "after": {
+        "firstStepDegrees": 34.1918648792939,
+        "maximumStepFirst200ms": 47.975019593782825,
+        "index": 21,
+        "sourcePhase": 0.04299984
+      }
+    },
+    {
+      "scene": "combo",
+      "angle": "side",
+      "before": {
+        "firstStepDegrees": 24.938302876210358,
+        "maximumStepFirst200ms": 42.59120735905825,
+        "index": 20,
+        "sourcePhase": 0
+      },
+      "after": {
+        "firstStepDegrees": 29.700716509398724,
+        "maximumStepFirst200ms": 46.37193118158746,
+        "index": 21,
+        "sourcePhase": 0.036999892
+      }
+    },
+    {
+      "scene": "combo",
+      "angle": "back",
+      "before": {
+        "firstStepDegrees": 31.19715759843861,
+        "maximumStepFirst200ms": 46.88956871898331,
+        "index": 21,
+        "sourcePhase": 0.03899979
+      },
+      "after": {
+        "firstStepDegrees": 30.44889263573221,
+        "maximumStepFirst200ms": 46.628673988311014,
+        "index": 21,
+        "sourcePhase": 0.03799991
+      }
+    }
+  ],
+  "directRoll": [
+    {
+      "scene": "cancel_a",
+      "angle": "front",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "side",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "back",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "front",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "side",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "back",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "front",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "side",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "back",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "front",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "side",
+      "intermediateIdle": false
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "back",
+      "intermediateIdle": false
+    }
+  ],
+  "cancellationPoses": [
+    {
+      "scene": "cancel_a",
+      "angle": "front",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 87.31982320672363,
+      "rollSourceTime": 0,
+      "blend": 0.19916253
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "side",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 87.38951175451423,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "back",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 87.38957304264747,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "front",
+      "oldGapCaptured": false,
+      "degreesFromOldIdle": 157.4632997940268,
+      "rollSourceTime": 0,
+      "blend": 0.19916253
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "side",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 157.50805323314768,
+      "rollSourceTime": 0,
+      "blend": 0.19916253
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "back",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 157.51525083762547,
+      "rollSourceTime": 0,
+      "blend": 0.19916253
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "front",
+      "oldGapCaptured": false,
+      "degreesFromOldIdle": 108.75788130920537,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "side",
+      "oldGapCaptured": false,
+      "degreesFromOldIdle": 110.85313489888607,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "back",
+      "oldGapCaptured": false,
+      "degreesFromOldIdle": 113.66508270371754,
+      "rollSourceTime": 0,
+      "blend": 0.17571306
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "front",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 146.63346911237707,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "side",
+      "oldGapCaptured": true,
+      "degreesFromOldIdle": 146.03748279241628,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "back",
+      "oldGapCaptured": false,
+      "degreesFromOldIdle": 149.36153074988542,
+      "rollSourceTime": 0,
+      "blend": 0.19123302
+    }
+  ],
+  "originalLightRotationErrorDegrees": 0.00009680452917202966,
+  "notes": [
+    "Angles are largest global bone orientation differences between successive captured 50 ms samples; not GPU frame timing.",
+    "Contact correction only on source-supported B/C phases; not terrain IK or XY foot locking.",
+    "Captured peaks differ with sampling phase; phase-matched light orientations are checked against the immutable GLB."
+  ],
+  "aestheticApproval": "PENDING_USER"
+}

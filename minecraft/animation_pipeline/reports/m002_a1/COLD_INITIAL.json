@@ -1,0 +1,16 @@
+{
+  "trace": [],
+  "checks": [
+    {
+      "detail": "same server task as enable",
+      "pass": true,
+      "test": "cold_input_accepted"
+    },
+    {
+      "detail": "Status[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d89913, impactTick\u003d-1, targetId\u003d-1]",
+      "pass": false,
+      "test": "cold_attack_completed"
+    }
+  ],
+  "renderErrors": 0
+}

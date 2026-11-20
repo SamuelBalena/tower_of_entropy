@@ -1,0 +1,12 @@
+{
+  "series": 24,
+  "pngs": 2184,
+  "framesPerSecond": 20,
+  "timing": "Client tick timestamps, 50 ms nominal; discrete PNG playback, not continuous video",
+  "angles": [
+    "front",
+    "side",
+    "back"
+  ],
+  "videoEncoderInstalled": false
+}

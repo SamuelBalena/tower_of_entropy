@@ -1,0 +1,152 @@
+{
+  "impactSamples": [
+    {
+      "draws": 706,
+      "renderSecondsAtImpact": 0.20292966,
+      "pass": true,
+      "impactTick": 46913,
+      "startTick": 46909,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 941,
+      "renderSecondsAtImpact": 0.20117186,
+      "pass": true,
+      "impactTick": 46993,
+      "startTick": 46989,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 1177,
+      "renderSecondsAtImpact": 0.20214842,
+      "pass": true,
+      "impactTick": 47073,
+      "startTick": 47069,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 1414,
+      "renderSecondsAtImpact": 0.20097654,
+      "pass": true,
+      "impactTick": 47153,
+      "startTick": 47149,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 1650,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 47233,
+      "startTick": 47229,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 1886,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 47313,
+      "startTick": 47309,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 2122,
+      "renderSecondsAtImpact": 0.20097654,
+      "pass": true,
+      "impactTick": 47393,
+      "startTick": 47389,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 2358,
+      "renderSecondsAtImpact": 0.20117186,
+      "pass": true,
+      "impactTick": 47473,
+      "startTick": 47469,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 2594,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 47553,
+      "startTick": 47549,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 2830,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 47633,
+      "startTick": 47629,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 3067,
+      "renderSecondsAtImpact": 0.2019531,
+      "pass": true,
+      "impactTick": 47713,
+      "startTick": 47709,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 4684,
+      "renderSecondsAtImpact": 0.20097654,
+      "pass": true,
+      "impactTick": 48273,
+      "startTick": 48269,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 4919,
+      "renderSecondsAtImpact": 0.20292966,
+      "pass": true,
+      "impactTick": 48353,
+      "startTick": 48349,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 5151,
+      "renderSecondsAtImpact": 0.20097654,
+      "pass": true,
+      "impactTick": 48433,
+      "startTick": 48429,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 5386,
+      "renderSecondsAtImpact": 0.18300779,
+      "pass": true,
+      "impactTick": 48513,
+      "startTick": 48509,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 5623,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 48593,
+      "startTick": 48589,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 6096,
+      "renderSecondsAtImpact": 0.19999997,
+      "pass": true,
+      "impactTick": 48833,
+      "startTick": 48829,
+      "renderClip": "UAL_sword"
+    },
+    {
+      "draws": 7039,
+      "renderSecondsAtImpact": 0.20312499,
+      "pass": true,
+      "impactTick": 49153,
+      "startTick": 49149,
+      "renderClip": "UAL_sword"
+    }
+  ],
+  "allSyncChecksPassed": true,
+  "draws": 7547,
+  "renderErrors": 0,
+  "meanCpuDrawMs": 0.5040258248310587
+}

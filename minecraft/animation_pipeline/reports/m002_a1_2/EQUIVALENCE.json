@@ -1,0 +1,7 @@
+{
+  "samples": 1183,
+  "maxMatrixError": 7.748603820800781E-7,
+  "maxAnchorError": 0.0,
+  "pass": true,
+  "maxGroundErrorBlocks": 1.6391277313232422E-7
+}

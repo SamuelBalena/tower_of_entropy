@@ -1,0 +1,116 @@
+{
+  "status": "TECHNICAL_PASS_PACKAGED_JAR_DEV_RUNTIME_EXTERNAL_PROFILE_PENDING_VISUAL_REVIEW_REQUIRED",
+  "suites": {
+    "fresh": {
+      "passed": 24,
+      "total": 24,
+      "file": "FRESH_WORLDS_RUNTIME.json"
+    },
+    "restart": {
+      "passed": 24,
+      "total": 24,
+      "file": "EXISTING_RESTART_RUNTIME.json"
+    },
+    "slim": {
+      "passed": 13,
+      "total": 13,
+      "file": "skincheck-slim/RUNTIME.json"
+    },
+    "combat": {
+      "passed": 145,
+      "total": 145,
+      "file": "regression_a1/RUNTIME.json"
+    },
+    "roll": {
+      "passed": 168,
+      "total": 168,
+      "file": "ROLL_REGRESSION.json"
+    },
+    "vanilla": {
+      "passed": 11,
+      "total": 11,
+      "file": "vanilla-check/RUNTIME.json"
+    },
+    "packaged": {
+      "passed": 31,
+      "total": 31,
+      "file": "packaged/GLOBAL_RUNTIME.json"
+    }
+  },
+  "broadClassic": {
+    "passed": 42,
+    "total": 43,
+    "initialFailure": [
+      {
+        "test": "vanilla_mining",
+        "detail": "target block broken",
+        "pass": false
+      }
+    ],
+    "resolution": "targeted vanilla retest, preserving initial evidence"
+  },
+  "builds": {
+    "r31": "36s",
+    "normal": "26s"
+  },
+  "artifact": {
+    "status": "PASS",
+    "bytes": 1979998,
+    "sha256": "2BD34B66B68B5105B87F0339BD54B050462F51CAC98029775B8CC495D98294DC",
+    "entries": 95,
+    "noQaOrR31Classes": true,
+    "models": {
+      "steve_r3": "D85077ED22AA3DCF598F696378060787B046389B87B7B2285E911561AFAC284A",
+      "steve_a3": "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+      "steve_a3_slim": "E659DA6A5B22C134D48ECF6CE747EC8E5E2510C2A6CF5F7C82CE85D3F2513BEC"
+    },
+    "runtimeResourcesIncluded": true,
+    "scope": "Artifact audit; not a production-profile runtime launch"
+  },
+  "preservation": {
+    "status": "PASS",
+    "classicSha256": "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+    "slimSha256": "E659DA6A5B22C134D48ECF6CE747EC8E5E2510C2A6CF5F7C82CE85D3F2513BEC",
+    "animations": 30,
+    "arms": [
+      {
+        "mesh": "limb_2",
+        "widthPixels": 3,
+        "sixOfficialUvFaceBoundsVerified": true
+      },
+      {
+        "mesh": "limb_2_outer",
+        "widthPixels": 3.5,
+        "sixOfficialUvFaceBoundsVerified": true
+      },
+      {
+        "mesh": "limb_3",
+        "widthPixels": 3,
+        "sixOfficialUvFaceBoundsVerified": true
+      },
+      {
+        "mesh": "limb_3_outer",
+        "widthPixels": 3.5,
+        "sixOfficialUvFaceBoundsVerified": true
+      }
+    ],
+    "changedArmGeometryUvBytes": 524,
+    "allOtherBinaryBytesIdentical": true,
+    "combatServerFilesUnchanged": true,
+    "godotFilesPreserved": 171,
+    "mainSourceChanges": [
+      "main/java/com/towerofentropy/animation/ActionKeys.java",
+      "main/java/com/towerofentropy/animation/ActionNetwork.java",
+      "main/java/com/towerofentropy/animation/CompatibilityModels.java",
+      "main/java/com/towerofentropy/animation/LocomotionController.java",
+      "main/java/com/towerofentropy/client/ClientCombatState.java",
+      "main/java/com/towerofentropy/client/PlayerRendererR3.java"
+    ]
+  },
+  "limitations": [
+    "No external launcher/production-profile launch certified; actual built JAR remapped and loaded as dependency in separate ForgeGradle harness.",
+    "Remote multiplayer and arbitrary resource packs not certified.",
+    "Aesthetic approval reserved for user.",
+    "Protective Roll cancellation under large position discontinuities retained; initial cold fixture occurrence recorded."
+  ]
+}

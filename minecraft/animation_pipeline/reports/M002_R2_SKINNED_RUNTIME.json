@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "detail": "{blendedVertices\u003d64, weightedVertices\u003d736, maxBindIdentityError\u003d0.0, maxWeightSumError\u003d0.0, maxBlendVsRigidBlocks\u003d0.10252701, joints\u003d10, animations\u003d[UAL_idle, UAL_jog, UAL_roll, UAL_sword]}",
+      "test": "loaded_weighted_mesh",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d133 items\u003d133 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_idle-0",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d90.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_idle-90",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d180.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_idle-180",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_jog-0",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d90.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_jog-90",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_sword-0",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d90.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_sword-90",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_roll-0",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d108 items\u003d108 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d90.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_roll-90",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_sword-early-0",
+      "pass": true
+    },
+    {
+      "detail": "draws\u003d134 items\u003d134 posts\u003d0 CPM\u003d-1 GLerror\u003d0 light\u003d15728640 yaw\u003d0.0 pos\u003d(0.5, 100.0, 0.5)",
+      "test": "skinned_sword-late-0",
+      "pass": true
+    },
+    {
+      "detail": "CPM idle\u003d1 posts\u003d164",
+      "test": "off_restores_cpm",
+      "pass": true
+    },
+    {
+      "detail": "body not drawn in first person; native hands retained",
+      "test": "first_person_fallback",
+      "pass": true
+    },
+    {
+      "detail": "clip\u003dUAL_jog",
+      "test": "embedded_clip_playback",
+      "pass": true
+    },
+    {
+      "detail": "replica Pre\u003d118 canceled\u003d0",
+      "test": "other_player_untouched",
+      "pass": true
+    },
+    {
+      "detail": "errors\u003d0",
+      "test": "render_errors",
+      "pass": true
+    }
+  ],
+  "draws": 2219,
+  "meanCpuDrawMs": 0.5119980621901759,
+  "maxCpuDrawMs": 8.691
+}

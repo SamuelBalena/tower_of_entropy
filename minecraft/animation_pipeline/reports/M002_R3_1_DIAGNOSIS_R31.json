@@ -1,0 +1,2494 @@
+{
+  "variant": "r31",
+  "frames": [
+    {
+      "frame": 1,
+      "time": 0.0,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000002750881989,
+          "minRingAreaRatio": 1.0000002816377154,
+          "minZ": 0.9828509092330933
+        },
+        "body": {
+          "volumeRatio": 0.9987617331969121,
+          "minRingAreaRatio": 0.9999997662379225,
+          "minZ": 0.3936505913734436
+        },
+        "limb_2": {
+          "volumeRatio": 0.9892359590327441,
+          "minRingAreaRatio": 0.999999742489271,
+          "minZ": 0.4859127402305603
+        },
+        "limb_3": {
+          "volumeRatio": 0.9867664106417499,
+          "minRingAreaRatio": 0.9999995268879407,
+          "minZ": 0.4910774827003479
+        },
+        "limb_4": {
+          "volumeRatio": 0.9091209491592921,
+          "minRingAreaRatio": 0.9999998277053088,
+          "minZ": 0.024575769901275635
+        },
+        "limb_5": {
+          "volumeRatio": 0.9330417957269179,
+          "minRingAreaRatio": 0.9999999776482567,
+          "minZ": 0.028695091605186462
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 17,
+        "body/limb_5": 15,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 13,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 115.17988420051286,
+        "pelvis/5": 78.69742595650858,
+        "4/104": 107.08542701513075,
+        "5/105": 117.58325018452193,
+        "2/102": 57.6517211612992,
+        "3/103": 64.0615736596002,
+        "pelvis/1": 19.408836300237482
+      }
+    },
+    {
+      "frame": 2,
+      "time": 0.03333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000005766552342,
+          "minRingAreaRatio": 1.0000005743348113,
+          "minZ": 1.03415048122406
+        },
+        "body": {
+          "volumeRatio": 0.9987614026760023,
+          "minRingAreaRatio": 1.0000000409781893,
+          "minZ": 0.47104668617248535
+        },
+        "limb_2": {
+          "volumeRatio": 0.9875449764858869,
+          "minRingAreaRatio": 0.9999999180436079,
+          "minZ": 0.48200082778930664
+        },
+        "limb_3": {
+          "volumeRatio": 0.9850673744406429,
+          "minRingAreaRatio": 0.9999994825628415,
+          "minZ": 0.4693511128425598
+        },
+        "limb_4": {
+          "volumeRatio": 0.9218395289804511,
+          "minRingAreaRatio": 0.9999996330588377,
+          "minZ": 0.026584990322589874
+        },
+        "limb_5": {
+          "volumeRatio": 0.9454732944026129,
+          "minRingAreaRatio": 0.9999998882412848,
+          "minZ": 0.08046916872262955
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 17,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 8,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 4,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 101.45841664855077,
+        "pelvis/5": 69.50557593755886,
+        "4/104": 108.3305431800674,
+        "5/105": 105.43061561320923,
+        "2/102": 62.107026236141834,
+        "3/103": 68.15292527432953,
+        "pelvis/1": 19.408836300237482
+      }
+    },
+    {
+      "frame": 3,
+      "time": 0.06666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000006646436295,
+          "minRingAreaRatio": 1.0000003041931897,
+          "minZ": 1.0884171724319458
+        },
+        "body": {
+          "volumeRatio": 0.9987617224482679,
+          "minRingAreaRatio": 0.9999998833518338,
+          "minZ": 0.5929063558578491
+        },
+        "limb_2": {
+          "volumeRatio": 0.9838848290594449,
+          "minRingAreaRatio": 0.99999999254935,
+          "minZ": 0.6047500371932983
+        },
+        "limb_3": {
+          "volumeRatio": 0.981141368336405,
+          "minRingAreaRatio": 0.9999993257222282,
+          "minZ": 0.6463462114334106
+        },
+        "limb_4": {
+          "volumeRatio": 0.9600509816592645,
+          "minRingAreaRatio": 0.999999711289959,
+          "minZ": 0.025685526430606842
+        },
+        "limb_5": {
+          "volumeRatio": 0.9732344342745547,
+          "minRingAreaRatio": 0.9999994765965396,
+          "minZ": 0.11297022551298141
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 9,
+        "body/limb_5": 6,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 23,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 65.89623077255732,
+        "pelvis/5": 50.49891483603007,
+        "4/104": 85.32413013076831,
+        "5/105": 69.76502750337096,
+        "2/102": 70.87618999830532,
+        "3/103": 76.85841801305016,
+        "pelvis/1": 19.408836300237482
+      }
+    },
+    {
+      "frame": 4,
+      "time": 0.1,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000277743454,
+          "minRingAreaRatio": 1.0000000331783507,
+          "minZ": 1.0578244924545288
+        },
+        "body": {
+          "volumeRatio": 0.9987617883740073,
+          "minRingAreaRatio": 0.9999996791593025,
+          "minZ": 0.6529399752616882
+        },
+        "limb_2": {
+          "volumeRatio": 0.9774900064372943,
+          "minRingAreaRatio": 0.9999998491256981,
+          "minZ": 0.6990660429000854
+        },
+        "limb_3": {
+          "volumeRatio": 0.9264291572619725,
+          "minRingAreaRatio": 0.9999993755480014,
+          "minZ": 0.8682434558868408
+        },
+        "limb_4": {
+          "volumeRatio": 0.9984386904966147,
+          "minRingAreaRatio": 0.9999995641409398,
+          "minZ": 0.023538358509540558
+        },
+        "limb_5": {
+          "volumeRatio": 0.9980063211557467,
+          "minRingAreaRatio": 0.9999997671693274,
+          "minZ": 0.05139172077178955
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 3,
+        "body/limb_5": 3,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 12,
+        "limb_3/body": 19,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 19.898793090159177,
+        "pelvis/5": 16.96904662493203,
+        "4/104": 11.550999919593062,
+        "5/105": 0.2769528316627778,
+        "2/102": 84.24384009088241,
+        "3/103": 159.74318023269424,
+        "pelvis/1": 19.408795319102463
+      }
+    },
+    {
+      "frame": 5,
+      "time": 0.13333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999998361052767,
+          "minRingAreaRatio": 0.9999999760184428,
+          "minZ": 0.9046008586883545
+        },
+        "body": {
+          "volumeRatio": 0.9987606641426532,
+          "minRingAreaRatio": 0.9999999478459345,
+          "minZ": 0.592077910900116
+        },
+        "limb_2": {
+          "volumeRatio": 0.9603036143779239,
+          "minRingAreaRatio": 0.9999988693737056,
+          "minZ": 0.7650879621505737
+        },
+        "limb_3": {
+          "volumeRatio": 0.971542014289745,
+          "minRingAreaRatio": 0.9999991967339564,
+          "minZ": 0.5973393321037292
+        },
+        "limb_4": {
+          "volumeRatio": 0.9992964444136645,
+          "minRingAreaRatio": 0.99999975948591,
+          "minZ": 0.02200350910425186
+        },
+        "limb_5": {
+          "volumeRatio": 0.9979088113273425,
+          "minRingAreaRatio": 0.9999997331760456,
+          "minZ": 0.03617488592863083
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 0,
+        "body/limb_5": 1,
+        "limb_4/limb_5": 15,
+        "limb_2/body": 12,
+        "limb_3/body": 14,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 14.147865162788591,
+        "pelvis/5": 17.89541835187169,
+        "4/104": 0.3013157162258166,
+        "5/105": 0.2797646284450016,
+        "2/102": 113.60041661532576,
+        "3/103": 95.22673646493872,
+        "pelvis/1": 19.42070375392038
+      }
+    },
+    {
+      "frame": 6,
+      "time": 0.16666666666666666,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999997788032462,
+          "minRingAreaRatio": 0.999999795574668,
+          "minZ": 0.7546338438987732
+        },
+        "body": {
+          "volumeRatio": 0.9987529607993241,
+          "minRingAreaRatio": 0.9999998030252419,
+          "minZ": 0.5279157161712646
+        },
+        "limb_2": {
+          "volumeRatio": 0.9555270546200171,
+          "minRingAreaRatio": 0.9999995809046993,
+          "minZ": 0.6859751343727112
+        },
+        "limb_3": {
+          "volumeRatio": 0.9782661794001445,
+          "minRingAreaRatio": 0.9999994216485106,
+          "minZ": 0.41903552412986755
+        },
+        "limb_4": {
+          "volumeRatio": 0.9992967276692649,
+          "minRingAreaRatio": 0.9999992039517122,
+          "minZ": 0.020361006259918213
+        },
+        "limb_5": {
+          "volumeRatio": 0.998040616318002,
+          "minRingAreaRatio": 0.9999993622766586,
+          "minZ": 0.044392600655555725
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 6,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 15,
+        "limb_2/body": 14,
+        "limb_3/body": 10,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 13.453548259126467,
+        "pelvis/5": 17.007611580533215,
+        "4/104": 0.3013157162258166,
+        "5/105": 0.2853050591202191,
+        "2/102": 120.74961660071313,
+        "3/103": 82.72037322670023,
+        "pelvis/1": 19.50362566553892
+      }
+    },
+    {
+      "frame": 7,
+      "time": 0.2,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000002462903805,
+          "minRingAreaRatio": 1.000000098487355,
+          "minZ": 0.5717364549636841
+        },
+        "body": {
+          "volumeRatio": 0.9987315666499331,
+          "minRingAreaRatio": 0.9999998146667901,
+          "minZ": 0.43225789070129395
+        },
+        "limb_2": {
+          "volumeRatio": 0.9474850005527804,
+          "minRingAreaRatio": 0.9999997159465528,
+          "minZ": 0.546636164188385
+        },
+        "limb_3": {
+          "volumeRatio": 0.9793619990208956,
+          "minRingAreaRatio": 0.9999994318930663,
+          "minZ": 0.2569531202316284
+        },
+        "limb_4": {
+          "volumeRatio": 0.9994846194451866,
+          "minRingAreaRatio": 0.9999991285145209,
+          "minZ": 0.017902083694934845
+        },
+        "limb_5": {
+          "volumeRatio": 0.9982989007795509,
+          "minRingAreaRatio": 0.9999995981342275,
+          "minZ": 0.052511587738990784
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 3,
+        "body/limb_5": 4,
+        "limb_4/limb_5": 17,
+        "limb_2/body": 17,
+        "limb_3/body": 12,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 10.24531705219133,
+        "pelvis/5": 14.841111434298314,
+        "4/104": 0.2987068774475626,
+        "5/105": 0.29341961733888516,
+        "2/102": 132.13795983409057,
+        "3/103": 80.52940563531105,
+        "pelvis/1": 19.72868039869084
+      }
+    },
+    {
+      "frame": 8,
+      "time": 0.23333333333333334,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000002037329159,
+          "minRingAreaRatio": 0.9999999781139188,
+          "minZ": 0.5303374528884888
+        },
+        "body": {
+          "volumeRatio": 0.9986900722339049,
+          "minRingAreaRatio": 0.9999997424892655,
+          "minZ": 0.48540663719177246
+        },
+        "limb_2": {
+          "volumeRatio": 0.9387795569199057,
+          "minRingAreaRatio": 0.9999998132698056,
+          "minZ": 0.5203288793563843
+        },
+        "limb_3": {
+          "volumeRatio": 0.9797447864983431,
+          "minRingAreaRatio": 0.9999990724022738,
+          "minZ": 0.21963393688201904
+        },
+        "limb_4": {
+          "volumeRatio": 0.9996478844922965,
+          "minRingAreaRatio": 0.99999919789811,
+          "minZ": 0.20537564158439636
+        },
+        "limb_5": {
+          "volumeRatio": 0.9984992744972487,
+          "minRingAreaRatio": 0.999999394058063,
+          "minZ": 0.23432624340057373
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 5,
+        "body/limb_5": 5,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 22,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 5.413784667296881,
+        "pelvis/5": 12.813597953710355,
+        "4/104": 0.3013157162258166,
+        "5/105": 0.2987068774475626,
+        "2/102": 143.7621085183735,
+        "3/103": 79.75185007000763,
+        "pelvis/1": 20.16692582640637
+      }
+    },
+    {
+      "frame": 9,
+      "time": 0.26666666666666666,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000008124595567,
+          "minRingAreaRatio": 1.0000004139727925,
+          "minZ": 0.5026613473892212
+        },
+        "body": {
+          "volumeRatio": 0.9986197950610229,
+          "minRingAreaRatio": 0.9999996706973799,
+          "minZ": 0.5644538402557373
+        },
+        "limb_2": {
+          "volumeRatio": 0.9319473939957249,
+          "minRingAreaRatio": 0.9999999863794049,
+          "minZ": 0.48936355113983154
+        },
+        "limb_3": {
+          "volumeRatio": 0.9799100831053144,
+          "minRingAreaRatio": 0.9999993611125091,
+          "minZ": 0.2276819348335266
+        },
+        "limb_4": {
+          "volumeRatio": 0.9996438002496072,
+          "minRingAreaRatio": 0.9999995167598767,
+          "minZ": 0.4222313165664673
+        },
+        "limb_5": {
+          "volumeRatio": 0.9958982005065549,
+          "minRingAreaRatio": 0.9999997401609659,
+          "minZ": 0.4323709309101105
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 5,
+        "body/limb_5": 8,
+        "limb_4/limb_5": 12,
+        "limb_2/body": 24,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 3.1647805316432787,
+        "pelvis/5": 20.386314917641762,
+        "4/104": 0.2987068774475626,
+        "5/105": 22.20737824660327,
+        "2/102": 152.57187775515274,
+        "3/103": 79.41462997030577,
+        "pelvis/1": 20.88952056700599
+      }
+    },
+    {
+      "frame": 10,
+      "time": 0.3,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003631548195,
+          "minRingAreaRatio": 1.00000010387156,
+          "minZ": 0.4454522132873535
+        },
+        "body": {
+          "volumeRatio": 0.9985108571752089,
+          "minRingAreaRatio": 0.9999996013938137,
+          "minZ": 0.5671275854110718
+        },
+        "limb_2": {
+          "volumeRatio": 0.9292617572384269,
+          "minRingAreaRatio": 0.9999995721153807,
+          "minZ": 0.42205649614334106
+        },
+        "limb_3": {
+          "volumeRatio": 0.9799604598981704,
+          "minRingAreaRatio": 0.9999995566903537,
+          "minZ": 0.23211991786956787
+        },
+        "limb_4": {
+          "volumeRatio": 0.9995568069234967,
+          "minRingAreaRatio": 0.9999994483076365,
+          "minZ": 0.5479271411895752
+        },
+        "limb_5": {
+          "volumeRatio": 0.9935975184896269,
+          "minRingAreaRatio": 0.9999998509883729,
+          "minZ": 0.5073004961013794
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 6,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 26,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 6.881194461413467,
+        "pelvis/5": 27.612183776462523,
+        "4/104": 0.2987068774475626,
+        "5/105": 29.242126459616024,
+        "2/102": 156.0300435130652,
+        "3/103": 79.31115260438007,
+        "pelvis/1": 21.967626653904777
+      }
+    },
+    {
+      "frame": 11,
+      "time": 0.3333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000006151047103,
+          "minRingAreaRatio": 1.0000005163018137,
+          "minZ": 0.23113524913787842
+        },
+        "body": {
+          "volumeRatio": 0.9982741660568369,
+          "minRingAreaRatio": 0.9999996225814545,
+          "minZ": 0.5251142382621765
+        },
+        "limb_2": {
+          "volumeRatio": 0.9273369202203862,
+          "minRingAreaRatio": 0.9999996727564167,
+          "minZ": 0.36346256732940674
+        },
+        "limb_3": {
+          "volumeRatio": 0.9795124944067753,
+          "minRingAreaRatio": 0.9999991543587412,
+          "minZ": 0.26613089442253113
+        },
+        "limb_4": {
+          "volumeRatio": 0.9990129014460185,
+          "minRingAreaRatio": 0.999999634106532,
+          "minZ": 0.6631150245666504
+        },
+        "limb_5": {
+          "volumeRatio": 0.9926108985013629,
+          "minRingAreaRatio": 0.9999994584357744,
+          "minZ": 0.6270341873168945
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 7,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 16,
+        "limb_2/body": 26,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 16.446798408161808,
+        "pelvis/5": 34.5036602338978,
+        "4/104": 0.2960750401417127,
+        "5/105": 27.233866428524685,
+        "2/102": 158.5413164680478,
+        "3/103": 80.22469040586928,
+        "pelvis/1": 24.162127160642143
+      }
+    },
+    {
+      "frame": 12,
+      "time": 0.36666666666666664,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000000881406377,
+          "minRingAreaRatio": 0.9999999448191329,
+          "minZ": 0.2201157808303833
+        },
+        "body": {
+          "volumeRatio": 0.9978690626329615,
+          "minRingAreaRatio": 0.9999997606500415,
+          "minZ": 0.6874113082885742
+        },
+        "limb_2": {
+          "volumeRatio": 0.9310561227522828,
+          "minRingAreaRatio": 0.9999999674037093,
+          "minZ": 0.4736524224281311
+        },
+        "limb_3": {
+          "volumeRatio": 0.9784270903027635,
+          "minRingAreaRatio": 0.999999150633445,
+          "minZ": 0.527309775352478
+        },
+        "limb_4": {
+          "volumeRatio": 0.9979150325038694,
+          "minRingAreaRatio": 0.9999993438830259,
+          "minZ": 1.0243574380874634
+        },
+        "limb_5": {
+          "volumeRatio": 0.9937052233841048,
+          "minRingAreaRatio": 0.9999993933595379,
+          "minZ": 1.0082072019577026
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 7,
+        "body/limb_5": 6,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 25,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 26.47821015724762,
+        "pelvis/5": 36.8057515879885,
+        "4/104": 0.3013157162258166,
+        "5/105": 16.85995655105588,
+        "2/102": 153.7163752157024,
+        "3/103": 82.4023254679986,
+        "pelvis/1": 27.545300856562466
+      }
+    },
+    {
+      "frame": 13,
+      "time": 0.4,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003344818178,
+          "minRingAreaRatio": 1.0000002789310698,
+          "minZ": 0.16736602783203125
+        },
+        "body": {
+          "volumeRatio": 0.9973843005871176,
+          "minRingAreaRatio": 1.0000000987201851,
+          "minZ": 0.659825325012207
+        },
+        "limb_2": {
+          "volumeRatio": 0.9571047398330385,
+          "minRingAreaRatio": 0.9999994635580531,
+          "minZ": 0.4299447536468506
+        },
+        "limb_3": {
+          "volumeRatio": 0.977099767767041,
+          "minRingAreaRatio": 0.9999995976685628,
+          "minZ": 0.5812927484512329
+        },
+        "limb_4": {
+          "volumeRatio": 0.9959102516476347,
+          "minRingAreaRatio": 0.9999996356199294,
+          "minZ": 1.142513632774353
+        },
+        "limb_5": {
+          "volumeRatio": 0.9947801602862153,
+          "minRingAreaRatio": 1.0000000037252583,
+          "minZ": 1.1847472190856934
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 9,
+        "body/limb_4": 7,
+        "body/limb_5": 4,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 12,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 37.786679450923636,
+        "pelvis/5": 37.2761876972623,
+        "4/104": 0.3013157162258166,
+        "5/105": 0.2987068774475626,
+        "2/102": 118.42380422700606,
+        "3/103": 84.99998984332701,
+        "pelvis/1": 31.154285729085284
+      }
+    },
+    {
+      "frame": 14,
+      "time": 0.43333333333333335,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003251710228,
+          "minRingAreaRatio": 1.000000193715073,
+          "minZ": 0.07724905014038086
+        },
+        "body": {
+          "volumeRatio": 0.9969582206045664,
+          "minRingAreaRatio": 0.9999996746191226,
+          "minZ": 0.5664377212524414
+        },
+        "limb_2": {
+          "volumeRatio": 0.9833415639866407,
+          "minRingAreaRatio": 1.0000000512227367,
+          "minZ": 0.32969123125076294
+        },
+        "limb_3": {
+          "volumeRatio": 0.9759616012284175,
+          "minRingAreaRatio": 0.9999991338694973,
+          "minZ": 0.5328013896942139
+        },
+        "limb_4": {
+          "volumeRatio": 0.9909425736874486,
+          "minRingAreaRatio": 0.9999999827705296,
+          "minZ": 1.1540087461471558
+        },
+        "limb_5": {
+          "volumeRatio": 0.9919798260587575,
+          "minRingAreaRatio": 0.9999995265387345,
+          "minZ": 1.206820011138916
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 11,
+        "body/limb_4": 7,
+        "body/limb_5": 6,
+        "limb_4/limb_5": 13,
+        "limb_2/body": 13,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 50.928834263147344,
+        "pelvis/5": 48.84900750993261,
+        "4/104": 0.3013157162258166,
+        "5/105": 0.2987068774475626,
+        "2/102": 72.09550535102335,
+        "3/103": 87.17502943357172,
+        "pelvis/1": 34.02594337033986
+      }
+    },
+    {
+      "frame": 15,
+      "time": 0.4666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000306739086,
+          "minRingAreaRatio": 1.0000002426094863,
+          "minZ": -0.045944929122924805
+        },
+        "body": {
+          "volumeRatio": 0.9967749057009687,
+          "minRingAreaRatio": 0.9999996945261458,
+          "minZ": 0.2170577049255371
+        },
+        "limb_2": {
+          "volumeRatio": 0.9923468209073153,
+          "minRingAreaRatio": 0.9999991578439291,
+          "minZ": 0.12544214725494385
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754771379290618,
+          "minRingAreaRatio": 0.9999990515639152,
+          "minZ": 0.24940752983093262
+        },
+        "limb_4": {
+          "volumeRatio": 0.9736186579907132,
+          "minRingAreaRatio": 0.999999394640132,
+          "minZ": 0.8663800954818726
+        },
+        "limb_5": {
+          "volumeRatio": 0.9802269398121142,
+          "minRingAreaRatio": 0.9999993231610111,
+          "minZ": 0.9408884644508362
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 11,
+        "body/limb_4": 13,
+        "body/limb_5": 12,
+        "limb_4/limb_5": 20,
+        "limb_2/body": 12,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 79.9884409926677,
+        "pelvis/5": 74.10436962648512,
+        "4/104": 26.611730110237612,
+        "5/105": 21.151924482086834,
+        "2/102": 48.47996237116416,
+        "3/103": 88.08683919720092,
+        "pelvis/1": 35.19718420921362
+      }
+    },
+    {
+      "frame": 16,
+      "time": 0.5,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999999698765206,
+          "minRingAreaRatio": 0.9999998202547264,
+          "minZ": -0.1631457805633545
+        },
+        "body": {
+          "volumeRatio": 0.9968744802042745,
+          "minRingAreaRatio": 0.9999996935948132,
+          "minZ": -0.03608202934265137
+        },
+        "limb_2": {
+          "volumeRatio": 0.9977831472540659,
+          "minRingAreaRatio": 0.9999987226902587,
+          "minZ": -0.11702930927276611
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754778385979485,
+          "minRingAreaRatio": 0.9999996395780786,
+          "minZ": 0.004546999931335449
+        },
+        "limb_4": {
+          "volumeRatio": 0.9326426281477215,
+          "minRingAreaRatio": 0.9999992884692996,
+          "minZ": 0.5036842823028564
+        },
+        "limb_5": {
+          "volumeRatio": 0.946880295969532,
+          "minRingAreaRatio": 0.9999996381811143,
+          "minZ": 0.6292314529418945
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 11,
+        "body/limb_4": 16,
+        "body/limb_5": 19,
+        "limb_4/limb_5": 18,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 6
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 116.38324423132971,
+        "pelvis/5": 109.80907787216572,
+        "4/104": 61.96609211280779,
+        "5/105": 58.24074984513193,
+        "2/102": 25.964817280736316,
+        "3/103": 88.08680868872074,
+        "pelvis/1": 34.56698291769299
+      }
+    },
+    {
+      "frame": 17,
+      "time": 0.5333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000256504884,
+          "minRingAreaRatio": 1.0000003706663159,
+          "minZ": -0.23984766006469727
+        },
+        "body": {
+          "volumeRatio": 0.9971154040315273,
+          "minRingAreaRatio": 0.9999998519196986,
+          "minZ": -0.12953150272369385
+        },
+        "limb_2": {
+          "volumeRatio": 0.9999839483577455,
+          "minRingAreaRatio": 0.9999994290990804,
+          "minZ": -0.17247259616851807
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754776923392882,
+          "minRingAreaRatio": 0.9999996013938419,
+          "minZ": -0.12018513679504395
+        },
+        "limb_4": {
+          "volumeRatio": 0.8795313912920044,
+          "minRingAreaRatio": 0.9999992698428306,
+          "minZ": 0.24247406423091888
+        },
+        "limb_5": {
+          "volumeRatio": 0.9091504811608396,
+          "minRingAreaRatio": 0.9999996698460887,
+          "minZ": 0.356011301279068
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 14,
+        "body/limb_4": 29,
+        "body/limb_5": 27,
+        "limb_4/limb_5": 22,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 4,
+        "limb_3/limb_5": 13
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 144.39796179143235,
+        "pelvis/5": 134.442728849707,
+        "4/104": 89.4750546554385,
+        "5/105": 84.88446402370542,
+        "2/102": 2.2160098396507975,
+        "3/103": 88.08680868872074,
+        "pelvis/1": 32.99145635165698
+      }
+    },
+    {
+      "frame": 18,
+      "time": 0.5666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000002584400887,
+          "minRingAreaRatio": 1.0000003436579603,
+          "minZ": -0.24895799160003662
+        },
+        "body": {
+          "volumeRatio": 0.9974139118582456,
+          "minRingAreaRatio": 0.9999998562852739,
+          "minZ": -0.12673556804656982
+        },
+        "limb_2": {
+          "volumeRatio": 0.9997530274990726,
+          "minRingAreaRatio": 1.0000000614672766,
+          "minZ": -0.15760183334350586
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754780456305318,
+          "minRingAreaRatio": 1.0,
+          "minZ": -0.13842272758483887
+        },
+        "limb_4": {
+          "volumeRatio": 0.8623614500570094,
+          "minRingAreaRatio": 0.9999994821845128,
+          "minZ": 0.16791348159313202
+        },
+        "limb_5": {
+          "volumeRatio": 0.8924257530814039,
+          "minRingAreaRatio": 0.9999997625127133,
+          "minZ": 0.27153414487838745
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 9,
+        "body/limb_4": 37,
+        "body/limb_5": 31,
+        "limb_4/limb_5": 22,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 14,
+        "limb_3/limb_5": 9
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 152.2624601678385,
+        "pelvis/5": 139.27027923431532,
+        "4/104": 110.01340981137582,
+        "5/105": 103.43875167859159,
+        "2/102": 8.669261146494643,
+        "3/103": 88.0868360094774,
+        "pelvis/1": 30.94336948751529
+      }
+    },
+    {
+      "frame": 19,
+      "time": 0.6,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.999999827732599,
+          "minRingAreaRatio": 0.9999998793355092,
+          "minZ": -0.24860775470733643
+        },
+        "body": {
+          "volumeRatio": 0.9976945278832378,
+          "minRingAreaRatio": 0.9999997818376631,
+          "minZ": -0.12618422508239746
+        },
+        "limb_2": {
+          "volumeRatio": 0.9967821772843651,
+          "minRingAreaRatio": 0.9999997061676718,
+          "minZ": -0.16971862316131592
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754769728463613,
+          "minRingAreaRatio": 0.9999992065128489,
+          "minZ": -0.1746201515197754
+        },
+        "limb_4": {
+          "volumeRatio": 0.8661182718437619,
+          "minRingAreaRatio": 0.999999300911196,
+          "minZ": 0.15507051348686218
+        },
+        "limb_5": {
+          "volumeRatio": 0.8974619036633374,
+          "minRingAreaRatio": 0.9999995669349087,
+          "minZ": 0.1970512866973877
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 37,
+        "body/limb_5": 25,
+        "limb_4/limb_5": 24,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 19,
+        "limb_3/limb_5": 6
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 146.77335132060105,
+        "pelvis/5": 132.6919054786226,
+        "4/104": 120.08343091229244,
+        "5/105": 110.03808045465792,
+        "2/102": 31.313569155624567,
+        "3/103": 88.08680868872074,
+        "pelvis/1": 28.895282623373607
+      }
+    },
+    {
+      "frame": 20,
+      "time": 0.6333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000005098611768,
+          "minRingAreaRatio": 1.000000247382528,
+          "minZ": -0.07159483432769775
+        },
+        "body": {
+          "volumeRatio": 0.9978974682188838,
+          "minRingAreaRatio": 0.9999994100069749,
+          "minZ": -0.0427168607711792
+        },
+        "limb_2": {
+          "volumeRatio": 0.9683079679105372,
+          "minRingAreaRatio": 0.9999995398101023,
+          "minZ": -0.04890739917755127
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754775574294122,
+          "minRingAreaRatio": 0.999999096383837,
+          "minZ": -0.10917901992797852
+        },
+        "limb_4": {
+          "volumeRatio": 0.8816897676066379,
+          "minRingAreaRatio": 0.9999995389952185,
+          "minZ": 0.0497286319732666
+        },
+        "limb_5": {
+          "volumeRatio": 0.9141747784357372,
+          "minRingAreaRatio": 0.9999999159699615,
+          "minZ": 0.026516735553741455
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 30,
+        "body/limb_5": 21,
+        "limb_4/limb_5": 25,
+        "limb_2/body": 15,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 6,
+        "limb_3/limb_5": 6
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 137.31953622622467,
+        "pelvis/5": 127.43246857241604,
+        "4/104": 104.69976852391602,
+        "5/105": 92.64005867626133,
+        "2/102": 100.78344733685742,
+        "3/103": 88.08680868872074,
+        "pelvis/1": 27.31983972715493
+      }
+    },
+    {
+      "frame": 21,
+      "time": 0.6666666666666666,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999996660217709,
+          "minRingAreaRatio": 0.9999997783452025,
+          "minZ": 0.24080169200897217
+        },
+        "body": {
+          "volumeRatio": 0.9979762266946898,
+          "minRingAreaRatio": 0.9999998181301449,
+          "minZ": -0.004037737846374512
+        },
+        "limb_2": {
+          "volumeRatio": 0.9501230576754351,
+          "minRingAreaRatio": 0.9999995576216791,
+          "minZ": 0.23202049732208252
+        },
+        "limb_3": {
+          "volumeRatio": 0.9754772620599971,
+          "minRingAreaRatio": 0.9999991776418283,
+          "minZ": 0.14408636093139648
+        },
+        "limb_4": {
+          "volumeRatio": 0.9042772624813288,
+          "minRingAreaRatio": 0.9999994984826678,
+          "minZ": 0.02768927812576294
+        },
+        "limb_5": {
+          "volumeRatio": 0.9214684145505604,
+          "minRingAreaRatio": 0.9999996456316975,
+          "minZ": -0.0032242536544799805
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 28,
+        "body/limb_5": 21,
+        "limb_4/limb_5": 21,
+        "limb_2/body": 21,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 6,
+        "limb_3/limb_5": 11
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 134.34242069155619,
+        "pelvis/5": 131.80537424511164,
+        "4/104": 70.9108773413763,
+        "5/105": 64.85047781158067,
+        "2/102": 128.48071136471623,
+        "3/103": 88.08681870663341,
+        "pelvis/1": 26.68978721961981
+      }
+    },
+    {
+      "frame": 22,
+      "time": 0.7,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000001658956477,
+          "minRingAreaRatio": 1.0000001003499956,
+          "minZ": 0.5188323855400085
+        },
+        "body": {
+          "volumeRatio": 0.9978393874103627,
+          "minRingAreaRatio": 0.9999996246769313,
+          "minZ": -0.0029035210609436035
+        },
+        "limb_2": {
+          "volumeRatio": 0.951945856495907,
+          "minRingAreaRatio": 0.9999998018611018,
+          "minZ": 0.45900869369506836
+        },
+        "limb_3": {
+          "volumeRatio": 0.9756212259374727,
+          "minRingAreaRatio": 0.9999995650722601,
+          "minZ": 0.3206115961074829
+        },
+        "limb_4": {
+          "volumeRatio": 0.8745887855491892,
+          "minRingAreaRatio": 0.9999996572732335,
+          "minZ": -0.002306222915649414
+        },
+        "limb_5": {
+          "volumeRatio": 0.8703675005857953,
+          "minRingAreaRatio": 1.0000000745057815,
+          "minZ": -0.026944637298583984
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 32,
+        "body/limb_5": 32,
+        "limb_4/limb_5": 25,
+        "limb_2/body": 21,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 12,
+        "limb_3/limb_5": 23
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 153.01817961836537,
+        "pelvis/5": 157.91848517801267,
+        "4/104": 86.53651967166792,
+        "5/105": 88.18101065775357,
+        "2/102": 125.91144008576754,
+        "3/103": 87.81767510238905,
+        "pelvis/1": 27.16848444269474
+      }
+    },
+    {
+      "frame": 23,
+      "time": 0.7333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000000987692277,
+          "minRingAreaRatio": 1.0000002084998192,
+          "minZ": 0.726423978805542
+        },
+        "body": {
+          "volumeRatio": 0.9974924845609405,
+          "minRingAreaRatio": 0.9999998258426619,
+          "minZ": 0.020072758197784424
+        },
+        "limb_2": {
+          "volumeRatio": 0.9614040637315219,
+          "minRingAreaRatio": 0.9999993043017947,
+          "minZ": 0.5489081740379333
+        },
+        "limb_3": {
+          "volumeRatio": 0.9760902474101831,
+          "minRingAreaRatio": 1.0000000670552192,
+          "minZ": 0.3541300296783447
+        },
+        "limb_4": {
+          "volumeRatio": 0.8289258652749566,
+          "minRingAreaRatio": 0.9999998223501905,
+          "minZ": -0.01319265365600586
+        },
+        "limb_5": {
+          "volumeRatio": 0.837115186010131,
+          "minRingAreaRatio": 0.9999997047706917,
+          "minZ": -0.0031960010528564453
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 42,
+        "body/limb_5": 69,
+        "limb_4/limb_5": 29,
+        "limb_2/body": 15,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 14
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 162.18496284306116,
+        "pelvis/5": 173.36714364653093,
+        "4/104": 110.13321132941786,
+        "5/105": 114.83817347880279,
+        "2/102": 111.90576471997555,
+        "3/103": 86.93259186898212,
+        "pelvis/1": 28.36598394383264
+      }
+    },
+    {
+      "frame": 24,
+      "time": 0.7666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000009028985073,
+          "minRingAreaRatio": 1.0000006127518546,
+          "minZ": 0.7941777110099792
+        },
+        "body": {
+          "volumeRatio": 0.9970274365037226,
+          "minRingAreaRatio": 0.9999999816063772,
+          "minZ": 0.045852601528167725
+        },
+        "limb_2": {
+          "volumeRatio": 0.9734992580923886,
+          "minRingAreaRatio": 0.9999992055815029,
+          "minZ": 0.49801090359687805
+        },
+        "limb_3": {
+          "volumeRatio": 0.9769408131942465,
+          "minRingAreaRatio": 0.9999997985191609,
+          "minZ": 0.3390659689903259
+        },
+        "limb_4": {
+          "volumeRatio": 0.8726812404976027,
+          "minRingAreaRatio": 0.9999996894038731,
+          "minZ": -0.034840285778045654
+        },
+        "limb_5": {
+          "volumeRatio": 0.8532015953353386,
+          "minRingAreaRatio": 0.9999991729852056,
+          "minZ": -0.02299654483795166
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 29,
+        "body/limb_5": 54,
+        "limb_4/limb_5": 11,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 14
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 141.0917914208437,
+        "pelvis/5": 162.39674970637924,
+        "4/104": 109.70058350492357,
+        "5/105": 129.40563827927534,
+        "2/102": 91.73329277996314,
+        "3/103": 85.30844118624479,
+        "pelvis/1": 29.924226716173933
+      }
+    },
+    {
+      "frame": 25,
+      "time": 0.8,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000000950008165,
+          "minRingAreaRatio": 1.0000002627638933,
+          "minZ": 0.8603680729866028
+        },
+        "body": {
+          "volumeRatio": 0.996545484063818,
+          "minRingAreaRatio": 0.9999997750855707,
+          "minZ": 0.19201236963272095
+        },
+        "limb_2": {
+          "volumeRatio": 0.9833362627467022,
+          "minRingAreaRatio": 0.9999991990622301,
+          "minZ": 0.4547487795352936
+        },
+        "limb_3": {
+          "volumeRatio": 0.9782254920229598,
+          "minRingAreaRatio": 0.9999997894628663,
+          "minZ": 0.324867844581604
+        },
+        "limb_4": {
+          "volumeRatio": 0.9100266622851231,
+          "minRingAreaRatio": 0.999999992549416,
+          "minZ": 0.02818550169467926
+        },
+        "limb_5": {
+          "volumeRatio": 0.89663631133434,
+          "minRingAreaRatio": 0.9999991932996973,
+          "minZ": 0.053392842411994934
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 22,
+        "body/limb_5": 29,
+        "limb_4/limb_5": 12,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 23
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 123.32284938938041,
+        "pelvis/5": 136.6175940427568,
+        "4/104": 90.28411788338319,
+        "5/105": 123.68876994397466,
+        "2/102": 72.10702423768747,
+        "3/103": 82.80327806284585,
+        "pelvis/1": 31.483777469741284
+      }
+    },
+    {
+      "frame": 26,
+      "time": 0.8333333333333334,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000412275886,
+          "minRingAreaRatio": 1.000000287218372,
+          "minZ": 0.8600050210952759
+        },
+        "body": {
+          "volumeRatio": 0.9961642992085397,
+          "minRingAreaRatio": 0.9999997774138798,
+          "minZ": 0.24508118629455566
+        },
+        "limb_2": {
+          "volumeRatio": 0.9891286387939272,
+          "minRingAreaRatio": 0.999999802559578,
+          "minZ": 0.3899300694465637
+        },
+        "limb_3": {
+          "volumeRatio": 0.9799842328320815,
+          "minRingAreaRatio": 0.9999996908008448,
+          "minZ": 0.3272656798362732
+        },
+        "limb_4": {
+          "volumeRatio": 0.8865286254258742,
+          "minRingAreaRatio": 0.9999995925462895,
+          "minZ": 0.06852364540100098
+        },
+        "limb_5": {
+          "volumeRatio": 0.8718932448107398,
+          "minRingAreaRatio": 0.9999997224658342,
+          "minZ": 0.024058323353528976
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 28,
+        "body/limb_5": 32,
+        "limb_4/limb_5": 11,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 12
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 132.78659557881,
+        "pelvis/5": 124.81893402518,
+        "4/104": 109.30717143892001,
+        "5/105": 145.04570596909403,
+        "2/102": 57.944094238910765,
+        "3/103": 79.263382261325,
+        "pelvis/1": 32.684405197519055
+      }
+    },
+    {
+      "frame": 27,
+      "time": 0.8666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003016439911,
+          "minRingAreaRatio": 1.0000003398744672,
+          "minZ": 0.9186612367630005
+        },
+        "body": {
+          "volumeRatio": 0.9960089772734584,
+          "minRingAreaRatio": 0.9999998668208514,
+          "minZ": 0.3493404984474182
+        },
+        "limb_2": {
+          "volumeRatio": 0.991920526253722,
+          "minRingAreaRatio": 0.9999995902179761,
+          "minZ": 0.41802626848220825
+        },
+        "limb_3": {
+          "volumeRatio": 0.9822307348159143,
+          "minRingAreaRatio": 0.9999995315446293,
+          "minZ": 0.42559754848480225
+        },
+        "limb_4": {
+          "volumeRatio": 0.8861046633883224,
+          "minRingAreaRatio": 0.9999996658879615,
+          "minZ": 0.10366710275411606
+        },
+        "limb_5": {
+          "volumeRatio": 0.9099927657288891,
+          "minRingAreaRatio": 0.9999997392296431,
+          "minZ": 0.024805642664432526
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 24,
+        "body/limb_5": 16,
+        "limb_4/limb_5": 12,
+        "limb_2/body": 11,
+        "limb_3/body": 7,
+        "limb_2/limb_4": 6,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 126.06317592590288,
+        "pelvis/5": 87.81760680049736,
+        "4/104": 123.94259343391069,
+        "5/105": 139.10788101414343,
+        "2/102": 49.830218825718305,
+        "3/103": 74.53338746863196,
+        "pelvis/1": 33.164809967886484
+      }
+    },
+    {
+      "frame": 28,
+      "time": 0.9,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999998469385744,
+          "minRingAreaRatio": 1.0000000186555407,
+          "minZ": 0.9242075681686401
+        },
+        "body": {
+          "volumeRatio": 0.9960843873836627,
+          "minRingAreaRatio": 0.999999719206204,
+          "minZ": 0.38435620069503784
+        },
+        "limb_2": {
+          "volumeRatio": 0.9932592374070927,
+          "minRingAreaRatio": 0.9999999273568342,
+          "minZ": 0.4100942015647888
+        },
+        "limb_3": {
+          "volumeRatio": 0.9849019168159506,
+          "minRingAreaRatio": 0.9999997690319702,
+          "minZ": 0.4656728506088257
+        },
+        "limb_4": {
+          "volumeRatio": 0.9010880820811131,
+          "minRingAreaRatio": 0.9999998128041444,
+          "minZ": 0.06300996243953705
+        },
+        "limb_5": {
+          "volumeRatio": 0.9217054209543464,
+          "minRingAreaRatio": 0.999999720603181,
+          "minZ": 0.02442590892314911
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 16,
+        "body/limb_5": 16,
+        "limb_4/limb_5": 11,
+        "limb_2/body": 13,
+        "limb_3/body": 7,
+        "limb_2/limb_4": 11,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 116.5962195475634,
+        "pelvis/5": 81.71444345630827,
+        "4/104": 118.13847626215227,
+        "5/105": 127.53393422026006,
+        "2/102": 45.46213185148215,
+        "3/103": 68.54026530216096,
+        "pelvis/1": 32.83531822723048
+      }
+    },
+    {
+      "frame": 29,
+      "time": 0.9333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.99999983707205,
+          "minRingAreaRatio": 1.000000057974828,
+          "minZ": 0.9539732933044434
+        },
+        "body": {
+          "volumeRatio": 0.9962919357918043,
+          "minRingAreaRatio": 0.9999993806702896,
+          "minZ": 0.42664575576782227
+        },
+        "limb_2": {
+          "volumeRatio": 0.9941040175008523,
+          "minRingAreaRatio": 1.00000012852249,
+          "minZ": 0.43117648363113403
+        },
+        "limb_3": {
+          "volumeRatio": 0.9877193693501091,
+          "minRingAreaRatio": 1.0000001140870032,
+          "minZ": 0.5208995342254639
+        },
+        "limb_4": {
+          "volumeRatio": 0.9169244379786857,
+          "minRingAreaRatio": 0.9999994926618683,
+          "minZ": 0.026117920875549316
+        },
+        "limb_5": {
+          "volumeRatio": 0.9365501488052836,
+          "minRingAreaRatio": 0.9999998025595944,
+          "minZ": 0.02519114315509796
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 17,
+        "body/limb_5": 8,
+        "limb_4/limb_5": 12,
+        "limb_2/body": 17,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 6,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 103.8681688594338,
+        "pelvis/5": 71.67304767820319,
+        "4/104": 113.34203055902417,
+        "5/105": 114.0936655564274,
+        "2/102": 42.487020977335064,
+        "3/103": 61.662196506066415,
+        "pelvis/1": 31.912610896780535
+      }
+    },
+    {
+      "frame": 30,
+      "time": 0.9666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000005495499453,
+          "minRingAreaRatio": 1.0000004098982633,
+          "minZ": 1.024587631225586
+        },
+        "body": {
+          "volumeRatio": 0.9966012049831835,
+          "minRingAreaRatio": 0.9999995748510728,
+          "minZ": 0.49706029891967773
+        },
+        "limb_2": {
+          "volumeRatio": 0.9946813002520641,
+          "minRingAreaRatio": 0.9999998665298107,
+          "minZ": 0.4979032874107361
+        },
+        "limb_3": {
+          "volumeRatio": 0.9903889443781276,
+          "minRingAreaRatio": 0.9999998044222196,
+          "minZ": 0.6018285751342773
+        },
+        "limb_4": {
+          "volumeRatio": 0.9321831993864127,
+          "minRingAreaRatio": 0.9999998197890609,
+          "minZ": 0.026768282055854797
+        },
+        "limb_5": {
+          "volumeRatio": 0.9509146510479328,
+          "minRingAreaRatio": 0.9999998332932444,
+          "minZ": 0.05139583349227905
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 18,
+        "body/limb_5": 11,
+        "limb_4/limb_5": 7,
+        "limb_2/body": 15,
+        "limb_3/body": 13,
+        "limb_2/limb_4": 6,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 90.51641944724449,
+        "pelvis/5": 61.46988569979553,
+        "4/104": 106.7530563497396,
+        "5/105": 100.10687930615616,
+        "2/102": 40.33233876591158,
+        "3/103": 54.422267702839186,
+        "pelvis/1": 30.495647172326372
+      }
+    },
+    {
+      "frame": 31,
+      "time": 1.0,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999998977846799,
+          "minRingAreaRatio": 1.0000000700820193,
+          "minZ": 1.0849871635437012
+        },
+        "body": {
+          "volumeRatio": 0.996981108538192,
+          "minRingAreaRatio": 0.9999999012798022,
+          "minZ": 0.5506364107131958
+        },
+        "limb_2": {
+          "volumeRatio": 0.9950998310980491,
+          "minRingAreaRatio": 0.9999997884151302,
+          "minZ": 0.5599004626274109
+        },
+        "limb_3": {
+          "volumeRatio": 0.9926966796189611,
+          "minRingAreaRatio": 0.9999997727571952,
+          "minZ": 0.6483559608459473
+        },
+        "limb_4": {
+          "volumeRatio": 0.9444649596122369,
+          "minRingAreaRatio": 0.9999997057019989,
+          "minZ": 0.02676035463809967
+        },
+        "limb_5": {
+          "volumeRatio": 0.9587293856352135,
+          "minRingAreaRatio": 0.9999998533166751,
+          "minZ": 0.058430708944797516
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 9,
+        "body/limb_5": 13,
+        "limb_4/limb_5": 8,
+        "limb_2/body": 15,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 4,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 80.3351550553159,
+        "pelvis/5": 53.824462225922986,
+        "4/104": 98.20025932010378,
+        "5/105": 88.4204324664535,
+        "2/102": 38.699493252360824,
+        "3/103": 47.342004816744755,
+        "pelvis/1": 28.68350919306278
+      }
+    },
+    {
+      "frame": 32,
+      "time": 1.0333333333333334,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999997905699967,
+          "minRingAreaRatio": 0.9999999108258588,
+          "minZ": 1.1352366209030151
+        },
+        "body": {
+          "volumeRatio": 0.9973989328093724,
+          "minRingAreaRatio": 0.9999995138494964,
+          "minZ": 0.5918574929237366
+        },
+        "limb_2": {
+          "volumeRatio": 0.9954159435543152,
+          "minRingAreaRatio": 0.9999994984126204,
+          "minZ": 0.61678147315979
+        },
+        "limb_3": {
+          "volumeRatio": 0.9945213371774927,
+          "minRingAreaRatio": 0.9999997806734975,
+          "minZ": 0.6850653290748596
+        },
+        "limb_4": {
+          "volumeRatio": 0.9540392054325117,
+          "minRingAreaRatio": 0.9999995026736204,
+          "minZ": 0.026458948850631714
+        },
+        "limb_5": {
+          "volumeRatio": 0.9664829226825488,
+          "minRingAreaRatio": 0.9999998023849663,
+          "minZ": 0.05362844467163086
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 12,
+        "body/limb_5": 8,
+        "limb_4/limb_5": 6,
+        "limb_2/body": 15,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 73.09014117625159,
+        "pelvis/5": 48.398054515266274,
+        "4/104": 89.0361193786168,
+        "5/105": 79.49785582534237,
+        "2/102": 37.41840931125489,
+        "3/103": 40.939918243530066,
+        "pelvis/1": 26.575053701941936
+      }
+    },
+    {
+      "frame": 33,
+      "time": 1.0666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999999304345861,
+          "minRingAreaRatio": 1.0000000198488108,
+          "minZ": 1.181052565574646
+        },
+        "body": {
+          "volumeRatio": 0.9978258787912488,
+          "minRingAreaRatio": 0.9999992744994337,
+          "minZ": 0.62764972448349
+        },
+        "limb_2": {
+          "volumeRatio": 0.9956667765803445,
+          "minRingAreaRatio": 1.000000059138978,
+          "minZ": 0.6700026392936707
+        },
+        "limb_3": {
+          "volumeRatio": 0.995817508363395,
+          "minRingAreaRatio": 0.9999998291022908,
+          "minZ": 0.7172855138778687
+        },
+        "limb_4": {
+          "volumeRatio": 0.9623339134800261,
+          "minRingAreaRatio": 0.9999995813704139,
+          "minZ": 0.02600165456533432
+        },
+        "limb_5": {
+          "volumeRatio": 0.9729475224026304,
+          "minRingAreaRatio": 0.9999999019782898,
+          "minZ": 0.045936793088912964
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 9,
+        "body/limb_5": 8,
+        "limb_4/limb_5": 10,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 66.26324415741878,
+        "pelvis/5": 43.215265991925584,
+        "4/104": 80.19891327194165,
+        "5/105": 71.26155610146661,
+        "2/102": 36.37436708529425,
+        "3/103": 35.73028707675122,
+        "pelvis/1": 24.269226234375235
+      }
+    },
+    {
+      "frame": 34,
+      "time": 1.1,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000005385656738,
+          "minRingAreaRatio": 1.0000003491876956,
+          "minZ": 1.2215346097946167
+        },
+        "body": {
+          "volumeRatio": 0.998239745968409,
+          "minRingAreaRatio": 0.9999997005797321,
+          "minZ": 0.6583072543144226
+        },
+        "limb_2": {
+          "volumeRatio": 0.9958749249758104,
+          "minRingAreaRatio": 0.9999998263083245,
+          "minZ": 0.7135491371154785
+        },
+        "limb_3": {
+          "volumeRatio": 0.9965937182578634,
+          "minRingAreaRatio": 0.9999998742714369,
+          "minZ": 0.7449157238006592
+        },
+        "limb_4": {
+          "volumeRatio": 0.969503292110232,
+          "minRingAreaRatio": 0.9999998062848857,
+          "minZ": 0.025395341217517853
+        },
+        "limb_5": {
+          "volumeRatio": 0.9784929100058162,
+          "minRingAreaRatio": 0.9999998095445148,
+          "minZ": 0.03678788244724274
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 5,
+        "body/limb_5": 4,
+        "limb_4/limb_5": 5,
+        "limb_2/body": 9,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 59.772576860858194,
+        "pelvis/5": 38.30808243178407,
+        "4/104": 71.70939111477684,
+        "5/105": 63.638784949976404,
+        "2/102": 35.48458468173835,
+        "3/103": 32.22367137196126,
+        "pelvis/1": 21.86500818426721
+      }
+    },
+    {
+      "frame": 35,
+      "time": 1.1333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003414359457,
+          "minRingAreaRatio": 1.0000000970903737,
+          "minZ": 1.2579717636108398
+        },
+        "body": {
+          "volumeRatio": 0.9986195647513479,
+          "minRingAreaRatio": 0.9999997045378688,
+          "minZ": 0.6840883493423462
+        },
+        "limb_2": {
+          "volumeRatio": 0.9960533102098074,
+          "minRingAreaRatio": 0.999999877996726,
+          "minZ": 0.741863489151001
+        },
+        "limb_3": {
+          "volumeRatio": 0.9968603069540615,
+          "minRingAreaRatio": 0.9999997073318364,
+          "minZ": 0.7696881294250488
+        },
+        "limb_4": {
+          "volumeRatio": 0.9756491274690154,
+          "minRingAreaRatio": 0.999999655410588,
+          "minZ": 0.024658720940351486
+        },
+        "limb_5": {
+          "volumeRatio": 0.983771808991802,
+          "minRingAreaRatio": 0.9999998201383116,
+          "minZ": 0.027317039668560028
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 9,
+        "body/limb_5": 8,
+        "limb_4/limb_5": 6,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 53.60460526672945,
+        "pelvis/5": 33.74173214141537,
+        "4/104": 63.586520342447464,
+        "5/105": 56.588513424527505,
+        "2/102": 34.69991205931977,
+        "3/103": 30.928568467583876,
+        "pelvis/1": 19.461319473819863
+      }
+    },
+    {
+      "frame": 36,
+      "time": 1.1666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000001197290405,
+          "minRingAreaRatio": 1.0000002938322243,
+          "minZ": 1.2996037006378174
+        },
+        "body": {
+          "volumeRatio": 0.9989521430135473,
+          "minRingAreaRatio": 0.9999997064005152,
+          "minZ": 0.7132976055145264
+        },
+        "limb_2": {
+          "volumeRatio": 0.9962080852365172,
+          "minRingAreaRatio": 0.9999996838159297,
+          "minZ": 0.7599772214889526
+        },
+        "limb_3": {
+          "volumeRatio": 0.9967926384426523,
+          "minRingAreaRatio": 0.9999999692081469,
+          "minZ": 0.800050675868988
+        },
+        "limb_4": {
+          "volumeRatio": 0.9811940771858958,
+          "minRingAreaRatio": 0.9999998649582176,
+          "minZ": 0.03190651908516884
+        },
+        "limb_5": {
+          "volumeRatio": 0.987295021485584,
+          "minRingAreaRatio": 0.9999997629783763,
+          "minZ": 0.026308633387088776
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 6,
+        "body/limb_5": 6,
+        "limb_4/limb_5": 6,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 47.807284133195196,
+        "pelvis/5": 29.581836163270363,
+        "4/104": 55.89027001586627,
+        "5/105": 50.054993521114255,
+        "2/102": 34.01140850041498,
+        "3/103": 31.262100265133938,
+        "pelvis/1": 17.156982695039517
+      }
+    },
+    {
+      "frame": 37,
+      "time": 1.2,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000209108224,
+          "minRingAreaRatio": 1.0000002256128677,
+          "minZ": 1.3379602432250977
+        },
+        "body": {
+          "volumeRatio": 0.9992294752162433,
+          "minRingAreaRatio": 0.999999736697611,
+          "minZ": 0.7381560206413269
+        },
+        "limb_2": {
+          "volumeRatio": 0.996333846433096,
+          "minRingAreaRatio": 0.9999993825329407,
+          "minZ": 0.7688141465187073
+        },
+        "limb_3": {
+          "volumeRatio": 0.9965982780548094,
+          "minRingAreaRatio": 0.9999997392660183,
+          "minZ": 0.8092098236083984
+        },
+        "limb_4": {
+          "volumeRatio": 0.9854137639196109,
+          "minRingAreaRatio": 0.9999997310805699,
+          "minZ": 0.039042916148900986
+        },
+        "limb_5": {
+          "volumeRatio": 0.9901655230845625,
+          "minRingAreaRatio": 0.9999996721743998,
+          "minZ": 0.02616065740585327
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 8,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 8,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 42.453358390010656,
+        "pelvis/5": 25.89318054917393,
+        "4/104": 48.690321724945704,
+        "5/105": 43.971050329249586,
+        "2/102": 33.43549036469409,
+        "3/103": 32.20215286098113,
+        "pelvis/1": 15.05080848710146
+      }
+    },
+    {
+      "frame": 38,
+      "time": 1.2333333333333334,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000799190446,
+          "minRingAreaRatio": 1.0000005415056998,
+          "minZ": 1.3717215061187744
+        },
+        "body": {
+          "volumeRatio": 0.9994469607454012,
+          "minRingAreaRatio": 0.9999996380646988,
+          "minZ": 0.7577458620071411
+        },
+        "limb_2": {
+          "volumeRatio": 0.9964482653848736,
+          "minRingAreaRatio": 0.9999996665864568,
+          "minZ": 0.7763225436210632
+        },
+        "limb_3": {
+          "volumeRatio": 0.9962981593378873,
+          "minRingAreaRatio": 0.999999393010319,
+          "minZ": 0.817294180393219
+        },
+        "limb_4": {
+          "volumeRatio": 0.9887645878585576,
+          "minRingAreaRatio": 0.9999998579732964,
+          "minZ": 0.044841911643743515
+        },
+        "limb_5": {
+          "volumeRatio": 0.9924822155802085,
+          "minRingAreaRatio": 0.9999997256090469,
+          "minZ": 0.02588997781276703
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 6,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 37.678277518606365,
+        "pelvis/5": 22.724068396936396,
+        "4/104": 42.15878940658094,
+        "5/105": 38.24082897412154,
+        "2/102": 32.90800510037776,
+        "3/103": 33.59938416892313,
+        "pelvis/1": 13.241441003319954
+      }
+    },
+    {
+      "frame": 39,
+      "time": 1.2666666666666666,
+      "meshes": {
+        "head": {
+          "volumeRatio": 0.9999999903727076,
+          "minRingAreaRatio": 1.000000220257764,
+          "minZ": 1.4008013010025024
+        },
+        "body": {
+          "volumeRatio": 0.9996033236944272,
+          "minRingAreaRatio": 0.9999996875994348,
+          "minZ": 0.7723253965377808
+        },
+        "limb_2": {
+          "volumeRatio": 0.9965740270962823,
+          "minRingAreaRatio": 0.9999997271224483,
+          "minZ": 0.7829573154449463
+        },
+        "limb_3": {
+          "volumeRatio": 0.9959161006617899,
+          "minRingAreaRatio": 0.9999996908008567,
+          "minZ": 0.8250911235809326
+        },
+        "limb_4": {
+          "volumeRatio": 0.9924086756740321,
+          "minRingAreaRatio": 0.9999995194374356,
+          "minZ": 0.04911022633314133
+        },
+        "limb_5": {
+          "volumeRatio": 0.9943484068293779,
+          "minRingAreaRatio": 0.9999997026061014,
+          "minZ": 0.02552378922700882
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 6,
+        "body/limb_5": 7,
+        "limb_4/limb_5": 6,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 33.656668965492024,
+        "pelvis/5": 20.083505310978417,
+        "4/104": 36.54800415437431,
+        "5/105": 32.70088302889171,
+        "2/102": 32.31924962411183,
+        "3/103": 35.30487898958073,
+        "pelvis/1": 11.827411698887955
+      }
+    },
+    {
+      "frame": 40,
+      "time": 1.3,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000003041737922,
+          "minRingAreaRatio": 1.0000004002940006,
+          "minZ": 1.4256641864776611
+        },
+        "body": {
+          "volumeRatio": 0.999699072800495,
+          "minRingAreaRatio": 0.9999997493286727,
+          "minZ": 0.7823558449745178
+        },
+        "limb_2": {
+          "volumeRatio": 0.9967284085230103,
+          "minRingAreaRatio": 0.99999951571214,
+          "minZ": 0.7887418270111084
+        },
+        "limb_3": {
+          "volumeRatio": 0.9954773978879127,
+          "minRingAreaRatio": 1.000000093132253,
+          "minZ": 0.8322762250900269
+        },
+        "limb_4": {
+          "volumeRatio": 0.9940841547390323,
+          "minRingAreaRatio": 0.9999995263059414,
+          "minZ": 0.05200876295566559
+        },
+        "limb_5": {
+          "volumeRatio": 0.9957957240548276,
+          "minRingAreaRatio": 0.999999748310042,
+          "minZ": 0.0250670425593853
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 9,
+        "body/limb_5": 0,
+        "limb_4/limb_5": 6,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 30.477615472917538,
+        "pelvis/5": 17.99932943480968,
+        "4/104": 31.846231703331767,
+        "5/105": 27.426330914051892,
+        "2/102": 31.57716664626287,
+        "3/103": 37.16562401007272,
+        "pelvis/1": 10.906968576147866
+      }
+    },
+    {
+      "frame": 41,
+      "time": 1.3333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000004455914666,
+          "minRingAreaRatio": 1.0000001221778716,
+          "minZ": 1.4465667009353638
+        },
+        "body": {
+          "volumeRatio": 0.9997322356934318,
+          "minRingAreaRatio": 0.9999998749553842,
+          "minZ": 0.7882791757583618
+        },
+        "limb_2": {
+          "volumeRatio": 0.9968995001915358,
+          "minRingAreaRatio": 0.9999992139634366,
+          "minZ": 0.7937119007110596
+        },
+        "limb_3": {
+          "volumeRatio": 0.995017060108149,
+          "minRingAreaRatio": 0.999999966472384,
+          "minZ": 0.8380066752433777
+        },
+        "limb_4": {
+          "volumeRatio": 0.9952944286775051,
+          "minRingAreaRatio": 0.9999994891694324,
+          "minZ": 0.05384351685643196
+        },
+        "limb_5": {
+          "volumeRatio": 0.9968305719345965,
+          "minRingAreaRatio": 0.9999998011626001,
+          "minZ": 0.02453549951314926
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 8,
+        "body/limb_5": 12,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 28.132500757244923,
+        "pelvis/5": 16.446844511938707,
+        "4/104": 27.847955076422192,
+        "5/105": 22.72652897258489,
+        "2/102": 30.73403101964357,
+        "3/103": 39.02808340804638,
+        "pelvis/1": 10.578263161020065
+      }
+    },
+    {
+      "frame": 42,
+      "time": 1.3666666666666667,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.00000073640415,
+          "minRingAreaRatio": 1.0000001982552735,
+          "minZ": 1.4634023904800415
+        },
+        "body": {
+          "volumeRatio": 0.9997321615126769,
+          "minRingAreaRatio": 0.9999999549545454,
+          "minZ": 0.7911755442619324
+        },
+        "limb_2": {
+          "volumeRatio": 0.9970659506435279,
+          "minRingAreaRatio": 0.9999999403953526,
+          "minZ": 0.797383725643158
+        },
+        "limb_3": {
+          "volumeRatio": 0.9945747770924195,
+          "minRingAreaRatio": 1.000000009313223,
+          "minZ": 0.8418277502059937
+        },
+        "limb_4": {
+          "volumeRatio": 0.9961299423637986,
+          "minRingAreaRatio": 0.9999994821845128,
+          "minZ": 0.054718829691410065
+        },
+        "limb_5": {
+          "volumeRatio": 0.9975404013206298,
+          "minRingAreaRatio": 0.999999620020317,
+          "minZ": 0.023999851197004318
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 3,
+        "body/limb_5": 6,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 26.470574005755545,
+        "pelvis/5": 15.321306176348768,
+        "4/104": 24.66825100832926,
+        "5/105": 18.750264337822976,
+        "2/102": 29.89222386481784,
+        "3/103": 40.740968493385935,
+        "pelvis/1": 10.578263161020065
+      }
+    },
+    {
+      "frame": 43,
+      "time": 1.4,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.000000171129134,
+          "minRingAreaRatio": 1.0000002098967982,
+          "minZ": 1.4760854244232178
+        },
+        "body": {
+          "volumeRatio": 0.9997321001643074,
+          "minRingAreaRatio": 0.9999996826517814,
+          "minZ": 0.7923895120620728
+        },
+        "limb_2": {
+          "volumeRatio": 0.997208416929666,
+          "minRingAreaRatio": 0.9999999022111243,
+          "minZ": 0.7993306517601013
+        },
+        "limb_3": {
+          "volumeRatio": 0.9941957701465768,
+          "minRingAreaRatio": 0.9999997671693291,
+          "minZ": 0.844032347202301
+        },
+        "limb_4": {
+          "volumeRatio": 0.9966666566582193,
+          "minRingAreaRatio": 0.9999997182748788,
+          "minZ": 0.05488262698054314
+        },
+        "limb_5": {
+          "volumeRatio": 0.9979933384025336,
+          "minRingAreaRatio": 0.9999998835846622,
+          "minZ": 0.02355232462286949
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 8,
+        "body/limb_5": 9,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 25.309426478927744,
+        "pelvis/5": 14.603617219120508,
+        "4/104": 22.425954545327432,
+        "5/105": 15.71930129928541,
+        "2/102": 29.1565817553562,
+        "3/103": 42.1524646514095,
+        "pelvis/1": 10.578263161020065
+      }
+    },
+    {
+      "frame": 44,
+      "time": 1.4333333333333333,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000004507829245,
+          "minRingAreaRatio": 1.0000004504689861,
+          "minZ": 1.4841557741165161
+        },
+        "body": {
+          "volumeRatio": 0.9997321284927486,
+          "minRingAreaRatio": 0.9999996835248957,
+          "minZ": 0.7927015423774719
+        },
+        "limb_2": {
+          "volumeRatio": 0.9973062381313106,
+          "minRingAreaRatio": 0.9999995250253415,
+          "minZ": 0.8001936674118042
+        },
+        "limb_3": {
+          "volumeRatio": 0.9939312732924431,
+          "minRingAreaRatio": 1.0000000167638001,
+          "minZ": 0.8451340794563293
+        },
+        "limb_4": {
+          "volumeRatio": 0.9969554376327951,
+          "minRingAreaRatio": 0.9999994793905373,
+          "minZ": 0.0547327995300293
+        },
+        "limb_5": {
+          "volumeRatio": 0.9982330193781161,
+          "minRingAreaRatio": 0.9999997467966346,
+          "minZ": 0.0232614204287529
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 8,
+        "body/limb_5": 9,
+        "limb_4/limb_5": 9,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 24.646402940721682,
+        "pelvis/5": 14.233352664214117,
+        "4/104": 21.13684683949403,
+        "5/105": 13.86264500078532,
+        "2/102": 28.63504900090154,
+        "3/103": 43.11081532404316,
+        "pelvis/1": 10.578263161020065
+      }
+    },
+    {
+      "frame": 45,
+      "time": 1.4666666666666666,
+      "meshes": {
+        "head": {
+          "volumeRatio": 1.0000001152034592,
+          "minRingAreaRatio": 1.0000001488369659,
+          "minZ": 1.4870301485061646
+        },
+        "body": {
+          "volumeRatio": 0.9997317623224795,
+          "minRingAreaRatio": 0.9999997214180958,
+          "minZ": 0.7927315831184387
+        },
+        "limb_2": {
+          "volumeRatio": 0.9973438890208133,
+          "minRingAreaRatio": 0.9999999320134394,
+          "minZ": 0.8004392981529236
+        },
+        "limb_3": {
+          "volumeRatio": 0.9938324202736082,
+          "minRingAreaRatio": 0.9999998994171526,
+          "minZ": 0.8454787731170654
+        },
+        "limb_4": {
+          "volumeRatio": 0.9970394071240172,
+          "minRingAreaRatio": 0.9999997075646674,
+          "minZ": 0.054643917828798294
+        },
+        "limb_5": {
+          "volumeRatio": 0.9983033150075737,
+          "minRingAreaRatio": 0.9999996568075693,
+          "minZ": 0.02316601201891899
+        }
+      },
+      "surfaceTrianglePairs": {
+        "head/body": 7,
+        "body/limb_4": 3,
+        "body/limb_5": 5,
+        "limb_4/limb_5": 12,
+        "limb_2/body": 11,
+        "limb_3/body": 11,
+        "limb_2/limb_4": 0,
+        "limb_3/limb_5": 0
+      },
+      "relativeAnglesDegrees": {
+        "pelvis/4": 24.448096935906822,
+        "pelvis/5": 14.127328491501656,
+        "4/104": 20.75022398152546,
+        "5/105": 13.270969618649211,
+        "2/102": 28.436925703646978,
+        "3/103": 43.46396000979492,
+        "pelvis/1": 10.578263161020065
+      }
+    }
+  ],
+  "criticalByRingArea": [
+    16,
+    5,
+    15,
+    8,
+    20,
+    7,
+    14,
+    12,
+    11,
+    24
+  ],
+  "method": "Blender evaluated linear skinning; volumes vs rest; cross-section quad area; BVH surface pairs are a proxy, not intersection volume and may include touching seams",
+  "shapeKeys": 1164
+}

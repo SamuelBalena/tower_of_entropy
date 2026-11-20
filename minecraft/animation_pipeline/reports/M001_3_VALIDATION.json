@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "approvedFilesPreserved": 9,
+  "godotFilesPreserved": 171,
+  "cubes": 16,
+  "anchors": 2,
+  "oneShots": {
+    "Roll": {
+      "durationMs": 1467,
+      "frames": 45
+    },
+    "Sword_Regular_A": {
+      "durationMs": 433,
+      "frames": 14
+    }
+  },
+  "bodyRig": "unchanged Classic with invisible wrist/item anchors",
+  "loop": false,
+  "priority": 10
+}

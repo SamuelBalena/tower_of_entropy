@@ -1,0 +1,130 @@
+{
+  "checks": [
+    {
+      "test": "melee_2",
+      "detail": "start\u003d146344 tick\u003d146346",
+      "pass": true
+    },
+    {
+      "test": "projectile_2",
+      "detail": "hostile owner",
+      "pass": true
+    },
+    {
+      "test": "environment_2_lava",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_2_fall",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_2_outOfWorld",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "melee_3",
+      "detail": "start\u003d146344 tick\u003d146347",
+      "pass": true
+    },
+    {
+      "test": "projectile_3",
+      "detail": "hostile owner",
+      "pass": true
+    },
+    {
+      "test": "environment_3_lava",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_3_fall",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_3_outOfWorld",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "actual_health_3",
+      "detail": "before\u003d20.0 after\u003d20.0",
+      "pass": true
+    },
+    {
+      "test": "melee_9",
+      "detail": "start\u003d146344 tick\u003d146353",
+      "pass": true
+    },
+    {
+      "test": "projectile_9",
+      "detail": "hostile owner",
+      "pass": true
+    },
+    {
+      "test": "environment_9_lava",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_9_fall",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_9_outOfWorld",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "melee_10",
+      "detail": "start\u003d146344 tick\u003d146354",
+      "pass": true
+    },
+    {
+      "test": "projectile_10",
+      "detail": "hostile owner",
+      "pass": true
+    },
+    {
+      "test": "environment_10_lava",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_10_fall",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "environment_10_outOfWorld",
+      "detail": "preserved",
+      "pass": true
+    },
+    {
+      "test": "actual_health_10",
+      "detail": "before\u003d20.0 after\u003d18.0",
+      "pass": true
+    },
+    {
+      "test": "all_boundaries_seen",
+      "detail": "[2, 3, 9, 10]",
+      "pass": true
+    },
+    {
+      "test": "renderer_safe",
+      "detail": "errors\u003d0",
+      "pass": true
+    }
+  ],
+  "serverAges": [
+    2,
+    3,
+    9,
+    10
+  ]
+}

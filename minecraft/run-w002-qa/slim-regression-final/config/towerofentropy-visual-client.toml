@@ -1,0 +1,20 @@
+
+[transitions]
+	#Range: 0.0 ~ 0.2
+	heavyEntrySeconds = 0.12
+	#Range: 0.0 ~ 0.25
+	returnToLocomotionSeconds = 0.14
+	#Range: 0.0 ~ 0.12
+	lightChainSeconds = 0.0
+	#Range: 0.0 ~ 0.1
+	rollVisualSeconds = 0.06
+	#Range: 0.06 ~ 0.25
+	locomotionSeconds = 0.14
+
+[sourceContact]
+	enabled = true
+	#Range: 0.02 ~ 0.15
+	settleSeconds = 0.06
+	#Range: 0.0 ~ 0.3
+	maxVisualLoweringBlocks = 0.27
+

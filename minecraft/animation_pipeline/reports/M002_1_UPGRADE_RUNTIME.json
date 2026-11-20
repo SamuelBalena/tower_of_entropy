@@ -1,0 +1,978 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "detail": "attack while Roll pending/active refused",
+      "test": "cold_model_attack_excluded"
+    },
+    {
+      "pass": true,
+      "detail": "distance=2.499999999999999 status=Status[busy=false, started=true, startTick=77981, x=0.0, z=1.0, distance=2.499999999999999, reason=complete]",
+      "test": "cold_model_distance"
+    },
+    {
+      "pass": true,
+      "detail": "status=Status[busy=false, started=true, startTick=77981, x=0.0, z=1.0, distance=2.499999999999999, reason=complete]",
+      "test": "cold_model_normal_finish"
+    },
+    {
+      "pass": true,
+      "detail": "server=Status[busy=false, started=true, startTick=77981, x=0.0, z=1.0, distance=2.499999999999999, reason=complete] client busy=false",
+      "test": "cold_model_idle_clean"
+    },
+    {
+      "pass": true,
+      "detail": "drift=0.0",
+      "test": "cold_model_no_velocity_accumulation"
+    },
+    {
+      "pass": true,
+      "detail": "draws=173",
+      "test": "cold_model_render_backend"
+    },
+    {
+      "pass": true,
+      "detail": "R3 default; no lingering Roll",
+      "test": "reconnect_clean"
+    }
+  ],
+  "samples": [
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77969
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77970
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77971
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77972
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77973
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77974
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77975
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77976
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77977
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77978
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77979
+    },
+    {
+      "z": 0.5,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.5,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": false,
+        "startTick": -1,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "pending animation"
+      },
+      "tick": 77980
+    },
+    {
+      "z": 0.6785714285714286,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.6785714285714286,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0,
+        "reason": "moving"
+      },
+      "tick": 77981
+    },
+    {
+      "z": 0.8571428571428572,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 0.8571428571428572,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0.1785714285714286,
+        "reason": "moving"
+      },
+      "tick": 77982
+    },
+    {
+      "z": 1.0357142857142858,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.0357142857142858,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0.3571428571428572,
+        "reason": "moving"
+      },
+      "tick": 77983
+    },
+    {
+      "z": 1.2142857142857144,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.2142857142857144,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0.5357142857142858,
+        "reason": "moving"
+      },
+      "tick": 77984
+    },
+    {
+      "z": 1.392857142857143,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.392857142857143,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0.7142857142857144,
+        "reason": "moving"
+      },
+      "tick": 77985
+    },
+    {
+      "z": 1.5714285714285716,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.5714285714285716,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 0.892857142857143,
+        "reason": "moving"
+      },
+      "tick": 77986
+    },
+    {
+      "z": 1.7500000000000002,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.7500000000000002,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.0714285714285716,
+        "reason": "moving"
+      },
+      "tick": 77987
+    },
+    {
+      "z": 1.9285714285714288,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 1.9285714285714288,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.2500000000000002,
+        "reason": "moving"
+      },
+      "tick": 77988
+    },
+    {
+      "z": 2.107142857142857,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.107142857142857,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.4285714285714288,
+        "reason": "moving"
+      },
+      "tick": 77989
+    },
+    {
+      "z": 2.2857142857142856,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.2857142857142856,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.6071428571428572,
+        "reason": "moving"
+      },
+      "tick": 77990
+    },
+    {
+      "z": 2.464285714285714,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.464285714285714,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.7857142857142856,
+        "reason": "moving"
+      },
+      "tick": 77991
+    },
+    {
+      "z": 2.6428571428571423,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.6428571428571423,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 1.964285714285714,
+        "reason": "moving"
+      },
+      "tick": 77992
+    },
+    {
+      "z": 2.8214285714285707,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.8214285714285707,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.1428571428571423,
+        "reason": "moving"
+      },
+      "tick": 77993
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.3214285714285707,
+        "reason": "moving"
+      },
+      "tick": 77994
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "moving"
+      },
+      "tick": 77995
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 77996
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 77997
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 77998
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 77999
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78000
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78001
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78002
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78003
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78004
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78005
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78006
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78007
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78008
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78009
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78010
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78011
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": true,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "recovery"
+      },
+      "tick": 78012
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78013
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78014
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78015
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78016
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78017
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78018
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78019
+    },
+    {
+      "z": 2.999999999999999,
+      "y": 100,
+      "x": 0.5,
+      "clientZ": 2.999999999999999,
+      "case": "cold_model",
+      "clientX": 0.5,
+      "roll": {
+        "busy": false,
+        "started": true,
+        "startTick": 77981,
+        "x": 0,
+        "z": 1,
+        "distance": 2.499999999999999,
+        "reason": "complete"
+      },
+      "tick": 78020
+    }
+  ],
+  "renderErrors": 0
+}

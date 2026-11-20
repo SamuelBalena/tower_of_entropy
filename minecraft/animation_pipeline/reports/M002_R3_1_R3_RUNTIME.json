@@ -1,0 +1,292 @@
+{
+  "checks": [
+    {
+      "detail": "{weightedVertices=816, blendedVertices=128, maxWeightSumError=0.0, maxBindIdentityError=0.0, maxBlendVsRigidBlocks=0.10252695, joints=12, animations=[UAL_idle, UAL_jog, UAL_roll, UAL_sword], torsoBlendedVertices=32, maxTorsoVsRigidBlocks=0.15356733}",
+      "test": "loaded_weighted_mesh",
+      "pass": true
+    },
+    {
+      "detail": "actual Polymesh torso: {weightedVertices=816, blendedVertices=128, maxWeightSumError=0.0, maxBindIdentityError=0.0, maxBlendVsRigidBlocks=0.10252695, joints=12, animations=[UAL_idle, UAL_jog, UAL_roll, UAL_sword], torsoBlendedVertices=32, maxTorsoVsRigidBlocks=0.15356733}",
+      "test": "loaded_torso_blending",
+      "pass": true
+    },
+    {
+      "detail": "draws=88 items=88 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_idle-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_idle-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_idle-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_idle-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_jog-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_jog-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_jog-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_jog-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_sword-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_sword-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_sword-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_sword-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f4-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f4-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f4-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f4-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f11-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f11-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f11-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f11-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f15-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f15-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f15-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f15-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f23-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f23-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f23-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f23-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f26-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f26-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f26-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f26-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f27-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f27-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f27-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f27-270",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f30-0",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f30-90",
+      "pass": true
+    },
+    {
+      "detail": "draws=89 items=89 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f30-180",
+      "pass": true
+    },
+    {
+      "detail": "draws=90 items=90 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)",
+      "test": "r3_roll-f30-270",
+      "pass": true
+    },
+    {
+      "detail": "CPM idle=1 posts=119",
+      "test": "off_restores_cpm",
+      "pass": true
+    },
+    {
+      "detail": "body not drawn in first person; native hands retained",
+      "test": "first_person_fallback",
+      "pass": true
+    },
+    {
+      "detail": "clip=UAL_jog",
+      "test": "embedded_clip_playback",
+      "pass": true
+    },
+    {
+      "detail": "replica Pre=119 canceled=0",
+      "test": "other_player_untouched",
+      "pass": true
+    },
+    {
+      "detail": "reason=armadura draws=0 nativePosts=44",
+      "test": "equipment_fallback_armadura",
+      "pass": true
+    },
+    {
+      "detail": "reason=offhand draws=0 nativePosts=44",
+      "test": "equipment_fallback_offhand",
+      "pass": true
+    },
+    {
+      "detail": "reason=capa draws=0 nativePosts=45",
+      "test": "equipment_fallback_capa",
+      "pass": true
+    },
+    {
+      "detail": "reason=",
+      "test": "resume_after_equipment",
+      "pass": true
+    },
+    {
+      "detail": "errors=0",
+      "test": "render_errors",
+      "pass": true
+    },
+    {
+      "detail": "continuous nonloop Roll returns without changing physics",
+      "test": "complete_roll_returns_idle",
+      "pass": true
+    },
+    {
+      "detail": "renderer, combat and observer cleared",
+      "test": "reconnect_disabled",
+      "pass": true
+    }
+  ],
+  "draws": 5739,
+  "meanCpuDrawMs": 0.5288094441540337,
+  "maxCpuDrawMs": 7.1625
+}

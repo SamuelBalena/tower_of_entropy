@@ -1,0 +1,36 @@
+#Light combo continuation window after recovery, server ticks.
+#Range: 1 ~ 100
+comboWindowTicks = 24
+#Provisional heavy raw damage before vanilla mitigation.
+#Range: 0.1 ~ 40.0
+heavyDamage = 6.0
+#Range: 5 ~ 600
+combatGraceTicks = 60
+
+[basicIronSword]
+	#Distance from player feet to target bounding-box center, blocks.
+	#Range: 0.25 ~ 6.0
+	reach = 3.0
+	#Full horizontal arc in degrees; no targets behind the player.
+	#Range: 1.0 ~ 180.0
+	arcDegrees = 90.0
+	#Raw health points before vanilla armor, resistance and invulnerability.
+	#Range: 0.1 ~ 40.0
+	damage = 4.0
+	#Legacy M002.0 setting retained for migration; A1 uses individual windows from CombatMove.
+	#Range: 1 ~ 8
+	impactTicks = 4
+
+[attackMovement]
+	#Range: 0.0 ~ 0.75
+	lightABlocks = 0.4
+	#Range: 0.0 ~ 0.75
+	lightBBlocks = 0.5
+	#Range: 0.0 ~ 0.75
+	lightCBlocks = 0.6
+	#Range: 0.0 ~ 0.75
+	heavyBlocks = 0.7
+	#Internal one-time migration marker; custom distances are preserved.
+	#Range: 0 ~ 1
+	defaultsRevision = 1
+

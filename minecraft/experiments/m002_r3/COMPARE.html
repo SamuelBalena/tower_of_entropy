@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steve — comparação M002.R3</title>
+<style>body{margin:24px;font:16px system-ui;background:#151b22;color:#e8edf2}h1{font-size:24px}label{display:inline-block;margin:10px 20px 10px 0}select,button{font:inherit;padding:6px}main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}figure{margin:0}img{width:100%;image-rendering:pixelated;border:1px solid #526070}figcaption{padding:10px 0}a{color:#83c5ff}p{max-width:1000px;line-height:1.5}@media(max-width:900px){main{grid-template-columns:1fr}}</style>
+<h1>Steve: CPM → Polymesh R2 → Polymesh R3</h1>
+<p>Capturas reais do cliente Forge, mesma câmera, luz e tempo do clip. Os ângulos giram o corpo, mantendo a câmera fixa. Clique na imagem para abri-la no tamanho original. A flexão da cintura R3 é ponderada; a aprovação estética permanece com o usuário.</p>
+<label>Movimento <select id="clip"><option value="idle">Idle · 25/30 s</option><option value="jog">Jog · 7/30 s</option><option value="sword">Sword · 6/30 s</option><option value="roll">Roll · 22/30 s</option></select></label>
+<label>Vista <select id="angle"><option value="0">Frente · 0°</option><option value="90">Lateral · 90°</option><option value="180">Costas · 180°</option><option value="270">Lateral · 270°</option></select></label>
+<main id="comparison"></main>
+<p>R3 distribui a flexão entre pelve, cintura e peito, preservando orientações de cabeça/membros. Roll ainda apresenta achatamento/interpenetração em flexões fortes. Não há root motion ou nova física. Não se afirma cobertura quadro a quadro.</p>
+<p><a href="../../docs/M002_R3_CHARACTER_REFINEMENT.md">Relatório técnico</a> · <a href="../../docs/TEST_LOG_M002_R3.md">Testes</a></p>
+<details><summary>Equipamento e retorno seguro</summary><p>O R3 usa CPM/vanilla quando há armadura, offhand ou capa. A capa usa uma fixture local de presença de textura; não homologa capa deformável.</p><div id="fallbacks"></div></details>
+<details><summary>Flexão máxima da coluna nos canais de origem</summary><p>Amostras adicionais no maior ângulo pelve/peito de cada fonte: Jog 10/30 s, Sword 5/30 s e Roll 14/30 s. São capturas R3 de estresse, separadas das poses comparativas equivalentes.</p><div id="stress"></div></details>
+<script>
+const base='../../animation_pipeline/reports/M002_R3_visual/';
+function figure(file,label){const f=document.createElement('figure'),a=document.createElement('a'),im=document.createElement('img'),c=document.createElement('figcaption');a.href=base+file;im.src=a.href;im.alt=label;c.textContent=label;a.append(im);f.append(c,a);return f;}
+function update(){const clip=document.querySelector('#clip').value,angle=document.querySelector('#angle').value,root=document.querySelector('#comparison');root.replaceChildren();for(const[mode,label]of[['cpm','CPM aprovado'],['r2','Polymesh R2 · torso rígido'],['r3','Polymesh R3 · torso ponderado']])root.append(figure(`r3-${mode}-${clip}-${angle}.png`,`${label} · ${clip} · ${angle}°`));}
+document.querySelectorAll('select').forEach(s=>s.onchange=update);update();
+for(const[name,label]of[['fallback-armadura','Armadura → CPM'],['fallback-offhand','Escudo → CPM'],['fallback-capa','Capa detectada → CPM'],['off-cpm','Comando off → CPM'],['sword-early-0','Sword R3 · 2/30 s'],['sword-late-0','Sword R3 · 10/30 s']])document.querySelector('#fallbacks').append(figure(`r3-r3-${name}.png`,label));
+for(const name of ['jog-90','sword-270','roll-90','roll-270'])document.querySelector('#stress').append(figure(`r3-stress-${name}.png`,`R3 · flexão máxima de origem · ${name}`));
+</script></html>

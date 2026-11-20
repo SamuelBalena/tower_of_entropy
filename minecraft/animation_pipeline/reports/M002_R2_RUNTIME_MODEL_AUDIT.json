@@ -1,0 +1,14 @@
+{
+  "blendedVertices": 64,
+  "weightedVertices": 736,
+  "maxBindIdentityError": 0.0,
+  "maxWeightSumError": 0.0,
+  "maxBlendVsRigidBlocks": 0.10252701,
+  "joints": 10,
+  "animations": [
+    "UAL_idle",
+    "UAL_jog",
+    "UAL_roll",
+    "UAL_sword"
+  ]
+}

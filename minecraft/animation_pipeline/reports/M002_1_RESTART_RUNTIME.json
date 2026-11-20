@@ -1,0 +1,11 @@
+{
+  "samples": [],
+  "checks": [
+    {
+      "pass": true,
+      "test": "restart_clean",
+      "detail": "fresh JVM uses R3 without activation or stale actions"
+    }
+  ],
+  "renderErrors": 0
+}

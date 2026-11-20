@@ -1,0 +1,1853 @@
+{
+  "method": "Read-only glTF quaternion boundaries and LBS lower-limb minimum Y, including outer skin layer, renderer scale .9375; diagnostic geometry metrics, not aesthetic pass/fail",
+  "boundaries": [
+    {
+      "from": "idle",
+      "fromSeconds": 0,
+      "to": "sword",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "104",
+          "degrees": 5.089926779903146
+        },
+        {
+          "bone": "105",
+          "degrees": 3.865877037696326
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 2.9571612051745233
+        },
+        {
+          "bone": "5",
+          "degrees": 2.6197044420928166
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "105",
+          "degrees": 3.369708339889921,
+          "pivotDistanceBlocks": 0.010031493523954783
+        },
+        {
+          "bone": "104",
+          "degrees": 3.259141165466339,
+          "pivotDistanceBlocks": 0.012138305189194754
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 2.957161222762511,
+          "pivotDistanceBlocks": 0
+        },
+        {
+          "bone": "4",
+          "degrees": 1.9788940495045848,
+          "pivotDistanceBlocks": 0.000006925953693635386
+        }
+      ]
+    },
+    {
+      "from": "sword",
+      "fromSeconds": 0.4333333373069763,
+      "to": "sword_b",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "5",
+          "degrees": 11.144478580558854
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 9.946276867599385
+        },
+        {
+          "bone": "0",
+          "degrees": 9.677054197953048
+        },
+        {
+          "bone": "4",
+          "degrees": 8.90859378191538
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "3",
+          "degrees": 15.880617663252576,
+          "pivotDistanceBlocks": 0.03936448335618759
+        },
+        {
+          "bone": "2",
+          "degrees": 14.746042851960587,
+          "pivotDistanceBlocks": 0.12528196291028335
+        },
+        {
+          "bone": "102",
+          "degrees": 14.72679801807615,
+          "pivotDistanceBlocks": 0.1427164393868541
+        },
+        {
+          "bone": "1",
+          "degrees": 14.033503173417278,
+          "pivotDistanceBlocks": 0.10288731510967922
+        }
+      ]
+    },
+    {
+      "from": "sword_b",
+      "fromSeconds": 0.5333333611488342,
+      "to": "sword_c",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "2",
+          "degrees": 7.843255933978704
+        },
+        {
+          "bone": "4",
+          "degrees": 6.780188027463824
+        },
+        {
+          "bone": "104",
+          "degrees": 6.379970829014103
+        },
+        {
+          "bone": "5",
+          "degrees": 5.61888265460782
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "5",
+          "degrees": 7.113314231162237,
+          "pivotDistanceBlocks": 0.008520424878147487
+        },
+        {
+          "bone": "105",
+          "degrees": 6.547641231364286,
+          "pivotDistanceBlocks": 0.0381766914683631
+        },
+        {
+          "bone": "103",
+          "degrees": 5.790560713458051,
+          "pivotDistanceBlocks": 0.059386296128536895
+        },
+        {
+          "bone": "3",
+          "degrees": 5.463283747911544,
+          "pivotDistanceBlocks": 0.05295887689980079
+        }
+      ]
+    },
+    {
+      "from": "sword_c",
+      "fromSeconds": 2,
+      "to": "idle",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "5",
+          "degrees": 4.8574682094524295
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 4.445901239713018
+        },
+        {
+          "bone": "4",
+          "degrees": 3.9452671869194478
+        },
+        {
+          "bone": "1",
+          "degrees": 2.125357776372701
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "pelvis",
+          "degrees": 4.445900590812186,
+          "pivotDistanceBlocks": 0
+        },
+        {
+          "bone": "waist",
+          "degrees": 2.4947062478527378,
+          "pivotDistanceBlocks": 0.026114033709162567
+        },
+        {
+          "bone": "105",
+          "degrees": 1.475019878039451,
+          "pivotDistanceBlocks": 0.0019962077048649566
+        },
+        {
+          "bone": "5",
+          "degrees": 1.448819193101451,
+          "pivotDistanceBlocks": 0.0025390474520077355
+        }
+      ]
+    },
+    {
+      "from": "sword_c",
+      "fromSeconds": 2,
+      "to": "jog",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "0",
+          "degrees": 59.020149503816356
+        },
+        {
+          "bone": "103",
+          "degrees": 56.47032719178526
+        },
+        {
+          "bone": "4",
+          "degrees": 55.16704805335151
+        },
+        {
+          "bone": "102",
+          "degrees": 47.59310729450794
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 114.32127974350028,
+          "pivotDistanceBlocks": 0.6096792169329409
+        },
+        {
+          "bone": "3",
+          "degrees": 89.5458566691776,
+          "pivotDistanceBlocks": 0.5131317762558988
+        },
+        {
+          "bone": "2",
+          "degrees": 76.59028553327195,
+          "pivotDistanceBlocks": 0.02200656533116919
+        },
+        {
+          "bone": "105",
+          "degrees": 69.08085610113878,
+          "pivotDistanceBlocks": 0.1283148586650883
+        }
+      ]
+    },
+    {
+      "from": "idle",
+      "fromSeconds": 0,
+      "to": "heavy",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "5",
+          "degrees": 125.81005097020628
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 107.27222679916805
+        },
+        {
+          "bone": "2",
+          "degrees": 106.17487833366597
+        },
+        {
+          "bone": "4",
+          "degrees": 73.60652107214864
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "2",
+          "degrees": 178.1852819936581,
+          "pivotDistanceBlocks": 0.9601478720406721
+        },
+        {
+          "bone": "102",
+          "degrees": 165.2266664504076,
+          "pivotDistanceBlocks": 1.089934816799505
+        },
+        {
+          "bone": "103",
+          "degrees": 157.51927594812736,
+          "pivotDistanceBlocks": 0.32161591738644174
+        },
+        {
+          "bone": "3",
+          "degrees": 133.86109126888869,
+          "pivotDistanceBlocks": 0.5278074554692583
+        }
+      ]
+    },
+    {
+      "from": "heavy",
+      "fromSeconds": 2.3333332538604736,
+      "to": "idle",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "0",
+          "degrees": 20.40006600788306
+        },
+        {
+          "bone": "3",
+          "degrees": 5.9023616803062575
+        },
+        {
+          "bone": "2",
+          "degrees": 5.273295227892534
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 4.723684328794779
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "0",
+          "degrees": 22.282468718132208,
+          "pivotDistanceBlocks": 0.03891369479852585
+        },
+        {
+          "bone": "102",
+          "degrees": 6.076384404921755,
+          "pivotDistanceBlocks": 0.03319211769116836
+        },
+        {
+          "bone": "2",
+          "degrees": 6.049865608569007,
+          "pivotDistanceBlocks": 0.028281468451230293
+        },
+        {
+          "bone": "3",
+          "degrees": 5.465602109608998,
+          "pivotDistanceBlocks": 0.049599233857170015
+        }
+      ]
+    },
+    {
+      "from": "heavy",
+      "fromSeconds": 2.3333332538604736,
+      "to": "jog",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 56.4345246458215
+        },
+        {
+          "bone": "4",
+          "degrees": 55.76967312068419
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 49.3243469451174
+        },
+        {
+          "bone": "0",
+          "degrees": 49.13856071425574
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 117.77549897981419,
+          "pivotDistanceBlocks": 0.6389754332540662
+        },
+        {
+          "bone": "3",
+          "degrees": 91.13799823520434,
+          "pivotDistanceBlocks": 0.5295844678431807
+        },
+        {
+          "bone": "2",
+          "degrees": 77.7992593458521,
+          "pivotDistanceBlocks": 0.021013008071806588
+        },
+        {
+          "bone": "105",
+          "degrees": 68.90666659350364,
+          "pivotDistanceBlocks": 0.1309643437143749
+        }
+      ]
+    },
+    {
+      "from": "sword",
+      "fromSeconds": 0.1,
+      "to": "roll",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "2",
+          "degrees": 76.3305629676872
+        },
+        {
+          "bone": "4",
+          "degrees": 67.21905669511054
+        },
+        {
+          "bone": "5",
+          "degrees": 48.43611516402707
+        },
+        {
+          "bone": "103",
+          "degrees": 42.927333264561135
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "2",
+          "degrees": 101.52742181212531,
+          "pivotDistanceBlocks": 0.32960618364209504
+        },
+        {
+          "bone": "102",
+          "degrees": 93.72442295078363,
+          "pivotDistanceBlocks": 0.5526455941283719
+        },
+        {
+          "bone": "4",
+          "degrees": 70.85320650448858,
+          "pivotDistanceBlocks": 0.28403538239005943
+        },
+        {
+          "bone": "105",
+          "degrees": 59.140598650939936,
+          "pivotDistanceBlocks": 0.29500908698006184
+        }
+      ]
+    },
+    {
+      "from": "sword_b",
+      "fromSeconds": 0.1,
+      "to": "roll",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "3",
+          "degrees": 141.5429916406857
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 116.00024580876917
+        },
+        {
+          "bone": "2",
+          "degrees": 83.97168878079371
+        },
+        {
+          "bone": "0",
+          "degrees": 58.38935764627123
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 122.77156509079731,
+          "pivotDistanceBlocks": 1.0643262490846739
+        },
+        {
+          "bone": "1",
+          "degrees": 117.90011901945013,
+          "pivotDistanceBlocks": 0.6923128336358283
+        },
+        {
+          "bone": "3",
+          "degrees": 117.14753540050354,
+          "pivotDistanceBlocks": 0.8011453558093155
+        },
+        {
+          "bone": "waist",
+          "degrees": 116.94274971928263,
+          "pivotDistanceBlocks": 0.3809965795218977
+        }
+      ]
+    },
+    {
+      "from": "sword_c",
+      "fromSeconds": 0.15,
+      "to": "roll",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "4",
+          "degrees": 76.00926977643505
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 53.43867945748633
+        },
+        {
+          "bone": "2",
+          "degrees": 51.47093043399578
+        },
+        {
+          "bone": "5",
+          "degrees": 40.486219183438855
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "4",
+          "degrees": 113.29715599807653,
+          "pivotDistanceBlocks": 0.3304597182971593
+        },
+        {
+          "bone": "105",
+          "degrees": 94.3567913193722,
+          "pivotDistanceBlocks": 0.4871069957619694
+        },
+        {
+          "bone": "104",
+          "degrees": 93.68858376730299,
+          "pivotDistanceBlocks": 0.6588886273148565
+        },
+        {
+          "bone": "5",
+          "degrees": 83.80440417196607,
+          "pivotDistanceBlocks": 0.25135305463499596
+        }
+      ]
+    },
+    {
+      "from": "heavy",
+      "fromSeconds": 0.4,
+      "to": "roll",
+      "toSeconds": 0,
+      "largestLocalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 156.55509272672208
+        },
+        {
+          "bone": "4",
+          "degrees": 106.94317547816357
+        },
+        {
+          "bone": "2",
+          "degrees": 76.93340069954569
+        },
+        {
+          "bone": "pelvis",
+          "degrees": 73.33569220691334
+        }
+      ],
+      "largestGlobalBoneRotationDeltas": [
+        {
+          "bone": "103",
+          "degrees": 147.65127845840476,
+          "pivotDistanceBlocks": 0.8740780773881136
+        },
+        {
+          "bone": "2",
+          "degrees": 131.4814516856106,
+          "pivotDistanceBlocks": 0.17919387107492593
+        },
+        {
+          "bone": "102",
+          "degrees": 122.71149231234604,
+          "pivotDistanceBlocks": 0.47917802745058025
+        },
+        {
+          "bone": "3",
+          "degrees": 92.72398037216036,
+          "pivotDistanceBlocks": 0.7533680298249381
+        }
+      ]
+    }
+  ],
+  "feet": {
+    "idle": {
+      "minimum": -0.04495455129855007,
+      "maximum": -0.04096383604823889,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": -0.044811583008134974
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": -0.044806803400342786
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": -0.044785870827984325
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": -0.04474482563411792
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": -0.04467749127228358
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": -0.04457690137958264
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": -0.04443551745315182
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": -0.04424519937856842
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": -0.04401207362245298
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": -0.04373576544002435
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": -0.04342281296307836
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": -0.043077295954877345
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": -0.042722385256152046
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": -0.04236492532336666
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": -0.042018622544432026
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": -0.04168973995422306
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": -0.04140982681695505
+        },
+        {
+          "time": 0.5666666666666667,
+          "lowestLegVertexBlocks": -0.04118760332767222
+        },
+        {
+          "time": 0.6,
+          "lowestLegVertexBlocks": -0.04103545859688104
+        },
+        {
+          "time": 0.6333333333333333,
+          "lowestLegVertexBlocks": -0.040967421738132725
+        },
+        {
+          "time": 0.6666666666666666,
+          "lowestLegVertexBlocks": -0.04099205889643008
+        },
+        {
+          "time": 0.7,
+          "lowestLegVertexBlocks": -0.04110500543567401
+        },
+        {
+          "time": 0.7333333333333333,
+          "lowestLegVertexBlocks": -0.041293450225702424
+        },
+        {
+          "time": 0.7666666666666667,
+          "lowestLegVertexBlocks": -0.04154114602142092
+        },
+        {
+          "time": 0.8,
+          "lowestLegVertexBlocks": -0.04183699031458698
+        },
+        {
+          "time": 0.8333333333333334,
+          "lowestLegVertexBlocks": -0.04217410882189464
+        },
+        {
+          "time": 0.8666666666666667,
+          "lowestLegVertexBlocks": -0.042522222631965964
+        },
+        {
+          "time": 0.9,
+          "lowestLegVertexBlocks": -0.042877402503923426
+        },
+        {
+          "time": 0.9333333333333333,
+          "lowestLegVertexBlocks": -0.043227502821956525
+        },
+        {
+          "time": 0.9666666666666667,
+          "lowestLegVertexBlocks": -0.04356693571012672
+        },
+        {
+          "time": 1,
+          "lowestLegVertexBlocks": -0.04387529904655923
+        },
+        {
+          "time": 1.0333333333333334,
+          "lowestLegVertexBlocks": -0.044149456582308934
+        },
+        {
+          "time": 1.0666666666666667,
+          "lowestLegVertexBlocks": -0.04438354092304918
+        },
+        {
+          "time": 1.1,
+          "lowestLegVertexBlocks": -0.04457704368158773
+        },
+        {
+          "time": 1.1333333333333333,
+          "lowestLegVertexBlocks": -0.044724221390288144
+        },
+        {
+          "time": 1.1666666666666667,
+          "lowestLegVertexBlocks": -0.04483029873129327
+        },
+        {
+          "time": 1.2,
+          "lowestLegVertexBlocks": -0.04489977019148889
+        },
+        {
+          "time": 1.2333333333333334,
+          "lowestLegVertexBlocks": -0.04493935351292624
+        },
+        {
+          "time": 1.2666666666666666,
+          "lowestLegVertexBlocks": -0.04495455129855007
+        },
+        {
+          "time": 1.3,
+          "lowestLegVertexBlocks": -0.04494913377576053
+        },
+        {
+          "time": 1.3333333333333333,
+          "lowestLegVertexBlocks": -0.04492414433737418
+        },
+        {
+          "time": 1.3666666666666667,
+          "lowestLegVertexBlocks": -0.044876977158267384
+        },
+        {
+          "time": 1.4,
+          "lowestLegVertexBlocks": -0.04480194594830998
+        },
+        {
+          "time": 1.4333333333333333,
+          "lowestLegVertexBlocks": -0.04469338384448845
+        },
+        {
+          "time": 1.4666666666666666,
+          "lowestLegVertexBlocks": -0.0445444203461013
+        },
+        {
+          "time": 1.5,
+          "lowestLegVertexBlocks": -0.04434783086440874
+        },
+        {
+          "time": 1.5333333333333334,
+          "lowestLegVertexBlocks": -0.04410855351685635
+        },
+        {
+          "time": 1.5666666666666667,
+          "lowestLegVertexBlocks": -0.043826995985302444
+        },
+        {
+          "time": 1.6,
+          "lowestLegVertexBlocks": -0.04350872127222829
+        },
+        {
+          "time": 1.6333333333333333,
+          "lowestLegVertexBlocks": -0.043158181713052406
+        },
+        {
+          "time": 1.6666666666666667,
+          "lowestLegVertexBlocks": -0.042797012001519814
+        },
+        {
+          "time": 1.7,
+          "lowestLegVertexBlocks": -0.042432078666609724
+        },
+        {
+          "time": 1.7333333333333334,
+          "lowestLegVertexBlocks": -0.042069106531514286
+        },
+        {
+          "time": 1.7666666666666666,
+          "lowestLegVertexBlocks": -0.04173776039277123
+        },
+        {
+          "time": 1.8,
+          "lowestLegVertexBlocks": -0.04144668698272734
+        },
+        {
+          "time": 1.8333333333333333,
+          "lowestLegVertexBlocks": -0.041211914663833886
+        },
+        {
+          "time": 1.8666666666666667,
+          "lowestLegVertexBlocks": -0.04104613584084261
+        },
+        {
+          "time": 1.9,
+          "lowestLegVertexBlocks": -0.04096383604823889
+        },
+        {
+          "time": 1.9333333333333333,
+          "lowestLegVertexBlocks": -0.04097414711727788
+        },
+        {
+          "time": 1.9666666666666666,
+          "lowestLegVertexBlocks": -0.04107327236759311
+        },
+        {
+          "time": 2,
+          "lowestLegVertexBlocks": -0.041248700539519
+        },
+        {
+          "time": 2.033333333333333,
+          "lowestLegVertexBlocks": -0.04148533328730302
+        },
+        {
+          "time": 2.066666666666667,
+          "lowestLegVertexBlocks": -0.04177115369458205
+        },
+        {
+          "time": 2.1,
+          "lowestLegVertexBlocks": -0.04209896303705679
+        },
+        {
+          "time": 2.1333333333333333,
+          "lowestLegVertexBlocks": -0.0424397330963052
+        },
+        {
+          "time": 2.1666666666666665,
+          "lowestLegVertexBlocks": -0.04278863277521107
+        },
+        {
+          "time": 2.2,
+          "lowestLegVertexBlocks": -0.04313352123269543
+        },
+        {
+          "time": 2.2333333333333334,
+          "lowestLegVertexBlocks": -0.04346929480753522
+        },
+        {
+          "time": 2.2666666666666666,
+          "lowestLegVertexBlocks": -0.04377348483256904
+        },
+        {
+          "time": 2.3,
+          "lowestLegVertexBlocks": -0.044043249531674336
+        },
+        {
+          "time": 2.3333333333333335,
+          "lowestLegVertexBlocks": -0.04427244529523019
+        },
+        {
+          "time": 2.3666666666666667,
+          "lowestLegVertexBlocks": -0.04446076278919635
+        },
+        {
+          "time": 2.4,
+          "lowestLegVertexBlocks": -0.04460150011613571
+        },
+        {
+          "time": 2.433333333333333,
+          "lowestLegVertexBlocks": -0.04470067969466606
+        },
+        {
+          "time": 2.466666666666667,
+          "lowestLegVertexBlocks": -0.04476379714644377
+        },
+        {
+          "time": 2.5,
+          "lowestLegVertexBlocks": -0.04481160058322718
+        }
+      ]
+    },
+    "jog": {
+      "minimum": 0.04134170984757517,
+      "maximum": 0.15644263966808253,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": 0.06449108180815034
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": 0.14853932215691235
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.136275231590613
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.1267871555656639
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": 0.09502042171332588
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": 0.04903728538263922
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": 0.10487741720502955
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": 0.10761382911332085
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": 0.11388079001908442
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": 0.11741309013335087
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": 0.12996239534189097
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.15644263966808253
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": 0.12331187655644991
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": 0.07853898931188072
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": 0.05914483374980672
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": 0.13842168556823672
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": 0.12514191521721554
+        },
+        {
+          "time": 0.5666666666666667,
+          "lowestLegVertexBlocks": 0.1173538225465261
+        },
+        {
+          "time": 0.6,
+          "lowestLegVertexBlocks": 0.08590577633294974
+        },
+        {
+          "time": 0.6333333333333333,
+          "lowestLegVertexBlocks": 0.04134170984757517
+        },
+        {
+          "time": 0.6666666666666666,
+          "lowestLegVertexBlocks": 0.09731461123468998
+        },
+        {
+          "time": 0.7,
+          "lowestLegVertexBlocks": 0.09997538112884506
+        },
+        {
+          "time": 0.7333333333333333,
+          "lowestLegVertexBlocks": 0.10627841093203905
+        },
+        {
+          "time": 0.7666666666666667,
+          "lowestLegVertexBlocks": 0.11008292715092746
+        },
+        {
+          "time": 0.8,
+          "lowestLegVertexBlocks": 0.12296773236692507
+        },
+        {
+          "time": 0.8333333333333334,
+          "lowestLegVertexBlocks": 0.14992048290377977
+        },
+        {
+          "time": 0.8666666666666667,
+          "lowestLegVertexBlocks": 0.12036522210971241
+        },
+        {
+          "time": 0.9,
+          "lowestLegVertexBlocks": 0.07173651450626743
+        },
+        {
+          "time": 0.9333333333333333,
+          "lowestLegVertexBlocks": 0.06449108585695157
+        }
+      ]
+    },
+    "sword": {
+      "minimum": -0.04287135867912011,
+      "maximum": 0.20474563590870323,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": -0.04287135867912011
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": -0.02570807487168279
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.009535752962042373
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.06624994683886729
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": 0.13236026957770475
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": 0.1858431702083561
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": 0.20474563590870323
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": 0.13060486208612881
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": 0.16985826785789843
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": 0.16169470914809703
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": 0.16070741759985793
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.16805875615577615
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": 0.1737516222070183
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": 0.1770395255524109
+        }
+      ]
+    },
+    "sword_b": {
+      "minimum": 0.17932376768405003,
+      "maximum": 0.2447909034689054,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": 0.18051312116487145
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": 0.1854675688497954
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.18785820053410518
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.18713552932087973
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": 0.17932376768405003
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": 0.2154087722487574
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": 0.2447909034689054
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": 0.2405095321943433
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": 0.2362760413463437
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": 0.20140005103846276
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": 0.19346515732896452
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.19186727236068749
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": 0.19312636627017518
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": 0.19747799273113334
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": 0.2033914863496026
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": 0.20882716930149425
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": 0.21374180415860233
+        }
+      ]
+    },
+    "sword_c": {
+      "minimum": -0.05421450670146914,
+      "maximum": 0.2322488353945198,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": 0.20864365305036758
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": 0.2145601054454754
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.21525713661363152
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.1243094020072903
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": 0.043325977060762216
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": -0.010082942233378897
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": -0.05044129958469486
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": -0.05421450670146914
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": -0.015815627101089923
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": -0.012760799807198199
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": -0.0006341487707315296
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.032013459649542206
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": 0.04758059248759364
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": 0.050250241878058766
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": 0.04827809620909196
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": 0.046740289593965874
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": 0.06478526279096301
+        },
+        {
+          "time": 0.5666666666666667,
+          "lowestLegVertexBlocks": 0.09970757047307824
+        },
+        {
+          "time": 0.6,
+          "lowestLegVertexBlocks": 0.043226818523404285
+        },
+        {
+          "time": 0.6333333333333333,
+          "lowestLegVertexBlocks": 0.1524758181738731
+        },
+        {
+          "time": 0.6666666666666666,
+          "lowestLegVertexBlocks": 0.2322488353945198
+        },
+        {
+          "time": 0.7,
+          "lowestLegVertexBlocks": 0.22208155079162187
+        },
+        {
+          "time": 0.7333333333333333,
+          "lowestLegVertexBlocks": 0.21262619736631333
+        },
+        {
+          "time": 0.7666666666666667,
+          "lowestLegVertexBlocks": 0.20089830460468072
+        },
+        {
+          "time": 0.8,
+          "lowestLegVertexBlocks": 0.1889716670741005
+        },
+        {
+          "time": 0.8333333333333334,
+          "lowestLegVertexBlocks": 0.182874567896569
+        },
+        {
+          "time": 0.8666666666666667,
+          "lowestLegVertexBlocks": 0.18244330925738242
+        },
+        {
+          "time": 0.9,
+          "lowestLegVertexBlocks": 0.1829296946039433
+        },
+        {
+          "time": 0.9333333333333333,
+          "lowestLegVertexBlocks": 0.18409954508664747
+        },
+        {
+          "time": 0.9666666666666667,
+          "lowestLegVertexBlocks": 0.1856083927278032
+        },
+        {
+          "time": 1,
+          "lowestLegVertexBlocks": 0.1869171657463641
+        },
+        {
+          "time": 1.0333333333333334,
+          "lowestLegVertexBlocks": 0.18742588370596203
+        },
+        {
+          "time": 1.0666666666666667,
+          "lowestLegVertexBlocks": 0.1864220787059907
+        },
+        {
+          "time": 1.1,
+          "lowestLegVertexBlocks": 0.1821543565850146
+        },
+        {
+          "time": 1.1333333333333333,
+          "lowestLegVertexBlocks": 0.1778925345135363
+        },
+        {
+          "time": 1.1666666666666667,
+          "lowestLegVertexBlocks": 0.16171793138962948
+        },
+        {
+          "time": 1.2,
+          "lowestLegVertexBlocks": 0.1251653265803496
+        },
+        {
+          "time": 1.2333333333333334,
+          "lowestLegVertexBlocks": 0.08870191836702099
+        },
+        {
+          "time": 1.2666666666666666,
+          "lowestLegVertexBlocks": 0.05439868872729597
+        },
+        {
+          "time": 1.3,
+          "lowestLegVertexBlocks": 0.024608025510752304
+        },
+        {
+          "time": 1.3333333333333333,
+          "lowestLegVertexBlocks": 0.0032045098325355573
+        },
+        {
+          "time": 1.3666666666666667,
+          "lowestLegVertexBlocks": -0.010316763867145697
+        },
+        {
+          "time": 1.4,
+          "lowestLegVertexBlocks": -0.01841957761342613
+        },
+        {
+          "time": 1.4333333333333333,
+          "lowestLegVertexBlocks": -0.022525140906572778
+        },
+        {
+          "time": 1.4666666666666666,
+          "lowestLegVertexBlocks": -0.025023449914020425
+        },
+        {
+          "time": 1.5,
+          "lowestLegVertexBlocks": -0.026323954235296893
+        },
+        {
+          "time": 1.5333333333333334,
+          "lowestLegVertexBlocks": -0.026775367777449224
+        },
+        {
+          "time": 1.5666666666666667,
+          "lowestLegVertexBlocks": -0.0267687282517955
+        },
+        {
+          "time": 1.6,
+          "lowestLegVertexBlocks": -0.02666483257953094
+        },
+        {
+          "time": 1.6333333333333333,
+          "lowestLegVertexBlocks": -0.026825574836295718
+        },
+        {
+          "time": 1.6666666666666667,
+          "lowestLegVertexBlocks": -0.027616188342762197
+        },
+        {
+          "time": 1.7,
+          "lowestLegVertexBlocks": -0.029210273794963975
+        },
+        {
+          "time": 1.7333333333333334,
+          "lowestLegVertexBlocks": -0.0314550662664395
+        },
+        {
+          "time": 1.7666666666666666,
+          "lowestLegVertexBlocks": -0.034107124218146934
+        },
+        {
+          "time": 1.8,
+          "lowestLegVertexBlocks": -0.03691564684717393
+        },
+        {
+          "time": 1.8333333333333333,
+          "lowestLegVertexBlocks": -0.039603997842576684
+        },
+        {
+          "time": 1.8666666666666667,
+          "lowestLegVertexBlocks": -0.041905147980439345
+        },
+        {
+          "time": 1.9,
+          "lowestLegVertexBlocks": -0.0435778337087809
+        },
+        {
+          "time": 1.9333333333333333,
+          "lowestLegVertexBlocks": -0.044471869391180224
+        },
+        {
+          "time": 1.9666666666666666,
+          "lowestLegVertexBlocks": -0.044675201187391725
+        },
+        {
+          "time": 2,
+          "lowestLegVertexBlocks": -0.044625699867684665
+        }
+      ]
+    },
+    "heavy": {
+      "minimum": -0.09828155954819749,
+      "maximum": 0.22960231762165878,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": 0.22960231762165878
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": 0.22797693249443873
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.22317192087144921
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.21521026130278212
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": 0.20256113832508843
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": 0.18695980344123844
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": 0.17401832240087095
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": 0.14995515528266973
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": 0.10820306971765535
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": 0.07109402931216735
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": 0.039731077341065964
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.009367515508427304
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": -0.02187357603908648
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": -0.052383267078085
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": -0.07915369773850643
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": -0.09828155954819749
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": -0.08027979113525943
+        },
+        {
+          "time": 0.5666666666666667,
+          "lowestLegVertexBlocks": 0.08730559942664193
+        },
+        {
+          "time": 0.6,
+          "lowestLegVertexBlocks": 0.1246031568779349
+        },
+        {
+          "time": 0.6333333333333333,
+          "lowestLegVertexBlocks": 0.0673206291636497
+        },
+        {
+          "time": 0.6666666666666666,
+          "lowestLegVertexBlocks": 0.06153236383741546
+        },
+        {
+          "time": 0.7,
+          "lowestLegVertexBlocks": 0.05825800400782921
+        },
+        {
+          "time": 0.7333333333333333,
+          "lowestLegVertexBlocks": 0.05643226762034118
+        },
+        {
+          "time": 0.7666666666666667,
+          "lowestLegVertexBlocks": 0.058003416804968295
+        },
+        {
+          "time": 0.8,
+          "lowestLegVertexBlocks": 0.06004424382795069
+        },
+        {
+          "time": 0.8333333333333334,
+          "lowestLegVertexBlocks": 0.0603465892168481
+        },
+        {
+          "time": 0.8666666666666667,
+          "lowestLegVertexBlocks": 0.05929360321008119
+        },
+        {
+          "time": 0.9,
+          "lowestLegVertexBlocks": 0.05865123686834493
+        },
+        {
+          "time": 0.9333333333333333,
+          "lowestLegVertexBlocks": 0.05825861813502066
+        },
+        {
+          "time": 0.9666666666666667,
+          "lowestLegVertexBlocks": 0.05794618911845238
+        },
+        {
+          "time": 1,
+          "lowestLegVertexBlocks": 0.05779416749880034
+        },
+        {
+          "time": 1.0333333333333334,
+          "lowestLegVertexBlocks": 0.05795150732089276
+        },
+        {
+          "time": 1.0666666666666667,
+          "lowestLegVertexBlocks": 0.05862132072842337
+        },
+        {
+          "time": 1.1,
+          "lowestLegVertexBlocks": 0.060067073526850465
+        },
+        {
+          "time": 1.1333333333333333,
+          "lowestLegVertexBlocks": 0.06262877258207085
+        },
+        {
+          "time": 1.1666666666666667,
+          "lowestLegVertexBlocks": 0.06674880869508902
+        },
+        {
+          "time": 1.2,
+          "lowestLegVertexBlocks": 0.07301162774105269
+        },
+        {
+          "time": 1.2333333333333334,
+          "lowestLegVertexBlocks": 0.08219280020854956
+        },
+        {
+          "time": 1.2666666666666666,
+          "lowestLegVertexBlocks": 0.09506367857567437
+        },
+        {
+          "time": 1.3,
+          "lowestLegVertexBlocks": 0.1053492158325545
+        },
+        {
+          "time": 1.3333333333333333,
+          "lowestLegVertexBlocks": 0.09346846168746567
+        },
+        {
+          "time": 1.3666666666666667,
+          "lowestLegVertexBlocks": 0.081806026003115
+        },
+        {
+          "time": 1.4,
+          "lowestLegVertexBlocks": 0.0702836564954773
+        },
+        {
+          "time": 1.4333333333333333,
+          "lowestLegVertexBlocks": 0.05829770258385411
+        },
+        {
+          "time": 1.4666666666666666,
+          "lowestLegVertexBlocks": 0.045796669275186684
+        },
+        {
+          "time": 1.5,
+          "lowestLegVertexBlocks": 0.03293482420529249
+        },
+        {
+          "time": 1.5333333333333334,
+          "lowestLegVertexBlocks": 0.019455241281694124
+        },
+        {
+          "time": 1.5666666666666667,
+          "lowestLegVertexBlocks": 0.006225086661324998
+        },
+        {
+          "time": 1.6,
+          "lowestLegVertexBlocks": -0.005651682612452481
+        },
+        {
+          "time": 1.6333333333333333,
+          "lowestLegVertexBlocks": -0.015586427620988197
+        },
+        {
+          "time": 1.6666666666666667,
+          "lowestLegVertexBlocks": -0.02375083102867378
+        },
+        {
+          "time": 1.7,
+          "lowestLegVertexBlocks": -0.027786697852593727
+        },
+        {
+          "time": 1.7333333333333334,
+          "lowestLegVertexBlocks": -0.03065998225976781
+        },
+        {
+          "time": 1.7666666666666666,
+          "lowestLegVertexBlocks": -0.03246961073015601
+        },
+        {
+          "time": 1.8,
+          "lowestLegVertexBlocks": -0.03327312454107208
+        },
+        {
+          "time": 1.8333333333333333,
+          "lowestLegVertexBlocks": -0.033576312570128865
+        },
+        {
+          "time": 1.8666666666666667,
+          "lowestLegVertexBlocks": -0.03386241245442764
+        },
+        {
+          "time": 1.9,
+          "lowestLegVertexBlocks": -0.034136948484806216
+        },
+        {
+          "time": 1.9333333333333333,
+          "lowestLegVertexBlocks": -0.034414184778915294
+        },
+        {
+          "time": 1.9666666666666666,
+          "lowestLegVertexBlocks": -0.034775878111618995
+        },
+        {
+          "time": 2,
+          "lowestLegVertexBlocks": -0.035279328980517055
+        },
+        {
+          "time": 2.033333333333333,
+          "lowestLegVertexBlocks": -0.03605207533616856
+        },
+        {
+          "time": 2.066666666666667,
+          "lowestLegVertexBlocks": -0.03709203891181865
+        },
+        {
+          "time": 2.1,
+          "lowestLegVertexBlocks": -0.03827315205218918
+        },
+        {
+          "time": 2.1333333333333333,
+          "lowestLegVertexBlocks": -0.03949674471753516
+        },
+        {
+          "time": 2.1666666666666665,
+          "lowestLegVertexBlocks": -0.04070660600220059
+        },
+        {
+          "time": 2.2,
+          "lowestLegVertexBlocks": -0.041838468871778334
+        },
+        {
+          "time": 2.2333333333333334,
+          "lowestLegVertexBlocks": -0.04282513478131072
+        },
+        {
+          "time": 2.2666666666666666,
+          "lowestLegVertexBlocks": -0.043622381621267546
+        },
+        {
+          "time": 2.3,
+          "lowestLegVertexBlocks": -0.04421458889350861
+        },
+        {
+          "time": 2.3333332538604736,
+          "lowestLegVertexBlocks": -0.04460952932528009
+        }
+      ]
+    },
+    "roll": {
+      "minimum": -0.015093960712539113,
+      "maximum": 1.064593079602151,
+      "samples": [
+        {
+          "time": 0,
+          "lowestLegVertexBlocks": 0.0004765006540068291
+        },
+        {
+          "time": 0.03333333333333333,
+          "lowestLegVertexBlocks": 0.00048666916958542243
+        },
+        {
+          "time": 0.06666666666666667,
+          "lowestLegVertexBlocks": 0.0005018794573135536
+        },
+        {
+          "time": 0.1,
+          "lowestLegVertexBlocks": 0.0005033059220902825
+        },
+        {
+          "time": 0.13333333333333333,
+          "lowestLegVertexBlocks": -0.0001477452166936651
+        },
+        {
+          "time": 0.16666666666666666,
+          "lowestLegVertexBlocks": -0.0018480264366027826
+        },
+        {
+          "time": 0.2,
+          "lowestLegVertexBlocks": -0.004243687489229363
+        },
+        {
+          "time": 0.23333333333333334,
+          "lowestLegVertexBlocks": 0.1723558815973806
+        },
+        {
+          "time": 0.26666666666666666,
+          "lowestLegVertexBlocks": 0.3772619929758882
+        },
+        {
+          "time": 0.3,
+          "lowestLegVertexBlocks": 0.46174557013468287
+        },
+        {
+          "time": 0.3333333333333333,
+          "lowestLegVertexBlocks": 0.5738726161672859
+        },
+        {
+          "time": 0.36666666666666664,
+          "lowestLegVertexBlocks": 0.9298809912423277
+        },
+        {
+          "time": 0.4,
+          "lowestLegVertexBlocks": 1.0542032553080967
+        },
+        {
+          "time": 0.43333333333333335,
+          "lowestLegVertexBlocks": 1.064593079602151
+        },
+        {
+          "time": 0.4666666666666667,
+          "lowestLegVertexBlocks": 0.7942598979871709
+        },
+        {
+          "time": 0.5,
+          "lowestLegVertexBlocks": 0.47354751364412384
+        },
+        {
+          "time": 0.5333333333333333,
+          "lowestLegVertexBlocks": 0.23629237884369053
+        },
+        {
+          "time": 0.5666666666666667,
+          "lowestLegVertexBlocks": 0.15706884895256362
+        },
+        {
+          "time": 0.6,
+          "lowestLegVertexBlocks": 0.12595474451343314
+        },
+        {
+          "time": 0.6333333333333333,
+          "lowestLegVertexBlocks": 0.006702768869037562
+        },
+        {
+          "time": 0.6666666666666666,
+          "lowestLegVertexBlocks": -0.015093960712539113
+        },
+        {
+          "time": 0.7,
+          "lowestLegVertexBlocks": -0.006434325677736018
+        },
+        {
+          "time": 0.7333333333333333,
+          "lowestLegVertexBlocks": 0.019395714049569614
+        },
+        {
+          "time": 0.7666666666666667,
+          "lowestLegVertexBlocks": 0.0018925429151163062
+        },
+        {
+          "time": 0.8,
+          "lowestLegVertexBlocks": 0.004029427438806835
+        },
+        {
+          "time": 0.8333333333333334,
+          "lowestLegVertexBlocks": -0.0014564614812453188
+        },
+        {
+          "time": 0.8666666666666667,
+          "lowestLegVertexBlocks": -0.0005521196998971951
+        },
+        {
+          "time": 0.9,
+          "lowestLegVertexBlocks": -0.0006984109351717682
+        },
+        {
+          "time": 0.9333333333333333,
+          "lowestLegVertexBlocks": 0.00036468749592660516
+        },
+        {
+          "time": 0.9666666666666667,
+          "lowestLegVertexBlocks": 0.0007703604232079005
+        },
+        {
+          "time": 1,
+          "lowestLegVertexBlocks": 0.0007462565827325279
+        },
+        {
+          "time": 1.0333333333333334,
+          "lowestLegVertexBlocks": 0.0007041954733699209
+        },
+        {
+          "time": 1.0666666666666667,
+          "lowestLegVertexBlocks": 0.0006465661833634237
+        },
+        {
+          "time": 1.1,
+          "lowestLegVertexBlocks": 0.0005761248392371129
+        },
+        {
+          "time": 1.1333333333333333,
+          "lowestLegVertexBlocks": 0.00045474872658875926
+        },
+        {
+          "time": 1.1666666666666667,
+          "lowestLegVertexBlocks": -0.00040998327075949213
+        },
+        {
+          "time": 1.2,
+          "lowestLegVertexBlocks": -0.00032002006575494214
+        },
+        {
+          "time": 1.2333333333333334,
+          "lowestLegVertexBlocks": -0.00022975892716888859
+        },
+        {
+          "time": 1.2666666666666666,
+          "lowestLegVertexBlocks": -0.00014192561722119884
+        },
+        {
+          "time": 1.3,
+          "lowestLegVertexBlocks": -0.00007516074132173436
+        },
+        {
+          "time": 1.3333333333333333,
+          "lowestLegVertexBlocks": -0.00005104357806343281
+        },
+        {
+          "time": 1.3666666666666667,
+          "lowestLegVertexBlocks": -0.00005101813346938388
+        },
+        {
+          "time": 1.4,
+          "lowestLegVertexBlocks": -0.00005101014247260033
+        },
+        {
+          "time": 1.4333333333333333,
+          "lowestLegVertexBlocks": -0.00005102306314762502
+        },
+        {
+          "time": 1.4666666666666666,
+          "lowestLegVertexBlocks": -0.00005103831275351297
+        }
+      ]
+    }
+  }
+}

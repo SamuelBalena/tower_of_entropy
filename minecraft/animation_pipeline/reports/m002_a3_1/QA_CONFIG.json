@@ -1,0 +1,6 @@
+﻿{
+    "maxFps":  60,
+    "simulationDistance":  5,
+    "scope":  "isolated run-global QA profile only; initial normal-world tests used defaults 12/12/120",
+    "renderDistance":  6
+}

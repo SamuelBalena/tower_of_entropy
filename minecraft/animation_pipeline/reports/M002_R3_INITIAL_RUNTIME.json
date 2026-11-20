@@ -1,0 +1,157 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "test": "loaded_weighted_mesh",
+      "detail": "{weightedVertices=816, blendedVertices=128, maxWeightSumError=0.0, maxBindIdentityError=0.0, maxBlendVsRigidBlocks=0.10252695, joints=12, animations=[UAL_idle, UAL_jog, UAL_roll, UAL_sword], torsoBlendedVertices=32, maxTorsoVsRigidBlocks=0.15356733}"
+    },
+    {
+      "pass": true,
+      "test": "loaded_torso_blending",
+      "detail": "actual Polymesh torso: {weightedVertices=816, blendedVertices=128, maxWeightSumError=0.0, maxBindIdentityError=0.0, maxBlendVsRigidBlocks=0.10252695, joints=12, animations=[UAL_idle, UAL_jog, UAL_roll, UAL_sword], torsoBlendedVertices=32, maxTorsoVsRigidBlocks=0.15356733}"
+    },
+    {
+      "pass": true,
+      "test": "r3_idle-0",
+      "detail": "draws=133 items=133 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_idle-90",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_idle-180",
+      "detail": "draws=135 items=135 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_idle-270",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_jog-0",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_jog-90",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_jog-180",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_jog-270",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-0",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-90",
+      "detail": "draws=133 items=133 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-180",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-270",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_roll-0",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_roll-90",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=90.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_roll-180",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=180.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_roll-270",
+      "detail": "draws=135 items=135 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=270.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-early-0",
+      "detail": "draws=133 items=133 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": true,
+      "test": "r3_sword-late-0",
+      "detail": "draws=134 items=134 posts=0 CPM=-1 GLerror=0 light=15728640 yaw=0.0 pos=(0.5, 100.0, 0.5)"
+    },
+    {
+      "pass": false,
+      "test": "off_restores_cpm",
+      "detail": "CPM idle=1 posts=161"
+    },
+    {
+      "pass": true,
+      "test": "first_person_fallback",
+      "detail": "body not drawn in first person; native hands retained"
+    },
+    {
+      "pass": true,
+      "test": "embedded_clip_playback",
+      "detail": "clip=UAL_jog"
+    },
+    {
+      "pass": true,
+      "test": "other_player_untouched",
+      "detail": "replica Pre=119 canceled=0"
+    },
+    {
+      "pass": true,
+      "test": "equipment_fallback_armadura",
+      "detail": "reason=armadura draws=0 nativePosts=44"
+    },
+    {
+      "pass": true,
+      "test": "equipment_fallback_offhand",
+      "detail": "reason=offhand draws=0 nativePosts=44"
+    },
+    {
+      "pass": true,
+      "test": "equipment_fallback_capa",
+      "detail": "reason=capa draws=0 nativePosts=44"
+    },
+    {
+      "pass": true,
+      "test": "resume_after_equipment",
+      "detail": "reason="
+    },
+    {
+      "pass": true,
+      "test": "render_errors",
+      "detail": "errors=0"
+    },
+    {
+      "pass": true,
+      "test": "reconnect_disabled",
+      "detail": "renderer, combat and observer cleared"
+    }
+  ],
+  "draws": 3789,
+  "meanCpuDrawMs": 0.5325916864608076,
+  "maxCpuDrawMs": 15.3628
+}

@@ -1,0 +1,1346 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "test": "before_runtime",
+      "pass": true,
+      "detail": {
+        "passed": 57,
+        "total": 57
+      }
+    },
+    {
+      "test": "before_extra",
+      "pass": true,
+      "detail": {
+        "passed": 12,
+        "total": 12
+      }
+    },
+    {
+      "test": "after_runtime",
+      "pass": true,
+      "detail": {
+        "passed": 96,
+        "total": 96
+      }
+    },
+    {
+      "test": "after_extra",
+      "pass": true,
+      "detail": {
+        "passed": 18,
+        "total": 18
+      }
+    },
+    {
+      "test": "idle_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ],
+        "clips": [
+          "UAL_idle"
+        ]
+      }
+    },
+    {
+      "test": "walk_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "WALK"
+        ],
+        "clips": [
+          "UAL_walk"
+        ]
+      }
+    },
+    {
+      "test": "jog_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sprint_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "SPRINT"
+        ],
+        "clips": [
+          "UAL_sprint"
+        ]
+      }
+    },
+    {
+      "test": "diagonal_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sword_jog_front_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "idle_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ],
+        "clips": [
+          "UAL_idle"
+        ]
+      }
+    },
+    {
+      "test": "walk_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "WALK"
+        ],
+        "clips": [
+          "UAL_walk"
+        ]
+      }
+    },
+    {
+      "test": "jog_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sprint_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "SPRINT"
+        ],
+        "clips": [
+          "UAL_sprint"
+        ]
+      }
+    },
+    {
+      "test": "diagonal_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sword_jog_side_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "idle_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ],
+        "clips": [
+          "UAL_idle"
+        ]
+      }
+    },
+    {
+      "test": "walk_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "WALK"
+        ],
+        "clips": [
+          "UAL_walk"
+        ]
+      }
+    },
+    {
+      "test": "jog_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sprint_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "SPRINT"
+        ],
+        "clips": [
+          "UAL_sprint"
+        ]
+      }
+    },
+    {
+      "test": "diagonal_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "sword_jog_back_selection",
+      "pass": true,
+      "detail": {
+        "states": [
+          "JOG"
+        ],
+        "clips": [
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "backward_front_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "left_front_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "right_front_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "wall_front_real_motion",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ]
+      }
+    },
+    {
+      "test": "jump_front_fallback",
+      "pass": true,
+      "detail": {
+        "airFrames": 5,
+        "vanillaFrames": 4
+      }
+    },
+    {
+      "test": "crouch_front_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 14
+      }
+    },
+    {
+      "test": "attack_return_front_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_sword"
+        ]
+      }
+    },
+    {
+      "test": "roll_return_front_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_roll"
+        ]
+      }
+    },
+    {
+      "test": "gait_cycle_front",
+      "pass": true,
+      "detail": [
+        "IDLE",
+        "WALK",
+        "IDLE",
+        "WALK",
+        "SPRINT",
+        "JOG",
+        "WALK"
+      ]
+    },
+    {
+      "test": "remapped_sprint_front",
+      "pass": true,
+      "detail": "physical R routed through remapped vanilla KeyMapping"
+    },
+    {
+      "test": "backward_side_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "left_side_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "right_side_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "wall_side_real_motion",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ]
+      }
+    },
+    {
+      "test": "jump_side_fallback",
+      "pass": true,
+      "detail": {
+        "airFrames": 5,
+        "vanillaFrames": 4
+      }
+    },
+    {
+      "test": "crouch_side_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 14
+      }
+    },
+    {
+      "test": "attack_return_side_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_sword"
+        ]
+      }
+    },
+    {
+      "test": "roll_return_side_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_roll"
+        ]
+      }
+    },
+    {
+      "test": "gait_cycle_side",
+      "pass": true,
+      "detail": [
+        "IDLE",
+        "WALK",
+        "IDLE",
+        "WALK",
+        "SPRINT",
+        "JOG",
+        "WALK"
+      ]
+    },
+    {
+      "test": "remapped_sprint_side",
+      "pass": true,
+      "detail": "physical R routed through remapped vanilla KeyMapping"
+    },
+    {
+      "test": "backward_back_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "left_back_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "right_back_safe_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 13
+      }
+    },
+    {
+      "test": "wall_back_real_motion",
+      "pass": true,
+      "detail": {
+        "states": [
+          "IDLE"
+        ]
+      }
+    },
+    {
+      "test": "jump_back_fallback",
+      "pass": true,
+      "detail": {
+        "airFrames": 5,
+        "vanillaFrames": 4
+      }
+    },
+    {
+      "test": "crouch_back_fallback",
+      "pass": true,
+      "detail": {
+        "frames": 14
+      }
+    },
+    {
+      "test": "attack_return_back_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_sword"
+        ]
+      }
+    },
+    {
+      "test": "roll_return_back_priority_and_return",
+      "pass": true,
+      "detail": {
+        "sequence": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_roll"
+        ]
+      }
+    },
+    {
+      "test": "gait_cycle_back",
+      "pass": true,
+      "detail": [
+        "IDLE",
+        "WALK",
+        "IDLE",
+        "WALK",
+        "SPRINT",
+        "JOG",
+        "WALK"
+      ]
+    },
+    {
+      "test": "remapped_sprint_back",
+      "pass": true,
+      "detail": "physical R routed through remapped vanilla KeyMapping"
+    },
+    {
+      "test": "finite_no_stretch_and_grip",
+      "pass": true,
+      "detail": {
+        "samples": 1741,
+        "maxScale": 0.0000019488075,
+        "maxLength": 9.834766e-7,
+        "maxGrip": 2.4978897e-7
+      }
+    },
+    {
+      "test": "shared_cycle_phase_continuity",
+      "pass": true,
+      "detail": [
+        {
+          "scene": "jog",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09158382428571432
+        },
+        {
+          "scene": "jog",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06769589642857166
+        },
+        {
+          "scene": "jog",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09288036785714304
+        },
+        {
+          "scene": "jog",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06761912857142849
+        },
+        {
+          "scene": "jog",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09232521250000003
+        },
+        {
+          "scene": "jog",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06844459285714288
+        },
+        {
+          "scene": "sprint",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.07221743000000025
+        },
+        {
+          "scene": "sprint",
+          "angle": "front",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12804165714285687
+        },
+        {
+          "scene": "sprint",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.08060114785714312
+        },
+        {
+          "scene": "sprint",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.07222105999999995
+        },
+        {
+          "scene": "sprint",
+          "angle": "side",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12804201928571413
+        },
+        {
+          "scene": "sprint",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07996183821428593
+        },
+        {
+          "scene": "sprint",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.074134535
+        },
+        {
+          "scene": "sprint",
+          "angle": "back",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.11106652357142854
+        },
+        {
+          "scene": "sprint",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.08105962142857148
+        },
+        {
+          "scene": "diagonal",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09437186071428583
+        },
+        {
+          "scene": "diagonal",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06907661428571399
+        },
+        {
+          "scene": "diagonal",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09366563928571425
+        },
+        {
+          "scene": "diagonal",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0695679800000002
+        },
+        {
+          "scene": "diagonal",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09419253571428587
+        },
+        {
+          "scene": "diagonal",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06907746071428567
+        },
+        {
+          "scene": "reverse",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179194642857147
+        },
+        {
+          "scene": "reverse",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.03778375357142871
+        },
+        {
+          "scene": "reverse",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09317483928571435
+        },
+        {
+          "scene": "reverse",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.03778409642857161
+        },
+        {
+          "scene": "reverse",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09251811589285697
+        },
+        {
+          "scene": "reverse",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.03778413071428588
+        },
+        {
+          "scene": "start_stop",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179146535714278
+        },
+        {
+          "scene": "start_stop",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0676238142857144
+        },
+        {
+          "scene": "start_stop",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.07472569107142868
+        },
+        {
+          "scene": "start_stop",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06760706892857149
+        },
+        {
+          "scene": "start_stop",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09199297750000013
+        },
+        {
+          "scene": "start_stop",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06825518035714273
+        },
+        {
+          "scene": "start_stop",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0748063000000001
+        },
+        {
+          "scene": "start_stop",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0681375910714288
+        },
+        {
+          "scene": "start_stop",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179202142857146
+        },
+        {
+          "scene": "start_stop",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06767511214285715
+        },
+        {
+          "scene": "start_stop",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.07471653142857138
+        },
+        {
+          "scene": "start_stop",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06750931735714305
+        },
+        {
+          "scene": "speed_change",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.11699162607142854
+        },
+        {
+          "scene": "speed_change",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.12256876000000005
+        },
+        {
+          "scene": "speed_change",
+          "angle": "front",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12801495714285682
+        },
+        {
+          "scene": "speed_change",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.08094399285714315
+        },
+        {
+          "scene": "speed_change",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.11702212857142846
+        },
+        {
+          "scene": "speed_change",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.12093427428571424
+        },
+        {
+          "scene": "speed_change",
+          "angle": "side",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12801476428571434
+        },
+        {
+          "scene": "speed_change",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07994856071428558
+        },
+        {
+          "scene": "speed_change",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.1161726721428572
+        },
+        {
+          "scene": "speed_change",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.12094862500000003
+        },
+        {
+          "scene": "speed_change",
+          "angle": "back",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.1280149485714286
+        },
+        {
+          "scene": "speed_change",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07995464642857142
+        },
+        {
+          "scene": "sword_jog",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09317468780357152
+        },
+        {
+          "scene": "sword_jog",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06769338392857138
+        },
+        {
+          "scene": "sword_jog",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0682776157142857
+        },
+        {
+          "scene": "sword_jog",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179202142857146
+        },
+        {
+          "scene": "sword_jog",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06769593857142864
+        },
+        {
+          "scene": "attack_return",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179200428571432
+        },
+        {
+          "scene": "attack_return",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06816525714285726
+        },
+        {
+          "scene": "attack_return",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09190283164285717
+        },
+        {
+          "scene": "attack_return",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06769447678571439
+        },
+        {
+          "scene": "attack_return",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09210582142857127
+        },
+        {
+          "scene": "attack_return",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0676457728571429
+        },
+        {
+          "scene": "roll_return",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09193958714285722
+        },
+        {
+          "scene": "roll_return",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08480342714285705
+        },
+        {
+          "scene": "roll_return",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06711391617857121
+        },
+        {
+          "scene": "roll_return",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09256424821428566
+        },
+        {
+          "scene": "roll_return",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0846500339285714
+        },
+        {
+          "scene": "roll_return",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06648982142857163
+        },
+        {
+          "scene": "roll_return",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09248300714285707
+        },
+        {
+          "scene": "roll_return",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08558687499999995
+        },
+        {
+          "scene": "roll_return",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06645443428571429
+        },
+        {
+          "scene": "wall",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09317462500000007
+        },
+        {
+          "scene": "wall",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09317474285714278
+        },
+        {
+          "scene": "wall",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179200353571437
+        },
+        {
+          "scene": "uneven",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09332261928571439
+        },
+        {
+          "scene": "uneven",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0889707592857143
+        },
+        {
+          "scene": "uneven",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0723012357142856
+        },
+        {
+          "scene": "uneven",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08671031035714294
+        },
+        {
+          "scene": "uneven",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06100995071428583
+        },
+        {
+          "scene": "uneven",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09179219071428557
+        },
+        {
+          "scene": "uneven",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08758921964285715
+        },
+        {
+          "scene": "uneven",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.060800444285714184
+        },
+        {
+          "scene": "uneven",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08730912999999996
+        },
+        {
+          "scene": "uneven",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.0610873475
+        },
+        {
+          "scene": "uneven",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08585626428571413
+        },
+        {
+          "scene": "uneven",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0868938014285714
+        },
+        {
+          "scene": "uneven",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.07225414642857131
+        },
+        {
+          "scene": "uneven",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.08662014142857144
+        },
+        {
+          "scene": "uneven",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06152684857142865
+        },
+        {
+          "scene": "jump",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09193828214285715
+        },
+        {
+          "scene": "jump",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06816533214285725
+        },
+        {
+          "scene": "jump",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.09210696610714297
+        },
+        {
+          "scene": "jump",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06764581928571434
+        },
+        {
+          "scene": "jump",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.0917920021428571
+        },
+        {
+          "scene": "jump",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.06754187321428584
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.06328954999999992
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "front",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.1157569249999999
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.06341698075000002
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "side",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.1308615907142856
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.07674058000000006
+        },
+        {
+          "scene": "gait_cycle",
+          "angle": "back",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.13089532999999998
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "front",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.072204575
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "front",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.1288675871428573
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "front",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07995100285714285
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "side",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.07221740900000007
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "side",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12921201928571424
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "side",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07995718571428578
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "back",
+          "from": "UAL_walk",
+          "to": "UAL_sprint",
+          "normalizedPhaseAdvance": 0.07445895024999993
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "back",
+          "from": "UAL_sprint",
+          "to": "UAL_jog",
+          "normalizedPhaseAdvance": 0.12804215857142864
+        },
+        {
+          "scene": "remapped_sprint",
+          "angle": "back",
+          "from": "UAL_jog",
+          "to": "UAL_walk",
+          "normalizedPhaseAdvance": 0.07996346642857133
+        }
+      ]
+    }
+  ],
+  "contacts": {
+    "walk": {
+      "samples": 13,
+      "minSoleBlocks": -0.03908216021955013,
+      "maxSoleBlocks": 0.007247161120176315,
+      "meanPositiveGapBlocks": 0.000733818429020735
+    },
+    "jog": {
+      "samples": 13,
+      "minSoleBlocks": 0.0521876011043787,
+      "maxSoleBlocks": 0.16019023954868317,
+      "meanPositiveGapBlocks": 0.10270226245316175
+    },
+    "sprint": {
+      "samples": 13,
+      "minSoleBlocks": -0.022491300478577614,
+      "maxSoleBlocks": 0.1338501088321209,
+      "meanPositiveGapBlocks": 0.06548595256530322
+    }
+  },
+  "cadence": {
+    "walk": {
+      "distanceBlocks": 3.0092120780359037,
+      "cycles": 1.0777065444266363,
+      "distancePerCycle": 2.792236990299499,
+      "meanSpeedBlocksPerSecond": 2.507551686768565
+    },
+    "jog": {
+      "distanceBlocks": 5.180006370620556,
+      "cycles": 1.2885784387780137,
+      "distancePerCycle": 4.0199387283965935,
+      "meanSpeedBlocksPerSecond": 4.313998122073492
+    },
+    "sprint": {
+      "distanceBlocks": 6.734008706341317,
+      "cycles": 1.7938784730607635,
+      "distancePerCycle": 3.753882332314056,
+      "meanSpeedBlocksPerSecond": 5.608197912255229
+    }
+  },
+  "notes": [
+    "Foot Y is relative to entity sole plane and includes approved outer layers; negative means penetration.",
+    "Jog/Sprint have legitimate source air phases. No terrain IK or foot locking added.",
+    "Stored controller matrices during fallback are stale and excluded from pose metrics."
+  ],
+  "aestheticApproval": "PENDING_USER"
+}

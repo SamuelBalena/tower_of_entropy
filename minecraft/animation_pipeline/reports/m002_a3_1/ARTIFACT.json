@@ -1,0 +1,14 @@
+﻿{
+    "status":  "PASS",
+    "bytes":  1979998,
+    "sha256":  "2BD34B66B68B5105B87F0339BD54B050462F51CAC98029775B8CC495D98294DC",
+    "entries":  95,
+    "noQaOrR31Classes":  true,
+    "models":  {
+                   "steve_r3":  "D85077ED22AA3DCF598F696378060787B046389B87B7B2285E911561AFAC284A",
+                   "steve_a3":  "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+                   "steve_a3_slim":  "E659DA6A5B22C134D48ECF6CE747EC8E5E2510C2A6CF5F7C82CE85D3F2513BEC"
+               },
+    "runtimeResourcesIncluded":  true,
+    "scope":  "Artifact audit; not a production-profile runtime launch"
+}

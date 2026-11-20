@@ -1,0 +1,308 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "test": "runtime_checks",
+      "pass": false,
+      "detail": {
+        "passed": 41,
+        "total": 43
+      }
+    },
+    {
+      "test": "crouch_idle_UAL_crouch_idle",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_crouch_idle"
+        ]
+      }
+    },
+    {
+      "test": "crouch_move_UAL_crouch_move",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_crouch_idle",
+          "UAL_crouch_move"
+        ]
+      }
+    },
+    {
+      "test": "jump_UAL_jump_start",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_jump_start",
+          "UAL_jump_loop"
+        ]
+      }
+    },
+    {
+      "test": "jump_UAL_jump_loop",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog",
+          "UAL_jump_start",
+          "UAL_jump_loop"
+        ]
+      }
+    },
+    {
+      "test": "fall_UAL_jump_loop",
+      "pass": false,
+      "detail": {
+        "observed": [
+          "UAL_hit_chest",
+          "UAL_idle",
+          "UAL_walk",
+          "UAL_jog"
+        ]
+      }
+    },
+    {
+      "test": "swim_idle_UAL_swim_idle",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_swim_idle"
+        ]
+      }
+    },
+    {
+      "test": "swim_UAL_swim",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_swim_idle",
+          "UAL_swim"
+        ]
+      }
+    },
+    {
+      "test": "hit_UAL_hit_chest",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_hit_chest"
+        ]
+      }
+    },
+    {
+      "test": "knockback_visual_reaction",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_hit_chest",
+          "UAL_jump_loop",
+          "UAL_backward",
+          "UAL_jump_land"
+        ]
+      }
+    },
+    {
+      "test": "death_UAL_death",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_death",
+          "UAL_jump_loop",
+          "UAL_jump_land"
+        ]
+      }
+    },
+    {
+      "test": "bow_idle_UAL_bow_idle",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_bow_idle"
+        ]
+      }
+    },
+    {
+      "test": "bow_shot_UAL_bow_load",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_bow_idle",
+          "UAL_bow_load",
+          "UAL_bow_hold",
+          "UAL_bow_release"
+        ]
+      }
+    },
+    {
+      "test": "bow_shot_UAL_bow_hold",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_bow_idle",
+          "UAL_bow_load",
+          "UAL_bow_hold",
+          "UAL_bow_release"
+        ]
+      }
+    },
+    {
+      "test": "bow_shot_UAL_bow_release",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_bow_idle",
+          "UAL_bow_load",
+          "UAL_bow_hold",
+          "UAL_bow_release"
+        ]
+      }
+    },
+    {
+      "test": "consume_UAL_consume",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_consume"
+        ]
+      }
+    },
+    {
+      "test": "drink_UAL_consume",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_consume"
+        ]
+      }
+    },
+    {
+      "test": "torch_UAL_torch",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_torch"
+        ]
+      }
+    },
+    {
+      "test": "chop_UAL_chop",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_chop"
+        ]
+      }
+    },
+    {
+      "test": "backward_UAL_backward",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_backward"
+        ]
+      }
+    },
+    {
+      "test": "left_UAL_strafe_left",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_strafe_left"
+        ]
+      }
+    },
+    {
+      "test": "right_UAL_strafe_right",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_strafe_right"
+        ]
+      }
+    },
+    {
+      "test": "sword_UAL_sword",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_sword"
+        ]
+      }
+    },
+    {
+      "test": "roll_UAL_roll",
+      "pass": true,
+      "detail": {
+        "observed": [
+          "UAL_idle",
+          "UAL_roll"
+        ]
+      }
+    },
+    {
+      "test": "pickaxe_fallback",
+      "pass": true,
+      "detail": {
+        "fallbackFrames": 4
+      }
+    },
+    {
+      "test": "fishing_fallback",
+      "pass": true,
+      "detail": {
+        "fallbackFrames": 12
+      }
+    },
+    {
+      "test": "climb_fallback",
+      "pass": true,
+      "detail": {
+        "fallbackFrames": 12
+      }
+    },
+    {
+      "test": "offhand_fallback",
+      "pass": true,
+      "detail": {
+        "fallbackFrames": 12
+      }
+    },
+    {
+      "test": "first_person_fallback",
+      "pass": true,
+      "detail": "no replaced first-person body"
+    },
+    {
+      "test": "moving_bow_vanilla_fallback",
+      "pass": true,
+      "detail": "full-body Archer pose not layered on incompatible walking pelvis"
+    },
+    {
+      "test": "finite_no_new_stretch",
+      "pass": true,
+      "detail": {
+        "frames": 829,
+        "maxScale": 0.0000016858739,
+        "maxLength": 5.364418e-7
+      }
+    }
+  ],
+  "aestheticApproval": "PENDING_USER"
+}

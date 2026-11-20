@@ -1,0 +1,217 @@
+{
+  "generator": "Original R1 script; no Epic Fight geometry or code",
+  "objects": [
+    {
+      "name": "head",
+      "vertices": 8,
+      "faces": 6,
+      "rings": [
+        0,
+        8
+      ],
+      "connected_joint": false,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "head_outer",
+      "vertices": 8,
+      "faces": 6,
+      "rings": [
+        0,
+        8
+      ],
+      "connected_joint": false,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "body",
+      "vertices": 8,
+      "faces": 6,
+      "rings": [
+        0,
+        12
+      ],
+      "connected_joint": false,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "body_outer",
+      "vertices": 8,
+      "faces": 6,
+      "rings": [
+        0,
+        12
+      ],
+      "connected_joint": false,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_2",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_2_outer",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_3",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_3_outer",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_4",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_4_outer",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_5",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    },
+    {
+      "name": "limb_5_outer",
+      "vertices": 36,
+      "faces": 34,
+      "rings": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "connected_joint": true,
+      "weights_normalized": true,
+      "uv": "Steve64 unchanged side islands"
+    }
+  ],
+  "bones": 10,
+  "actions": [
+    "idle",
+    "jog",
+    "sword",
+    "roll"
+  ],
+  "pixel_skin": [
+    64,
+    64
+  ],
+  "runtime_import": "Not supported directly by CPM or Full Motion 1.0.0; offline weighted reference only"
+}

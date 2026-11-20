@@ -1,0 +1,12 @@
+{
+  "checks": [
+    {
+      "test": "restart_disabled",
+      "detail": "renderer, combat and observer cleared",
+      "pass": true
+    }
+  ],
+  "draws": 0,
+  "meanCpuDrawMs": 0,
+  "maxCpuDrawMs": 0
+}

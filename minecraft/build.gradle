@@ -1,0 +1,644 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+if (project.hasProperty('toeRefinementTest')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3_3/java' }
+if (project.hasProperty('toeMovementTest')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3_2/java' }
+// Retain legacy harnesses for their explicit development profiles, not distributable gameplay.
+if (!['toeCombatTest','toeCombatRestartCheck','toeVisualTest','toeLocomotionTest',
+      'toeLocomotionRestartCheck','toeActionTest','toeActionRestartCheck'].any { project.hasProperty(it) }) {
+    sourceSets.main.java.exclude '**/*SmokeTest.java'
+}
+if (project.hasProperty('toeGlobalTest')) sourceSets.main.java.srcDir 'validation/a3_1/java'
+if (project.hasProperty('toeGlobalCoverage') || project.hasProperty('toeExpansionTest')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3/java' }
+if (project.hasProperty('toeExpansionTest')) sourceSets.main.java.srcDir 'validation/expansion/java'
+if (project.hasProperty('toeW002Qa') || project.hasProperty('toeW0021Qa')) sourceSets.main.java.srcDir 'validation/w002/java'
+if (project.hasProperty('toeA12Test')) sourceSets.main.java.srcDir 'validation/a1_2/java'
+if (project.hasProperty('toeA2Test')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a2/java' }
+if (project.hasProperty('toeA3Test')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3/java' }
+if (project.hasProperty('toeA11Test')) sourceSets.main.java.srcDir 'validation/a1_1/java'
+if (project.hasProperty('toeA1Test')) sourceSets.main.java.srcDir 'validation/a1/java'
+if (project.hasProperty('toeR4Test')) sourceSets.main.java.srcDir 'validation/r4/java'
+if (project.hasProperty('toeRollTest')) sourceSets.main.java.srcDir 'validation/roll/java'
+if (project.hasProperty('toeQA') && ['toeR1','toeR1FullMotion','toeR2','toeR3','toeR31'].any { project.hasProperty(it) }) throw new GradleException('QA requires its isolated profile.');
+if (project.hasProperty('toeQA')) {
+    sourceSets.main.java.srcDir 'experiments/m002_r3_qa/java'
+    sourceSets.main.resources.srcDir 'animation_pipeline/converted/m002_r3_1/resources'
+}
+if (project.hasProperty('toeR31') && ['toeR1','toeR1FullMotion','toeR2','toeR3'].any { project.hasProperty(it) }) throw new GradleException('R3.1 must run in its isolated profile.')
+if ((project.hasProperty('toeR2') || project.hasProperty('toeR3')) && (project.hasProperty('toeR1') || project.hasProperty('toeR1FullMotion')) || project.hasProperty('toeR2') && project.hasProperty('toeR3')) {
+    throw new GradleException('Use only one of R1/Full Motion, R2 or R3: render laboratories are mutually exclusive.')
+}
+
+// R1 laboratory sources and dependency are excluded from the normal mod.
+if (project.hasProperty('toeR1')) sourceSets.main.java.srcDir 'experiments/m002_r1/java'
+if (project.hasProperty('toeR2')) {
+    sourceSets.main.java.srcDir 'experiments/m002_r2/java'
+    sourceSets.main.resources.srcDir 'animation_pipeline/converted/m002_r2/resources'
+}
+if (project.hasProperty('toeR3')) {
+    sourceSets.main.java.srcDir 'experiments/m002_r3/java'
+    sourceSets.main.resources.srcDir 'animation_pipeline/converted/m002_r3/resources'
+}
+if (project.hasProperty('toeR31')) {
+    sourceSets.main.java.srcDir 'experiments/m002_r3_1/java'
+    sourceSets.main.resources.srcDir 'animation_pipeline/converted/m002_r3_1/resources'
+}
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+minecraft {
+    // The mappings can be changed at any time and must be in the following format.
+    // Channel:   Version:
+    // official   MCVersion             Official field/method names from Mojang mapping files
+    // parchment  YYYY.MM.DD-MCVersion  Open community-sourced parameter names and javadocs layered on top of official
+    //
+    // You must be aware of the Mojang license when using the 'official' or 'parchment' mappings.
+    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
+    //
+    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
+    // Additional setup is needed to use their mappings: https://parchmentmc.org/docs/getting-started
+    //
+    // Use non-default mappings at your own risk. They may not always work.
+    // Simply re-run your setup task after changing the mappings to update your workspace.
+    mappings channel: mapping_channel, version: mapping_version
+
+    // When true, this property will have all Eclipse/IntelliJ IDEA run configurations run the "prepareX" task for the given run configuration before launching the game.
+    // In most cases, it is not necessary to enable.
+    // enableEclipsePrepareRuns = true
+    // enableIdeaPrepareRuns = true
+
+    // This property allows configuring Gradle's ProcessResources task(s) to run on IDE output locations before launching the game.
+    // It is REQUIRED to be set to true for this template to function.
+    // See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+    copyIdeResources = true
+
+    // When true, this property will add the folder name of all declared run configurations to generated IDE run configurations.
+    // The folder name can be set on a run configuration using the "folderName" property.
+    // By default, the folder name of a run configuration is the name of the Gradle project containing it.
+    // generateRunFolders = true
+
+    // This property enables access transformers for use in development.
+    // They will be applied to the Minecraft artifact.
+    // The access transformer file can be anywhere in the project.
+    // However, it must be at "META-INF/accesstransformer.cfg" in the final mod jar to be loaded by Forge.
+    // This default location is a best practice to automatically put the file in the right place in the final jar.
+    // See https://docs.minecraftforge.net/en/latest/advanced/accesstransformers/ for more information.
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
+    runs {
+        // applies to all the run configs below
+        configureEach {
+            workingDirectory project.file('run')
+            if (project.hasProperty('toeGlobalTest')) { workingDirectory project.file('run-global'); property 'toe.global.test','true' }
+            if (project.hasProperty('toeGlobalFresh')) property 'toe.global.session','two'
+            if (project.hasProperty('toeGlobalCoverage')) {
+                workingDirectory project.file('run-global'); property 'toe.a3.test','true'
+                property 'toe.global.coverage','true'
+                property 'toe.a3.world','Global Survival one'
+                property 'toe.a3.output','../animation_pipeline/reports/m002_a3_1/coverage'
+                if (project.hasProperty('toeGlobalSlim')) { property 'toe.qa.slim','true'; property 'toe.a3.output','../animation_pipeline/reports/m002_a3_1/coverage-slim' }
+                if (project.hasProperty('toeGlobalSkinCheck')) { property 'toe.a3.skincheck','true'; property 'toe.a3.output','../animation_pipeline/reports/m002_a3_1/skincheck-slim' }
+                if (project.hasProperty('toeGlobalVanillaCheck')) { property 'toe.a3.vanillacheck','true'; property 'toe.a3.output','../animation_pipeline/reports/m002_a3_1/vanilla-check' }
+            }
+            if (project.hasProperty('toeExpansionQa') || project.hasProperty('toeExpansionTest')) {
+                workingDirectory project.file('run-expansion-qa')
+                property 'toe.a3.output', '../animation_pipeline/converted/expansion/runtime'
+                if (project.hasProperty('toeExpansionTest')) property 'toe.expansion.test', 'true'
+                if (project.hasProperty('toeParkourQa')) {
+                    workingDirectory project.file(project.hasProperty('toeGlobalSlim') ? 'run-parkour-qa/slim' : 'run-parkour-qa')
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/parkour-qa/runtime').absolutePath
+                    property 'toe.parkour.test', 'true'
+                }
+                if (project.hasProperty('toeWallResearchQa')) {
+                    workingDirectory project.file(project.hasProperty('toeGlobalSlim') ? 'run-wall-research-qa/slim' : 'run-wall-research-qa')
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/wall-research-qa/runtime').absolutePath
+                    property 'toe.parkour.test', 'true'
+                    property 'toe.wall.research.test', 'true'
+                }
+                if (project.hasProperty('toeWallPrototypeQa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-wall-prototype-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/wall-prototype-qa/' + profile).absolutePath
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.wall.prototype.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeEightDirectionQa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-eight-direction-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/eight-direction-qa/' + profile).absolutePath
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeGlobalPunchQa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-global-punch-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/global-punch-qa/' + profile).absolutePath
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.global.punch.test', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeC001Qa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-c001-camera-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/c001-camera-qa/' + profile).absolutePath
+                    property 'toe.c001.qa', 'true'
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.global.punch.test', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeC001RefinementQa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def stability = project.hasProperty('toeC001StabilityQa')
+                    if (stability) property 'toe.c001.stability.qa', 'true'
+                    def profile = stability ? 'classic-stability' : project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-c001-1-camera-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/c001-1-camera-qa/' + profile).absolutePath
+                    property 'toe.c001.qa', 'true'
+                    property 'toe.c001.refinement.qa', 'true'
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.global.punch.test', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeToolPolicyQa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-tool-policy-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/tool-policy-qa/' + profile).absolutePath
+                    property 'toe.c001.qa', 'true'
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.tool.policy.test', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeC0012Qa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def movement = project.hasProperty('toeC0012Movement')
+                    def profile = movement ? 'movement' : project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-c001-2-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/c001-2-qa/' + profile).absolutePath
+                    if (movement) property 'toe.c0012.movement', 'true'
+                    else property 'toe.c001.qa', 'true'
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        if (!movement) {
+                            property 'toe.tool.policy.test', 'true'
+                            property 'toe.c0012.qa', 'true'
+                        }
+                        if (project.hasProperty('toeC0012Only')) property 'toe.c0012.only', 'true'
+                        if (project.hasProperty('toeC0012Restart')) property 'toe.c0012.restart', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    }
+                }
+                if (project.hasProperty('toeW001Qa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-w001-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/w001-qa/' + profile).absolutePath
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.w001.qa', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    } else property 'toe.c001.qa', 'true'
+                }
+                if (project.hasProperty('toeW0011Qa')) {
+                    def slim = project.hasProperty('toeGlobalSlim')
+                    def profile = project.hasProperty('toeExpansionTest') ? (slim ? 'slim' : 'classic') : 'regression'
+                    workingDirectory project.file('run-w0011-qa/' + profile)
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/w0011-qa/' + profile).absolutePath
+                    if (slim) property 'toe.qa.slim', 'true'
+                    if (project.hasProperty('toeExpansionTest')) {
+                        property 'toe.w001.qa', 'true'
+                        property 'toe.w0011.qa', 'true'
+                        if (project.hasProperty('toeW0011Only')) property 'toe.w0011.only', 'true'
+                        if (project.hasProperty('toeW0011Restart')) property 'toe.w0011.restart', 'true'
+                        property 'toe.parkour.test', 'true'
+                        property 'toe.wall.research.test', 'true'
+                        property 'toe.eight.direction.test', 'true'
+                    } else property 'toe.c001.qa', 'true'
+                }
+                if (project.hasProperty('toeCorrectionsQa')) {
+                    workingDirectory project.file(project.hasProperty('toeGlobalSlim') ? 'run-corrections-qa/slim' : 'run-corrections-qa')
+                    property 'toe.a3.output', project.file('animation_pipeline/converted/corrections-qa/runtime').absolutePath
+                }
+            }
+            if (project.hasProperty('toeW002Qa') || project.hasProperty('toeW0021Qa')) {
+                def profile = project.hasProperty('toeGlobalSlim') ? 'slim' : 'classic'
+                profile += project.findProperty('toeW002Run') ? '-' + project.property('toeW002Run') : ''
+                def folder = project.hasProperty('toeW0021Qa') ? 'w0021-qa' : 'w002-qa'
+                workingDirectory project.file('run-' + folder + '/' + profile)
+                if (project.hasProperty('toeW0021Qa')) property 'toe.combat.roll.trace', 'true'
+                if (!project.hasProperty('toeW002Regression')) {
+                    property 'toe.w002.qa', 'true'
+                    property 'toe.expansion.test', 'false'
+                }
+                property 'toe.a3.output', project.file('animation_pipeline/converted/' + folder + '/' + profile).absolutePath
+                if (project.hasProperty('toeW002WalkTrace')) property 'toe.w002.walk.trace', 'true'
+                if (project.hasProperty('toeGlobalSlim')) property 'toe.qa.slim', 'true'
+            }
+            if (project.hasProperty('toeR1')) workingDirectory project.file('run-r1')
+            if (project.hasProperty('toeR1Isolated')) workingDirectory project.file('run-r1')
+            if (project.hasProperty('toeR2')) workingDirectory project.file('run-r2')
+            if (project.hasProperty('toeR3')) workingDirectory project.file('run-r3')
+            if (project.hasProperty('toeR31')) workingDirectory project.file('run-r31')
+            if (project.hasProperty('toeQA')) workingDirectory project.file('run-qa')
+            if (project.hasProperty('toeR4Test') || project.hasProperty('toeRollTest') || project.hasProperty('toeA1Test')) workingDirectory project.file('run-r4')
+            if (project.hasProperty('toeA1Test')) property 'toe.a1.test', 'true'
+            if (project.hasProperty('toeA11Test')) {
+                workingDirectory project.file('run-a1-1')
+                property 'toe.a1_1.test', 'true'
+            }
+            if (project.hasProperty('toeA12Test')) {
+                workingDirectory project.file('run-a1-2')
+                property 'toe.a1_2.test', 'true'
+            }
+            if (project.hasProperty('toeA12Legacy')) property 'toe.a12.legacy','true'
+            if (project.hasProperty('toeA12Bench')) property 'toe.a1_2.benchmark','true'
+            if (project.hasProperty('toeA12Iframes')) property 'toe.a1_2.iframes','true'
+            if (project.hasProperty('toeA12Equivalence')) property 'toe.a1_2.equivalence','true'
+            if (project.hasProperty('toeA12Restart')) property 'toe.a1_2.restart','true'
+            if (project.hasProperty('toeA2Test')) { workingDirectory project.file('run-a2'); property 'toe.a2.test','true' }
+            if (project.hasProperty('toeA2Previous')) property 'toe.a2.previous','true'
+            if (project.hasProperty('toeA2Quick')) property 'toe.a2.quick','true'
+            if (project.hasProperty('toeA2Extra')) property 'toe.a2.extra','true'
+            if (project.hasProperty('toeA3Test') || project.hasProperty('toeA3Play')) workingDirectory project.file('run-a3')
+            if (project.hasProperty('toeA3Test')) property 'toe.a3.test','true'
+            if (project.hasProperty('toeA3Quick')) property 'toe.a3.quick','true'
+            if (project.hasProperty('toeA3Restart')) property 'toe.a3.restart','true'
+            if (project.hasProperty('toeA3Previous')) property 'toe.a3.previous','true'
+            if (project.hasProperty('toeA3Circuit')) property 'toe.a3.circuit','true'
+            if (project.hasProperty('toeA3Extra')) property 'toe.a3.extra','true'
+            if (project.hasProperty('toeA3Regression')) property 'toe.a3.regression','true'
+            if (project.hasProperty('toeA3Iframes')) { property 'toe.a1_2.iframes','true'; property 'toe.a3.regression','true' }
+            if (project.hasProperty('toeA3FinalCheck')) { property 'toe.a3.finalcheck','true'; property 'toe.a3.extra','true' }
+            if (project.hasProperty('toeA2Bench')) property 'toe.a2.benchmark','true'
+            if (project.hasProperty('toeA2Restart')) property 'toe.a2.restart','true'
+            if (project.hasProperty('toeA2Regression')) property 'toe.a2.regression','true'
+            if (project.hasProperty('toeA2Iframes')) { property 'toe.a1_2.iframes','true'; property 'toe.a2.regression','true' }
+            if (project.hasProperty('toeA12Regression')) property 'toe.a1_2.regression','true'
+            if (project.hasProperty('toeA11Restart')) property 'toe.a1_1.restart', 'true'
+            if (project.hasProperty('toeA11Regression')) property 'toe.a1_1.regression', 'true'
+            if (project.hasProperty('toeA1Restart')) property 'toe.a1.restart', 'true'
+            if (project.hasProperty('toeA1Visual')) property 'toe.a1.visual', 'true'
+            if (project.hasProperty('toeA1Cold')) property 'toe.a1.cold', 'true'
+            if (project.hasProperty('toeA1Regression')) property 'toe.a1.regression', 'true'
+
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+            property 'forge.logging.console.level', 'debug'
+
+            if (project.hasProperty('toeGlobalRegression')) {
+                workingDirectory project.file('run-global')
+                property 'toe.global.regression','true'
+                property 'toe.qa.world','Global Survival one'
+            }
+            if (project.hasProperty('toeMovementTest')) { workingDirectory project.file('run-global'); property 'toe.a3_2.test','true' }
+            if (project.hasProperty('toeMovementQuick')) property 'toe.a3_2.quick','true'
+            if (project.hasProperty('toeMovementDirections')) property 'toe.a3_2.directions','true'
+            if (project.hasProperty('toeMovementRegression')) property 'toe.a3_2.regression','true'
+            if (project.hasProperty('toeMovementVanilla')) { property 'toe.a3_2.vanilla','true'; property 'toe.a3.output','../animation_pipeline/reports/m002_a3_2/vanilla' }
+            if (project.hasProperty('toeMovementIframes')) { property 'toe.a1_2.iframes','true'; property 'toe.a3_2.regression','true' }
+            if (project.hasProperty('toeRefinementTest')) { workingDirectory project.file('run-global'); property 'toe.a3_3.test','true' }
+            if (project.hasProperty('toeRefinementQuick')) property 'toe.a3_3.quick','true'
+            if (project.hasProperty('toeRefinementRegression')) property 'toe.a3_3.regression','true'
+            if (project.hasProperty('toeRefinementIframes')) { property 'toe.a1_2.iframes','true'; property 'toe.a3_3.regression','true' }
+            if (project.hasProperty('toeRefinementVanilla')) { property 'toe.a3_2.vanilla','true'; property 'toe.a3.output','../animation_pipeline/reports/m002_a3_3/vanilla' }
+            if (project.hasProperty('toeRefinementCoverage')) property 'toe.a3.output','../animation_pipeline/reports/m002_a3_3/coverage'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            if (project.hasProperty('toeR4Test')) property 'toe.r4.test', 'true'
+            if (project.hasProperty('toeR4Restart')) property 'toe.r4.restart', 'true'
+            if (project.hasProperty('toeRollTest')) property 'toe.roll.test', 'true'
+            if (project.hasProperty('toeRollRestart')) property 'toe.roll.restart', 'true'
+            if (project.hasProperty('toeRollUpgrade')) property 'toe.roll.upgrade', 'true'
+            if (project.hasProperty('toeQA')) {
+                property 'toe.r31', 'true'
+                property 'toe.r31.mode', 'r31'
+                property 'toe.qa', 'true'
+            }
+            if (project.hasProperty('toeR31')) {
+                property 'toe.r31', 'true'
+                property 'toe.r31.auto', project.findProperty('toeR31Auto') ?: 'true'
+                property 'toe.r31.mode', project.findProperty('toeR31Mode') ?: 'r31'
+                if (project.hasProperty('toeR31Restart')) property 'toe.r31.restart', 'true'
+            }
+            if (project.hasProperty('toeR3')) {
+                property 'toe.r3', 'true'
+                property 'toe.r3.auto', project.findProperty('toeR3Auto') ?: 'true'
+                property 'toe.r3.mode', project.findProperty('toeR3Mode') ?: 'r3'
+                if (project.hasProperty('toeR3Restart')) property 'toe.r3.restart', 'true'
+                if (project.hasProperty('toeR3Stress')) property 'toe.r3.stress', 'true'
+            }
+            if (project.hasProperty('toeR2')) {
+                property 'toe.r2', 'true'
+                property 'toe.r2.auto', project.findProperty('toeR2Auto') ?: 'true'
+                property 'toe.r2.mode', project.findProperty('toeR2Mode') ?: 'skinned'
+            }
+            if (project.hasProperty('toeR1')) {
+                property 'toe.r1', 'true'
+                property 'toe.r1.mode', project.findProperty('toeR1Mode') ?: 'baseline'
+                property 'toe.r1.auto', project.findProperty('toeR1Auto') ?: 'true'
+                if (project.hasProperty('toeR1InteractiveTest')) property 'toe.r1.interactiveTest', 'true'
+            }
+            if (project.hasProperty('toeC001LegacyCombatQa')) workingDirectory project.file('run-c001-1-camera-qa/combat')
+            if (project.hasProperty('toeC0012LegacyQa')) workingDirectory project.file('run-c001-2-qa/combat')
+            if (project.hasProperty('toeCombatTest')) property 'toe.combat.test', 'true'
+            if (project.hasProperty('toeCombatRestartCheck')) property 'toe.combat.restart', 'true'
+            if (project.hasProperty('toePrepareModel')) property 'toe.animtest.prepare', 'true'
+            if (project.hasProperty('toeVisualTest')) property 'toe.animtest.visual', 'true'
+            if (project.hasProperty('toePrepareLocomotion')) property 'toe.locomotion.prepare', 'true'
+            if (project.hasProperty('toeLocomotionTest')) property 'toe.locomotion.test', 'true'
+            if (project.hasProperty('toeLocomotionRestartCheck')) property 'toe.locomotion.restart', 'true'
+            if (project.hasProperty('toePrepareActions')) property 'toe.actions.prepare', 'true'
+            if (project.hasProperty('toeActionTest')) property 'toe.actions.test', 'true'
+            if (project.hasProperty('toeActionRestartCheck')) property 'toe.actions.restart', 'true'
+            // External release mods carry SRG mixin refmaps; userdev uses Mojang names.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', file('build/createSrgToMcp/output.srg').absolutePath
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        server {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
+
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            // example of overriding the workingDirectory set in configureEach above
+            workingDirectory project.file('run-data')
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+tasks.matching { it.name == 'runClient' }.configureEach {
+    dependsOn 'createSrgToMcp'
+}
+
+// Include resources generated by data generators.
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+// Official R3 assets are prepared as byte-identical local copies; R3.1 is never packaged here.
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/m002_r4/resources' }
+tasks.register('prepareOfficialR3', Exec) {
+    commandLine 'node', 'animation_pipeline/scripts/prepare-r4.cjs'
+}
+tasks.named('processResources').configure { dependsOn 'prepareOfficialR3' }
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/m002_a2/resources' }
+tasks.register('prepareHorizontalR3', Exec) {
+    dependsOn 'prepareOfficialR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-a2.cjs'
+}
+tasks.named('processResources').configure { dependsOn 'prepareHorizontalR3' }
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/m002_a3/resources' }
+tasks.register('prepareFullR3', Exec) {
+    dependsOn 'prepareHorizontalR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-a3.cjs'
+}
+tasks.named('processResources').configure { dependsOn 'prepareFullR3' }
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/m002_a3_1/resources' }
+tasks.register('prepareSlimR3', Exec) {
+    dependsOn 'prepareFullR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-a3-slim.cjs'
+}
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/expansion/resources' }
+tasks.register('bakeExpansionR3') {
+    def pipeline = file('animation_pipeline')
+    inputs.files fileTree('animation_pipeline/scripts') {
+        include 'prepare-a3.cjs', 'retarget-idle.cjs', 'blender-a3.py', 'blender-r3-refine.py'
+    }
+    inputs.files file('animation_pipeline/input/UAL1/UAL1_Standard.glb'),
+        file('animation_pipeline/converted/m002_r3/steve-r3-refined.blend')
+    outputs.files file('animation_pipeline/converted/expansion/poses-new.json'),
+        file('animation_pipeline/converted/expansion/motion-only.glb')
+    doLast {
+        def blender = providers.environmentVariable('TOE_BLENDER').orNull
+        if (!blender) {
+            def localInstall = new File('C:/Program Files/Blender Foundation/Blender 5.2/blender.exe')
+            blender = localInstall.isFile() ? localInstall.absolutePath : 'blender'
+        }
+        exec { commandLine 'node', new File(pipeline, 'scripts/prepare-a3.cjs'), '--expansion' }
+        exec {
+            commandLine blender, '-b', '--python-exit-code', '1', '--python',
+                new File(pipeline, 'scripts/blender-a3.py'), '--', projectDir, '--expansion'
+        }
+    }
+}
+tasks.register('prepareExpansionR3', Exec) {
+    dependsOn 'prepareSlimR3', 'bakeExpansionR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-expansion.cjs'
+}
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/parkour/resources' }
+tasks.register('bakeParkourR3') {
+    dependsOn 'bakeExpansionR3'
+    inputs.files 'animation_pipeline/scripts/prepare-parkour.cjs', 'animation_pipeline/scripts/blender-a3.py',
+        'animation_pipeline/scripts/blender-r3-refine.py', 'animation_pipeline/converted/expansion/poses-new.json',
+        'animation_pipeline/converted/m002_r3/steve-r3-refined.blend'
+    outputs.files 'animation_pipeline/converted/parkour/motion-only.glb', 'animation_pipeline/converted/parkour/poses-new.json'
+    doLast {
+        def localInstall = new File('C:/Program Files/Blender Foundation/Blender 5.2/blender.exe')
+        def blender = providers.environmentVariable('TOE_BLENDER').orElse(localInstall.isFile() ? localInstall.absolutePath : 'blender').get()
+        exec { commandLine 'node', 'animation_pipeline/scripts/prepare-parkour.cjs' }
+        exec { commandLine blender, '-b', '--python-exit-code', '1', '--python',
+            file('animation_pipeline/scripts/blender-a3.py'), '--', projectDir, '--parkour' }
+    }
+}
+tasks.register('prepareParkourR3', Exec) {
+    dependsOn 'prepareExpansionR3', 'bakeParkourR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-expansion.cjs', '--parkour'
+}
+sourceSets.main.resources { srcDir 'animation_pipeline/converted/wall-prototypes/resources' }
+tasks.register('bakeWallPrototypesR3') {
+    dependsOn 'bakeParkourR3'
+    inputs.files 'animation_pipeline/scripts/prepare-wall-prototypes.cjs', 'animation_pipeline/scripts/retarget-idle.cjs',
+        'animation_pipeline/scripts/blender-a3.py', 'animation_pipeline/scripts/blender-r3-refine.py',
+        'animation_pipeline/converted/parkour/poses-new.json', 'animation_pipeline/converted/m002_r3/steve-r3-refined.blend'
+    inputs.files fileTree('../assets/source') {
+        include '**/Unreal-Godot/UAL1_Standard.glb', '**/Unreal-Godot/UAL2_Standard.glb'
+    }
+    outputs.files 'animation_pipeline/converted/wall-prototypes/motion-only.glb',
+        'animation_pipeline/converted/wall-prototypes/poses-new.json'
+    doLast {
+        def localInstall = new File('C:/Program Files/Blender Foundation/Blender 5.2/blender.exe')
+        def blender = providers.environmentVariable('TOE_BLENDER').orElse(localInstall.isFile() ? localInstall.absolutePath : 'blender').get()
+        exec { commandLine 'node', 'animation_pipeline/scripts/prepare-wall-prototypes.cjs' }
+        exec { commandLine blender, '-b', '--python-exit-code', '1', '--python',
+            file('animation_pipeline/scripts/blender-a3.py'), '--', projectDir, '--wall-prototypes' }
+    }
+}
+tasks.register('prepareWallPrototypesR3', Exec) {
+    dependsOn 'prepareParkourR3', 'bakeWallPrototypesR3'
+    commandLine 'node', 'animation_pipeline/scripts/package-expansion.cjs', '--wall-prototypes'
+}
+tasks.named('processResources').configure { dependsOn 'prepareWallPrototypesR3' }
+
+repositories {
+    flatDir { dirs 'dependencies/cpm' }
+    if (project.hasProperty('toeR1FullMotion')) flatDir { dirs '.downloads/m002_r1' }
+    flatDir { dirs '.downloads/m002_r2' }
+    // Put repositories for dependencies here
+    // ForgeGradle automatically adds the Forge maven and Maven Central for you
+
+    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
+    // flatDir {
+    //     dir 'libs'
+    // }
+}
+
+dependencies {
+    // Specify the version of Minecraft to use.
+    // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
+    // The "userdev" classifier will be requested and setup by ForgeGradle.
+    // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
+    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    // Local official CPM release, remapped by ForgeGradle for the dev runtime.
+    // A dependency only: never embedded in the Tower of Entropy JAR.
+    implementation fg.deobf('local:CustomPlayerModels:1.20-0.6.26a')
+    if (project.hasProperty('toeR1FullMotion')) implementation fg.deobf('r1:full-motion-forge:1.0.0')
+    // Official runtime dependency; not shaded into our JAR.
+    implementation fg.deobf('r2:polymesh:1.0.0:forge')
+
+    // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
+    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
+    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+
+    // Example mod dependency using a mod jar from ./libs with a flat dir repository
+    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
+    // The group id is ignored when searching -- in this case, it is "blank"
+    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+
+    // For more info:
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
+// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+// Example for how to get properties into the manifest for reading at runtime.
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+
+    // This is the preferred method to reobfuscate your jar file
+    finalizedBy 'reobfJar'
+}
+
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing:
+// tasks.named('publish').configure {
+//     dependsOn 'reobfJar'
+// }
+
+// Example configuration to allow publishing using the maven-publish plugin
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}

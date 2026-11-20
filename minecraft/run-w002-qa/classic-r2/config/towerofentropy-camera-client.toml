@@ -1,0 +1,14 @@
+#Range: 2.0 ~ 8.0
+distance = 4.0
+#Range: 0.0 ~ 1.5
+shoulderOffset = 0.9775
+#Range: -0.5 ~ 1.0
+heightOffset = 0.25
+rightShoulder = true
+#Range: 0 ~ 1
+compositionVersion = 1
+#Range: 0 ~ 1
+zoomBindingVersion = 1
+#Range: 0 ~ 1
+shoulderBindingVersion = 1
+

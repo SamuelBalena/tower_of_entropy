@@ -1,0 +1,112 @@
+[
+  {
+    "test": "baseline_walk",
+    "pass": true,
+    "detail": "distance\u003d8.374761235223474"
+  },
+  {
+    "test": "idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_idle hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 159.72059127718134)"
+  },
+  {
+    "test": "jog_275",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d2, modelAssignments\u003d1, speed\u003d0.21585896204408073, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_jog hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 164.8574665561178)"
+  },
+  {
+    "test": "jog_285",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d2, modelAssignments\u003d1, speed\u003d0.21585906815769818, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_jog hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 167.0160571705205)"
+  },
+  {
+    "test": "physics_distance",
+    "pass": true,
+    "detail": "baseline\u003d8.374761235223474 auto\u003d8.374761235223474"
+  },
+  {
+    "test": "stop_to_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d3, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_idle hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 168.35119861480905)"
+  },
+  {
+    "test": "repeat_jog",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d4, modelAssignments\u003d1, speed\u003d0.21585896204408073, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_jog hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 173.4880738937455)"
+  },
+  {
+    "test": "repeat_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d5, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_idle hasAutoModel\u003dtrue position\u003d(-29.094183586384347, 67.0, 175.90251061039828)"
+  },
+  {
+    "test": "strafe_fallback",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d5, modelAssignments\u003d1, speed\u003d0.21585687645399076, forward\u003d0.0, actionCommands\u003d0] pose\u003dnull hasAutoModel\u003dfalse position\u003d(-25.03660227999965, 67.0, 175.90251061039828)"
+  },
+  {
+    "test": "reverse_fallback",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d5, modelAssignments\u003d1, speed\u003d0.21585687645398366, forward\u003d-1.0, actionCommands\u003d0] pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.0, 171.84492930401356)"
+  },
+  {
+    "test": "forward_resume",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d6, modelAssignments\u003d2, speed\u003d0.21585906838384972, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_jog hasAutoModel\u003dtrue position\u003d(-22.622166932789206, 67.0, 177.80149979338506)"
+  },
+  {
+    "test": "air_507",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d6, modelAssignments\u003d2, speed\u003d0.16269926519902356, forward\u003d1.0, actionCommands\u003d0] pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 68.17675927506424, 181.09696975825636)"
+  },
+  {
+    "test": "airborne_507",
+    "pass": true,
+    "detail": "dy\u003d-0.15233518685055708"
+  },
+  {
+    "test": "air_514",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d6, modelAssignments\u003d2, speed\u003d0.2677153775177885, forward\u003d1.0, actionCommands\u003d0] pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.7531999805212, 182.42881240289523)"
+  },
+  {
+    "test": "airborne_514",
+    "pass": true,
+    "detail": "dy\u003d0.24813599859094576"
+  },
+  {
+    "test": "crouch_fallback",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d7, modelAssignments\u003d3, speed\u003d0.06475834401700808, forward\u003d1.0, actionCommands\u003d0] pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.0, 185.7297670228723)"
+  },
+  {
+    "test": "landed_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d8, modelAssignments\u003d4, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_idle hasAutoModel\u003dtrue position\u003d(-22.622166932789206, 67.0, 186.45144601210575)"
+  },
+  {
+    "test": "off",
+    "pass": true,
+    "detail": "status\u003dnull pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.0, 186.45144601210575)"
+  },
+  {
+    "test": "classic_player_skin",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] pose\u003dCustom Pose: toe_idle hasAutoModel\u003dtrue position\u003d(-22.622166932789206, 67.0, 186.45144601210575)"
+  },
+  {
+    "test": "reconnect_disabled",
+    "pass": true,
+    "detail": "status\u003dnull pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.0, 186.45144601210575)"
+  },
+  {
+    "test": "legacy_idle_loaded",
+    "pass": true,
+    "detail": "M001.1 command still renders"
+  },
+  {
+    "test": "legacy_off",
+    "pass": true,
+    "detail": "status\u003dnull pose\u003dnull hasAutoModel\u003dfalse position\u003d(-22.622166932789206, 67.0, 186.45144601210575)"
+  }
+]

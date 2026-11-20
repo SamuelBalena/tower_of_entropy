@@ -1,0 +1,272 @@
+[
+  {
+    "frame": 1,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.074860066,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 2,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.059942737,
+    "minBaseRingAreaRatio": 0.99999994
+  },
+  {
+    "frame": 3,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.035472747,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 4,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.10350216,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 5,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.060108192,
+    "minBaseRingAreaRatio": 0.99999934
+  },
+  {
+    "frame": 6,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.06693678,
+    "minBaseRingAreaRatio": 0.99999946
+  },
+  {
+    "frame": 7,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.078057304,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 8,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.08936994,
+    "minBaseRingAreaRatio": 0.9999999
+  },
+  {
+    "frame": 9,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.097520106,
+    "minBaseRingAreaRatio": 0.9999993
+  },
+  {
+    "frame": 10,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.10050479,
+    "minBaseRingAreaRatio": 0.9999995
+  },
+  {
+    "frame": 11,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.102559336,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 12,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.098525405,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 13,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.06469728,
+    "minBaseRingAreaRatio": 0.9999999
+  },
+  {
+    "frame": 14,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.03693792,
+    "minBaseRingAreaRatio": 0.9999995
+  },
+  {
+    "frame": 15,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.03766831,
+    "minBaseRingAreaRatio": 0.99999917
+  },
+  {
+    "frame": 16,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.07394924,
+    "minBaseRingAreaRatio": 0.9999996
+  },
+  {
+    "frame": 17,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.10811533,
+    "minBaseRingAreaRatio": 0.9999994
+  },
+  {
+    "frame": 18,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.118444584,
+    "minBaseRingAreaRatio": 0.99999917
+  },
+  {
+    "frame": 19,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.11334495,
+    "minBaseRingAreaRatio": 0.99999946
+  },
+  {
+    "frame": 20,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.103712894,
+    "minBaseRingAreaRatio": 0.9999999
+  },
+  {
+    "frame": 21,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.09990517,
+    "minBaseRingAreaRatio": 0.99999934
+  },
+  {
+    "frame": 22,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.122217275,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 23,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.14458203,
+    "minBaseRingAreaRatio": 0.9999994
+  },
+  {
+    "frame": 24,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.14494035,
+    "minBaseRingAreaRatio": 0.9999999
+  },
+  {
+    "frame": 25,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.11331386,
+    "minBaseRingAreaRatio": 0.9999997
+  },
+  {
+    "frame": 26,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.09898548,
+    "minBaseRingAreaRatio": 1.0
+  },
+  {
+    "frame": 27,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.08690908,
+    "minBaseRingAreaRatio": 0.9999999
+  },
+  {
+    "frame": 28,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.07695976,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 29,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.063227974,
+    "minBaseRingAreaRatio": 0.99999946
+  },
+  {
+    "frame": 30,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.053750943,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 31,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.04613005,
+    "minBaseRingAreaRatio": 0.9999994
+  },
+  {
+    "frame": 32,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.038434643,
+    "minBaseRingAreaRatio": 0.9999993
+  },
+  {
+    "frame": 33,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.031542335,
+    "minBaseRingAreaRatio": 1.0
+  },
+  {
+    "frame": 34,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.025463456,
+    "minBaseRingAreaRatio": 0.9999997
+  },
+  {
+    "frame": 35,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.020185174,
+    "minBaseRingAreaRatio": 0.9999995
+  },
+  {
+    "frame": 36,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.01570013,
+    "minBaseRingAreaRatio": 1.0
+  },
+  {
+    "frame": 37,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.011983434,
+    "minBaseRingAreaRatio": 0.9999994
+  },
+  {
+    "frame": 38,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.009572226,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 39,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.007739045,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 40,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.0070306947,
+    "minBaseRingAreaRatio": 0.99999964
+  },
+  {
+    "frame": 41,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.0077450797,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 42,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.00843151,
+    "minBaseRingAreaRatio": 0.9999995
+  },
+  {
+    "frame": 43,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.009018266,
+    "minBaseRingAreaRatio": 0.99999976
+  },
+  {
+    "frame": 44,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.00942739,
+    "minBaseRingAreaRatio": 1.0
+  },
+  {
+    "frame": 45,
+    "weightSum": 12.0,
+    "maxSkinnedDeltaBlocks": 0.009580411,
+    "minBaseRingAreaRatio": 0.9999998
+  }
+]

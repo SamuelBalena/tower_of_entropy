@@ -1,0 +1,28 @@
+{
+  "method": "Kinematic estimate at lower-cuboid bottom center; no ground solver or visual proof. Max model Y approximates stance.",
+  "walkSpeedBlocksPerSecond": 4.317181359999999,
+  "cycleMs": 933,
+  "travelPerCycleBlocks": 4.02793020888,
+  "feet": [
+    {
+      "leg": "left",
+      "modelFootYRangePixels": [
+        16.57858565458554,
+        21.83687450724444
+      ],
+      "modelForwardExcursionBlocks": 1.0524072989739142,
+      "stanceSamples": 2,
+      "meanEstimatedSlideBlocksPerSecond": 2.2820892554042667
+    },
+    {
+      "leg": "right",
+      "modelFootYRangePixels": [
+        16.261664778305555,
+        21.832196556118397
+      ],
+      "modelForwardExcursionBlocks": 1.0506874217188669,
+      "stanceSamples": 2,
+      "meanEstimatedSlideBlocksPerSecond": 2.3078832958352726
+    }
+  ]
+}

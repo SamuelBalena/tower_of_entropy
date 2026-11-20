@@ -1,0 +1,399 @@
+{
+  "date": "2026-11-12",
+  "profiles": {
+    "cpm": {
+      "passed": 28,
+      "total": 28,
+      "draws": 302,
+      "meanCpuDrawMs": 0.6825046357615894,
+      "maxCpuDrawMs": 5.9974,
+      "cpuMetricScope": "Polymesh calls during later fallback tests only; does not measure CPM renderer cost"
+    },
+    "r2": {
+      "passed": 29,
+      "total": 29,
+      "draws": 3786,
+      "meanCpuDrawMs": 0.48276571579503436,
+      "maxCpuDrawMs": 8.7737
+    },
+    "r3": {
+      "passed": 30,
+      "total": 30,
+      "draws": 3792,
+      "meanCpuDrawMs": 0.5529623945147679,
+      "maxCpuDrawMs": 6.6827
+    },
+    "stress": {
+      "passed": 4,
+      "total": 4,
+      "draws": 774,
+      "meanCpuDrawMs": 0.5683222222222222,
+      "maxCpuDrawMs": 6.2319
+    },
+    "restart": {
+      "passed": 1,
+      "total": 1,
+      "draws": 0,
+      "meanCpuDrawMs": 0,
+      "maxCpuDrawMs": 0
+    }
+  },
+  "limits": [
+    "CPU draw scope only; not GPU/FPS benchmark",
+    "local integrated server and client replica; no dedicated multiplayer homologation",
+    "cape test validates fallback decision using local texture fixture",
+    "aesthetic approval remains with user"
+  ],
+  "combat": {
+    "passed": 132,
+    "total": 132,
+    "impactSamples": 18,
+    "allSyncChecksPassed": true,
+    "renderErrors": 0
+  },
+  "cpuMeanDeltaMs": 0.07019667871973356,
+  "cpuMeanDeltaPercent": 14.540526889762951,
+  "builds": {
+    "lab-build": "BUILD SUCCESSFUL in 13s",
+    "production-build": "BUILD SUCCESSFUL in 20s"
+  },
+  "normalJar": {
+    "path": "build/libs/towerofentropy-0.0.1.jar",
+    "bytes": 93440,
+    "sha256": "414A22B0F603BB4A552675599787C1B2594FDCF6D306094EEA18248A52FAEFE6",
+    "entries": 50,
+    "experimentalExcluded": true,
+    "privateAssetsExcluded": true
+  },
+  "screenshots": [
+    {
+      "name": "r3-cpm-fallback-armadura.png",
+      "sha256": "be9657bf8952235bffce1c9a95210f6d2affdbd3c1185c96073e5f9243c059f5"
+    },
+    {
+      "name": "r3-cpm-fallback-capa.png",
+      "sha256": "a1b729558d99eefac9e14b12257b2c0b181888d185fc28f29ca3dcd218101f11"
+    },
+    {
+      "name": "r3-cpm-fallback-offhand.png",
+      "sha256": "2ef46f119c222fa8c96c6a23a1ed2e23c73ae8b27e3e018759c157d2900f620b"
+    },
+    {
+      "name": "r3-cpm-first-person.png",
+      "sha256": "8e79c3be466d67be24b51e84559f9d0fa2a9d36abbeca7ad14b13926475e1d68"
+    },
+    {
+      "name": "r3-cpm-idle-0.png",
+      "sha256": "bb8caab0a4f12ace9336511ce143686d08d96373de828dc696dcd4ce38e76b92"
+    },
+    {
+      "name": "r3-cpm-idle-180.png",
+      "sha256": "918e487bce69d6388ad9f1b2c5c9d867a8d9db6683e118b148909f5f5157e9f1"
+    },
+    {
+      "name": "r3-cpm-idle-270.png",
+      "sha256": "22806768192c296ee2af17a68cf751786c66edd314fd662cad286165a8f1e81e"
+    },
+    {
+      "name": "r3-cpm-idle-90.png",
+      "sha256": "10e98be11f26977893224f065a1b93755dfbd2aded53369e222bcd881f957a1a"
+    },
+    {
+      "name": "r3-cpm-jog-0.png",
+      "sha256": "2f950bd16080e71c92917ebb48af3e0176d828b5a25a94cc285879c7cf09862a"
+    },
+    {
+      "name": "r3-cpm-jog-180.png",
+      "sha256": "5f0385cbc3e16cb6f1709b44b013adbebd4720baae5775e9fb121e20a7d67aed"
+    },
+    {
+      "name": "r3-cpm-jog-270.png",
+      "sha256": "8d8211844b0b6570db60b71adc0b0d59b6b596560a030254cbab7aac8d128c8a"
+    },
+    {
+      "name": "r3-cpm-jog-90.png",
+      "sha256": "ec0c508a9a5478bc9f7543e234cbb7f2e37449c6601d02bdd65617c7ae7e08bb"
+    },
+    {
+      "name": "r3-cpm-off-cpm.png",
+      "sha256": "50fdb7ffb375d4f70815582eee818df3279eb2ca349341a7011c05ccce18fad1"
+    },
+    {
+      "name": "r3-cpm-other-player.png",
+      "sha256": "9fde797e0b77f2d99e852a2d8650ea543d36bfa8624324b03a225c18e03d319b"
+    },
+    {
+      "name": "r3-cpm-roll-0.png",
+      "sha256": "946bcd7a412af39d33e25f421b66b7b026841c080bd7b4d132f9d0329091dca4"
+    },
+    {
+      "name": "r3-cpm-roll-180.png",
+      "sha256": "8dc3bb27376be832fe2a152ff0dea5858fb13157e81543ad92260013f8e7348a"
+    },
+    {
+      "name": "r3-cpm-roll-270.png",
+      "sha256": "490ce427f2993dc3309d1d5efdded0be756921c3828c828af0658affc772ef38"
+    },
+    {
+      "name": "r3-cpm-roll-90.png",
+      "sha256": "189f7c26f76565e7a79da91d4e1f62bc424a25d00a45ad6a660d41f22e9c53cc"
+    },
+    {
+      "name": "r3-cpm-sword-0.png",
+      "sha256": "8b3a1b25ceec57234a9c39d3936929f50f9ec30770e23898de9bffd6033af8ea"
+    },
+    {
+      "name": "r3-cpm-sword-180.png",
+      "sha256": "80ae05f287a2d0b333df66d6f03bcf943a450bcdf22942b7bfd2bb38bb15b0c8"
+    },
+    {
+      "name": "r3-cpm-sword-270.png",
+      "sha256": "05c9d966a276f468496dbe677019370e3ab358bf7a6e7a69bc5b48b6f15ae31f"
+    },
+    {
+      "name": "r3-cpm-sword-90.png",
+      "sha256": "46b02fecfa4da6aa82ca88eec67c3c3fce6a68bd5068fe811417ede5ef62a8a2"
+    },
+    {
+      "name": "r3-r2-fallback-armadura.png",
+      "sha256": "8bd300a5358d7b32a4c48545f2fd99a5693e315a91a8f18b5a11c4e8779f8187"
+    },
+    {
+      "name": "r3-r2-fallback-capa.png",
+      "sha256": "030e548a0af063f26794ebffcd0f761a6df76b65633e632ee2ffb0a142e5a419"
+    },
+    {
+      "name": "r3-r2-fallback-offhand.png",
+      "sha256": "878f5fcc18a945b72b2ce1231cf9dba051806adcf65322c75b5522dd840c0b91"
+    },
+    {
+      "name": "r3-r2-first-person.png",
+      "sha256": "f3257dd512b818db72e81ceee07a422e3a62ec66a397c6642920e319d15cffe1"
+    },
+    {
+      "name": "r3-r2-idle-0.png",
+      "sha256": "5dc743bf441bbb7ced947863035d5c7f68c2caecd58fdff060ba4b776908f5f3"
+    },
+    {
+      "name": "r3-r2-idle-180.png",
+      "sha256": "07be001cfa99156f07e7df2bb49f72bb9e91fe33fbb1e9896ef962b9037f5d84"
+    },
+    {
+      "name": "r3-r2-idle-270.png",
+      "sha256": "6b4ec89018a68ad5d0e0acd0b3c8e9e0945e5e0f3645efe5a985ac680601c671"
+    },
+    {
+      "name": "r3-r2-idle-90.png",
+      "sha256": "64280449f3db1e59fe7c854a08181316f1242d421d653ef6a98c2f0d9d04afa5"
+    },
+    {
+      "name": "r3-r2-jog-0.png",
+      "sha256": "ce20eebba924b86368995c71808ef9a6d174bb7f9386bf048e0aca8c13add2b4"
+    },
+    {
+      "name": "r3-r2-jog-180.png",
+      "sha256": "49f18fe57ce09e487cb3280f5a37fbdcd7cb84e2df85ba2558f4f02d477c1479"
+    },
+    {
+      "name": "r3-r2-jog-270.png",
+      "sha256": "de62a7132f4440331b8403029bc10e3db1eeaba74cd5c7d62a78920ea44defdd"
+    },
+    {
+      "name": "r3-r2-jog-90.png",
+      "sha256": "8664fbde8227e046da1636f5b7b1f3d87384d98e1749d496c2e6d1acef660ab7"
+    },
+    {
+      "name": "r3-r2-off-cpm.png",
+      "sha256": "1d55378882ee073a2430fe2444a68a411d6b9a726b4516011ad1abbd9090ba7b"
+    },
+    {
+      "name": "r3-r2-other-player.png",
+      "sha256": "a4170991d2c7608025598c49e062f3ad52cae472deef5b4cb8f97140b12f5c8a"
+    },
+    {
+      "name": "r3-r2-roll-0.png",
+      "sha256": "ef71267536f1c9242e4c6cdac580cb61f7e56409c9014e88f69251a52178a17e"
+    },
+    {
+      "name": "r3-r2-roll-180.png",
+      "sha256": "e7957fd47a6adadfd217e9d3019f74db37cc884c804fcd737c0726b2f4f95c1a"
+    },
+    {
+      "name": "r3-r2-roll-270.png",
+      "sha256": "e901d584bfcd5a3761c77f1a29125de2c4135d653daec42424286255e32fe3d4"
+    },
+    {
+      "name": "r3-r2-roll-90.png",
+      "sha256": "1fb77c57d0a76afd942d1c175b7a8fa093e6e20fc13e197c616365b04b1cbfd8"
+    },
+    {
+      "name": "r3-r2-sword-0.png",
+      "sha256": "1a8d3c48199f8c563220836271ff1c37ce797375658111ee765263df203ffcb2"
+    },
+    {
+      "name": "r3-r2-sword-180.png",
+      "sha256": "beb5dc3d42576602fc8820c2dde189afcab0373599c2e724c3c658bdb0b6ca7d"
+    },
+    {
+      "name": "r3-r2-sword-270.png",
+      "sha256": "4f4b78519c658c7e0427545b5b4147a1efa3988a9fe88605b593679db71ccd55"
+    },
+    {
+      "name": "r3-r2-sword-90.png",
+      "sha256": "d6dd9ff6e4f8f524b432e72871a9f1881b875914f2a3d3d9e0209f3b13dff0f5"
+    },
+    {
+      "name": "r3-r2-sword-early-0.png",
+      "sha256": "309c0e5e757585f879cc9c3f09d71f8d4bd50bdb8af82a6e661d506943638dcb"
+    },
+    {
+      "name": "r3-r2-sword-late-0.png",
+      "sha256": "f43bbf97cf1e1dbf13244117bf4f346e5f685cc05f9c8589b93691f0c820dcea"
+    },
+    {
+      "name": "r3-r3-fallback-armadura.png",
+      "sha256": "97a80169acb5364ab5e7c523828f2167bbfd61c407eafd59f5575f667e3227e0"
+    },
+    {
+      "name": "r3-r3-fallback-capa.png",
+      "sha256": "ed221aef9d086ae2a0dc50ad389e08a13b181f2de94c698866f049e66cea3c68"
+    },
+    {
+      "name": "r3-r3-fallback-offhand.png",
+      "sha256": "c3ca69633ead5d02ff08e0d750eba69b2003b85e736f80b22b4f748da4d4fb63"
+    },
+    {
+      "name": "r3-r3-first-person.png",
+      "sha256": "963dd118d8129ba1876ea214597af274b77ae97fe793cdf1da5c0cc97092f257"
+    },
+    {
+      "name": "r3-r3-idle-0.png",
+      "sha256": "3af0a70a5db93d87cbae213a3ce9332186274f7485219b11ad5f966b339b8d35"
+    },
+    {
+      "name": "r3-r3-idle-180.png",
+      "sha256": "26068441f445fb6dea429c9c388821233a8e8a88e1690049c09991cf79361e96"
+    },
+    {
+      "name": "r3-r3-idle-270.png",
+      "sha256": "ed5e5d53ecdf2479079d08e7fb96f347e3f584a9a56fe056929bae013bb63dfa"
+    },
+    {
+      "name": "r3-r3-idle-90.png",
+      "sha256": "2994e52b8158c9184d090d30be0c886a91b1ad06232ea3cb5fbbd8738d01b862"
+    },
+    {
+      "name": "r3-r3-jog-0.png",
+      "sha256": "20ec5c6bf042673099aaabe1e8a0a8707debf17cc752e53e76139f7ccc735849"
+    },
+    {
+      "name": "r3-r3-jog-180.png",
+      "sha256": "20f1b04b2e4d3c5697408c901cddaa3ffa9e1ef87425e2b9a1e8a1d1b5d17fb8"
+    },
+    {
+      "name": "r3-r3-jog-270.png",
+      "sha256": "d8efc3402c5405c1710ad5b708d960b7afb0eba2f92293b9881430847ae6a474"
+    },
+    {
+      "name": "r3-r3-jog-90.png",
+      "sha256": "2cfd6df8768e0067ef12e0160e9625504f31dc8f182ebe6f19e5fc66ab759a52"
+    },
+    {
+      "name": "r3-r3-off-cpm.png",
+      "sha256": "1e49ddecb9a5258b2d9ffea9c2e563008a0abcf41d673df24703f993b773152b"
+    },
+    {
+      "name": "r3-r3-other-player.png",
+      "sha256": "08c6814cbd32715ef58c83b494a1b87621abb0625bb83bdf39c45e4544df37d5"
+    },
+    {
+      "name": "r3-r3-roll-0.png",
+      "sha256": "f298b72146aeb7312e209611ac72b15a7c86635f507951ab1e5328d76f6baf82"
+    },
+    {
+      "name": "r3-r3-roll-180.png",
+      "sha256": "94d2d5da789d4db883ec37bc8c853fe8802744bd5684fed225dd4729677693b7"
+    },
+    {
+      "name": "r3-r3-roll-270.png",
+      "sha256": "f9239ceffb34839ae4a8f9ab90488db045debcdc0e03871ba2e71ace82a4f254"
+    },
+    {
+      "name": "r3-r3-roll-90.png",
+      "sha256": "9e7e4812918914d2dfbf31d9d3fabf7c665e6a77764f9380b7f490180104a33c"
+    },
+    {
+      "name": "r3-r3-sword-0.png",
+      "sha256": "76cfd0b30a62a08f3cefab8ca116dac1d0f362a7e0eeccac9cb215c6cd2e2cb7"
+    },
+    {
+      "name": "r3-r3-sword-180.png",
+      "sha256": "96b259d9a3e6b610905520a6da79221221e13fb9aa06bd0e9ee2dd6adbef7dc1"
+    },
+    {
+      "name": "r3-r3-sword-270.png",
+      "sha256": "ff283bc627e09e2e295ea66373c4e8b2bef92c0d728d0c12f63d7c77564874a8"
+    },
+    {
+      "name": "r3-r3-sword-90.png",
+      "sha256": "1d6be53a4e27ae76291f3ca263c72c43284caa54f3dff85ed56e5c4d43502167"
+    },
+    {
+      "name": "r3-r3-sword-early-0.png",
+      "sha256": "2a235268ac9b214698e84cceb68df5541ed4441caf5660ac0473f6ac1099f4b9"
+    },
+    {
+      "name": "r3-r3-sword-late-0.png",
+      "sha256": "9e984ae04cbe2bd08766e95625159e34fa9c6f52b12439df0eeb9728b4fac622"
+    },
+    {
+      "name": "r3-stress-jog-90.png",
+      "sha256": "505190c1aa688019473919f471d011b8b3d1c4cc20ae557d3a109f6f9468dcbe"
+    },
+    {
+      "name": "r3-stress-roll-270.png",
+      "sha256": "061e86f7acae2b96e6cdd2d6a4d2aad97e61e9987d167d5065af33dd628a5317"
+    },
+    {
+      "name": "r3-stress-roll-90.png",
+      "sha256": "a189c156f80da59b68c2d11e44d2990634595f2acf085b992a1739ebc2fa62ff"
+    },
+    {
+      "name": "r3-stress-sword-270.png",
+      "sha256": "b2f0d14865cdd98b127d1ebb76463416711ce140be909c823695b09d755ddf2e"
+    },
+    {
+      "name": "toe-m002_0-iron_front.png",
+      "sha256": "0b4f84b952beaab0787ee81a99045f359fcefe42899aa4e4bc8b5cd6efb58e0d"
+    },
+    {
+      "name": "toe-m002_0-sword-before-impact.png",
+      "sha256": "ab2ab3fd1ec82ecc9572cdc0395555b0f6855037632eeb5ca694e1ee705c5af3"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "preservedFiles": 54,
+    "joints": 12,
+    "weightedVertices": 816,
+    "blendedVertices": 128,
+    "torsoBlendedVertices": 64,
+    "maxWeightError": 2.9802322387695312e-8,
+    "maxBindError": 7.549516567451064e-15,
+    "maxRestBoundsError": 0,
+    "unchangedLimbHeadUvs": true,
+    "torsoOriginalUvCornersPreserved": true,
+    "unitNormals": true,
+    "maxOldGlobalOrientationMatrixError": 9.194395919343012e-7,
+    "durations": {
+      "UAL_idle": 2.5,
+      "UAL_jog": 0.9333333373069763,
+      "UAL_roll": 1.4666666984558105,
+      "UAL_sword": 0.4333333373069763
+    },
+    "allSurfacesClosed": true,
+    "hipSeam": "shared pelvis weights on torso bottom and leg top rings",
+    "limit": "closed topology does not rule out self-intersection or volume loss at every frame"
+  },
+  "godotFilesPreserved": 171
+}

@@ -1,0 +1,11 @@
+{
+  "approvedFiles": 42,
+  "limbGeometry": "2 closed rigid cuboids per limb; no vertex weights; outer cuboids inflated 0.25 px",
+  "cutCaps": "Original upper bottom and lower top reuse end-of-limb UV islands, not the skin at the cut",
+  "unchanged": "4 animation arrays and timings, all side UVs, skin64x64, elbow/knee pivots, wrist item anchors",
+  "changes": [
+    "Cut caps sample adjacent skin rows instead of shoulder/wrist/ankle caps; skin pixels and lateral UVs unchanged.",
+    "Disable vanilla root transforms while experimental absolute poses are applied. No mesh weights invented."
+  ],
+  "limitation": "Cap/transform correction cannot turn two rigid closed boxes into a continuous weighted mesh."
+}

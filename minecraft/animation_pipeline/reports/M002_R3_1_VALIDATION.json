@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "preservedFiles": 68,
+  "joints": 12,
+  "weightedVertices": 1088,
+  "blendedVertices": 288,
+  "torsoBlendedVertices": 128,
+  "maxWeightError": 2.9802322387695312e-8,
+  "maxBindError": 7.549516567451064e-15,
+  "maxRestBoundsError": 0,
+  "originalUvCornersPreserved": true,
+  "torsoOriginalUvCornersPreserved": true,
+  "unitNormals": true,
+  "maxOldGlobalOrientationMatrixError": 0,
+  "maxOriginalBonePositionError": 0,
+  "durations": {
+    "UAL_idle": 2.5,
+    "UAL_jog": 0.9333333373069763,
+    "UAL_roll": 1.4666666984558105,
+    "UAL_sword": 0.4333333373069763
+  },
+  "morphTargetsPerMesh": 193,
+  "minInterpolatedArea": 0.9995792920712513,
+  "maxInterpolatedArea": 1.0491127890523122,
+  "interpolationSamples": 705,
+  "morphDense": true,
+  "correctiveChannelsOnlyInRoll": true,
+  "allSurfacesClosed": true,
+  "hipSeam": "shared pelvis weights on torso bottom and leg top rings; added intermediate ring",
+  "limit": "closed topology does not rule out self-intersection; original joint transforms preserved"
+}

@@ -1,0 +1,10 @@
+Tower of Entropy — animation provenance
+
+Universal Animation Library 1/2: Quaternius, CC0 1.0 Universal.
+Human Archer Animations FREE: Kevin Iglesias, Standard Asset Store EULA.
+https://www.keviniglesias.com/documentation/Human%20Archer%20Animations%20FREE.pdf
+https://kevdev.itch.io/human-archer-animations-free
+
+Animations are adapted and incorporated into the mod's Steve character.
+Original Archer rigs, FBX files and source libraries are not included for standalone redistribution.
+Third-party animation terms are separate from the mod's own code license.

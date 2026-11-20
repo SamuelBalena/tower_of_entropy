@@ -1,0 +1,7 @@
+[
+  {
+    "test": "client_restart_disabled",
+    "pass": true,
+    "detail": "status\u003dnull pose\u003dnull hasAutoModel\u003dfalse position\u003d(-35.181431035277406, 67.0, 29.989693278792604)"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "key.categories.towerofentropy": "Tower of Entropy",
+  "key.towerofentropy.roll": "Teste visual: Rolamento",
+  "key.towerofentropy.sword": "Ataque de espada (experimental)",
+  "key.towerofentropy.camera.shoulder": "Alternar ombro (atalho antigo)",
+  "key.towerofentropy.camera.closer": "Aproximar câmera",
+  "key.towerofentropy.camera.farther": "Afastar câmera",
+  "key.towerofentropy.camera.shoulder_left": "Selecionar ombro esquerdo",
+  "key.towerofentropy.camera.shoulder_right": "Selecionar ombro direito",
+  "key.towerofentropy.weapon": "Sacar ou guardar arma"
+}

@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "detail": "AUTO R3 without commands",
+      "test": "startup_auto"
+    },
+    {
+      "pass": true,
+      "detail": "no stuck combat",
+      "test": "startup_clear"
+    }
+  ],
+  "series": [],
+  "renderErrors": 0
+}

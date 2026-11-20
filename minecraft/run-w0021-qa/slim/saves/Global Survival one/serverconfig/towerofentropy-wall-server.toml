@@ -1,0 +1,8 @@
+enabled = true
+#Ticks of adhesion per airborne period
+#Range: 1 ~ 200
+vigorTicks = 35
+#Maximum falling speed in blocks per tick during adhesion
+#Range: 0.025 ~ 0.25
+fallSpeed = 0.065
+

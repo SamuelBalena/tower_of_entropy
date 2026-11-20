@@ -1,0 +1,34 @@
+{
+  "idle": {
+    "source": "animation_pipeline/input/UAL1/UAL1_Standard.glb",
+    "sourceSha256": "69591853d817488edaa8fd9bf8fc1d821eaeaf789f8627b3cd23b41c4ed67997",
+    "clip": "Idle_Loop",
+    "durationMs": 2500,
+    "frames": 75,
+    "maxPelvisChestRelativeDegrees": 23.273556864679417
+  },
+  "jog": {
+    "source": "animation_pipeline/input/UAL1/UAL1_Standard.glb",
+    "sourceSha256": "69591853d817488edaa8fd9bf8fc1d821eaeaf789f8627b3cd23b41c4ed67997",
+    "clip": "Jog_Fwd_Loop",
+    "durationMs": 933,
+    "frames": 28,
+    "maxPelvisChestRelativeDegrees": 61.6423413398713
+  },
+  "roll": {
+    "source": "animation_pipeline/input/UAL1/UAL1_Standard.glb",
+    "sourceSha256": "69591853d817488edaa8fd9bf8fc1d821eaeaf789f8627b3cd23b41c4ed67997",
+    "clip": "Roll",
+    "durationMs": 1467,
+    "frames": 45,
+    "maxPelvisChestRelativeDegrees": 63.99493933739589
+  },
+  "sword": {
+    "source": "animation_pipeline/input/UAL2/UAL2_Standard.glb",
+    "sourceSha256": "8cee20ab1bc55130092447e810e26df22dd2803eccc54f52137a7d54d7ab88a8",
+    "clip": "Sword_Regular_A",
+    "durationMs": 433,
+    "frames": 14,
+    "maxPelvisChestRelativeDegrees": 61.63415207321384
+  }
+}

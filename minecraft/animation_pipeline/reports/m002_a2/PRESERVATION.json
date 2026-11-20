@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "preservedSourceFiles": 279,
+  "authorizedChanges": [
+    "src/main/java/com/towerofentropy/animation/VisualTuning.java",
+    "src/main/java/com/towerofentropy/client/PlayerRendererR3.java",
+    "src/main/java/com/towerofentropy/client/R3VisualPose.java",
+    "docs/GDD_MINECRAFT.md",
+    "docs/README.md",
+    "validation/a1/java/com/towerofentropy/combat/A1RuntimeTest.java",
+    "validation/a1_2/java/com/towerofentropy/combat/A12Iframes.java",
+    "validation/roll/java/com/towerofentropy/combat/RollRuntimeTest.java",
+    "build.gradle",
+    "README.md",
+    ".gitignore"
+  ],
+  "godotFilesPreserved": 171,
+  "approvedAssetsPreserved": 8,
+  "geometryUvsWeightsHierarchyAndExistingSevenClipsIdentical": true,
+  "addedClips": [
+    "UAL_sprint",
+    "UAL_walk"
+  ],
+  "clipAnalysis": {
+    "UAL_sprint": {
+      "durationSeconds": 0.6666666865348816,
+      "channels": 36,
+      "maxEndpointRotationGapDegrees": 0.6466902607932233
+    },
+    "UAL_walk": {
+      "durationSeconds": 1.3333333730697632,
+      "channels": 36,
+      "maxEndpointRotationGapDegrees": 0.0000034150945850063755
+    }
+  },
+  "combatServerSourceUnchanged": true
+}

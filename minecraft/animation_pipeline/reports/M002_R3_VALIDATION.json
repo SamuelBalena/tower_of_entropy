@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "preservedFiles": 54,
+  "joints": 12,
+  "weightedVertices": 816,
+  "blendedVertices": 128,
+  "torsoBlendedVertices": 64,
+  "maxWeightError": 2.9802322387695312e-8,
+  "maxBindError": 7.549516567451064e-15,
+  "maxRestBoundsError": 0,
+  "unchangedLimbHeadUvs": true,
+  "torsoOriginalUvCornersPreserved": true,
+  "unitNormals": true,
+  "maxOldGlobalOrientationMatrixError": 9.194395919343012e-7,
+  "durations": {
+    "UAL_idle": 2.5,
+    "UAL_jog": 0.9333333373069763,
+    "UAL_roll": 1.4666666984558105,
+    "UAL_sword": 0.4333333373069763
+  },
+  "allSurfacesClosed": true,
+  "hipSeam": "shared pelvis weights on torso bottom and leg top rings",
+  "limit": "closed topology does not rule out self-intersection or volume loss at every frame"
+}

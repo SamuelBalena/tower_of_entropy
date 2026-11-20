@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="toe_globalqa"
+version="1.0"
+displayName="Tower of Entropy packaged artifact QA (not distributable)"
+[[dependencies.toe_globalqa]]
+modId="towerofentropy"
+mandatory=true
+versionRange="[0.0.1]"
+ordering="AFTER"
+side="CLIENT"

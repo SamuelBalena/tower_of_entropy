@@ -1,0 +1,495 @@
+{
+  "objects": [
+    [
+      "CS-HandProp",
+      "MESH"
+    ],
+    [
+      "CS-PoleGuide",
+      "MESH"
+    ],
+    [
+      "Human_BycocketHat",
+      "MESH"
+    ],
+    [
+      "HumanM_BodyMesh",
+      "MESH"
+    ],
+    [
+      "Rig",
+      "ARMATURE"
+    ],
+    [
+      "WGT-CircleChest",
+      "MESH"
+    ],
+    [
+      "WGT-CircleHead",
+      "MESH"
+    ],
+    [
+      "WGT-elbow_target.ik.L",
+      "MESH"
+    ],
+    [
+      "WGT-Finger",
+      "MESH"
+    ],
+    [
+      "WGT-Foot",
+      "MESH"
+    ],
+    [
+      "WGT-Hand",
+      "MESH"
+    ],
+    [
+      "WGT-Jaw",
+      "MESH"
+    ],
+    [
+      "WGT-knee_target.ik.L",
+      "MESH"
+    ],
+    [
+      "WGT-Neck",
+      "MESH"
+    ],
+    [
+      "WGT-Palm.L",
+      "MESH"
+    ],
+    [
+      "WGT-Palm.R",
+      "MESH"
+    ],
+    [
+      "WGT-Roll",
+      "MESH"
+    ],
+    [
+      "WGT-root",
+      "MESH"
+    ],
+    [
+      "WGT-Shoulder",
+      "MESH"
+    ],
+    [
+      "WGT-Spine",
+      "MESH"
+    ],
+    [
+      "WGT-Toe",
+      "MESH"
+    ],
+    [
+      "WGT-torso",
+      "MESH"
+    ]
+  ],
+  "rigs": {
+    "Rig": [
+      "B-root",
+      "B-hips",
+      "B-spine",
+      "B-chest",
+      "B-neck",
+      "B-head",
+      "B-jaw",
+      "B-shoulder.L",
+      "B-upperArm.L",
+      "B-forearm.L",
+      "B-hand.L",
+      "B-indexFinger01.L",
+      "B-indexFinger02.L",
+      "B-indexFinger03.L",
+      "B-middleFinger01.L",
+      "B-middleFinger02.L",
+      "B-middleFinger03.L",
+      "B-ringFinger01.L",
+      "B-ringFinger02.L",
+      "B-ringFinger03.L",
+      "B-pinky01.L",
+      "B-pinky02.L",
+      "B-pinky03.L",
+      "B-thumb01.L",
+      "B-thumb02.L",
+      "B-thumb03.L",
+      "Index.L",
+      "Middle.L",
+      "Ring.L",
+      "Pinky.L",
+      "Thumb.L",
+      "Palm.L",
+      "B-handProp.L",
+      "IK_UpperArm.L",
+      "IK_Forearm.L",
+      "IK_Hand.L",
+      "FK_UpperArm.L",
+      "FK_Forearm.L",
+      "FK_Hand.L",
+      "B-shoulder.R",
+      "B-upperArm.R",
+      "B-forearm.R",
+      "B-hand.R",
+      "B-indexFinger01.R",
+      "B-indexFinger02.R",
+      "B-indexFinger03.R",
+      "B-middleFinger01.R",
+      "B-middleFinger02.R",
+      "B-middleFinger03.R",
+      "B-ringFinger01.R",
+      "B-ringFinger02.R",
+      "B-ringFinger03.R",
+      "B-pinky01.R",
+      "B-pinky02.R",
+      "B-pinky03.R",
+      "B-thumb01.R",
+      "B-thumb02.R",
+      "B-thumb03.R",
+      "Index.R",
+      "Middle.R",
+      "Ring.R",
+      "Pinky.R",
+      "Thumb.R",
+      "Palm.R",
+      "B-handProp.R",
+      "FK_UpperArm.R",
+      "FK_Forearm.R",
+      "FK_Hand.R",
+      "IK_UpperArm.R",
+      "IK_Forearm.R",
+      "IK_Hand.R",
+      "B-thigh.L",
+      "B-shin.L",
+      "B-foot.L",
+      "B-toe.L",
+      "B-thigh.R",
+      "B-shin.R",
+      "B-foot.R",
+      "B-toe.R",
+      "RootRotation",
+      "PoleGuide.L",
+      "PoleGuide.R",
+      "LegPoleGuide.L",
+      "LegPoleGuide.R",
+      "IKHandPole.L",
+      "IKHandPole.R",
+      "IKLegPole.L",
+      "IKLegPole.R",
+      "Hips",
+      "Spine",
+      "Chest",
+      "Shoulder.L",
+      "Shoulder.R",
+      "Neck",
+      "Head",
+      "Jaw",
+      "IKLeg.R",
+      "FootRoll.R",
+      "footHeelRoll.R",
+      "toeRoll.R",
+      "footHeelSide01.R",
+      "footHeelSide02.R",
+      "footIKHelper.R",
+      "Toe.R",
+      "IKLeg.L",
+      "FootRoll.L",
+      "footHeelRoll.L",
+      "toeRoll.L",
+      "footHeelSide01.L",
+      "footHeelSide02.L",
+      "footIKHelper.L",
+      "Toe.L",
+      "B-spineProxy",
+      "HandProp.R",
+      "IKHand.R",
+      "IKHand.L",
+      "HandProp.L"
+    ]
+  },
+  "actions": {
+    "Bind_Rest_T_Pose": [
+      1.0,
+      11.0
+    ],
+    "Human@HandsClosed01": [
+      1.0,
+      11.0
+    ],
+    "Human@ObjectGripHands01": [
+      1.0,
+      11.0
+    ],
+    "HumanM@BowIdle01": [
+      -18.0,
+      68.0
+    ],
+    "HumanM@BowIdle02": [
+      -18.0,
+      51.0
+    ],
+    "HumanM@BowShot01 - Hold": [
+      1.0,
+      41.0
+    ],
+    "HumanM@BowShot01 - Load": [
+      -10.0,
+      26.0
+    ],
+    "HumanM@BowShot01 - Release": [
+      1.0,
+      25.0
+    ],
+    "HumanM@Idle01": [
+      -26.0,
+      123.0
+    ],
+    "HumanM@Idle01-Idle02": [
+      0.0,
+      21.0
+    ],
+    "HumanM@Idle01-Idle03": [
+      1.0,
+      81.0
+    ],
+    "HumanM@Idle01-Idle04": [
+      1.0,
+      101.0
+    ],
+    "HumanM@Idle02": [
+      -22.0,
+      123.0
+    ],
+    "HumanM@Idle02-Idle01": [
+      0.0,
+      24.0
+    ],
+    "HumanM@Idle03": [
+      -15.0,
+      116.0
+    ],
+    "HumanM@Idle03-Idle01": [
+      1.0,
+      81.0
+    ],
+    "HumanM@Idle04": [
+      -14.0,
+      149.0
+    ],
+    "HumanM@Idle04-Idle01": [
+      1.0,
+      101.0
+    ],
+    "HumanM@Run01_Backward": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@Run01_Backward [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_BackwardLeft": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@Run01_BackwardLeft [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_BackwardRight": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@Run01_BackwardRight [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_Forward": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@Run01_Forward [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_ForwardLeft": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@Run01_ForwardLeft [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_ForwardRight": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@Run01_ForwardRight [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_Left": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@Run01_Left [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@Run01_Right": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@Run01_Right [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@SheatheBack01_L": [
+      1.0,
+      23.0
+    ],
+    "HumanM@SheatheBack01_R": [
+      1.0,
+      23.0
+    ],
+    "HumanM@SheatheBack02_L": [
+      1.0,
+      34.0
+    ],
+    "HumanM@SheatheBack02_R": [
+      1.0,
+      34.0
+    ],
+    "HumanM@StrafeRun01_BackwardLeft": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@StrafeRun01_BackwardLeft [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@StrafeRun01_BackwardRight": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@StrafeRun01_BackwardRight [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@StrafeRun01_ForwardLeft": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@StrafeRun01_ForwardLeft [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@StrafeRun01_ForwardRight": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@StrafeRun01_ForwardRight [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@StrafeRun01_Left": [
+      -8.0,
+      24.0
+    ],
+    "HumanM@StrafeRun01_Left [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@StrafeRun01_Right": [
+      -8.0,
+      23.0
+    ],
+    "HumanM@StrafeRun01_Right [RM]": [
+      -8.0,
+      31.0
+    ],
+    "HumanM@UnsheatheBack01_L": [
+      1.0,
+      23.0
+    ],
+    "HumanM@UnsheatheBack01_R": [
+      1.0,
+      23.0
+    ],
+    "HumanM@UnsheatheBack02_L": [
+      1.0,
+      20.0
+    ],
+    "HumanM@UnsheatheBack02_R": [
+      1.0,
+      20.0
+    ],
+    "HumanM@Walk01_Backward": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Backward [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_BackwardLeft": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_BackwardLeft [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_BackwardRight": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_BackwardRight [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Forward": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Forward [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_ForwardLeft": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_ForwardLeft [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_ForwardRight": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_ForwardRight [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Left": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Left [RM]": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Right": [
+      -11.0,
+      32.0
+    ],
+    "HumanM@Walk01_Right [RM]": [
+      -11.0,
+      32.0
+    ]
+  }
+}

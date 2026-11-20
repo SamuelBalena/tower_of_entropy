@@ -1,0 +1,47 @@
+[
+  {
+    "pass": true,
+    "detail": "9 experimental CPM projects exported by installed CPM; FullMotion\u003dtrue",
+    "test": "export"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d102 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "idle_35"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d162 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "idle_55"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d104 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "jog_35"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d164 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "jog_55"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d104 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "sword_35"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d164 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "sword_55"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d104 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "roll_35"
+  },
+  {
+    "pass": true,
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dtrue providerCalls\u003d164 skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "roll_55"
+  }
+]

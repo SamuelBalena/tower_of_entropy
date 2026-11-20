@@ -1,0 +1,42 @@
+[
+  {
+    "pass": true,
+    "test": "export",
+    "detail": "9 experimental CPM projects exported by installed CPM; FullMotion\u003dfalse"
+  },
+  {
+    "pass": true,
+    "test": "interactive_idle",
+    "detail": "native CPM command\u003d1"
+  },
+  {
+    "pass": true,
+    "test": "interactive_jog",
+    "detail": "native CPM command\u003d1"
+  },
+  {
+    "pass": true,
+    "test": "interactive_sword",
+    "detail": "native CPM command\u003d1"
+  },
+  {
+    "pass": true,
+    "test": "interactive_end_sword",
+    "detail": "bounded one-shot parameter\u003d0"
+  },
+  {
+    "pass": true,
+    "test": "interactive_roll",
+    "detail": "native CPM command\u003d1"
+  },
+  {
+    "pass": true,
+    "test": "interactive_end_roll",
+    "detail": "bounded one-shot parameter\u003d0"
+  },
+  {
+    "pass": true,
+    "test": "interactive_off",
+    "detail": "CPM reset\u003d-1"
+  }
+]

@@ -1,0 +1,139 @@
+{
+  "status": "TECHNICAL_PASS_WITH_EXPLICIT_FALLBACKS_VISUAL_REVIEW_REQUIRED",
+  "suites": {
+    "RUNTIME.json": {
+      "passed": 43,
+      "total": 43
+    },
+    "EXTRA.json": {
+      "passed": 16,
+      "total": 16
+    },
+    "FINAL_CHECKS.json": {
+      "passed": 11,
+      "total": 11
+    },
+    "IFRAMES.json": {
+      "passed": 24,
+      "total": 24
+    },
+    "CIRCUIT.json": {
+      "passed": 1,
+      "total": 1
+    },
+    "RESTART.json": {
+      "passed": 2,
+      "total": 2
+    },
+    "regression_a1/RUNTIME.json": {
+      "passed": 145,
+      "total": 145
+    },
+    "ROLL_REGRESSION.json": {
+      "passed": 167,
+      "total": 167
+    },
+    "VISUAL_ANALYSIS.json": {
+      "passed": 32,
+      "total": 32
+    },
+    "VIEWER_TEST.json": {
+      "passed": 6,
+      "total": 6
+    }
+  },
+  "builds": {
+    "normal": {
+      "pass": true,
+      "duration": "15s"
+    },
+    "r31": {
+      "pass": true,
+      "duration": "20s"
+    }
+  },
+  "artifact": {
+    "status": "PASS",
+    "bytes": 1703487,
+    "sha256": "A8F17FAF359B1BD8A1A95E5CCA366B8E2D6D3849D2A06E085322511C1751E382",
+    "entries": 98,
+    "noQaOrR31Classes": true,
+    "approvedGlbSha256": "D85077ED22AA3DCF598F696378060787B046389B87B7B2285E911561AFAC284A",
+    "fullCoverageGlbSha256": "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+    "visualSupportIncluded": true
+  },
+  "preservation": {
+    "status": "PASS",
+    "unchangedBaselineFiles": 304,
+    "authorizedChanges": [
+      "src/main/java/com/towerofentropy/client/HorizontalLocomotion.java",
+      "src/main/java/com/towerofentropy/client/PlayerRendererR3.java",
+      "src/main/java/com/towerofentropy/client/R3VisualPose.java",
+      "docs/GDD_MINECRAFT.md",
+      "docs/README.md",
+      "validation/a1/java/com/towerofentropy/combat/A1RuntimeTest.java",
+      "validation/a1_2/java/com/towerofentropy/combat/A12Iframes.java",
+      "validation/roll/java/com/towerofentropy/combat/RollRuntimeTest.java",
+      "build.gradle",
+      "README.md",
+      ".gitignore"
+    ],
+    "godotFilesPreserved": 171,
+    "approvedNineClipsAndModelDataPreserved": true,
+    "combatServerCodeUnchanged": true,
+    "totalPackagedClips": 30,
+    "newPackagedClips": [
+      "UAL_backward",
+      "UAL_bow_hold",
+      "UAL_bow_idle",
+      "UAL_bow_load",
+      "UAL_bow_release",
+      "UAL_chop",
+      "UAL_consume",
+      "UAL_crouch_idle",
+      "UAL_crouch_move",
+      "UAL_death",
+      "UAL_hit_chest",
+      "UAL_hit_head",
+      "UAL_hit_knockback",
+      "UAL_jump_land",
+      "UAL_jump_loop",
+      "UAL_jump_start",
+      "UAL_strafe_left",
+      "UAL_strafe_right",
+      "UAL_swim",
+      "UAL_swim_idle",
+      "UAL_torch"
+    ]
+  },
+  "bowAim": {
+    "pass": true,
+    "cases": 125,
+    "maxDirectionComponentError": 5.704974054621176e-16,
+    "source": "Local unmodified vanilla 1.20.1 bow_pulling_2 sprite and R3 draw-space transforms; model attachment only, not projectile physics"
+  },
+  "evidence": {
+    "series": 36,
+    "uniquePngs": 1296,
+    "captureHz": 10,
+    "compactImages": 15,
+    "sources": [
+      "RUNTIME.json",
+      "EXTRA.json",
+      "FINAL_CHECKS.json"
+    ],
+    "aestheticApproval": "PENDING_USER"
+  },
+  "compactZipBytes": 1209606,
+  "playableWorld": "run-a3/saves/TOE_A3",
+  "aestheticApproval": "PENDING_USER",
+  "limits": [
+    "No 100% coverage claim",
+    "Bow aim moving/crouched/air/water or extreme pitch: vanilla fallback",
+    "Pickaxe UASSET conversion/licensing blocked",
+    "No headshot event invented; Hit_Head not automatic",
+    "Excluded actions remain vanilla",
+    "Remote multiplayer/dedicated server not homologated",
+    "No formal A3 performance benchmark"
+  ]
+}

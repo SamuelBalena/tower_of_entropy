@@ -1,0 +1,7 @@
+[
+  {
+    "test": "restart_disabled",
+    "pass": true,
+    "detail": "combat and locomotion sessions absent"
+  }
+]

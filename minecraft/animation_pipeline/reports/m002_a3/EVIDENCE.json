@@ -1,0 +1,12 @@
+{
+  "series": 36,
+  "uniquePngs": 1296,
+  "captureHz": 10,
+  "compactImages": 15,
+  "sources": [
+    "RUNTIME.json",
+    "EXTRA.json",
+    "FINAL_CHECKS.json"
+  ],
+  "aestheticApproval": "PENDING_USER"
+}

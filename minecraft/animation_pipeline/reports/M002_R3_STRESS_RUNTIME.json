@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "test": "stress_jog_90",
+      "pass": true,
+      "detail": "maximum source pelvis/chest sample t=0.33333334"
+    },
+    {
+      "test": "stress_sword_270",
+      "pass": true,
+      "detail": "maximum source pelvis/chest sample t=0.16666667"
+    },
+    {
+      "test": "stress_roll_90",
+      "pass": true,
+      "detail": "maximum source pelvis/chest sample t=0.46666667"
+    },
+    {
+      "test": "stress_roll_270",
+      "pass": true,
+      "detail": "maximum source pelvis/chest sample t=0.46666667"
+    }
+  ],
+  "draws": 774,
+  "meanCpuDrawMs": 0.5683222222222222,
+  "maxCpuDrawMs": 6.2319
+}

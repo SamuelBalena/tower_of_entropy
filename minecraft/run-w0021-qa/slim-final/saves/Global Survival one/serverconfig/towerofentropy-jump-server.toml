@@ -1,0 +1,4 @@
+#Fraction of the vanilla sprint takeoff impulse added once along ground travel.
+#Range: 0.0 ~ 0.3
+sprintJumpBonus = 0.15
+

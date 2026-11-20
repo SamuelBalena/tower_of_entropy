@@ -1,0 +1,34 @@
+{
+  "series": 120,
+  "pngs": 4320,
+  "captureHz": 10,
+  "scenarios": [
+    "idle",
+    "walk",
+    "jog",
+    "sprint",
+    "backward",
+    "left",
+    "right",
+    "diagonal",
+    "reverse",
+    "start_stop",
+    "speed_change",
+    "sword_jog",
+    "attack_return",
+    "roll_return",
+    "wall",
+    "uneven",
+    "jump",
+    "crouch",
+    "gait_cycle",
+    "remapped_sprint"
+  ],
+  "angles": [
+    "front",
+    "side",
+    "back"
+  ],
+  "compactPairs": 12,
+  "alignment": "Same scenario ticks, 100 ms sample accuracy; real Minecraft PNG, no generated intermediate frames"
+}

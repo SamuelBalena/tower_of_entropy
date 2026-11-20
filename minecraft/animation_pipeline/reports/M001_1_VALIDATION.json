@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "sourceFilesPreserved": 171,
+  "rootParts": 6,
+  "splitCubes": 16,
+  "animatedParts": 10,
+  "frames": 75,
+  "durationMs": 2500,
+  "loop": true,
+  "skinUV": "64x64",
+  "geometry": "8x8x8 head; 8x12x4 body; four 4x12x4 limbs split at 6 pixels",
+  "modelBinaryValidation": "Performed separately with installed CPM ModelFile.load in Minecraft; see logs"
+}

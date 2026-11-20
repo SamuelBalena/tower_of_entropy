@@ -1,0 +1,9 @@
+﻿{
+    "sha256":  "189CDDDB9B8C54A70AEF0EE43D76F8CA8BD79CECAD5ECB2FACA36F62AF33C820",
+    "qaAndR31Excluded":  true,
+    "bytes":  408214,
+    "path":  "build/libs/towerofentropy-0.0.1.jar",
+    "entries":  80,
+    "status":  "PASS",
+    "approvedAnimationModelMatches":  true
+}

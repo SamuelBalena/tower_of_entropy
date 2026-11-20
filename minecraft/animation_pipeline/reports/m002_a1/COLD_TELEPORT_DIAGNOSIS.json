@@ -1,0 +1,6 @@
+﻿{
+    "observed":  "TOE_A1 ATTACK_FALLBACK unsupported=true speed=0.0 ground=false swing=false hurt=0",
+    "result":  "Fixture invalida para inicio a frio",
+    "correction":  "Estabilizar teleport por 20 ticks antes de enable + requestAttack no mesmo task.",
+    "cause":  "Ataque solicitado no mesmo task do teleport; no tick seguinte o jogador perdeu contato com o chao e o cancelamento de estado invalido funcionou."
+}

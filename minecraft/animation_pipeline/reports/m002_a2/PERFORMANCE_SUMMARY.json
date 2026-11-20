@@ -1,0 +1,218 @@
+{
+  "environment": {
+    "width": 854,
+    "height": 480,
+    "renderDistance": 5,
+    "simulationDistance": 5,
+    "graphics": "fancy",
+    "vsync": true,
+    "frameLimit": 60,
+    "fov": 50,
+    "warmupTicks": 320
+  },
+  "workloads": {
+    "idle": {
+      "before": {
+        "samples": 888,
+        "meanPipelineMs": 0.6759914414414415,
+        "p95PipelineMs": 0.9687,
+        "meanFrameMs": 16.737933672316395,
+        "meanFPS": 59.74453116957585,
+        "low1PercentFPS": 48.065445911152636,
+        "roundMeanPipelineMs": [
+          0.6633503378378378,
+          0.6971013513513511,
+          0.6675226351351352
+        ]
+      },
+      "after": {
+        "samples": 886,
+        "meanPipelineMs": 0.6374781038374722,
+        "p95PipelineMs": 1.0441,
+        "meanFrameMs": 16.758775311438306,
+        "meanFPS": 59.670231351420625,
+        "low1PercentFPS": 47.58981387623793,
+        "roundMeanPipelineMs": [
+          0.5764118644067802,
+          0.6378711864406779,
+          0.6979462837837831
+        ]
+      },
+      "pipelineDeltaMs": -0.038513337603969355,
+      "pipelineDeltaPercent": -5.6973114218496494
+    },
+    "walk": {
+      "before": {
+        "samples": 888,
+        "meanPipelineMs": 0.6237389639639639,
+        "p95PipelineMs": 0.7794,
+        "meanFrameMs": 16.73785050847459,
+        "meanFPS": 59.74482801681656,
+        "low1PercentFPS": 49.42179248448292,
+        "roundMeanPipelineMs": [
+          0.6075297297297295,
+          0.6424094594594589,
+          0.621277702702703
+        ]
+      },
+      "after": {
+        "samples": 885,
+        "meanPipelineMs": 0.6719822598870053,
+        "p95PipelineMs": 1.0725,
+        "meanFrameMs": 16.750351133786832,
+        "meanFPS": 59.70024102855479,
+        "low1PercentFPS": 47.05156590225298,
+        "roundMeanPipelineMs": [
+          0.660362372881356,
+          0.6757857627118647,
+          0.6797986440677966
+        ]
+      },
+      "pipelineDeltaMs": 0.04824329592304144,
+      "pipelineDeltaPercent": 7.734532987397058
+    },
+    "sprint": {
+      "before": {
+        "samples": 887,
+        "meanPipelineMs": 0.6429485907553548,
+        "p95PipelineMs": 0.8825,
+        "meanFrameMs": 16.733401583710403,
+        "meanFPS": 59.7607124288153,
+        "low1PercentFPS": 51.27953843857224,
+        "roundMeanPipelineMs": [
+          0.6526925423728814,
+          0.6846199324324321,
+          0.5915662162162165
+        ]
+      },
+      "after": {
+        "samples": 887,
+        "meanPipelineMs": 0.6211305524238996,
+        "p95PipelineMs": 1.1148,
+        "meanFrameMs": 16.734405429864264,
+        "meanFPS": 59.75712756518958,
+        "low1PercentFPS": 48.52411217049432,
+        "roundMeanPipelineMs": [
+          0.5866694915254232,
+          0.6131070945945947,
+          0.6634986486486485
+        ]
+      },
+      "pipelineDeltaMs": -0.021818038331455236,
+      "pipelineDeltaPercent": -3.3934343499878894
+    },
+    "transitions": {
+      "before": {
+        "samples": 886,
+        "meanPipelineMs": 0.6611992099322802,
+        "p95PipelineMs": 0.9467,
+        "meanFrameMs": 16.725954133635337,
+        "meanFPS": 59.78732166848606,
+        "low1PercentFPS": 49.8795961969579,
+        "roundMeanPipelineMs": [
+          0.6007770270270274,
+          0.6599810169491525,
+          0.7230444067796608
+        ]
+      },
+      "after": {
+        "samples": 887,
+        "meanPipelineMs": 0.6390149943630204,
+        "p95PipelineMs": 0.972,
+        "meanFrameMs": 16.74723156108597,
+        "meanFPS": 59.71136162729186,
+        "low1PercentFPS": 46.756792982740514,
+        "roundMeanPipelineMs": [
+          0.6419766101694916,
+          0.6216513513513515,
+          0.6534270270270275
+        ]
+      },
+      "pipelineDeltaMs": -0.022184215569259758,
+      "pipelineDeltaPercent": -3.355148529522878
+    }
+  },
+  "initial": {
+    "before": {
+      "samples": 120,
+      "meanPipelineMs": 1.7330091666666674,
+      "maxPipelineMs": 9.2632,
+      "maxFrameIntervalMs": 108.6766,
+      "firstUse": {
+        "UAL_idle": {
+          "samples": 30,
+          "meanPipelineMs": 2.8925500000000004,
+          "maxPipelineMs": 9.2632,
+          "maxFrameIntervalMs": 68.1479
+        },
+        "UAL_heavy": {
+          "samples": 30,
+          "meanPipelineMs": 0.7221499999999997,
+          "maxPipelineMs": 1.1427,
+          "maxFrameIntervalMs": 18.9928
+        },
+        "UAL_sword_b": {
+          "samples": 30,
+          "meanPipelineMs": 0.7068933333333334,
+          "maxPipelineMs": 1.1272,
+          "maxFrameIntervalMs": 19.2965
+        },
+        "UAL_jog": {
+          "samples": 30,
+          "meanPipelineMs": 0.6059066666666667,
+          "maxPipelineMs": 0.7824,
+          "maxFrameIntervalMs": 18.5601
+        }
+      }
+    },
+    "after": {
+      "samples": 120,
+      "meanPipelineMs": 2.0899783333333324,
+      "maxPipelineMs": 11.7853,
+      "maxFrameIntervalMs": 81.9545,
+      "firstUse": {
+        "UAL_idle": {
+          "samples": 30,
+          "meanPipelineMs": 4.070203333333333,
+          "maxPipelineMs": 11.7853,
+          "maxFrameIntervalMs": 81.9545
+        },
+        "UAL_heavy": {
+          "samples": 30,
+          "meanPipelineMs": 0.6021799999999999,
+          "maxPipelineMs": 0.9457,
+          "maxFrameIntervalMs": 18.7661
+        },
+        "UAL_sword_b": {
+          "samples": 30,
+          "meanPipelineMs": 0.5249333333333334,
+          "maxPipelineMs": 0.594,
+          "maxFrameIntervalMs": 19.3145
+        },
+        "UAL_jog": {
+          "samples": 30,
+          "meanPipelineMs": 0.68895,
+          "maxPipelineMs": 1.0715,
+          "maxFrameIntervalMs": 19.6947
+        },
+        "UAL_walk": {
+          "samples": 30,
+          "meanPipelineMs": 0.6311500000000001,
+          "maxPipelineMs": 1.1293,
+          "maxFrameIntervalMs": 19.199
+        },
+        "UAL_sprint": {
+          "samples": 30,
+          "meanPipelineMs": 0.5984766666666667,
+          "maxPipelineMs": 1.7095,
+          "maxFrameIntervalMs": 18.6629
+        }
+      }
+    }
+  },
+  "gpuTime": "unavailable",
+  "notes": [
+    "Renderer microbenchmark uses equal R3 geometry; old Walk/Sprint substitute old Jog, not a measurement of old vanilla Sprint fallback GPU cost.",
+    "First 120 eligible R3 frames and first 30 per clip are reported separately from warmed blocks; full application boot and GPU stalls are not isolated."
+  ]
+}

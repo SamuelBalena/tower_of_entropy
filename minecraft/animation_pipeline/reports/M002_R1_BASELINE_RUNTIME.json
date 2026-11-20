@@ -1,0 +1,47 @@
+[
+  {
+    "detail": "9 experimental CPM projects exported by installed CPM; FullMotion\u003dfalse",
+    "test": "export",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "idle_35",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "idle_55",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "jog_35",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "jog_55",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "sword_35",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "sword_55",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "roll_35",
+    "pass": true
+  },
+  {
+    "detail": "CPM definition\u003dtrue pose\u003d1 FM\u003dfalse skin\u003dminecraft:textures/entity/player/wide/steve.png model\u003ddefault pos\u003d(0.5, 100.0, 0.5)",
+    "test": "roll_55",
+    "pass": true
+  }
+]

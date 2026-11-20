@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "test": "images_categories_markers",
+      "pass": true,
+      "detail": {
+        "width": 854,
+        "categories": 29,
+        "markers": 5
+      }
+    },
+    {
+      "test": "normal_slow_playback",
+      "pass": true,
+      "detail": {
+        "normal": 0.633299999999998,
+        "slow": 0.1583250000000016,
+        "ratio": 3.9999999999999467
+      }
+    },
+    {
+      "test": "single_frame",
+      "pass": true,
+      "detail": 1.1
+    },
+    {
+      "test": "side_angle",
+      "pass": true,
+      "detail": {
+        "src": "screenshots/side/bow_shot/050.png",
+        "loaded": true
+      }
+    },
+    {
+      "test": "fallback_labeled",
+      "pass": true,
+      "detail": "VANILLA / FALLBACK · vida 20 · usando item false · origem RUNTIME.json"
+    },
+    {
+      "test": "no_browser_errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "browser": "Existing Microsoft Edge, local isolated profile"
+}

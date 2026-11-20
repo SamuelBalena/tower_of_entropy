@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "m001_1BaselinePreserved": true,
+  "godotFilesPreserved": 171,
+  "source": "UAL1 Jog_Fwd_Loop",
+  "durationMs": 933,
+  "frames": 28,
+  "sameRig": true,
+  "exclusiveCustomPoses": [
+    "toe_idle",
+    "toe_jog"
+  ],
+  "rootMotionPolicy": "Source translations discarded; controller observes movement only"
+}

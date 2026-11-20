@@ -1,0 +1,9 @@
+﻿{
+    "status":  "PASS",
+    "bytes":  419521,
+    "sha256":  "C23774C387E5EFAF3137AF4148B2A8FF2DB2E4BCB2C4E90393A5C47C9F5F3E4A",
+    "entries":  84,
+    "noQaOrR31Classes":  true,
+    "approvedGlbSha256":  "D85077ED22AA3DCF598F696378060787B046389B87B7B2285E911561AFAC284A",
+    "visualSupportIncluded":  true
+}

@@ -1,0 +1,17 @@
+{
+  "series": 60,
+  "pngs": 5460,
+  "fps": 20,
+  "variants": [
+    "before",
+    "after"
+  ],
+  "scenarios": 10,
+  "angles": [
+    "front",
+    "side",
+    "back"
+  ],
+  "alignment": "First attack source-clock origin aligned; frame selection accuracy limited to 50 ms capture steps",
+  "source": "Real Minecraft screenshots; baseline uses preserved legacy path; no generated in-between frames"
+}

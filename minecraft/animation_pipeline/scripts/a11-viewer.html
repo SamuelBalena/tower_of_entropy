@@ -1,0 +1,41 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tower of Entropy · M002.A1.1</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui;background:#101217;color:#e3e8f0}body{max-width:1600px;margin:24px auto;padding:0 20px}h1{font-size:24px;margin-bottom:8px}p{color:#b2bdcd;line-height:1.5}button,select,input{font:inherit}button,select{padding:8px 12px;background:#202734;border:1px solid #455168;color:inherit;border-radius:5px}button{cursor:pointer}button:hover{background:#303c4e}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:20px 0}.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:#171d27;padding:12px;border-radius:8px;min-width:0}.panel img{width:100%;aspect-ratio:854/480;object-fit:contain;background:#080b10;image-rendering:pixelated}.panel .controls{margin:0 0 10px}.caption{min-height:46px;font:13px ui-monospace,monospace;color:#b8c8db;margin-top:8px}.markers{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.markers button{font-size:12px;padding:5px 7px}#seek{flex:1;min-width:180px}.note{font-size:13px}footer{margin-top:24px;font-size:13px;color:#a1aec0}@media(max-width:850px){.panels{grid-template-columns:1fr}}
+</style>
+<h1>Tower of Entropy — ataques e transições</h1>
+<p>Capturas reais do cliente Forge com Polymesh R3. Compare movimentos e ângulos no mesmo relógio. <strong>1× corresponde a 20 amostras por segundo</strong>; câmera lenta repete essas amostras, sem inventar quadros intermediários. A aprovação estética é do usuário.</p>
+<div class="controls"><button id="play">Reproduzir</button><button id="previous">−1 quadro</button><button id="next">+1 quadro</button><label>Velocidade <select id="speed"><option value=".1">0,1×</option><option value=".25">0,25×</option><option value=".5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label><input id="loop" type="checkbox" checked> Repetir</label><input id="seek" type="range" min="0" max="4.5" step=".05" value="0" aria-label="Tempo"><output id="time">0,00 s</output></div>
+<div class="panels" id="panels"></div>
+<p class="note">Marcas indicam mudanças de clipe e, quando presentes na telemetria, impactos do servidor. O cenário começa com Idle antes da entrada. A câmera orbita o personagem; as animações e a física permanecem as do gameplay. Captura por tick pode registrar um quadro de renderização anterior ao estado mais recente do servidor.</p>
+<footer>Sem bibliotecas externas, servidor HTTP ou instalação de ferramentas. Este arquivo funciona aberto localmente. Para compartilhar, mantenha VIEWER.html e a pasta screenshots juntos.</footer>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+'use strict';
+const series=JSON.parse(document.querySelector('#data').textContent),names=[...new Set(series.map(s=>s.name))];
+const labels={combo:'Idle → A → B → C → Idle',heavy:'Pesado → Idle',combo_jog:'Combo → Jog',pause:'A → pausa → A',cancel_a:'A cancelado por Roll',cancel_b:'B cancelado por Roll',cancel_c:'C cancelado por Roll',cancel_heavy:'Pesado cancelado por Roll'};
+const angleLabels={front:'Frontal',side:'Lateral',back:'Traseiro'};
+let time=0,playing=false,previousClock=null;const panels=[];
+for(let i=0;i<2;i++){
+ const node=document.createElement('section');node.className='panel';node.innerHTML='<div class="controls"><select aria-label="Movimento"></select><select aria-label="Ângulo"></select></div><img alt="Quadro do Minecraft"><div class="caption"></div><div class="markers"></div>';
+ document.querySelector('#panels').append(node);const selects=node.querySelectorAll('select');
+ for(const name of names)selects[0].add(new Option(labels[name]||name,name));
+ for(const [key,label]of Object.entries(angleLabels))selects[1].add(new Option(label,key));selects[1].value=i?'side':'front';
+ const panel={node,movement:selects[0],angle:selects[1],img:node.querySelector('img'),caption:node.querySelector('.caption')};panels.push(panel);
+ selects.forEach(s=>s.addEventListener('change',()=>{markers(panel);draw();}));markers(panel);
+}
+function current(p){return series.find(s=>s.name===p.movement.value&&s.angle===p.angle.value);}
+function markers(p){const div=p.node.querySelector('.markers');div.replaceChildren();let clip='',impacts=0;
+ for(const f of current(p).frames){const labels=[];if(f.clip!==clip){clip=f.clip;labels.push(clip.replace('UAL_',''));}if(f.serverImpacts>impacts){impacts=f.serverImpacts;labels.push('tentativa de impacto · servidor');}
+  for(const text of labels){const b=document.createElement('button');b.textContent=f.t.toFixed(2)+' s · '+text;b.onclick=()=>{time=f.t;playing=false;draw();};div.append(b);}}
+}
+function duration(){return Math.max(...panels.map(p=>current(p).frames.at(-1).t));}
+function draw(){for(const p of panels){const frames=current(p).frames;let frame=frames[0];for(const f of frames){if(f.t>time+.00001)break;frame=f;}
+ if(p.img.dataset.src!==frame.src){p.img.src=frame.src;p.img.dataset.src=frame.src;}p.caption.textContent=frame.clip+' · fase '+Number(frame.clipTime).toFixed(3)+' s · tick '+frame.tick+' · tentativas de impacto '+frame.serverImpacts;}
+ document.querySelector('#seek').max=duration();document.querySelector('#seek').value=time;document.querySelector('#time').textContent=time.toFixed(2).replace('.',',')+' s';document.querySelector('#play').textContent=playing?'Pausar':'Reproduzir';}
+document.querySelector('#play').onclick=()=>{playing=!playing;previousClock=null;draw();};
+document.querySelector('#previous').onclick=()=>{playing=false;time=Math.max(0,time-.05);draw();};document.querySelector('#next').onclick=()=>{playing=false;time=Math.min(duration(),time+.05);draw();};
+document.querySelector('#seek').oninput=e=>{playing=false;time=Number(e.target.value);draw();};
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&e.target===document.body){e.preventDefault();playing=!playing;previousClock=null;draw();}});
+function tick(now){if(playing&&previousClock!==null){time+=(now-previousClock)/1000*Number(document.querySelector('#speed').value);if(time>duration()){if(document.querySelector('#loop').checked)time%=duration();else{time=duration();playing=false;}}draw();}previousClock=now;requestAnimationFrame(tick);}draw();requestAnimationFrame(tick);
+</script></html>

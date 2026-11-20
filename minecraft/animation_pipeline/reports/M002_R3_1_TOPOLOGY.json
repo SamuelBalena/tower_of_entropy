@@ -1,0 +1,64 @@
+{
+  "meshes": [
+    {
+      "object": "head",
+      "boundaryEdges": 0,
+      "vertices": 8
+    },
+    {
+      "object": "head_outer",
+      "boundaryEdges": 0,
+      "vertices": 8
+    },
+    {
+      "object": "body",
+      "boundaryEdges": 0,
+      "vertices": 28
+    },
+    {
+      "object": "body_outer",
+      "boundaryEdges": 0,
+      "vertices": 28
+    },
+    {
+      "object": "limb_2",
+      "boundaryEdges": 0,
+      "vertices": 36
+    },
+    {
+      "object": "limb_2_outer",
+      "boundaryEdges": 0,
+      "vertices": 36
+    },
+    {
+      "object": "limb_3",
+      "boundaryEdges": 0,
+      "vertices": 36
+    },
+    {
+      "object": "limb_3_outer",
+      "boundaryEdges": 0,
+      "vertices": 36
+    },
+    {
+      "object": "limb_4",
+      "boundaryEdges": 0,
+      "vertices": 40
+    },
+    {
+      "object": "limb_4_outer",
+      "boundaryEdges": 0,
+      "vertices": 40
+    },
+    {
+      "object": "limb_5",
+      "boundaryEdges": 0,
+      "vertices": 40
+    },
+    {
+      "object": "limb_5_outer",
+      "boundaryEdges": 0,
+      "vertices": 40
+    }
+  ]
+}

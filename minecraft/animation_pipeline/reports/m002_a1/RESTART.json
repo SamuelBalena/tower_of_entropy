@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "test": "restart_clean",
+      "detail": "default R3, no stale actions",
+      "pass": true
+    }
+  ],
+  "renderErrors": 0,
+  "trace": []
+}

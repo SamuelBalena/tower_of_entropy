@@ -1,0 +1,11 @@
+{
+  "trace": [],
+  "checks": [
+    {
+      "detail": "R3 plus original wrist attachment",
+      "pass": true,
+      "test": "heavy_visual_render"
+    }
+  ],
+  "renderErrors": 0
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "test": "initial_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0] roll\u003d0 sword\u003d0 body\u003dVec3[14,009, 13,277, -0,071] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "key_registration",
+    "pass": true,
+    "detail": "Forge mappings V/J, Tower of Entropy category"
+  },
+  {
+    "test": "roll_key_236",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d1 sword\u003d0 body\u003dVec3[68,731, 9,727, -0,704] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "roll_key_246",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d1 sword\u003d0 body\u003dVec3[275,184, -2,984, -2,668] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "roll_key_256",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d1 sword\u003d0 body\u003dVec3[392,634, 12,351, -0,934] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "roll_to_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d0 sword\u003d0 body\u003dVec3[18,016, 13,277, -0,077] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "stationary_roll_no_displacement",
+    "pass": true,
+    "detail": "drift\u003d0.0"
+  },
+  {
+    "test": "roll_one_start",
+    "pass": true,
+    "detail": "commands\u003d1"
+  },
+  {
+    "test": "chat_suppressed",
+    "pass": true,
+    "detail": "commands\u003d1"
+  },
+  {
+    "test": "menus_suppressed",
+    "pass": true,
+    "detail": "commands\u003d1"
+  },
+  {
+    "test": "sword_354",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dSWORD_ATTACK, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d2] roll\u003d0 sword\u003d1 body\u003dVec3[63,074, 40,376, 6,980] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "iron_sword_354",
+    "pass": true,
+    "detail": "1 iron_sword"
+  },
+  {
+    "test": "sword_358",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dSWORD_ATTACK, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d2] roll\u003d0 sword\u003d1 body\u003dVec3[167,430, -42,399, -176,319] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "iron_sword_358",
+    "pass": true,
+    "detail": "1 iron_sword"
+  },
+  {
+    "test": "sword_to_idle",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d2] roll\u003d0 sword\u003d0 body\u003dVec3[16,894, 13,277, -0,071] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "stationary_sword_no_displacement",
+    "pass": true,
+    "detail": "drift\u003d0.0"
+  },
+  {
+    "test": "sword_first_wins",
+    "pass": true,
+    "detail": "commands\u003d2"
+  },
+  {
+    "test": "roll_rejects_sword",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d3] roll\u003d1 sword\u003d0 body\u003dVec3[206,058, -2,846, 9,217] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "roll_first_wins",
+    "pass": true,
+    "detail": "commands\u003d3"
+  },
+  {
+    "test": "second_roll_returns",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d3] roll\u003d0 sword\u003d0 body\u003dVec3[18,026, 13,277, -0,077] pos\u003d(4.54482418069411, 100.0, 72.50238619593041)"
+  },
+  {
+    "test": "baseline_forward",
+    "pass": true,
+    "detail": "distance\u003d8.374761235223517"
+  },
+  {
+    "test": "jog_to_roll",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d4, modelAssignments\u003d1, speed\u003d0.21585887360220113, forward\u003d1.0, actionCommands\u003d4] roll\u003d1 sword\u003d0 body\u003dVec3[144,344, 3,034, 7,790] pos\u003d(4.54482418069411, 100.0, 86.26986881249469)"
+  },
+  {
+    "test": "roll_forward_physics",
+    "pass": true,
+    "detail": "baseline\u003d8.374761235223517 action\u003d8.374761235223517"
+  },
+  {
+    "test": "roll_to_jog",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d4, modelAssignments\u003d1, speed\u003d0.21585906840815028, forward\u003d1.0, actionCommands\u003d4] roll\u003d0 sword\u003d0 body\u003dVec3[56,399, -34,684, -25,878] pos\u003d(4.54482418069411, 100.0, 93.82493613693683)"
+  },
+  {
+    "test": "moving_roll_stop",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d5, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d4] roll\u003d0 sword\u003d0 body\u003dVec3[16,024, 13,277, -0,077] pos\u003d(4.54482418069411, 100.0, 96.23937292343047)"
+  },
+  {
+    "test": "jog_to_sword",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dSWORD_ATTACK, attached\u003dtrue, poseCommands\u003d6, modelAssignments\u003d1, speed\u003d0.21581389654512861, forward\u003d1.0, actionCommands\u003d5] roll\u003d0 sword\u003d1 body\u003dVec3[76,754, 39,723, 10,771] pos\u003d(4.54482418069411, 100.0, 99.21768711024853)"
+  },
+  {
+    "test": "sword_to_jog",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d6, modelAssignments\u003d1, speed\u003d0.21585905895524604, forward\u003d1.0, actionCommands\u003d5] roll\u003d0 sword\u003d0 body\u003dVec3[60,013, 33,946, 18,701] pos\u003d(4.54482418069411, 100.0, 102.45554347795358)"
+  },
+  {
+    "test": "sword_forward_physics",
+    "pass": true,
+    "detail": "baseline\u003d8.374761235223517 action\u003d8.374761235223517"
+  },
+  {
+    "test": "sword_key_empty_hand",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dSWORD_ATTACK, attached\u003dtrue, poseCommands\u003d7, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d6] roll\u003d0 sword\u003d1 body\u003dVec3[36,430, 27,356, -1,704] pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "unequipped",
+    "pass": true,
+    "detail": "main hand empty"
+  },
+  {
+    "test": "empty_sword_returns",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d7, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d6] roll\u003d0 sword\u003d0 body\u003dVec3[18,915, 13,277, -0,077] pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "before_off_active",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d7, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d7] roll\u003d1 sword\u003d0 body\u003dVec3[102,413, 8,671, 4,675] pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "off_mid_action",
+    "pass": true,
+    "detail": "status\u003dnull roll\u003d-1 sword\u003d-1 body\u003dnone pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "before_jump_active",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dROLL, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d1 sword\u003d0 body\u003dVec3[89,560, 9,525, 2,432] pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "jump_cancels_action",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dVANILLA_FALLBACK, attached\u003dfalse, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d-1 sword\u003d-1 body\u003dnone pos\u003d(4.54482418069411, 101.24918707874468, 104.86998026105827)"
+  },
+  {
+    "test": "landing_clears_residue",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d2, modelAssignments\u003d2, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1] roll\u003d0 sword\u003d0 body\u003dVec3[18,949, 13,277, -0,077] pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  },
+  {
+    "test": "reconnect_disabled",
+    "pass": true,
+    "detail": "status\u003dnull roll\u003d-1 sword\u003d-1 body\u003dnone pos\u003d(4.54482418069411, 100.0, 104.86998026105827)"
+  }
+]

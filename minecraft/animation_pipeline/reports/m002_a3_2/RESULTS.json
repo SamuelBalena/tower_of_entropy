@@ -1,0 +1,244 @@
+{
+  "status": "TECHNICAL_PASS_VISUAL_APPROVAL_REQUIRED",
+  "suites": {
+    "movement": {
+      "pass": 142,
+      "total": 142,
+      "file": "MOVEMENT_RUNTIME.json"
+    },
+    "directions": {
+      "pass": 27,
+      "total": 27,
+      "file": "DIRECTIONS.json"
+    },
+    "combat": {
+      "pass": 145,
+      "total": 145,
+      "file": "regression_a1/RUNTIME.json"
+    },
+    "iframes": {
+      "pass": 24,
+      "total": 24,
+      "file": "IFRAMES.json"
+    },
+    "vanilla": {
+      "pass": 16,
+      "total": 16,
+      "file": "vanilla/RUNTIME.json"
+    },
+    "worlds": {
+      "pass": 24,
+      "total": 24,
+      "file": "global/GLOBAL_RUNTIME.json"
+    }
+  },
+  "distances": {
+    "A": 0.18000000000000016,
+    "B": 0.2200000000000002,
+    "C": 0.2799999999999998,
+    "heavy": 0.32000000000000006,
+    "combo": 0.6800000000000002
+  },
+  "recovery": {
+    "roll_idle": {
+      "firstFreeTickAfterInput": 16,
+      "secondsAfterInput": 0.8,
+      "postClips": [
+        "UAL_idle"
+      ],
+      "inspectionWindow": "first 500ms after release; later terrain collisions excluded"
+    },
+    "roll_walk": {
+      "firstFreeTickAfterInput": 16,
+      "secondsAfterInput": 0.8,
+      "postClips": [
+        "UAL_jog"
+      ],
+      "inspectionWindow": "first 500ms after release; later terrain collisions excluded"
+    },
+    "roll_sprint": {
+      "firstFreeTickAfterInput": 16,
+      "secondsAfterInput": 0.8,
+      "postClips": [
+        "UAL_sprint"
+      ],
+      "inspectionWindow": "first 500ms after release; later terrain collisions excluded"
+    },
+    "roll_diag": {
+      "firstFreeTickAfterInput": 16,
+      "secondsAfterInput": 0.8,
+      "postClips": [
+        "UAL_jog"
+      ],
+      "inspectionWindow": "first 500ms after release; later terrain collisions excluded"
+    },
+    "roll_sprint_diag": {
+      "firstFreeTickAfterInput": 16,
+      "secondsAfterInput": 0.8,
+      "postClips": [
+        "UAL_sprint"
+      ],
+      "inspectionWindow": "first 500ms after release; later terrain collisions excluded"
+    }
+  },
+  "continuousComboLock": true,
+  "cancelledAttackAddsNoResidualToRoll": true,
+  "builds": {
+    "normal": "20s",
+    "r31": "23s"
+  },
+  "artifact": {
+    "status": "PASS",
+    "bytes": 1996935,
+    "sha256": "3FC7D25421854CA10212C5E8316214F704B6E179DC70565892502D831A9CF19C",
+    "entries": 104,
+    "noQaOrR31Classes": true,
+    "models": {
+      "steve_r3": "D85077ED22AA3DCF598F696378060787B046389B87B7B2285E911561AFAC284A",
+      "steve_a3": "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+      "steve_a3_slim": "E659DA6A5B22C134D48ECF6CE747EC8E5E2510C2A6CF5F7C82CE85D3F2513BEC"
+    },
+    "runtimeResourcesIncluded": true,
+    "scope": "Artifact audit; not a production-profile runtime launch"
+  },
+  "preservation": {
+    "status": "PASS",
+    "godotFilesPreserved": 171,
+    "classicAndSlimAssetsUnchanged": true,
+    "approvedOlderAssetsUnchanged": true,
+    "preservedCode": [
+      "combat/CombatMove.java",
+      "combat/SwordTargeting.java",
+      "combat/RollDamageFilter.java",
+      "client/UpperBodyPose.java"
+    ],
+    "rollKeyframes": [
+      {
+        "frame": 0,
+        "t": 0,
+        "chest": {
+          "x": 48.08000285571512,
+          "y": 9.28668004813909,
+          "z": 359.03715435279764
+        }
+      },
+      {
+        "frame": 5,
+        "t": 0.16666666666666666,
+        "chest": {
+          "x": 78.3826945681443,
+          "y": 9.828764503217315,
+          "z": 0.3749131306865934
+        }
+      },
+      {
+        "frame": 10,
+        "t": 0.3333333333333333,
+        "chest": {
+          "x": 126.33057791082103,
+          "y": 5.75785606903861,
+          "z": 7.011049349790937
+        }
+      },
+      {
+        "frame": 15,
+        "t": 0.5,
+        "chest": {
+          "x": 226.92121701203126,
+          "y": 356.85170344971147,
+          "z": 7.912826945501138
+        }
+      },
+      {
+        "frame": 20,
+        "t": 0.6666666666666666,
+        "chest": {
+          "x": 312.05025187412804,
+          "y": 359.0522731013003,
+          "z": 352.66613889804995
+        }
+      },
+      {
+        "frame": 25,
+        "t": 0.8333333333333334,
+        "chest": {
+          "x": 41.88886182969321,
+          "y": 9.582708859008449,
+          "z": 358.0086125212114
+        }
+      },
+      {
+        "frame": 30,
+        "t": 1,
+        "chest": {
+          "x": 48.01497064692302,
+          "y": 11.679831165176893,
+          "z": 358.43983002373227
+        }
+      },
+      {
+        "frame": 35,
+        "t": 1.1666666666666667,
+        "chest": {
+          "x": 25.46925178247801,
+          "y": 12.670622646488823,
+          "z": 359.3650314620209
+        }
+      },
+      {
+        "frame": 40,
+        "t": 1.3333333333333333,
+        "chest": {
+          "x": 12.808712548573851,
+          "y": 13.23472668947835,
+          "z": 359.93556064064256
+        }
+      },
+      {
+        "frame": 44,
+        "t": 1.4666666666666666,
+        "chest": {
+          "x": 12.808712356653757,
+          "y": 13.234726697864403,
+          "z": 359.93556065066525
+        }
+      }
+    ],
+    "attackWindows": [
+      {
+        "clip": "sword",
+        "fromTick": 1,
+        "steps": 4,
+        "distance": 0.18,
+        "impactTick": 4
+      },
+      {
+        "clip": "sword_b",
+        "fromTick": 2,
+        "steps": 4,
+        "distance": 0.22,
+        "impactTick": 5
+      },
+      {
+        "clip": "sword_c",
+        "fromTick": 10,
+        "steps": 6,
+        "distance": 0.28,
+        "impactTick": 14
+      },
+      {
+        "clip": "heavy",
+        "fromTick": 8,
+        "steps": 6,
+        "distance": 0.32,
+        "impactTick": 12
+      }
+    ]
+  },
+  "notCertified": [
+    "Dedicated server",
+    "Artificial or remote latency",
+    "Prolonged frame stalls",
+    "Final aesthetic approval"
+  ]
+}

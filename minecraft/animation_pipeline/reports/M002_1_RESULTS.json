@@ -1,0 +1,212 @@
+{
+  "date": "2026-11-13",
+  "phaseA": {
+    "validated": true,
+    "normalStartupWithoutCommands": true,
+    "visualChecks": 31,
+    "combatChecks": 132,
+    "normalBuild": true,
+    "experimentalBuild": true,
+    "decision": "User-approved Polymesh R3; phase B authorized after these checks"
+  },
+  "roll": {
+    "passed": 166,
+    "total": 166
+  },
+  "combat": {
+    "passed": 132,
+    "total": 132
+  },
+  "render": {
+    "passed": 34,
+    "total": 34
+  },
+  "restart": {
+    "passed": 1,
+    "total": 1
+  },
+  "rules": {
+    "roll": 104,
+    "sword": 18,
+    "actions": true,
+    "locomotion": true
+  },
+  "legacyUpgrade": {
+    "passed": 7,
+    "total": 7
+  },
+  "synchronization": {
+    "samples": 18,
+    "allPassed": true
+  },
+  "movement": {
+    "forward": {
+      "distance": 2.499999999999999,
+      "reason": "complete",
+      "finalX": 0.5,
+      "finalY": 100,
+      "finalZ": 2.999999999999999,
+      "finalClientSeparation": 0
+    },
+    "back": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": 0.5,
+      "finalY": 100,
+      "finalZ": -2,
+      "finalClientSeparation": 0
+    },
+    "left": {
+      "distance": 2.499999999999999,
+      "reason": "complete",
+      "finalX": 2.999999999999999,
+      "finalY": 100,
+      "finalZ": 0.5,
+      "finalClientSeparation": 0
+    },
+    "right": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": -2,
+      "finalY": 100,
+      "finalZ": 0.5,
+      "finalClientSeparation": 0
+    },
+    "forward_left": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": 2.267766952966369,
+      "finalY": 100,
+      "finalZ": 2.267766952966369,
+      "finalClientSeparation": 0
+    },
+    "forward_right": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": -1.2677669529663689,
+      "finalY": 100,
+      "finalZ": 2.267766952966369,
+      "finalClientSeparation": 0
+    },
+    "back_left": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": 2.267766952966369,
+      "finalY": 100,
+      "finalZ": -1.2677669529663689,
+      "finalClientSeparation": 0
+    },
+    "back_right": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": -1.2677669529663689,
+      "finalY": 100,
+      "finalZ": -1.2677669529663689,
+      "finalClientSeparation": 0
+    },
+    "rotated_yaw": {
+      "distance": 2.5,
+      "reason": "complete",
+      "finalX": -2,
+      "finalY": 100,
+      "finalZ": 0.5,
+      "finalClientSeparation": 0
+    },
+    "wall": {
+      "distance": 0.19999998807907104,
+      "reason": "complete",
+      "finalX": 0.5,
+      "finalY": 100,
+      "finalZ": 0.699999988079071,
+      "finalClientSeparation": 0
+    },
+    "edge": {
+      "distance": 2.499999999999999,
+      "reason": "complete",
+      "finalX": 0.5,
+      "finalY": 96,
+      "finalZ": 2.999999999999999,
+      "finalClientSeparation": 0
+    }
+  },
+  "preservation": {
+    "status": "PASS",
+    "backedUpFiles": 53,
+    "unchangedFiles": 45,
+    "authorizedChanges": [
+      "src/main/java/com/towerofentropy/animation/ActionKeys.java",
+      "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+      "src/main/java/com/towerofentropy/animation/LocomotionController.java",
+      "src/main/java/com/towerofentropy/combat/ClientCombatSmokeTest.java",
+      "src/main/java/com/towerofentropy/combat/CombatCommands.java",
+      "src/main/java/com/towerofentropy/combat/CombatController.java",
+      "src/main/resources/META-INF/mods.toml",
+      "build.gradle"
+    ],
+    "godotPreserved": 171,
+    "R3ByteIdentical": true,
+    "R31Preserved": true,
+    "damageAndSwordTargetingPreserved": true
+  },
+  "builds": {
+    "experimental-build": "BUILD SUCCESSFUL in 20s",
+    "normal-build": "BUILD SUCCESSFUL in 18s"
+  },
+  "jar": {
+    "path": "build/libs/towerofentropy-0.0.1.jar",
+    "bytes": 255000,
+    "sha256": "EB0A486B31D00186179A0DAB614A87179F2FC0801B2A577E4758B47886699C46",
+    "entries": 69,
+    "approvedR3Included": true,
+    "R31Excluded": true,
+    "testClassesExcluded": true,
+    "compatibilityIncluded": true,
+    "dependenciesNotShaded": true,
+    "R3AssetHash": "fbf1edc7b4b1883317f6fa196057c373cae6499a61b36b5b042801cf88581c32"
+  },
+  "screenshots": [
+    "m0021-armor.png",
+    "m0021-attack_busy.png",
+    "m0021-back.png",
+    "m0021-back_left.png",
+    "m0021-back_right.png",
+    "m0021-cape.png",
+    "m0021-cold_model.png",
+    "m0021-combat_off.png",
+    "m0021-death.png",
+    "m0021-edge.png",
+    "m0021-firstperson.png",
+    "m0021-forward.png",
+    "m0021-forward_left.png",
+    "m0021-forward_right.png",
+    "m0021-hurt_cancel.png",
+    "m0021-invalid_air.png",
+    "m0021-invalid_input.png",
+    "m0021-key_back.png",
+    "m0021-key_diag.png",
+    "m0021-key_forward.png",
+    "m0021-key_left.png",
+    "m0021-key_right.png",
+    "m0021-left.png",
+    "m0021-menu_cancel.png",
+    "m0021-offhand.png",
+    "m0021-off_cancel.png",
+    "m0021-right.png",
+    "m0021-rotated_yaw.png",
+    "m0021-spam.png",
+    "m0021-wall.png",
+    "m0021-water_cancel.png",
+    "r4-r3-fallback-armadura.png",
+    "r4-r3-fallback-capa.png",
+    "r4-r3-fallback-offhand.png",
+    "r4-r3-idle-0.png",
+    "r4-r3-jog-90.png",
+    "r4-r3-jog-after-roll.png",
+    "r4-r3-off-cpm.png",
+    "r4-r3-physical-roll-return.png",
+    "r4-r3-physical-roll.png",
+    "r4-r3-sword-0.png",
+    "toe-m002_0-iron_front.png",
+    "toe-m002_0-sword-before-impact.png"
+  ]
+}

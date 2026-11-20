@@ -1,0 +1,245 @@
+{
+  "metadata": {
+    "glVendor": "NVIDIA Corporation",
+    "glRenderer": "NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2",
+    "glVersion": "4.6.0 NVIDIA 582.28",
+    "java": "17.0.20.1",
+    "os": "Windows 11",
+    "cpuThreads": 12,
+    "resolution": [
+      854,
+      480
+    ],
+    "renderDistance": 5,
+    "simulationDistance": 5,
+    "vsync": false,
+    "maxFps": 260,
+    "graphics": "fancy",
+    "warmupSeconds": 192,
+    "perWindowWarmupSeconds": 3,
+    "measureSeconds": 10,
+    "onePercentLowDefinition": "1000 / arithmetic mean of slowest ceil(1% N) start-to-start frame intervals",
+    "gpuTimerSupported": true
+  },
+  "rows": [
+    {
+      "clip": "idle",
+      "profile": "r3",
+      "frames": 27546,
+      "meanFrameMs": 1.0698802112829486,
+      "meanFps": 934.6840790716639,
+      "onePercentLowFps": 389.87709548344327,
+      "fpsRange": [
+        931.6489831907577,
+        948.527788948516,
+        923.2804202932034
+      ],
+      "lowRange": [
+        397.6089321577645,
+        413.0431190929399,
+        364.81507813882956
+      ],
+      "meanDrawCpuMs": 0.4266357456275996,
+      "meanRenderEventSpanMs": 0.8058619972315743,
+      "meanProcessCpuOneCorePercent": 107.2200022015557,
+      "totalGcMs": 41,
+      "totalJitCompileMs": 422,
+      "meanGpuTimestampSpanMs": 0.21966587562170992
+    },
+    {
+      "clip": "idle",
+      "profile": "r31",
+      "frames": 28045,
+      "meanFrameMs": 1.06956589766447,
+      "meanFps": 934.9587549337766,
+      "onePercentLowFps": 385.99876700180334,
+      "fpsRange": [
+        935.7914642577165,
+        926.7041714630568,
+        942.3795179837276
+      ],
+      "lowRange": [
+        410.6638030875802,
+        377.52837450489994,
+        379.7792722869468
+      ],
+      "meanDrawCpuMs": 0.42663752453042836,
+      "meanRenderEventSpanMs": 0.8042006855522864,
+      "meanProcessCpuOneCorePercent": 114.14157429600509,
+      "totalGcMs": 8,
+      "totalJitCompileMs": 360,
+      "meanGpuTimestampSpanMs": 0.22790985459083613
+    },
+    {
+      "clip": "jog",
+      "profile": "r3",
+      "frames": 27942,
+      "meanFrameMs": 1.073505672464387,
+      "meanFps": 931.5274484804127,
+      "onePercentLowFps": 391.0906204457146,
+      "fpsRange": [
+        931.1635681923888,
+        953.8179014307959,
+        909.6011294535728
+      ],
+      "lowRange": [
+        389.51508272844546,
+        444.4035017144253,
+        362.5064733298809
+      ],
+      "meanDrawCpuMs": 0.42780448967253454,
+      "meanRenderEventSpanMs": 0.8077196291812548,
+      "meanProcessCpuOneCorePercent": 107.47665942599895,
+      "totalGcMs": 25,
+      "totalJitCompileMs": 462,
+      "meanGpuTimestampSpanMs": 0.21913339345787702
+    },
+    {
+      "clip": "jog",
+      "profile": "r31",
+      "frames": 27557,
+      "meanFrameMs": 1.088237710926438,
+      "meanFps": 918.9168781411557,
+      "onePercentLowFps": 415.96886382626235,
+      "fpsRange": [
+        907.115576437887,
+        939.8849919272521,
+        909.7478051621349
+      ],
+      "lowRange": [
+        412.8927812729984,
+        437.99075932687344,
+        402.6853359258599
+      ],
+      "meanDrawCpuMs": 0.43164036902559966,
+      "meanRenderEventSpanMs": 0.8226636711755759,
+      "meanProcessCpuOneCorePercent": 109.10373281209922,
+      "totalGcMs": 8,
+      "totalJitCompileMs": 43,
+      "meanGpuTimestampSpanMs": 0.21183568339684267
+    },
+    {
+      "clip": "sword",
+      "profile": "r3",
+      "frames": 28244,
+      "meanFrameMs": 1.061934676391449,
+      "meanFps": 941.6775082607636,
+      "onePercentLowFps": 435.0584554072001,
+      "fpsRange": [
+        951.087580351671,
+        942.259383174664,
+        931.6865050045718
+      ],
+      "lowRange": [
+        441.70383573770516,
+        449.37761200736975,
+        416.20894751826563
+      ],
+      "meanDrawCpuMs": 0.4254749489174032,
+      "meanRenderEventSpanMs": 0.8006333141848586,
+      "meanProcessCpuOneCorePercent": 106.49283292232292,
+      "totalGcMs": 10,
+      "totalJitCompileMs": 335,
+      "meanGpuTimestampSpanMs": 0.20167062592500798
+    },
+    {
+      "clip": "sword",
+      "profile": "r31",
+      "frames": 27822,
+      "meanFrameMs": 1.0780747933290162,
+      "meanFps": 927.5794278725997,
+      "onePercentLowFps": 407.91799532429474,
+      "fpsRange": [
+        909.8186002774451,
+        941.7699923458312,
+        931.1450817151821
+      ],
+      "lowRange": [
+        392.36669988129825,
+        423.8806316446078,
+        412.7328977098593
+      ],
+      "meanDrawCpuMs": 0.42953633801541263,
+      "meanRenderEventSpanMs": 0.8098623646772415,
+      "meanProcessCpuOneCorePercent": 109.66303499296403,
+      "totalGcMs": 4,
+      "totalJitCompileMs": 247,
+      "meanGpuTimestampSpanMs": 0.21240550088062976
+    },
+    {
+      "clip": "roll",
+      "profile": "r3",
+      "frames": 27410,
+      "meanFrameMs": 1.094334235680404,
+      "meanFps": 913.797601679023,
+      "onePercentLowFps": 377.5781205698931,
+      "fpsRange": [
+        940.6585009574113,
+        875.9279205135118,
+        924.8066487027284
+      ],
+      "lowRange": [
+        404.61034320327025,
+        329.94836308117783,
+        416.94294741004455
+      ],
+      "meanDrawCpuMs": 0.4339576678624811,
+      "meanRenderEventSpanMs": 0.8215710967461352,
+      "meanProcessCpuOneCorePercent": 109.30070160746868,
+      "totalGcMs": 3,
+      "totalJitCompileMs": 451,
+      "meanGpuTimestampSpanMs": 0.20324582385990514
+    },
+    {
+      "clip": "roll",
+      "profile": "r31",
+      "frames": 21575,
+      "meanFrameMs": 1.3901038841251487,
+      "meanFps": 719.3706969816449,
+      "onePercentLowFps": 333.2594813865323,
+      "fpsRange": [
+        722.9725823527244,
+        716.3576738552857,
+        718.782041782249
+      ],
+      "lowRange": [
+        318.16250258779434,
+        372.8192018458693,
+        339.95088653997516
+      ],
+      "meanDrawCpuMs": 0.7217580741183872,
+      "meanRenderEventSpanMs": 1.1129748393558723,
+      "meanProcessCpuOneCorePercent": 107.43885506480326,
+      "totalGcMs": 30,
+      "totalJitCompileMs": 342,
+      "meanGpuTimestampSpanMs": 0.2266655274648867
+    }
+  ],
+  "renderErrors": 0,
+  "preservationFiles": 86,
+  "normalJarAudit": {
+    "bytes": 93441,
+    "entries": 50,
+    "sha256": "BB1CF8A797C56AF359DFA4FBCCECE2F7688E24B89CB525B80AA730FC36762073",
+    "experimentalExcluded": true,
+    "build": "BUILD SUCCESSFUL in 20s",
+    "godotFilesPreserved": 171
+  },
+  "playback": {
+    "captures": 88,
+    "profiles": [
+      {
+        "profile": "r3",
+        "frames": 44,
+        "firstSeconds": 0.0008289999999999687,
+        "lastSeconds": 1.4343707
+      },
+      {
+        "profile": "r31",
+        "frames": 44,
+        "firstSeconds": 0.0007238999999996665,
+        "lastSeconds": 1.4335174000000004
+      }
+    ]
+  }
+}

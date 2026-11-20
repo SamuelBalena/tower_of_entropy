@@ -1,0 +1,21 @@
+{
+  "series": [],
+  "checks": [
+    {
+      "detail": "AUTO default",
+      "pass": true,
+      "test": "lifecycle_auto"
+    },
+    {
+      "detail": "normal R3",
+      "pass": true,
+      "test": "lifecycle_renderer"
+    },
+    {
+      "detail": "no stuck action",
+      "pass": true,
+      "test": "lifecycle_actions_clear"
+    }
+  ],
+  "renderErrors": 0
+}

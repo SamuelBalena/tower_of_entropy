@@ -1,0 +1,10 @@
+﻿{
+    "entries":  78,
+    "sha256":  "C7676C618B215CA5270BA6B1D32E293CF3516EB63B4A048D8458BE0BE0BFB05D",
+    "fixturesExcluded":  true,
+    "status":  "PASS",
+    "runtimeModelMatchesVerifiedCopy":  true,
+    "bytes":  404582,
+    "r31Excluded":  true,
+    "jar":  "build/libs/towerofentropy-0.0.1.jar"
+}

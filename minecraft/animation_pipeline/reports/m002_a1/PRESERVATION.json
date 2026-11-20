@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "approvedModelsAndExperimentalFilesPreserved": 25,
+  "baselineFilesUnchanged": 57,
+  "authorizedChanges": [
+    "src/main/java/com/towerofentropy/combat/RollController.java",
+    "src/main/java/com/towerofentropy/combat/CombatController.java",
+    "src/main/java/com/towerofentropy/client/PlayerRendererR3.java",
+    "src/main/java/com/towerofentropy/animation/LocomotionController.java",
+    "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+    "src/main/java/com/towerofentropy/combat/CombatCommands.java",
+    "animation_pipeline/scripts/prepare-r4.cjs",
+    "src/main/java/com/towerofentropy/combat/CombatConfig.java",
+    "build.gradle"
+  ],
+  "godotFilesPreserved": 171,
+  "originalR3GeometryRigUVWeightsAndFourAnimationsUnchanged": true,
+  "runtimeAnimationNames": [
+    "UAL_idle",
+    "UAL_jog",
+    "UAL_roll",
+    "UAL_sword",
+    "UAL_heavy",
+    "UAL_sword_b",
+    "UAL_sword_c"
+  ],
+  "originalTargetingUnchanged": true
+}

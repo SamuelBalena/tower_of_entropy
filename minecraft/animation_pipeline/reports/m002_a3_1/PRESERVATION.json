@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "classicSha256": "C6050564F0B1AB138C331ED424FC3D4E04FFE01E7C4C8A68C35202504DA55E80",
+  "slimSha256": "E659DA6A5B22C134D48ECF6CE747EC8E5E2510C2A6CF5F7C82CE85D3F2513BEC",
+  "animations": 30,
+  "arms": [
+    {
+      "mesh": "limb_2",
+      "widthPixels": 3,
+      "sixOfficialUvFaceBoundsVerified": true
+    },
+    {
+      "mesh": "limb_2_outer",
+      "widthPixels": 3.5,
+      "sixOfficialUvFaceBoundsVerified": true
+    },
+    {
+      "mesh": "limb_3",
+      "widthPixels": 3,
+      "sixOfficialUvFaceBoundsVerified": true
+    },
+    {
+      "mesh": "limb_3_outer",
+      "widthPixels": 3.5,
+      "sixOfficialUvFaceBoundsVerified": true
+    }
+  ],
+  "changedArmGeometryUvBytes": 524,
+  "allOtherBinaryBytesIdentical": true,
+  "combatServerFilesUnchanged": true,
+  "godotFilesPreserved": 171,
+  "mainSourceChanges": [
+    "main/java/com/towerofentropy/animation/ActionKeys.java",
+    "main/java/com/towerofentropy/animation/ActionNetwork.java",
+    "main/java/com/towerofentropy/animation/CompatibilityModels.java",
+    "main/java/com/towerofentropy/animation/LocomotionController.java",
+    "main/java/com/towerofentropy/client/ClientCombatState.java",
+    "main/java/com/towerofentropy/client/PlayerRendererR3.java"
+  ]
+}

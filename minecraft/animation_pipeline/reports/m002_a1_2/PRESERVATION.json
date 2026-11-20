@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "unchangedBaselineFiles": 94,
+  "authorizedChanges": [
+    "validation/roll/java/com/towerofentropy/combat/RollRuntimeTest.java",
+    "src/main/java/com/towerofentropy/combat/RollController.java",
+    "src/main/java/com/towerofentropy/client/ClientRollMotion.java",
+    "src/main/java/com/towerofentropy/combat/CombatController.java",
+    "src/main/java/com/towerofentropy/client/PlayerRendererR3.java",
+    "src/main/java/com/towerofentropy/animation/LocomotionController.java",
+    "src/main/java/com/towerofentropy/TowerOfEntropy.java",
+    "scripts/start-r31.ps1",
+    "validation/a1/java/com/towerofentropy/combat/A1RuntimeTest.java",
+    "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+    "src/main/java/com/towerofentropy/client/ClientCombatState.java",
+    "build.gradle"
+  ],
+  "modelsAndClipsByteIdentical": 8,
+  "historicModelsAndExperimentsPreserved": 25,
+  "godotFilesPreserved": 171,
+  "physicalRollAndPredictionUnchanged": true,
+  "damageImpactTimelineAndIframesUnchanged": true
+}

@@ -1,0 +1,6 @@
+// Shared deterministic CPM ZIP container writer; Node core modules only.
+const zlib=require('node:zlib');
+function crc32(b){let c=0xffffffff;for(const v of b){c^=v;for(let j=0;j<8;j++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}
+function zip(entries){let offset=0;const bodies=[],central=[];for(const [name,raw]of Object.entries(entries)){const n=Buffer.from(name),b=Buffer.from(JSON.stringify(raw)),z=zlib.deflateRawSync(b),h=Buffer.alloc(30);h.writeUInt32LE(0x04034b50);h.writeUInt16LE(20,4);h.writeUInt16LE(8,8);h.writeUInt32LE(crc32(b),14);h.writeUInt32LE(z.length,18);h.writeUInt32LE(b.length,22);h.writeUInt16LE(n.length,26);bodies.push(h,n,z);const c=Buffer.alloc(46);c.writeUInt32LE(0x02014b50);c.writeUInt16LE(20,4);c.writeUInt16LE(20,6);c.writeUInt16LE(8,10);h.copy(c,16,14,26);c.writeUInt16LE(n.length,28);c.writeUInt32LE(offset,42);central.push(c,n);offset+=h.length+n.length+z.length;}const cd=Buffer.concat(central),end=Buffer.alloc(22);end.writeUInt32LE(0x06054b50);end.writeUInt16LE(Object.keys(entries).length,8);end.writeUInt16LE(Object.keys(entries).length,10);end.writeUInt32LE(cd.length,12);end.writeUInt32LE(offset,16);return Buffer.concat([...bodies,cd,end]);}
+
+module.exports={zip};

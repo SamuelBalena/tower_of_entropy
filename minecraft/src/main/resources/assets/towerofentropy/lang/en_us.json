@@ -1,0 +1,11 @@
+{
+  "key.categories.towerofentropy": "Tower of Entropy",
+  "key.towerofentropy.roll": "Visual test: Roll",
+  "key.towerofentropy.sword": "Sword attack (experimental)",
+  "key.towerofentropy.camera.shoulder": "Switch shoulder (legacy binding)",
+  "key.towerofentropy.camera.closer": "Move camera closer",
+  "key.towerofentropy.camera.farther": "Move camera farther",
+  "key.towerofentropy.camera.shoulder_left": "Select left shoulder",
+  "key.towerofentropy.camera.shoulder_right": "Select right shoulder",
+  "key.towerofentropy.weapon": "Draw or sheathe weapon"
+}

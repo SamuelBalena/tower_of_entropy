@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "previousApprovedFiles": 9,
+  "m001_3ApprovedBinaries": {
+    "animation_pipeline/converted/m001_3/steve-ual-actions.cpmmodel": "9dab98175759a63cb83b5104afd13029a3e49b25e946c0e16c138265d26ce62c",
+    "animation_pipeline/converted/m001_3/steve-ual-actions-preview.cpmmodel": "5153045d5634fc73c501167658cf1af4989546c5125a52ed47ee67dfac8ce701"
+  },
+  "godotValidation": "171 original hashes confirmed by validate-actions.cjs; see M001_3_VALIDATION.json"
+}

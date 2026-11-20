@@ -1,0 +1,13 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>R2 — malha ponderada no Minecraft</title>
+<style>body{background:#171b22;color:#eef2f8;font:16px system-ui;margin:24px;max-width:1700px}h1{font-size:24px}select,button{font:inherit;padding:8px;margin:0 12px 12px 0}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(410px,1fr));gap:20px}figure{margin:0;background:#242b36;padding:12px;border-radius:8px}img{width:100%;image-rendering:pixelated;cursor:zoom-in}figcaption{padding:8px 0}p{color:#bac7da;max-width:1100px}dialog{width:94vw;background:#171b22;color:white;border:1px solid #56657a}dialog img{width:100%;cursor:zoom-out}a{color:#96c5ff}</style>
+<h1>M002.R2 — CPM e malha ponderada dentro do Minecraft</h1>
+<p>As duas imagens vêm do cliente Forge: mesma pose UAL congelada, câmera, escala vanilla 0,9375, skin Steve e espada. A comparação é de renderização; não há imagem Blender nesta página. Clique para ampliar.</p>
+<label>Movimento <select id="clip"><option value="idle">Idle</option><option value="jog">Jog</option><option value="sword" selected>Sword Attack</option><option value="roll">Roll</option></select></label>
+<label>Vista <select id="angle"><option value="90">Lado</option><option value="0">Frente</option><option value="180">Costas (Idle)</option></select></label>
+<main id="grid"></main><dialog id="zoom"><button onclick="this.parentElement.close()">Fechar</button><img onclick="this.parentElement.close()"></dialog>
+<p>A superfície nas juntas agora usa pesos de ossos. O tronco da malha R1 continua rígido; armadura, capa, offhand e Slim não foram adotados neste caminho. Primeira pessoa usa fallback. O renderizador aprovado retorna com <code>/toe_renderlab off</code>.</p>
+<p><a href="../../docs/M002_R2_SKINNED_RENDERER_REPORT.md">Relatório e limitações</a></p>
+<script>
+const clip=document.getElementById('clip'),angle=document.getElementById('angle'),grid=document.getElementById('grid'),zoom=document.getElementById('zoom');
+function draw(){if(clip.value!=='idle'&&angle.value==='180')angle.value='90';grid.replaceChildren();for(const [id,label] of [['baseline','CPM anterior — segmentos rígidos'],['skinned','Polymesh R2 — malha R1 com pesos']]){const f=document.createElement('figure'),c=document.createElement('figcaption'),im=document.createElement('img');c.textContent=label;im.alt=label+' / '+clip.value;im.src='../../animation_pipeline/reports/M002_R2_visual/r2-'+id+'-'+clip.value+'-'+angle.value+'.png';im.onclick=()=>{zoom.querySelector('img').src=im.src;zoom.showModal()};f.append(c,im);grid.append(f)}}clip.onchange=angle.onchange=draw;draw();
+</script></html>

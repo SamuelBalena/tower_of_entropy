@@ -1,0 +1,880 @@
+{
+  "checks": [
+    {
+      "test": "runtime_checks",
+      "pass": true,
+      "detail": {
+        "passed": 147,
+        "total": 147,
+        "renderErrors": 0
+      }
+    },
+    {
+      "test": "combo_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "combo_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "combo_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "heavy_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 2.95
+        }
+      ]
+    },
+    {
+      "test": "heavy_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "heavy_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.65
+        },
+        {
+          "clip": "idle",
+          "start": 3
+        }
+      ]
+    },
+    {
+      "test": "heavy_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "heavy_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 2.95
+        }
+      ]
+    },
+    {
+      "test": "heavy_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "combo_jog_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "jog",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_jog_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "combo_jog_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "jog",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_jog_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "combo_jog_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "jog",
+          "start": 3.6
+        }
+      ]
+    },
+    {
+      "test": "combo_jog_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "pause_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.05
+        },
+        {
+          "clip": "sword",
+          "start": 2.85
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "pause_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "pause_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.05
+        },
+        {
+          "clip": "sword",
+          "start": 2.85
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "pause_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "pause_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.05
+        },
+        {
+          "clip": "sword",
+          "start": 2.85
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "pause_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_a_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 0.7
+        },
+        {
+          "clip": "roll",
+          "start": 0.75
+        },
+        {
+          "clip": "idle",
+          "start": 2.25
+        }
+      ]
+    },
+    {
+      "test": "cancel_a_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_a_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 0.7
+        },
+        {
+          "clip": "roll",
+          "start": 0.75
+        },
+        {
+          "clip": "idle",
+          "start": 2.25
+        }
+      ]
+    },
+    {
+      "test": "cancel_a_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_a_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 0.7
+        },
+        {
+          "clip": "roll",
+          "start": 0.75
+        },
+        {
+          "clip": "idle",
+          "start": 2.25
+        }
+      ]
+    },
+    {
+      "test": "cancel_a_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_b_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 1.15
+        },
+        {
+          "clip": "roll",
+          "start": 1.2
+        },
+        {
+          "clip": "idle",
+          "start": 2.7
+        }
+      ]
+    },
+    {
+      "test": "cancel_b_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_b_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 1.15
+        },
+        {
+          "clip": "roll",
+          "start": 1.2
+        },
+        {
+          "clip": "idle",
+          "start": 2.7
+        }
+      ]
+    },
+    {
+      "test": "cancel_b_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_b_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 1.15
+        },
+        {
+          "clip": "roll",
+          "start": 1.2
+        },
+        {
+          "clip": "idle",
+          "start": 2.7
+        }
+      ]
+    },
+    {
+      "test": "cancel_b_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_c_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.75
+        },
+        {
+          "clip": "roll",
+          "start": 1.8
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "cancel_c_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_c_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.75
+        },
+        {
+          "clip": "roll",
+          "start": 1.8
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "cancel_c_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_c_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "sword",
+          "start": 0.6
+        },
+        {
+          "clip": "sword_b",
+          "start": 1.05
+        },
+        {
+          "clip": "sword_c",
+          "start": 1.6
+        },
+        {
+          "clip": "idle",
+          "start": 1.75
+        },
+        {
+          "clip": "roll",
+          "start": 1.8
+        },
+        {
+          "clip": "idle",
+          "start": 3.3
+        }
+      ]
+    },
+    {
+      "test": "cancel_c_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_heavy_front_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1
+        },
+        {
+          "clip": "roll",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 2.55
+        }
+      ]
+    },
+    {
+      "test": "cancel_heavy_front_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_heavy_side_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1
+        },
+        {
+          "clip": "roll",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 2.55
+        }
+      ]
+    },
+    {
+      "test": "cancel_heavy_side_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    },
+    {
+      "test": "cancel_heavy_back_sequence",
+      "pass": true,
+      "detail": [
+        {
+          "clip": "idle",
+          "start": 0
+        },
+        {
+          "clip": "heavy",
+          "start": 0.6
+        },
+        {
+          "clip": "idle",
+          "start": 1
+        },
+        {
+          "clip": "roll",
+          "start": 1.05
+        },
+        {
+          "clip": "idle",
+          "start": 2.55
+        }
+      ]
+    },
+    {
+      "test": "cancel_heavy_back_no_clip_restart",
+      "pass": true,
+      "detail": {
+        "resets": 0
+      }
+    }
+  ],
+  "cancellationIdleGaps": [
+    {
+      "scene": "cancel_a",
+      "angle": "front",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "side",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_a",
+      "angle": "back",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "front",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "side",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_b",
+      "angle": "back",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "front",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "side",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_c",
+      "angle": "back",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "front",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "side",
+      "idleSeconds": 0.050000000000000044
+    },
+    {
+      "scene": "cancel_heavy",
+      "angle": "back",
+      "idleSeconds": 0.050000000000000044
+    }
+  ],
+  "aestheticApproval": "PENDING_USER"
+}

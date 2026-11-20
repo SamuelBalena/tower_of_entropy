@@ -1,0 +1,24 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const root=path.resolve(__dirname,'../..'),out=path.join(root,'animation_pipeline/reports/m002_a3_1');
+const read=p=>JSON.parse(fs.readFileSync(path.join(out,p),'utf8').replace(/^\uFEFF/,''));
+const suites={};for(const [name,p]of Object.entries({fresh:'FRESH_WORLDS_RUNTIME.json',restart:'EXISTING_RESTART_RUNTIME.json',slim:'skincheck-slim/RUNTIME.json',combat:'regression_a1/RUNTIME.json',roll:'ROLL_REGRESSION.json',vanilla:'vanilla-check/RUNTIME.json',packaged:'packaged/GLOBAL_RUNTIME.json'})){
+ const r=read(p),failed=r.checks.filter(c=>!c.pass);assert.equal(failed.length,0,name+': '+JSON.stringify(failed));assert.equal(r.renderErrors||0,0,name+' render errors');suites[name]={passed:r.checks.length,total:r.checks.length,file:p};
+}
+const broad=read('coverage/RUNTIME.json'),broadFailed=broad.checks.filter(c=>!c.pass);assert(broadFailed.every(c=>c.test==='vanilla_mining'));
+assert(read('vanilla-check/RUNTIME.json').checks.some(c=>c.test==='vanilla_mining'&&c.pass));
+for(const [folder,clips]of Object.entries({'coverage':['sword','roll','crouch_idle','jump_loop','swim_idle','swim','consume'],'skincheck-slim':['sword','roll','crouch_move','consume']})){
+ const r=read(folder+'/RUNTIME.json');for(const clip of clips)assert(r.series.some(s=>s.frames.some(f=>f.clip==='UAL_'+clip)),folder+' missing observed '+clip);
+}
+const builds={};for(const kind of ['r31','normal']){const b=fs.readFileSync(path.join(root,'.logs/m002-a3-1-build-'+kind+'.log')),t=b.toString(b[0]===255&&b[1]===254?'utf16le':'utf8');assert(t.includes('BUILD SUCCESSFUL')&&!t.includes('BUILD FAILED'),kind);builds[kind]=(t.match(/BUILD SUCCESSFUL in ([^\r\n]+)/)||[])[1];}
+const artifact=read('ARTIFACT.json'),preservation=read('PRESERVATION.json');assert.equal(artifact.status,'PASS');assert.equal(preservation.status,'PASS');
+const result={status:'TECHNICAL_PASS_PACKAGED_JAR_DEV_RUNTIME_EXTERNAL_PROFILE_PENDING_VISUAL_REVIEW_REQUIRED',suites,broadClassic:{passed:broad.checks.length-broadFailed.length,total:broad.checks.length,initialFailure:broadFailed,resolution:'targeted vanilla retest, preserving initial evidence'},builds,artifact,preservation,limitations:['No external launcher/production-profile launch certified; actual built JAR remapped and loaded as dependency in separate ForgeGradle harness.','Remote multiplayer and arbitrary resource packs not certified.','Aesthetic approval reserved for user.','Protective Roll cancellation under large position discontinuities retained; initial cold fixture occurrence recorded.']};
+fs.writeFileSync(path.join(out,'RESULTS.json'),JSON.stringify(result,null,2));
+const log=path.join(root,'docs/TEST_LOG_M002_A3_1.md');let md=fs.readFileSync(log,'utf8').split('<!-- RESULTS -->')[0].replace('Resultados consolidados serão registrados ao concluir as execuções em','Resultados consolidados em');
+md+='<!-- RESULTS -->\n\n## Resultados finais\n\n| Verificação | Resultado |\n|---|---:|\n';
+for(const [name,r]of Object.entries(suites))md+='| '+name+' | '+r.passed+'/'+r.total+' |\n';
+md+='| Classic amplo, primeira rodada | '+(broad.checks.length-broadFailed.length)+'/'+broad.checks.length+'; mineração repetida com sucesso |\n| Build R3.1 experimental | passou — '+builds.r31+' |\n| Build normal final | passou — '+builds.normal+' |\n| Auditoria de JAR / preservação | passou |\n';
+md+='\nJAR normal final: `build/libs/towerofentropy-0.0.1.jar`, '+artifact.bytes+' bytes, SHA-256 `'+artifact.sha256+'`. Sem classes de QA/R3.1/SmokeTest. Inclui Classic, Slim, poses, suporte visual e cache CPM.\n\n';
+md+='O teste **packaged** foi um projeto ForgeGradle separado, com o JAR normal como dependência remapeada, sem compilar os fontes principais. O probe exige origem `.jar` para classe e recurso Slim. O cliente abriu os dois saves comuns, alternou skins e mundos e executou espada/Roll pelo canal real do mod, sem comandos de ativação. É uma execução real do artefato empacotado em ambiente de desenvolvimento, não homologação de um perfil externo de launcher.\n\n';
+md+='As 30 animações e todo o binário fora das posições/UVs dos braços Slim permaneceram intactos. Classic SHA-256 preservado; 171 arquivos Godot e código de combate conferidos. As falhas iniciais não foram apagadas: consulte `FIRST_PASS.json`, `ROLL_FIRST_PASS.json` e os logs das rodadas anteriores.\n\n';
+md+='Evidência consolidada: [RESULTS.json](../animation_pipeline/reports/m002_a3_1/RESULTS.json). [Comparador Classic/Slim](../animation_pipeline/reports/m002_a3_1/SKIN_COMPARISON.html), [seleção PNG](../animation_pipeline/reports/m002_a3_1/REVIEW/README.md) e `REVIEW_COMPACT.zip`. A aprovação estética e os limites descritos acima permanecem pendentes.\n';
+fs.writeFileSync(log,md);console.log(result.status,suites,builds);

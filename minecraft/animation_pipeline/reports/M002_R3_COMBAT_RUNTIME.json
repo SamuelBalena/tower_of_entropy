@@ -1,0 +1,662 @@
+[
+  {
+    "test": "default_disabled",
+    "pass": true,
+    "detail": "mode off on fresh login"
+  },
+  {
+    "test": "legacy_commands",
+    "pass": true,
+    "detail": "all seven animation commands registered"
+  },
+  {
+    "test": "combat_commands",
+    "pass": true,
+    "detail": "operator-only command tree"
+  },
+  {
+    "test": "operator_guard",
+    "pass": true,
+    "detail": "unprivileged command refused"
+  },
+  {
+    "test": "no_sword_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "no_sword_rejected",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "no_sword_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d2, modelAssignments\u003d2, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d0]"
+  },
+  {
+    "test": "no_sword_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "no_early_damage",
+    "pass": true,
+    "detail": "health\u003d20.0"
+  },
+  {
+    "test": "cpm_sword_visible",
+    "pass": true,
+    "detail": "CPM client gesture parameter"
+  },
+  {
+    "test": "iron_front_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d46909, impactTick\u003d46913, targetId\u003d364]"
+  },
+  {
+    "test": "iron_front_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d46909, impactTick\u003d46913, targetId\u003d364]"
+  },
+  {
+    "test": "impact_four_ticks",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d46909, impactTick\u003d46913, targetId\u003d364]"
+  },
+  {
+    "test": "iron_front_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d3, modelAssignments\u003d3, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1]"
+  },
+  {
+    "test": "iron_front_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "out_of_range_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d46989, impactTick\u003d46993, targetId\u003d-1]"
+  },
+  {
+    "test": "out_of_range_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d46989, impactTick\u003d46993, targetId\u003d-1]"
+  },
+  {
+    "test": "out_of_range_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d4, modelAssignments\u003d4, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d2]"
+  },
+  {
+    "test": "out_of_range_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "wall_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47069, impactTick\u003d47073, targetId\u003d-1]"
+  },
+  {
+    "test": "wall_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47069, impactTick\u003d47073, targetId\u003d-1]"
+  },
+  {
+    "test": "wall_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d5, modelAssignments\u003d5, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d3]"
+  },
+  {
+    "test": "wall_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "behind_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47149, impactTick\u003d47153, targetId\u003d-1]"
+  },
+  {
+    "test": "behind_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47149, impactTick\u003d47153, targetId\u003d-1]"
+  },
+  {
+    "test": "behind_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d6, modelAssignments\u003d6, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d4]"
+  },
+  {
+    "test": "behind_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "outside_arc_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47229, impactTick\u003d47233, targetId\u003d-1]"
+  },
+  {
+    "test": "outside_arc_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47229, impactTick\u003d47233, targetId\u003d-1]"
+  },
+  {
+    "test": "outside_arc_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d7, modelAssignments\u003d7, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d5]"
+  },
+  {
+    "test": "outside_arc_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "inside_arc_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47309, impactTick\u003d47313, targetId\u003d382]"
+  },
+  {
+    "test": "inside_arc_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47309, impactTick\u003d47313, targetId\u003d382]"
+  },
+  {
+    "test": "inside_arc_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d8, modelAssignments\u003d8, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d6]"
+  },
+  {
+    "test": "inside_arc_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "two_targets_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47389, impactTick\u003d47393, targetId\u003d423]"
+  },
+  {
+    "test": "two_targets_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47389, impactTick\u003d47393, targetId\u003d423]"
+  },
+  {
+    "test": "single_target_only",
+    "pass": true,
+    "detail": "second health\u003d20.0"
+  },
+  {
+    "test": "two_targets_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d9, modelAssignments\u003d9, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d7]"
+  },
+  {
+    "test": "two_targets_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "player_ineligible",
+    "pass": true,
+    "detail": "real ServerPlayer excluded by target predicate"
+  },
+  {
+    "test": "passive_and_player_health",
+    "pass": true,
+    "detail": "health\u003d10.0 expected\u003d10.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47469, impactTick\u003d47473, targetId\u003d-1]"
+  },
+  {
+    "test": "passive_and_player_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47469, impactTick\u003d47473, targetId\u003d-1]"
+  },
+  {
+    "test": "passive_and_player_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d10, modelAssignments\u003d10, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d8]"
+  },
+  {
+    "test": "passive_and_player_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "spam_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47549, impactTick\u003d47553, targetId\u003d466]"
+  },
+  {
+    "test": "spam_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47549, impactTick\u003d47553, targetId\u003d466]"
+  },
+  {
+    "test": "spam_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d11, modelAssignments\u003d11, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d9]"
+  },
+  {
+    "test": "spam_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "invulnerability_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47629, impactTick\u003d47633, targetId\u003d483]"
+  },
+  {
+    "test": "invulnerability_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d47629, impactTick\u003d47633, targetId\u003d483]"
+  },
+  {
+    "test": "invulnerability_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d12, modelAssignments\u003d12, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d10]"
+  },
+  {
+    "test": "invulnerability_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "normal_death_health",
+    "pass": true,
+    "detail": "health\u003d0.0 expected\u003d0.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47709, impactTick\u003d47713, targetId\u003d489]"
+  },
+  {
+    "test": "normal_death_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d47709, impactTick\u003d47713, targetId\u003d489]"
+  },
+  {
+    "test": "vanilla_death",
+    "pass": true,
+    "detail": "normal LivingEntity death"
+  },
+  {
+    "test": "normal_death_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d13, modelAssignments\u003d13, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d11]"
+  },
+  {
+    "test": "normal_death_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "off_before_impact_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dnull"
+  },
+  {
+    "test": "off_before_impact_cancelled",
+    "pass": true,
+    "detail": "status\u003dnull"
+  },
+  {
+    "test": "off_before_impact_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d14, modelAssignments\u003d14, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d12]"
+  },
+  {
+    "test": "off_before_impact_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "weapon_swap_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d47869, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "weapon_swap_cancelled",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d47869, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "weapon_swap_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d15, modelAssignments\u003d15, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d13]"
+  },
+  {
+    "test": "weapon_swap_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "jump_cancel_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d47949, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "jump_cancel_cancelled",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d47949, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "jump_cancel_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d17, modelAssignments\u003d17, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d14]"
+  },
+  {
+    "test": "jump_cancel_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "visual_command_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "visual_command_no_combat",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "visual_command_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d18, modelAssignments\u003d18, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d15]"
+  },
+  {
+    "test": "visual_command_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "roll_busy_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "roll_busy_rejected",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "roll_busy_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d19, modelAssignments\u003d19, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d16]"
+  },
+  {
+    "test": "roll_busy_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "combat_off_visual_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dnull"
+  },
+  {
+    "test": "combat_off_visual_no_combat",
+    "pass": true,
+    "detail": "status\u003dnull"
+  },
+  {
+    "test": "combat_off_visual_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d20, modelAssignments\u003d20, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d17]"
+  },
+  {
+    "test": "combat_off_visual_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "rotated_yaw_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48269, impactTick\u003d48273, targetId\u003d598]"
+  },
+  {
+    "test": "rotated_yaw_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48269, impactTick\u003d48273, targetId\u003d598]"
+  },
+  {
+    "test": "rotated_yaw_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d21, modelAssignments\u003d21, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d18]"
+  },
+  {
+    "test": "rotated_yaw_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "vertical_range_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48349, impactTick\u003d48353, targetId\u003d-1]"
+  },
+  {
+    "test": "vertical_range_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48349, impactTick\u003d48353, targetId\u003d-1]"
+  },
+  {
+    "test": "vertical_range_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d22, modelAssignments\u003d22, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d19]"
+  },
+  {
+    "test": "vertical_range_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "impact_direction_changed_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48429, impactTick\u003d48433, targetId\u003d-1]"
+  },
+  {
+    "test": "impact_direction_changed_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48429, impactTick\u003d48433, targetId\u003d-1]"
+  },
+  {
+    "test": "impact_direction_changed_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d23, modelAssignments\u003d23, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d20]"
+  },
+  {
+    "test": "impact_direction_changed_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "impact_target_moved_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48509, impactTick\u003d48513, targetId\u003d-1]"
+  },
+  {
+    "test": "impact_target_moved_miss",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d48509, impactTick\u003d48513, targetId\u003d-1]"
+  },
+  {
+    "test": "impact_target_moved_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d24, modelAssignments\u003d24, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d21]"
+  },
+  {
+    "test": "impact_target_moved_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "skeleton_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48589, impactTick\u003d48593, targetId\u003d673]"
+  },
+  {
+    "test": "skeleton_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48589, impactTick\u003d48593, targetId\u003d673]"
+  },
+  {
+    "test": "skeleton_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d25, modelAssignments\u003d25, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d22]"
+  },
+  {
+    "test": "skeleton_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "alternate_weapon_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "alternate_weapon_rejected",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "alternate_weapon_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d26, modelAssignments\u003d26, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d22]"
+  },
+  {
+    "test": "alternate_weapon_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "offhand_only_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "offhand_only_rejected",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "offhand_only_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d27, modelAssignments\u003d27, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d22]"
+  },
+  {
+    "test": "offhand_only_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "armor_health",
+    "pass": true,
+    "detail": "health\u003d17.28 expected\u003d17.28 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48829, impactTick\u003d48833, targetId\u003d718]"
+  },
+  {
+    "test": "armor_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d48829, impactTick\u003d48833, targetId\u003d718]"
+  },
+  {
+    "test": "armor_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d28, modelAssignments\u003d28, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d23]"
+  },
+  {
+    "test": "armor_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "animation_off_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d48909, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "animation_off_cancelled",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d0, hits\u003d0, startedTick\u003d48909, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "animation_off_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dnull"
+  },
+  {
+    "test": "animation_off_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "roll_damage_free_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "roll_damage_free_no_combat",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "roll_damage_free_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d1, modelAssignments\u003d1, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1]"
+  },
+  {
+    "test": "roll_damage_free_no_player_displacement",
+    "pass": true,
+    "detail": "horizontal drift\u003d0.0"
+  },
+  {
+    "test": "jog_baseline_health",
+    "pass": true,
+    "detail": "health\u003d20.0 expected\u003d20.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "jog_baseline_no_combat",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d0, impacts\u003d0, hits\u003d0, startedTick\u003d-1, impactTick\u003d-1, targetId\u003d-1]"
+  },
+  {
+    "test": "jog_baseline_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d3, modelAssignments\u003d2, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d1]"
+  },
+  {
+    "test": "jog_baseline_moved",
+    "pass": true,
+    "detail": "distance\u003d8.63060733762779"
+  },
+  {
+    "test": "attack_returns_jog",
+    "pass": true,
+    "detail": "status\u003dStatus[state\u003dJOG, attached\u003dtrue, poseCommands\u003d4, modelAssignments\u003d3, speed\u003d0.21585901033336796, forward\u003d1.0, actionCommands\u003d2]"
+  },
+  {
+    "test": "jog_attack_health",
+    "pass": true,
+    "detail": "health\u003d16.0 expected\u003d16.0 status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d49149, impactTick\u003d49153, targetId\u003d791]"
+  },
+  {
+    "test": "jog_attack_once",
+    "pass": true,
+    "detail": "status\u003dStatus[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d1, startedTick\u003d49149, impactTick\u003d49153, targetId\u003d791]"
+  },
+  {
+    "test": "jog_attack_returns_idle",
+    "pass": true,
+    "detail": "locomotion\u003dStatus[state\u003dIDLE, attached\u003dtrue, poseCommands\u003d5, modelAssignments\u003d3, speed\u003d0.0, forward\u003d1.0, actionCommands\u003d2]"
+  },
+  {
+    "test": "jog_attack_vanilla_distance",
+    "pass": true,
+    "detail": "baseline\u003d8.63060733762779 attack\u003d8.63060733762779"
+  },
+  {
+    "test": "reconnect_disabled",
+    "pass": true,
+    "detail": "combat and locomotion sessions absent"
+  }
+]

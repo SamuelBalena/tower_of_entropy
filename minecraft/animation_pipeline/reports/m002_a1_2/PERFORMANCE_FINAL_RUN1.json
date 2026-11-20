@@ -1,0 +1,107 @@
+{
+  "environment": {
+    "width": 854,
+    "height": 480,
+    "renderDistance": 5,
+    "simulationDistance": 5,
+    "graphics": "fancy",
+    "vsync": true,
+    "frameLimit": 60,
+    "fov": 50,
+    "warmupTicks": 320
+  },
+  "method": "Three warmed repetitions per workload; 320 warmup ticks plus 20 discarded ticks per 120-tick block; no PNG capture during measurement. Pipeline = CPU sampling + composition + existing Polymesh draw/item calls. Frame intervals include Minecraft/vsync; not GPU timing. 1% low = reciprocal mean of slowest 1% frame intervals.",
+  "workloads": {
+    "idle": {
+      "before": {
+        "samples": 885,
+        "meanPipelineMs": 0.6125876836158201,
+        "p95PipelineMs": 1.1005,
+        "meanFrameMs": 16.753760997732424,
+        "meanFPS": 59.68809034194455,
+        "low1PercentFPS": 44.48209496828427,
+        "roundMeanPipelineMs": [
+          0.5491159322033898,
+          0.5627437288135596,
+          0.7259033898305082
+        ]
+      },
+      "after": {
+        "samples": 887,
+        "meanPipelineMs": 0.49660124013528756,
+        "p95PipelineMs": 0.7687,
+        "meanFrameMs": 16.741792194570145,
+        "meanFPS": 59.73076169971393,
+        "low1PercentFPS": 49.386645302369736,
+        "roundMeanPipelineMs": [
+          0.4914874576271188,
+          0.46955675675675695,
+          0.5287422297297301
+        ]
+      },
+      "pipelineDeltaMs": -0.1159864434805325,
+      "pipelineDeltaPercent": -18.933851688940017
+    },
+    "stance_b": {
+      "before": {
+        "samples": 887,
+        "meanPipelineMs": 0.6039851183765512,
+        "p95PipelineMs": 1.0436,
+        "meanFrameMs": 16.74184728506788,
+        "meanFPS": 59.73056515047201,
+        "low1PercentFPS": 44.402081569583984,
+        "roundMeanPipelineMs": [
+          0.5811135135135135,
+          0.5876834459459463,
+          0.6432911864406774
+        ]
+      },
+      "after": {
+        "samples": 880,
+        "meanPipelineMs": 0.5314226136363628,
+        "p95PipelineMs": 0.8254,
+        "meanFrameMs": 16.87402919042188,
+        "meanFPS": 59.26266860837393,
+        "low1PercentFPS": 29.277080567598013,
+        "roundMeanPipelineMs": [
+          0.5144512110726641,
+          0.5421060810810812,
+          0.5373291525423729
+        ]
+      },
+      "pipelineDeltaMs": -0.07256250474018844,
+      "pipelineDeltaPercent": -12.013955730437342
+    },
+    "transitions": {
+      "before": {
+        "samples": 888,
+        "meanPipelineMs": 0.6116292792792792,
+        "p95PipelineMs": 0.9223,
+        "meanFrameMs": 16.735570621468927,
+        "meanFPS": 59.75296705552232,
+        "low1PercentFPS": 46.38097019713459,
+        "roundMeanPipelineMs": [
+          0.5893929054054055,
+          0.6353783783783788,
+          0.6101165540540539
+        ]
+      },
+      "after": {
+        "samples": 886,
+        "meanPipelineMs": 0.5129606094808125,
+        "p95PipelineMs": 0.7872,
+        "meanFrameMs": 16.75956172140429,
+        "meanFPS": 59.66743144141181,
+        "low1PercentFPS": 45.3308471882031,
+        "roundMeanPipelineMs": [
+          0.5066989830508473,
+          0.5145199324324327,
+          0.5176576271186442
+        ]
+      },
+      "pipelineDeltaMs": -0.09866866979846678,
+      "pipelineDeltaPercent": -16.13210373361037
+    }
+  },
+  "gpuTime": "unavailable"
+}

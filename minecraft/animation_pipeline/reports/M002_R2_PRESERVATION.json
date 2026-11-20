@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "preservedFiles": 45,
+  "originalGlbSha256": "8529d3178a8e297eb8121eaed444ffc2c47b665015e0c9681197ebb9961fc8be",
+  "glbCopiedByteIdentically": true,
+  "wristSamples": 162,
+  "maxLocalWristErrorPixels": 2.0677587156865968e-14,
+  "limit": "This geometric anchor check does not prove every rendered weapon frame or remote synchronization."
+}

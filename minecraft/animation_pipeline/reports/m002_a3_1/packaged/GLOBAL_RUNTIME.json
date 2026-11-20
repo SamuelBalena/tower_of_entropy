@@ -1,0 +1,164 @@
+{
+  "worlds": [
+    "Global Survival one",
+    "Global Creative one"
+  ],
+  "checks": [
+    {
+      "test": "visit_0_packaged_source",
+      "pass": true,
+      "detail": "union:/C:/Users/balen/Desktop/towerofentropy/minecraft/.gradle-user-home/caches/forge_gradle/deobf_dependencies/toe/towerofentropy/0.0.1_mapped_official_1.20.1/towerofentropy-0.0.1_mapped_official_1.20.1.jar%23198!/"
+    },
+    {
+      "test": "visit_0_defaults",
+      "pass": true,
+      "detail": "normal defaults without commands"
+    },
+    {
+      "test": "visit_0_network",
+      "pass": true,
+      "detail": "integrated server protocol present"
+    },
+    {
+      "test": "visit_0_natural_skin",
+      "pass": true,
+      "detail": "slim draws\u003d99 fallback\u003d"
+    },
+    {
+      "test": "visit_0_classic",
+      "pass": true,
+      "detail": "Classic R3 draws\u003d108"
+    },
+    {
+      "test": "visit_0_slim",
+      "pass": true,
+      "detail": "Slim derivative draws\u003d113"
+    },
+    {
+      "test": "packaged_sword_auto",
+      "pass": true,
+      "detail": "ordinary equipment observed in AUTO"
+    },
+    {
+      "test": "packaged_sword_animation",
+      "pass": true,
+      "detail": "server intent -\u003e client timeline -\u003e packaged model"
+    },
+    {
+      "test": "packaged_roll_animation",
+      "pass": true,
+      "detail": "server validated Roll"
+    },
+    {
+      "test": "packaged_roll_distance",
+      "pass": true,
+      "detail": "distance\u003d2.4999999999999982"
+    },
+    {
+      "test": "visit_0_skin_switch",
+      "pass": true,
+      "detail": "R3 resumes after Slim fallback"
+    },
+    {
+      "test": "visit_0_clear",
+      "pass": true,
+      "detail": "no stuck action after world entry"
+    },
+    {
+      "test": "visit_0_gamemode",
+      "pass": true,
+      "detail": "vanilla world settings"
+    },
+    {
+      "test": "visit_1_packaged_source",
+      "pass": true,
+      "detail": "union:/C:/Users/balen/Desktop/towerofentropy/minecraft/.gradle-user-home/caches/forge_gradle/deobf_dependencies/toe/towerofentropy/0.0.1_mapped_official_1.20.1/towerofentropy-0.0.1_mapped_official_1.20.1.jar%23198!/"
+    },
+    {
+      "test": "visit_1_defaults",
+      "pass": true,
+      "detail": "normal defaults without commands"
+    },
+    {
+      "test": "visit_1_network",
+      "pass": true,
+      "detail": "integrated server protocol present"
+    },
+    {
+      "test": "visit_1_natural_skin",
+      "pass": true,
+      "detail": "slim draws\u003d176 fallback\u003d"
+    },
+    {
+      "test": "visit_1_classic",
+      "pass": true,
+      "detail": "Classic R3 draws\u003d117"
+    },
+    {
+      "test": "visit_1_slim",
+      "pass": true,
+      "detail": "Slim derivative draws\u003d117"
+    },
+    {
+      "test": "visit_1_skin_switch",
+      "pass": true,
+      "detail": "R3 resumes after Slim fallback"
+    },
+    {
+      "test": "visit_1_clear",
+      "pass": true,
+      "detail": "no stuck action after world entry"
+    },
+    {
+      "test": "visit_1_gamemode",
+      "pass": true,
+      "detail": "vanilla world settings"
+    },
+    {
+      "test": "visit_2_packaged_source",
+      "pass": true,
+      "detail": "union:/C:/Users/balen/Desktop/towerofentropy/minecraft/.gradle-user-home/caches/forge_gradle/deobf_dependencies/toe/towerofentropy/0.0.1_mapped_official_1.20.1/towerofentropy-0.0.1_mapped_official_1.20.1.jar%23198!/"
+    },
+    {
+      "test": "visit_2_defaults",
+      "pass": true,
+      "detail": "normal defaults without commands"
+    },
+    {
+      "test": "visit_2_network",
+      "pass": true,
+      "detail": "integrated server protocol present"
+    },
+    {
+      "test": "visit_2_natural_skin",
+      "pass": true,
+      "detail": "slim draws\u003d172 fallback\u003d"
+    },
+    {
+      "test": "visit_2_classic",
+      "pass": true,
+      "detail": "Classic R3 draws\u003d117"
+    },
+    {
+      "test": "visit_2_slim",
+      "pass": true,
+      "detail": "Slim derivative draws\u003d117"
+    },
+    {
+      "test": "visit_2_skin_switch",
+      "pass": true,
+      "detail": "R3 resumes after Slim fallback"
+    },
+    {
+      "test": "visit_2_clear",
+      "pass": true,
+      "detail": "no stuck action after world entry"
+    },
+    {
+      "test": "visit_2_gamemode",
+      "pass": true,
+      "detail": "vanilla world settings"
+    }
+  ],
+  "note": "new Survival, new Creative, reopen Survival; skin injection is QA only; no circuit"
+}

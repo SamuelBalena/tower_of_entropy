@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "backedUpFiles": 53,
+  "unchangedFiles": 45,
+  "authorizedChanges": [
+    "src/main/java/com/towerofentropy/animation/ActionKeys.java",
+    "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+    "src/main/java/com/towerofentropy/animation/LocomotionController.java",
+    "src/main/java/com/towerofentropy/combat/ClientCombatSmokeTest.java",
+    "src/main/java/com/towerofentropy/combat/CombatCommands.java",
+    "src/main/java/com/towerofentropy/combat/CombatController.java",
+    "src/main/resources/META-INF/mods.toml",
+    "build.gradle"
+  ],
+  "godotPreserved": 171,
+  "R3ByteIdentical": true,
+  "R31Preserved": true,
+  "damageAndSwordTargetingPreserved": true
+}

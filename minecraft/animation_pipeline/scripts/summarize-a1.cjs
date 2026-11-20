@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const root=path.resolve(__dirname,'../..'),dir=path.join(root,'animation_pipeline/reports/m002_a1');
+function json(name){return JSON.parse(fs.readFileSync(path.join(dir,name+'.json'),'utf8').replace(/^\uFEFF/,''));}
+const suites={};for(const name of ['RUNTIME','ROLL_REGRESSION','COLD','RESTART','VISUAL','TIMELINE_AUDIT']){const r=json(name);const checks=r.checks;suites[name]={passed:checks.filter(c=>c.pass).length,total:checks.length,renderErrors:r.renderErrors};assert(checks.length>0&&checks.every(c=>c.pass),name+' failed');assert(!r.renderErrors,name+' renderer error');}
+const builds={};for(const [name,file]of [['normal','m002-a1-final-build.log'],['experimental','m002-a1-experimental-build.log']]){const b=fs.readFileSync(path.join(root,'.logs',file));const text=b.toString(b[0]===255&&b[1]===254?'utf16le':'utf8');const match=text.match(/BUILD SUCCESSFUL in ([^\r\n]+)/);assert(match,name+' build failed');builds[name]={status:'PASS',duration:match[1],log:'.logs/'+file};}
+const report={status:'PASS',suites,builds,preservation:json('PRESERVATION'),aestheticApproval:'PENDING_USER',limitations:['Integrated server only; no dedicated multiplayer/latency validation','CPM fallback has no new B/C/heavy gestures','Heavy startup/cuts require aesthetic approval']};
+fs.writeFileSync(path.join(dir,'RESULTS.json'),JSON.stringify(report,null,2));console.log(report);

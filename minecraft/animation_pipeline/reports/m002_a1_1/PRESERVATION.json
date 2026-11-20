@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "baselineFilesPreserved": 86,
+  "authorizedChanges": [
+    "validation/roll/java/com/towerofentropy/combat/RollRuntimeTest.java",
+    "src/main/java/com/towerofentropy/combat/RollController.java",
+    "src/main/java/com/towerofentropy/combat/CombatController.java",
+    "scripts/start-r31.ps1",
+    "validation/a1/java/com/towerofentropy/combat/A1RuntimeTest.java",
+    "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+    "src/main/java/com/towerofentropy/client/CombatInput.java",
+    "validation/r4/java/com/towerofentropy/renderlab/R4PromotionTest.java",
+    "src/main/java/com/towerofentropy/client/ClientCombatState.java",
+    "build.gradle",
+    "src/main/java/com/towerofentropy/combat/CombatCommands.java"
+  ],
+  "modelsAndAnimationsByteIdentical": [
+    "animation_pipeline/converted/m002_r4/resources/assets/towerofentropy/models/gltf/steve_r3.glb",
+    "animation_pipeline/converted/m002_a1/poses-new.json",
+    "animation_pipeline/converted/m002_a1/motion-only.glb",
+    "animation_pipeline/converted/m002_r4/resources/assets/towerofentropy/r3-poses.json",
+    "animation_pipeline/converted/m002_r3/steve-r3-refined.blend",
+    "animation_pipeline/converted/m002_r3/steve-r3-refined.glb",
+    "animation_pipeline/converted/m002_r3_1/steve-r31-refined.blend",
+    "animation_pipeline/converted/m002_r3_1/steve-r31-refined.glb"
+  ],
+  "historicExperimentFilesPreserved": 25,
+  "r31RuntimeCopyPreserved": true,
+  "godotFilesPreserved": 171,
+  "balanceAndRollRulesUnchanged": true
+}

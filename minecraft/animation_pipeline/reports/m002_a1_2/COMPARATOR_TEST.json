@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "test": "local_images_load",
+      "pass": true,
+      "detail": {
+        "panels": 2,
+        "images": [
+          {
+            "width": 854,
+            "complete": true
+          },
+          {
+            "width": 854,
+            "complete": true
+          }
+        ],
+        "markers": 8
+      }
+    },
+    {
+      "test": "transition_markers",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "test": "normal_and_slow_playback",
+      "pass": true,
+      "detail": {
+        "normal": 0.65,
+        "slow": 0.15832500000000005,
+        "ratio": 4.1054792357492484
+      }
+    },
+    {
+      "test": "frame_step",
+      "pass": true,
+      "detail": 1.05
+    },
+    {
+      "test": "movement_and_angle_selection",
+      "pass": true,
+      "detail": {
+        "left": "before/screenshots/heavy/front/025.png",
+        "right": "after/screenshots/combo/back/025.png",
+        "loaded": true
+      }
+    },
+    {
+      "test": "no_browser_exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "browser": "Existing Microsoft Edge headless, separate local QA profile"
+}

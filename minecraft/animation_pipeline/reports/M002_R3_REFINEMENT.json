@@ -1,0 +1,116 @@
+{
+  "sourceBlend": "m002_r1/steve-r1-weighted.blend",
+  "method": "load existing model; subdivide torso sides; add pelvis/waist; reparent existing chest/head/limbs; resample original UAL spine channels",
+  "bones": 12,
+  "newBones": [
+    "pelvis",
+    "waist"
+  ],
+  "meshes": [
+    {
+      "object": "head",
+      "vertices": 8,
+      "faces": 6,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "head_outer",
+      "vertices": 8,
+      "faces": 6,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "body",
+      "vertices": 28,
+      "faces": 26,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "body_outer",
+      "vertices": 28,
+      "faces": 26,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_2",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_2_outer",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_3",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_3_outer",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_4",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_4_outer",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_5",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    },
+    {
+      "object": "limb_5_outer",
+      "vertices": 36,
+      "faces": 34,
+      "boundaryEdges": 0
+    }
+  ],
+  "motions": {
+    "idle": {
+      "sourceFrames": 75,
+      "relativeSourceRetention": 0.15,
+      "maxPelvisChestDegrees": 3.4910315609815195,
+      "oldBoneGlobalOrientations": "preserved at all original sample frames",
+      "durationMs": 2500
+    },
+    "jog": {
+      "sourceFrames": 28,
+      "relativeSourceRetention": 0.35,
+      "maxPelvisChestDegrees": 21.57481222945359,
+      "oldBoneGlobalOrientations": "preserved at all original sample frames",
+      "durationMs": 933
+    },
+    "sword": {
+      "sourceFrames": 14,
+      "relativeSourceRetention": 0.35,
+      "maxPelvisChestDegrees": 21.571965748116984,
+      "oldBoneGlobalOrientations": "preserved at all original sample frames",
+      "durationMs": 433
+    },
+    "roll": {
+      "sourceFrames": 45,
+      "relativeSourceRetention": 0.55,
+      "maxPelvisChestDegrees": 35.19719422712631,
+      "oldBoneGlobalOrientations": "preserved at all original sample frames",
+      "durationMs": 1467
+    }
+  },
+  "headOrientation": "original global quaternion preserved",
+  "hipSeam": "top leg rings and lower torso share pelvis influence",
+  "uv": "existing 64x64 loop UVs interpolated; no replacement texture"
+}

@@ -1,0 +1,129 @@
+{
+  "worlds": [
+    "Global Survival one",
+    "Global Creative one"
+  ],
+  "checks": [
+    {
+      "detail": "normal defaults without commands",
+      "test": "visit_0_defaults",
+      "pass": true
+    },
+    {
+      "detail": "integrated server protocol present",
+      "test": "visit_0_network",
+      "pass": true
+    },
+    {
+      "detail": "slim draws\u003d0 fallback\u003dskin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_0_natural_skin",
+      "pass": true
+    },
+    {
+      "detail": "Classic R3 draws\u003d110",
+      "test": "visit_0_classic",
+      "pass": true
+    },
+    {
+      "detail": "skin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_0_slim_fallback",
+      "pass": true
+    },
+    {
+      "detail": "R3 resumes after Slim fallback",
+      "test": "visit_0_skin_switch",
+      "pass": true
+    },
+    {
+      "detail": "no stuck action after world entry",
+      "test": "visit_0_clear",
+      "pass": true
+    },
+    {
+      "detail": "vanilla world settings",
+      "test": "visit_0_gamemode",
+      "pass": true
+    },
+    {
+      "detail": "normal defaults without commands",
+      "test": "visit_1_defaults",
+      "pass": true
+    },
+    {
+      "detail": "integrated server protocol present",
+      "test": "visit_1_network",
+      "pass": true
+    },
+    {
+      "detail": "slim draws\u003d0 fallback\u003dskin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_1_natural_skin",
+      "pass": true
+    },
+    {
+      "detail": "Classic R3 draws\u003d115",
+      "test": "visit_1_classic",
+      "pass": true
+    },
+    {
+      "detail": "skin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_1_slim_fallback",
+      "pass": true
+    },
+    {
+      "detail": "R3 resumes after Slim fallback",
+      "test": "visit_1_skin_switch",
+      "pass": true
+    },
+    {
+      "detail": "no stuck action after world entry",
+      "test": "visit_1_clear",
+      "pass": true
+    },
+    {
+      "detail": "vanilla world settings",
+      "test": "visit_1_gamemode",
+      "pass": true
+    },
+    {
+      "detail": "normal defaults without commands",
+      "test": "visit_2_defaults",
+      "pass": true
+    },
+    {
+      "detail": "integrated server protocol present",
+      "test": "visit_2_network",
+      "pass": true
+    },
+    {
+      "detail": "slim draws\u003d0 fallback\u003dskin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_2_natural_skin",
+      "pass": true
+    },
+    {
+      "detail": "Classic R3 draws\u003d110",
+      "test": "visit_2_classic",
+      "pass": true
+    },
+    {
+      "detail": "skin slim: vanilla/CPM (Slim Polymesh pending)",
+      "test": "visit_2_slim_fallback",
+      "pass": true
+    },
+    {
+      "detail": "R3 resumes after Slim fallback",
+      "test": "visit_2_skin_switch",
+      "pass": true
+    },
+    {
+      "detail": "no stuck action after world entry",
+      "test": "visit_2_clear",
+      "pass": true
+    },
+    {
+      "detail": "vanilla world settings",
+      "test": "visit_2_gamemode",
+      "pass": true
+    }
+  ],
+  "note": "new Survival, new Creative, reopen Survival; skin injection is QA only; no circuit"
+}

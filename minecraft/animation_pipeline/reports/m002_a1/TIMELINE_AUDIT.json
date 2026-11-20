@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "name": "runtime_checks",
+      "pass": true,
+      "detail": {
+        "passed": 145,
+        "total": 145
+      }
+    },
+    {
+      "name": "combo_sequence",
+      "pass": true,
+      "detail": [
+        "LIGHT_ATTACK_A",
+        "LIGHT_ATTACK_B",
+        "LIGHT_ATTACK_C"
+      ]
+    },
+    {
+      "name": "pause_sequence",
+      "pass": true,
+      "detail": [
+        "LIGHT_ATTACK_A",
+        "LIGHT_ATTACK_A"
+      ]
+    },
+    {
+      "name": "light_then_heavy_sequence",
+      "pass": true,
+      "detail": [
+        "LIGHT_ATTACK_A",
+        "HEAVY_ATTACK"
+      ]
+    },
+    {
+      "name": "heavy_then_light_sequence",
+      "pass": true,
+      "detail": [
+        "HEAVY_ATTACK",
+        "LIGHT_ATTACK_A"
+      ]
+    },
+    {
+      "name": "queue_bounded",
+      "pass": true,
+      "detail": {
+        "maximum": 2
+      }
+    },
+    {
+      "name": "LIGHT_ATTACK_A_impact_window",
+      "pass": true,
+      "detail": {
+        "samples": 60,
+        "expectedTicks": 4
+      }
+    },
+    {
+      "name": "LIGHT_ATTACK_B_impact_window",
+      "pass": true,
+      "detail": {
+        "samples": 18,
+        "expectedTicks": 5
+      }
+    },
+    {
+      "name": "LIGHT_ATTACK_C_impact_window",
+      "pass": true,
+      "detail": {
+        "samples": 78,
+        "expectedTicks": 14
+      }
+    },
+    {
+      "name": "HEAVY_ATTACK_impact_window",
+      "pass": true,
+      "detail": {
+        "samples": 175,
+        "expectedTicks": 12
+      }
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "worlds": [
+    "Global Survival one",
+    "Global Creative one"
+  ],
+  "note": "new Survival, new Creative, reopen Survival; skin injection is QA only; no circuit",
+  "checks": [
+    {
+      "test": "visit_0_defaults",
+      "detail": "normal defaults without commands",
+      "pass": true
+    },
+    {
+      "test": "visit_0_network",
+      "detail": "integrated server protocol present",
+      "pass": true
+    },
+    {
+      "test": "visit_0_natural_skin",
+      "detail": "slim draws\u003d167 fallback\u003d",
+      "pass": true
+    },
+    {
+      "test": "visit_0_classic",
+      "detail": "Classic R3 draws\u003d115",
+      "pass": true
+    },
+    {
+      "test": "visit_0_slim",
+      "detail": "Slim derivative draws\u003d115",
+      "pass": true
+    },
+    {
+      "test": "visit_0_skin_switch",
+      "detail": "R3 resumes after Slim fallback",
+      "pass": true
+    },
+    {
+      "test": "visit_0_clear",
+      "detail": "no stuck action after world entry",
+      "pass": true
+    },
+    {
+      "test": "visit_0_gamemode",
+      "detail": "vanilla world settings",
+      "pass": true
+    },
+    {
+      "test": "visit_1_defaults",
+      "detail": "normal defaults without commands",
+      "pass": true
+    },
+    {
+      "test": "visit_1_network",
+      "detail": "integrated server protocol present",
+      "pass": true
+    },
+    {
+      "test": "visit_1_natural_skin",
+      "detail": "slim draws\u003d180 fallback\u003d",
+      "pass": true
+    },
+    {
+      "test": "visit_1_classic",
+      "detail": "Classic R3 draws\u003d116",
+      "pass": true
+    },
+    {
+      "test": "visit_1_slim",
+      "detail": "Slim derivative draws\u003d117",
+      "pass": true
+    },
+    {
+      "test": "visit_1_skin_switch",
+      "detail": "R3 resumes after Slim fallback",
+      "pass": true
+    },
+    {
+      "test": "visit_1_clear",
+      "detail": "no stuck action after world entry",
+      "pass": true
+    },
+    {
+      "test": "visit_1_gamemode",
+      "detail": "vanilla world settings",
+      "pass": true
+    },
+    {
+      "test": "visit_2_defaults",
+      "detail": "normal defaults without commands",
+      "pass": true
+    },
+    {
+      "test": "visit_2_network",
+      "detail": "integrated server protocol present",
+      "pass": true
+    },
+    {
+      "test": "visit_2_natural_skin",
+      "detail": "slim draws\u003d179 fallback\u003d",
+      "pass": true
+    },
+    {
+      "test": "visit_2_classic",
+      "detail": "Classic R3 draws\u003d119",
+      "pass": true
+    },
+    {
+      "test": "visit_2_slim",
+      "detail": "Slim derivative draws\u003d118",
+      "pass": true
+    },
+    {
+      "test": "visit_2_skin_switch",
+      "detail": "R3 resumes after Slim fallback",
+      "pass": true
+    },
+    {
+      "test": "visit_2_clear",
+      "detail": "no stuck action after world entry",
+      "pass": true
+    },
+    {
+      "test": "visit_2_gamemode",
+      "detail": "vanilla world settings",
+      "pass": true
+    }
+  ]
+}

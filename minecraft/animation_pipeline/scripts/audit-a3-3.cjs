@@ -1,0 +1,20 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),assert=require('assert/strict');
+const root=path.resolve(__dirname,'../..'),out=path.join(root,'animation_pipeline/reports/m002_a3_3');
+const read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8').replace(/^\uFEFF/,'')),hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex').toUpperCase();
+const approved=read('animation_pipeline/reports/m002_a1_2/ASSET_BASELINE.json');
+for(const [p,h]of Object.entries(approved))assert.equal(hash(path.join(root,p)),h,p);
+const previous=read('animation_pipeline/reports/m002_a3_1/PRESERVATION.json');
+for(const [folder,name,h]of [['m002_a3','steve_a3',previous.classicSha256],['m002_a3_1','steve_a3_slim',previous.slimSha256]])assert.equal(hash(path.join(root,'animation_pipeline/converted',folder,'resources/assets/towerofentropy/models/gltf',name+'.glb')),h);
+const godot=read('animation_pipeline/reports/asset-metadata.json');
+for(const f of godot.files)assert.equal(hash(path.join(godot.root,f.path)).toLowerCase(),f.sha256,f.path);
+const preserved=['combat/SwordTargeting.java','combat/RollDamageFilter.java','combat/VanillaAttackGuard.java','combat/RollController.java','combat/RollRules.java','combat/AttackMotionRules.java','combat/AttackMovement.java','client/ClientRollMotion.java','client/ClientAttackMotion.java','client/R3VisualPose.java','client/UpperBodyPose.java','combat/CombatController.java'];
+for(const p of preserved){const rel='src/main/java/com/towerofentropy/'+p;assert.equal(hash(path.join(root,rel)),hash(path.join(root,'.downloads/m002_a3_3/baseline',rel)),p);}
+const config='src/main/java/com/towerofentropy/combat/CombatConfig.java';
+const lines=p=>fs.readFileSync(path.join(root,p),'utf8').split(/\r?\n/).filter(l=>/REACH =|ARC =|DAMAGE =|IMPACT =|defineInRange\("impactTicks"|COMBO_WINDOW=|HEAVY_DAMAGE=/.test(l));
+assert.deepEqual(lines(config),lines('.downloads/m002_a3_3/baseline/'+config),'damage/reach/arc/combo unchanged');
+const moves=fs.readFileSync(path.join(root,'src/main/java/com/towerofentropy/combat/CombatMove.java'),'utf8');
+for(const s of ['LIGHT_ATTACK_A("sword",9,4)','LIGHT_ATTACK_B("sword_b",11,5)','LIGHT_ATTACK_C("sword_c",40,14)','HEAVY_ATTACK("heavy",35,12)'])assert(moves.includes(s),s);
+const poses=read('animation_pipeline/converted/m002_a3/resources/assets/towerofentropy/a3-poses.json');
+assert.equal(poses.heavy.frames.length,71);assert.equal(poses.heavy.duration,2333);
+const result={status:'PASS',godotFilesPreserved:godot.files.length,approvedOlderAssetsPreserved:Object.keys(approved).length,classicAndSlimAssetsUnchanged:true,preservedCode:preserved,damageReachArcAndComboSettingsUnchanged:true,heavy:{originalDurationMilliseconds:poses.heavy.duration,sourceClip:poses.heavy.sourceClip,sourceRange:poses.heavy.sourceRange,originalFrames:71,unchangedPlaybackRange:[0,45],recoveryRange:[45,70],recoverySeconds:.25,authorizedDurationTicks:35,impactTick:12,keyframes:[0,12,18,30,40,45,50,55,60,65,70].map(i=>({frame:i,sourceFrame:60+i,originalSeconds:i/30,components:poses.heavy.frames[i].components.filter(c=>[0,1,4,5].includes(c.storeID)),spine:poses.heavy.spine?.[i]}))},attackWindows:[{clip:'sword',fromTick:1,steps:4,distance:.4,impactTick:4},{clip:'sword_b',fromTick:2,steps:4,distance:.5,impactTick:5},{clip:'sword_c',fromTick:10,steps:6,distance:.6,impactTick:14},{clip:'heavy',fromTick:8,steps:6,distance:.7,impactTick:12}],scope:'Hashes cover inventoried Godot assets, approved generated models/curves, and listed code; not an audit of every untracked file.'};
+fs.writeFileSync(path.join(out,'PRESERVATION_AND_KEYFRAMES.json'),JSON.stringify(result,null,2));console.log('Preservation PASS: '+godot.files.length+' inventoried Godot assets; approved animations/models; '+preserved.length+' source files.');

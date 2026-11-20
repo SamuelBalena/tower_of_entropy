@@ -1,0 +1,258 @@
+{
+  "before": [
+    {
+      "work": "idle",
+      "round": 1,
+      "maxFrameMs": 23.5066,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.4187,
+      "worstFrameMs": [
+        23.5066,
+        21.1202,
+        20.9065,
+        20.8909,
+        20.7713
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 1,
+      "maxFrameMs": 22.8957,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.2769,
+      "worstFrameMs": [
+        22.8957,
+        22.2211,
+        21.6444,
+        21.3891,
+        21.3847
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 1,
+      "maxFrameMs": 22.7545,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.1426,
+      "worstFrameMs": [
+        22.7545,
+        22.0196,
+        21.1608,
+        20.9681,
+        20.3909
+      ]
+    },
+    {
+      "work": "idle",
+      "round": 2,
+      "maxFrameMs": 22.6867,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.3301,
+      "worstFrameMs": [
+        22.6867,
+        21.7771,
+        21.2427,
+        21.1631,
+        20.7102
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 2,
+      "maxFrameMs": 25.188,
+      "framesOver25ms": 1,
+      "maxPipelineMs": 1.6689,
+      "worstFrameMs": [
+        25.188,
+        23.1257,
+        20.9993,
+        20.9413,
+        20.7309
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 2,
+      "maxFrameMs": 20.8935,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.5417,
+      "worstFrameMs": [
+        20.8935,
+        20.8134,
+        20.813,
+        20.6217,
+        20.5126
+      ]
+    },
+    {
+      "work": "idle",
+      "round": 3,
+      "maxFrameMs": 24.0592,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.8089,
+      "worstFrameMs": [
+        24.0592,
+        23.8996,
+        21.7962,
+        21.6476,
+        21.5243
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 3,
+      "maxFrameMs": 22.5163,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.7523,
+      "worstFrameMs": [
+        22.5163,
+        22.0927,
+        21.6003,
+        21.409,
+        20.869
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 3,
+      "maxFrameMs": 22.4234,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.1164,
+      "worstFrameMs": [
+        22.4234,
+        21.7901,
+        21.2217,
+        20.5978,
+        20.3882
+      ]
+    }
+  ],
+  "after": [
+    {
+      "work": "idle",
+      "round": 1,
+      "maxFrameMs": 20.4031,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.3282,
+      "worstFrameMs": [
+        20.4031,
+        20.2426,
+        19.8221,
+        19.7471,
+        19.7166
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 1,
+      "maxFrameMs": 21.1511,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.3527,
+      "worstFrameMs": [
+        21.1511,
+        20.1139,
+        19.8566,
+        19.8514,
+        19.588
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 1,
+      "maxFrameMs": 20.5424,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.195,
+      "worstFrameMs": [
+        20.5424,
+        20.045,
+        19.9038,
+        19.84,
+        19.8027
+      ]
+    },
+    {
+      "work": "idle",
+      "round": 2,
+      "maxFrameMs": 20.0868,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 0.8993,
+      "worstFrameMs": [
+        20.0868,
+        19.7843,
+        19.716,
+        19.6504,
+        19.5603
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 2,
+      "maxFrameMs": 20.1424,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.3336,
+      "worstFrameMs": [
+        20.1424,
+        19.352,
+        19.2408,
+        19.1812,
+        19.1592
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 2,
+      "maxFrameMs": 19.7129,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.0614,
+      "worstFrameMs": [
+        19.7129,
+        19.4688,
+        19.1012,
+        19.0719,
+        19.0562
+      ]
+    },
+    {
+      "work": "idle",
+      "round": 3,
+      "maxFrameMs": 47.2194,
+      "framesOver25ms": 1,
+      "maxPipelineMs": 1.4079,
+      "worstFrameMs": [
+        47.2194,
+        21.0003,
+        20.2253,
+        20.0848,
+        20.0728
+      ]
+    },
+    {
+      "work": "stance_b",
+      "round": 3,
+      "maxFrameMs": 20.8026,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.2406,
+      "worstFrameMs": [
+        20.8026,
+        20.5863,
+        20.4378,
+        20.302,
+        19.8826
+      ]
+    },
+    {
+      "work": "transitions",
+      "round": 3,
+      "maxFrameMs": 20.6613,
+      "framesOver25ms": 0,
+      "maxPipelineMs": 1.2441,
+      "worstFrameMs": [
+        20.6613,
+        19.8713,
+        19.7209,
+        19.6002,
+        19.539
+      ]
+    }
+  ]
+}

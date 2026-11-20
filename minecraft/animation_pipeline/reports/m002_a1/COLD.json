@@ -1,0 +1,21 @@
+{
+  "trace": [],
+  "renderErrors": 0,
+  "checks": [
+    {
+      "pass": true,
+      "detail": "same server task as enable, teleport stabilized",
+      "test": "cold_input_accepted"
+    },
+    {
+      "pass": true,
+      "detail": "clip\u003dUAL_sword seconds\u003d0.188 serverDelta\u003d4",
+      "test": "visual_impact_sync_90706"
+    },
+    {
+      "pass": true,
+      "detail": "Status[attacking\u003dfalse, started\u003dfalse, accepted\u003d1, impacts\u003d1, hits\u003d0, startedTick\u003d90702, impactTick\u003d90706, targetId\u003d-1]",
+      "test": "cold_attack_completed"
+    }
+  ]
+}

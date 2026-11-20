@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "detail": "TOE_A3: pool east, mining west, archery north, ledge west; inventory supplied",
+      "test": "playable_circuit"
+    }
+  ],
+  "series": [],
+  "renderErrors": 0
+}

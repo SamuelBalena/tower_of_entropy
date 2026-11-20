@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "suites": {
+    "RUNTIME": {
+      "passed": 145,
+      "total": 145,
+      "renderErrors": 0
+    },
+    "ROLL_REGRESSION": {
+      "passed": 168,
+      "total": 168,
+      "renderErrors": 0
+    },
+    "COLD": {
+      "passed": 3,
+      "total": 3,
+      "renderErrors": 0
+    },
+    "RESTART": {
+      "passed": 1,
+      "total": 1,
+      "renderErrors": 0
+    },
+    "VISUAL": {
+      "passed": 1,
+      "total": 1,
+      "renderErrors": 0
+    },
+    "TIMELINE_AUDIT": {
+      "passed": 10,
+      "total": 10
+    }
+  },
+  "builds": {
+    "normal": {
+      "status": "PASS",
+      "duration": "20s",
+      "log": ".logs/m002-a1-final-build.log"
+    },
+    "experimental": {
+      "status": "PASS",
+      "duration": "18s",
+      "log": ".logs/m002-a1-experimental-build.log"
+    }
+  },
+  "preservation": {
+    "status": "PASS",
+    "approvedModelsAndExperimentalFilesPreserved": 25,
+    "baselineFilesUnchanged": 57,
+    "authorizedChanges": [
+      "src/main/java/com/towerofentropy/combat/RollController.java",
+      "src/main/java/com/towerofentropy/combat/CombatController.java",
+      "src/main/java/com/towerofentropy/client/PlayerRendererR3.java",
+      "src/main/java/com/towerofentropy/animation/LocomotionController.java",
+      "src/main/java/com/towerofentropy/animation/ActionNetwork.java",
+      "src/main/java/com/towerofentropy/combat/CombatCommands.java",
+      "animation_pipeline/scripts/prepare-r4.cjs",
+      "src/main/java/com/towerofentropy/combat/CombatConfig.java",
+      "build.gradle"
+    ],
+    "godotFilesPreserved": 171,
+    "originalR3GeometryRigUVWeightsAndFourAnimationsUnchanged": true,
+    "runtimeAnimationNames": [
+      "UAL_idle",
+      "UAL_jog",
+      "UAL_roll",
+      "UAL_sword",
+      "UAL_heavy",
+      "UAL_sword_b",
+      "UAL_sword_c"
+    ],
+    "originalTargetingUnchanged": true
+  },
+  "aestheticApproval": "PENDING_USER",
+  "limitations": [
+    "Integrated server only; no dedicated multiplayer/latency validation",
+    "CPM fallback has no new B/C/heavy gestures",
+    "Heavy startup/cuts require aesthetic approval"
+  ]
+}

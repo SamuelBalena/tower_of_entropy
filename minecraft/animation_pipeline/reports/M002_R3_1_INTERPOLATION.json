@@ -1,0 +1,4236 @@
+{
+  "minInterpolatedArea": 0.9995792920712513,
+  "maxInterpolatedArea": 1.0491127890523122,
+  "samples": [
+    {
+      "sourceFrame": 1,
+      "time": 0,
+      "minAreaRatio": 0.9999996940126312,
+      "maxAreaRatio": 1.0000003788632066
+    },
+    {
+      "sourceFrame": 1.0625,
+      "time": 0.0020833333333333333,
+      "minAreaRatio": 0.9999995992735989,
+      "maxAreaRatio": 1.0003555466609557
+    },
+    {
+      "sourceFrame": 1.125,
+      "time": 0.004166666666666667,
+      "minAreaRatio": 0.9999996813708796,
+      "maxAreaRatio": 1.0004741955870358
+    },
+    {
+      "sourceFrame": 1.1875,
+      "time": 0.00625,
+      "minAreaRatio": 0.9999996108210094,
+      "maxAreaRatio": 1.000355756710329
+    },
+    {
+      "sourceFrame": 1.25,
+      "time": 0.008333333333333333,
+      "minAreaRatio": 0.9999994103994805,
+      "maxAreaRatio": 1.0000003771862798
+    },
+    {
+      "sourceFrame": 1.3125,
+      "time": 0.010416666666666666,
+      "minAreaRatio": 0.9999995853019538,
+      "maxAreaRatio": 1.00032924835754
+    },
+    {
+      "sourceFrame": 1.375,
+      "time": 0.0125,
+      "minAreaRatio": 0.9999997264292833,
+      "maxAreaRatio": 1.0004389562083547
+    },
+    {
+      "sourceFrame": 1.4375,
+      "time": 0.014583333333333334,
+      "minAreaRatio": 0.9999997289023341,
+      "maxAreaRatio": 1.0003292800973687
+    },
+    {
+      "sourceFrame": 1.5,
+      "time": 0.016666666666666666,
+      "minAreaRatio": 0.9999997127800649,
+      "maxAreaRatio": 1.0000004184408566
+    },
+    {
+      "sourceFrame": 1.5625,
+      "time": 0.01875,
+      "minAreaRatio": 0.9999997337473676,
+      "maxAreaRatio": 1.0003051888358838
+    },
+    {
+      "sourceFrame": 1.625,
+      "time": 0.020833333333333332,
+      "minAreaRatio": 0.9999997361198516,
+      "maxAreaRatio": 1.0004066626161336
+    },
+    {
+      "sourceFrame": 1.6875,
+      "time": 0.022916666666666665,
+      "minAreaRatio": 0.9999996754817309,
+      "maxAreaRatio": 1.0003048747947694
+    },
+    {
+      "sourceFrame": 1.75,
+      "time": 0.025,
+      "minAreaRatio": 0.9999995281560768,
+      "maxAreaRatio": 1.0000002715809284
+    },
+    {
+      "sourceFrame": 1.8125,
+      "time": 0.027083333333333334,
+      "minAreaRatio": 0.9999996993442193,
+      "maxAreaRatio": 1.0002830061085586
+    },
+    {
+      "sourceFrame": 1.875,
+      "time": 0.029166666666666667,
+      "minAreaRatio": 0.9999997974431263,
+      "maxAreaRatio": 1.000377128806797
+    },
+    {
+      "sourceFrame": 1.9375,
+      "time": 0.03125,
+      "minAreaRatio": 0.9999998153296803,
+      "maxAreaRatio": 1.0002826493640136
+    },
+    {
+      "sourceFrame": 2,
+      "time": 0.03333333333333333,
+      "minAreaRatio": 0.9999997329425114,
+      "maxAreaRatio": 1.0000003147756675
+    },
+    {
+      "sourceFrame": 2.0625,
+      "time": 0.035416666666666666,
+      "minAreaRatio": 0.9999997600511692,
+      "maxAreaRatio": 1.001822274352943
+    },
+    {
+      "sourceFrame": 2.125,
+      "time": 0.0375,
+      "minAreaRatio": 0.9999997610306567,
+      "maxAreaRatio": 1.0024263665750561
+    },
+    {
+      "sourceFrame": 2.1875,
+      "time": 0.03958333333333333,
+      "minAreaRatio": 0.9999996176712092,
+      "maxAreaRatio": 1.001816836649492
+    },
+    {
+      "sourceFrame": 2.25,
+      "time": 0.041666666666666664,
+      "minAreaRatio": 0.9999994743078311,
+      "maxAreaRatio": 1.0000004547739196
+    },
+    {
+      "sourceFrame": 2.3125,
+      "time": 0.04375,
+      "minAreaRatio": 0.999999535835751,
+      "maxAreaRatio": 1.001517480384763
+    },
+    {
+      "sourceFrame": 2.375,
+      "time": 0.04583333333333333,
+      "minAreaRatio": 0.9999995973673376,
+      "maxAreaRatio": 1.0020184664565916
+    },
+    {
+      "sourceFrame": 2.4375,
+      "time": 0.04791666666666667,
+      "minAreaRatio": 0.9999995657728793,
+      "maxAreaRatio": 1.0015099149585238
+    },
+    {
+      "sourceFrame": 2.5,
+      "time": 0.05,
+      "minAreaRatio": 0.9999995118344627,
+      "maxAreaRatio": 1.000000240517676
+    },
+    {
+      "sourceFrame": 2.5625,
+      "time": 0.052083333333333336,
+      "minAreaRatio": 0.9999995994660948,
+      "maxAreaRatio": 1.0012786505551827
+    },
+    {
+      "sourceFrame": 2.625,
+      "time": 0.05416666666666667,
+      "minAreaRatio": 0.999999687107402,
+      "maxAreaRatio": 1.0016999401855584
+    },
+    {
+      "sourceFrame": 2.6875,
+      "time": 0.05625,
+      "minAreaRatio": 0.9999997033191941,
+      "maxAreaRatio": 1.0012710356498362
+    },
+    {
+      "sourceFrame": 2.75,
+      "time": 0.058333333333333334,
+      "minAreaRatio": 0.999999554414119,
+      "maxAreaRatio": 1.000000281429109
+    },
+    {
+      "sourceFrame": 2.8125,
+      "time": 0.06041666666666667,
+      "minAreaRatio": 0.9999997548008992,
+      "maxAreaRatio": 1.0010915772902977
+    },
+    {
+      "sourceFrame": 2.875,
+      "time": 0.0625,
+      "minAreaRatio": 0.99999979935196,
+      "maxAreaRatio": 1.0014504513017228
+    },
+    {
+      "sourceFrame": 2.9375,
+      "time": 0.06458333333333334,
+      "minAreaRatio": 0.9999997228448152,
+      "maxAreaRatio": 1.001083955001413
+    },
+    {
+      "sourceFrame": 3,
+      "time": 0.06666666666666667,
+      "minAreaRatio": 0.9999996355601597,
+      "maxAreaRatio": 1.0000003600977199
+    },
+    {
+      "sourceFrame": 3.0625,
+      "time": 0.06875,
+      "minAreaRatio": 0.999999593909845,
+      "maxAreaRatio": 1.0183962166589295
+    },
+    {
+      "sourceFrame": 3.125,
+      "time": 0.07083333333333333,
+      "minAreaRatio": 0.9999995809399707,
+      "maxAreaRatio": 1.0247618693936351
+    },
+    {
+      "sourceFrame": 3.1875,
+      "time": 0.07291666666666667,
+      "minAreaRatio": 0.9999995530413092,
+      "maxAreaRatio": 1.018701643880858
+    },
+    {
+      "sourceFrame": 3.25,
+      "time": 0.075,
+      "minAreaRatio": 0.9999994560914546,
+      "maxAreaRatio": 1.0000004506791018
+    },
+    {
+      "sourceFrame": 3.3125,
+      "time": 0.07708333333333334,
+      "minAreaRatio": 0.999999614072832,
+      "maxAreaRatio": 1.0371640055818094
+    },
+    {
+      "sourceFrame": 3.375,
+      "time": 0.07916666666666666,
+      "minAreaRatio": 0.9999997458954164,
+      "maxAreaRatio": 1.0491127890523122
+    },
+    {
+      "sourceFrame": 3.4375,
+      "time": 0.08125,
+      "minAreaRatio": 0.999999828634196,
+      "maxAreaRatio": 1.0362473406723502
+    },
+    {
+      "sourceFrame": 3.5,
+      "time": 0.08333333333333333,
+      "minAreaRatio": 0.9999996656203077,
+      "maxAreaRatio": 1.0000004705999086
+    },
+    {
+      "sourceFrame": 3.5625,
+      "time": 0.08541666666666667,
+      "minAreaRatio": 0.9999998887221573,
+      "maxAreaRatio": 1.0179005154355378
+    },
+    {
+      "sourceFrame": 3.625,
+      "time": 0.0875,
+      "minAreaRatio": 0.9999997369508695,
+      "maxAreaRatio": 1.0000003724207427
+    },
+    {
+      "sourceFrame": 3.6875,
+      "time": 0.08958333333333333,
+      "minAreaRatio": 0.9999997681815411,
+      "maxAreaRatio": 1.003383455517585
+    },
+    {
+      "sourceFrame": 3.75,
+      "time": 0.09166666666666666,
+      "minAreaRatio": 0.9999994321444636,
+      "maxAreaRatio": 1.000000526489195
+    },
+    {
+      "sourceFrame": 3.8125,
+      "time": 0.09375,
+      "minAreaRatio": 0.9999994075444935,
+      "maxAreaRatio": 1.0000003341559103
+    },
+    {
+      "sourceFrame": 3.875,
+      "time": 0.09583333333333334,
+      "minAreaRatio": 0.9999995627280776,
+      "maxAreaRatio": 1.000000386279524
+    },
+    {
+      "sourceFrame": 3.9375,
+      "time": 0.09791666666666667,
+      "minAreaRatio": 0.9999993230758454,
+      "maxAreaRatio": 1.0000003857372133
+    },
+    {
+      "sourceFrame": 4,
+      "time": 0.1,
+      "minAreaRatio": 0.9999995291116279,
+      "maxAreaRatio": 1.000000435354493
+    },
+    {
+      "sourceFrame": 4.0625,
+      "time": 0.10208333333333333,
+      "minAreaRatio": 0.9999994367318901,
+      "maxAreaRatio": 1.0000004653661194
+    },
+    {
+      "sourceFrame": 4.125,
+      "time": 0.10416666666666667,
+      "minAreaRatio": 0.9999997310651227,
+      "maxAreaRatio": 1.000001004676987
+    },
+    {
+      "sourceFrame": 4.1875,
+      "time": 0.10625,
+      "minAreaRatio": 0.9999994013611104,
+      "maxAreaRatio": 1.0000002805169963
+    },
+    {
+      "sourceFrame": 4.25,
+      "time": 0.10833333333333334,
+      "minAreaRatio": 0.9999993798753464,
+      "maxAreaRatio": 1.0000004913620202
+    },
+    {
+      "sourceFrame": 4.3125,
+      "time": 0.11041666666666666,
+      "minAreaRatio": 0.9999991200288708,
+      "maxAreaRatio": 1.0000004438431112
+    },
+    {
+      "sourceFrame": 4.375,
+      "time": 0.1125,
+      "minAreaRatio": 0.9999996331260139,
+      "maxAreaRatio": 1.0000009517723543
+    },
+    {
+      "sourceFrame": 4.4375,
+      "time": 0.11458333333333333,
+      "minAreaRatio": 0.9999995528752404,
+      "maxAreaRatio": 1.000000463864579
+    },
+    {
+      "sourceFrame": 4.5,
+      "time": 0.11666666666666667,
+      "minAreaRatio": 0.9999993290577733,
+      "maxAreaRatio": 1.0000002584285796
+    },
+    {
+      "sourceFrame": 4.5625,
+      "time": 0.11875,
+      "minAreaRatio": 0.9999997800240479,
+      "maxAreaRatio": 1.0000005043931868
+    },
+    {
+      "sourceFrame": 4.625,
+      "time": 0.12083333333333333,
+      "minAreaRatio": 0.999999451569598,
+      "maxAreaRatio": 1.0000004507738773
+    },
+    {
+      "sourceFrame": 4.6875,
+      "time": 0.12291666666666666,
+      "minAreaRatio": 0.9999996405353921,
+      "maxAreaRatio": 1.0000003222023126
+    },
+    {
+      "sourceFrame": 4.75,
+      "time": 0.125,
+      "minAreaRatio": 0.9999994354718633,
+      "maxAreaRatio": 1.0000003846362762
+    },
+    {
+      "sourceFrame": 4.8125,
+      "time": 0.12708333333333333,
+      "minAreaRatio": 0.9999995001161796,
+      "maxAreaRatio": 1.0000002832929145
+    },
+    {
+      "sourceFrame": 4.875,
+      "time": 0.12916666666666668,
+      "minAreaRatio": 0.9999994589485924,
+      "maxAreaRatio": 1.0000004532372206
+    },
+    {
+      "sourceFrame": 4.9375,
+      "time": 0.13125,
+      "minAreaRatio": 0.999999548829211,
+      "maxAreaRatio": 1.000000383659642
+    },
+    {
+      "sourceFrame": 5,
+      "time": 0.13333333333333333,
+      "minAreaRatio": 0.999999294520502,
+      "maxAreaRatio": 1.0000005143717408
+    },
+    {
+      "sourceFrame": 5.0625,
+      "time": 0.13541666666666666,
+      "minAreaRatio": 0.9999993216045469,
+      "maxAreaRatio": 1.0001915315962904
+    },
+    {
+      "sourceFrame": 5.125,
+      "time": 0.1375,
+      "minAreaRatio": 0.9999995862313749,
+      "maxAreaRatio": 1.0002554710190183
+    },
+    {
+      "sourceFrame": 5.1875,
+      "time": 0.13958333333333334,
+      "minAreaRatio": 0.9999996148587551,
+      "maxAreaRatio": 1.0001914452528513
+    },
+    {
+      "sourceFrame": 5.25,
+      "time": 0.14166666666666666,
+      "minAreaRatio": 0.9999995689332565,
+      "maxAreaRatio": 1.0000003814920948
+    },
+    {
+      "sourceFrame": 5.3125,
+      "time": 0.14375,
+      "minAreaRatio": 0.9999996198736667,
+      "maxAreaRatio": 1.0001803172321733
+    },
+    {
+      "sourceFrame": 5.375,
+      "time": 0.14583333333333334,
+      "minAreaRatio": 0.9999996253168322,
+      "maxAreaRatio": 1.0002403172805474
+    },
+    {
+      "sourceFrame": 5.4375,
+      "time": 0.14791666666666667,
+      "minAreaRatio": 0.9999996101712273,
+      "maxAreaRatio": 1.0001800899447084
+    },
+    {
+      "sourceFrame": 5.5,
+      "time": 0.15,
+      "minAreaRatio": 0.9999994898693215,
+      "maxAreaRatio": 1.0000002730970337
+    },
+    {
+      "sourceFrame": 5.5625,
+      "time": 0.15208333333333332,
+      "minAreaRatio": 0.9999995420510286,
+      "maxAreaRatio": 1.000169811192883
+    },
+    {
+      "sourceFrame": 5.625,
+      "time": 0.15416666666666667,
+      "minAreaRatio": 0.9999995942160413,
+      "maxAreaRatio": 1.000226199616932
+    },
+    {
+      "sourceFrame": 5.6875,
+      "time": 0.15625,
+      "minAreaRatio": 0.9999996463639911,
+      "maxAreaRatio": 1.0001694564447545
+    },
+    {
+      "sourceFrame": 5.75,
+      "time": 0.15833333333333333,
+      "minAreaRatio": 0.9999996984946765,
+      "maxAreaRatio": 1.0000003839480909
+    },
+    {
+      "sourceFrame": 5.8125,
+      "time": 0.16041666666666668,
+      "minAreaRatio": 0.9999996723770748,
+      "maxAreaRatio": 1.0001599433519437
+    },
+    {
+      "sourceFrame": 5.875,
+      "time": 0.1625,
+      "minAreaRatio": 0.9999995793410636,
+      "maxAreaRatio": 1.0002130159538476
+    },
+    {
+      "sourceFrame": 5.9375,
+      "time": 0.16458333333333333,
+      "minAreaRatio": 0.9999994749882382,
+      "maxAreaRatio": 1.0001594681405126
+    },
+    {
+      "sourceFrame": 6,
+      "time": 0.16666666666666666,
+      "minAreaRatio": 0.9999994832343434,
+      "maxAreaRatio": 1.000000362650988
+    },
+    {
+      "sourceFrame": 6.0625,
+      "time": 0.16875,
+      "minAreaRatio": 0.9999994005321129,
+      "maxAreaRatio": 1.0002982084689882
+    },
+    {
+      "sourceFrame": 6.125,
+      "time": 0.17083333333333334,
+      "minAreaRatio": 0.9999994220952514,
+      "maxAreaRatio": 1.000397378415004
+    },
+    {
+      "sourceFrame": 6.1875,
+      "time": 0.17291666666666666,
+      "minAreaRatio": 0.9999994436573832,
+      "maxAreaRatio": 1.0002977823226675
+    },
+    {
+      "sourceFrame": 6.25,
+      "time": 0.175,
+      "minAreaRatio": 0.9999993100527163,
+      "maxAreaRatio": 1.0000002443407563
+    },
+    {
+      "sourceFrame": 6.3125,
+      "time": 0.17708333333333334,
+      "minAreaRatio": 0.9999994290399041,
+      "maxAreaRatio": 1.000318633801704
+    },
+    {
+      "sourceFrame": 6.375,
+      "time": 0.17916666666666667,
+      "minAreaRatio": 0.9999995480141478,
+      "maxAreaRatio": 1.0004243197284806
+    },
+    {
+      "sourceFrame": 6.4375,
+      "time": 0.18125,
+      "minAreaRatio": 0.9999994456344068,
+      "maxAreaRatio": 1.0003177769424942
+    },
+    {
+      "sourceFrame": 6.5,
+      "time": 0.18333333333333332,
+      "minAreaRatio": 0.9999993363754016,
+      "maxAreaRatio": 1.000000592248258
+    },
+    {
+      "sourceFrame": 6.5625,
+      "time": 0.18541666666666667,
+      "minAreaRatio": 0.999999368683967,
+      "maxAreaRatio": 1.0003400180406423
+    },
+    {
+      "sourceFrame": 6.625,
+      "time": 0.1875,
+      "minAreaRatio": 0.9999994009992084,
+      "maxAreaRatio": 1.0004527335694522
+    },
+    {
+      "sourceFrame": 6.6875,
+      "time": 0.18958333333333333,
+      "minAreaRatio": 0.9999994333211008,
+      "maxAreaRatio": 1.000339017405779
+    },
+    {
+      "sourceFrame": 6.75,
+      "time": 0.19166666666666668,
+      "minAreaRatio": 0.9999994656497384,
+      "maxAreaRatio": 1.0000002668282328
+    },
+    {
+      "sourceFrame": 6.8125,
+      "time": 0.19375,
+      "minAreaRatio": 0.9999995352377612,
+      "maxAreaRatio": 1.0003626008548756
+    },
+    {
+      "sourceFrame": 6.875,
+      "time": 0.19583333333333333,
+      "minAreaRatio": 0.9999995515316256,
+      "maxAreaRatio": 1.000482506810956
+    },
+    {
+      "sourceFrame": 6.9375,
+      "time": 0.19791666666666666,
+      "minAreaRatio": 0.9999995362691542,
+      "maxAreaRatio": 1.0003611986136691
+    },
+    {
+      "sourceFrame": 7,
+      "time": 0.2,
+      "minAreaRatio": 0.9999996662103996,
+      "maxAreaRatio": 1.0000002888863437
+    },
+    {
+      "sourceFrame": 7.0625,
+      "time": 0.20208333333333334,
+      "minAreaRatio": 0.9999995969621622,
+      "maxAreaRatio": 1.000401984752705
+    },
+    {
+      "sourceFrame": 7.125,
+      "time": 0.20416666666666666,
+      "minAreaRatio": 0.9999996488023849,
+      "maxAreaRatio": 1.0005343871266579
+    },
+    {
+      "sourceFrame": 7.1875,
+      "time": 0.20625,
+      "minAreaRatio": 0.9999997006405424,
+      "maxAreaRatio": 1.000399594344934
+    },
+    {
+      "sourceFrame": 7.25,
+      "time": 0.20833333333333334,
+      "minAreaRatio": 0.999999752476995,
+      "maxAreaRatio": 1.0000002831219423
+    },
+    {
+      "sourceFrame": 7.3125,
+      "time": 0.21041666666666667,
+      "minAreaRatio": 0.9999997484330949,
+      "maxAreaRatio": 1.0004259254200045
+    },
+    {
+      "sourceFrame": 7.375,
+      "time": 0.2125,
+      "minAreaRatio": 0.9999997443886359,
+      "maxAreaRatio": 1.0005659538988243
+    },
+    {
+      "sourceFrame": 7.4375,
+      "time": 0.21458333333333332,
+      "minAreaRatio": 0.999999693809664,
+      "maxAreaRatio": 1.0004228913984707
+    },
+    {
+      "sourceFrame": 7.5,
+      "time": 0.21666666666666667,
+      "minAreaRatio": 0.9999995991709072,
+      "maxAreaRatio": 1.0000003077886113
+    },
+    {
+      "sourceFrame": 7.5625,
+      "time": 0.21875,
+      "minAreaRatio": 0.9999996446946948,
+      "maxAreaRatio": 1.000448775037243
+    },
+    {
+      "sourceFrame": 7.625,
+      "time": 0.22083333333333333,
+      "minAreaRatio": 0.9999996902169582,
+      "maxAreaRatio": 1.000595734950842
+    },
+    {
+      "sourceFrame": 7.6875,
+      "time": 0.22291666666666668,
+      "minAreaRatio": 0.9999996571211017,
+      "maxAreaRatio": 1.000444651898782
+    },
+    {
+      "sourceFrame": 7.75,
+      "time": 0.225,
+      "minAreaRatio": 0.9999995837610243,
+      "maxAreaRatio": 1.000000251512665
+    },
+    {
+      "sourceFrame": 7.8125,
+      "time": 0.22708333333333333,
+      "minAreaRatio": 0.999999583878888,
+      "maxAreaRatio": 1.0004685643271092
+    },
+    {
+      "sourceFrame": 7.875,
+      "time": 0.22916666666666666,
+      "minAreaRatio": 0.999999583995242,
+      "maxAreaRatio": 1.000621281066894
+    },
+    {
+      "sourceFrame": 7.9375,
+      "time": 0.23125,
+      "minAreaRatio": 0.999999544127361,
+      "maxAreaRatio": 1.0004631559390085
+    },
+    {
+      "sourceFrame": 8,
+      "time": 0.23333333333333334,
+      "minAreaRatio": 0.9999995058354094,
+      "maxAreaRatio": 1.000000491815709
+    },
+    {
+      "sourceFrame": 8.0625,
+      "time": 0.23541666666666666,
+      "minAreaRatio": 0.9999994764847332,
+      "maxAreaRatio": 1.0002760821622934
+    },
+    {
+      "sourceFrame": 8.125,
+      "time": 0.2375,
+      "minAreaRatio": 0.9999994645358146,
+      "maxAreaRatio": 1.0003661838674924
+    },
+    {
+      "sourceFrame": 8.1875,
+      "time": 0.23958333333333334,
+      "minAreaRatio": 0.9999994525854708,
+      "maxAreaRatio": 1.0002731311746969
+    },
+    {
+      "sourceFrame": 8.25,
+      "time": 0.24166666666666667,
+      "minAreaRatio": 0.9999994406340331,
+      "maxAreaRatio": 1.0000003399324982
+    },
+    {
+      "sourceFrame": 8.3125,
+      "time": 0.24375,
+      "minAreaRatio": 0.9999995278666168,
+      "maxAreaRatio": 1.0002794211991062
+    },
+    {
+      "sourceFrame": 8.375,
+      "time": 0.24583333333333332,
+      "minAreaRatio": 0.9999996014698112,
+      "maxAreaRatio": 1.0003700647872136
+    },
+    {
+      "sourceFrame": 8.4375,
+      "time": 0.24791666666666667,
+      "minAreaRatio": 0.9999996572926393,
+      "maxAreaRatio": 1.0002757449139488
+    },
+    {
+      "sourceFrame": 8.5,
+      "time": 0.25,
+      "minAreaRatio": 0.9999996687704241,
+      "maxAreaRatio": 1.0000004760172696
+    },
+    {
+      "sourceFrame": 8.5625,
+      "time": 0.2520833333333333,
+      "minAreaRatio": 0.9999997354624452,
+      "maxAreaRatio": 1.0002783644919786
+    },
+    {
+      "sourceFrame": 8.625,
+      "time": 0.25416666666666665,
+      "minAreaRatio": 0.9999996793595346,
+      "maxAreaRatio": 1.000367848982649
+    },
+    {
+      "sourceFrame": 8.6875,
+      "time": 0.25625,
+      "minAreaRatio": 0.9999996232589962,
+      "maxAreaRatio": 1.0002734932605228
+    },
+    {
+      "sourceFrame": 8.75,
+      "time": 0.25833333333333336,
+      "minAreaRatio": 0.9999995224582412,
+      "maxAreaRatio": 1.0000005053536722
+    },
+    {
+      "sourceFrame": 8.8125,
+      "time": 0.2604166666666667,
+      "minAreaRatio": 0.9999996973303018,
+      "maxAreaRatio": 1.0002707801868722
+    },
+    {
+      "sourceFrame": 8.875,
+      "time": 0.2625,
+      "minAreaRatio": 0.9999997053497831,
+      "maxAreaRatio": 1.000356939264364
+    },
+    {
+      "sourceFrame": 8.9375,
+      "time": 0.26458333333333334,
+      "minAreaRatio": 0.9999996270692242,
+      "maxAreaRatio": 1.0002644353755685
+    },
+    {
+      "sourceFrame": 9,
+      "time": 0.26666666666666666,
+      "minAreaRatio": 0.9999992850773438,
+      "maxAreaRatio": 1.0000005223652468
+    },
+    {
+      "sourceFrame": 9.0625,
+      "time": 0.26875,
+      "minAreaRatio": 0.999999619460464,
+      "maxAreaRatio": 1.0000404938748657
+    },
+    {
+      "sourceFrame": 9.125,
+      "time": 0.2708333333333333,
+      "minAreaRatio": 0.9999996063821857,
+      "maxAreaRatio": 1.0000539824615695
+    },
+    {
+      "sourceFrame": 9.1875,
+      "time": 0.27291666666666664,
+      "minAreaRatio": 0.999999448968551,
+      "maxAreaRatio": 1.0000404614656244
+    },
+    {
+      "sourceFrame": 9.25,
+      "time": 0.275,
+      "minAreaRatio": 0.9999991913966749,
+      "maxAreaRatio": 1.0000003573560772
+    },
+    {
+      "sourceFrame": 9.3125,
+      "time": 0.27708333333333335,
+      "minAreaRatio": 0.999999392035837,
+      "maxAreaRatio": 1.0000407699939615
+    },
+    {
+      "sourceFrame": 9.375,
+      "time": 0.2791666666666667,
+      "minAreaRatio": 0.9999995208002612,
+      "maxAreaRatio": 1.0000543816720062
+    },
+    {
+      "sourceFrame": 9.4375,
+      "time": 0.28125,
+      "minAreaRatio": 0.9999995281152614,
+      "maxAreaRatio": 1.000040700579908
+    },
+    {
+      "sourceFrame": 9.5,
+      "time": 0.2833333333333333,
+      "minAreaRatio": 0.9999994892959033,
+      "maxAreaRatio": 1.00000024532775
+    },
+    {
+      "sourceFrame": 9.5625,
+      "time": 0.28541666666666665,
+      "minAreaRatio": 0.9999995767388945,
+      "maxAreaRatio": 1.0000411760205437
+    },
+    {
+      "sourceFrame": 9.625,
+      "time": 0.2875,
+      "minAreaRatio": 0.9999996641809881,
+      "maxAreaRatio": 1.000055079205268
+    },
+    {
+      "sourceFrame": 9.6875,
+      "time": 0.28958333333333336,
+      "minAreaRatio": 0.9999995921895842,
+      "maxAreaRatio": 1.0000413615810682
+    },
+    {
+      "sourceFrame": 9.75,
+      "time": 0.2916666666666667,
+      "minAreaRatio": 0.9999994905598384,
+      "maxAreaRatio": 1.0000003097456371
+    },
+    {
+      "sourceFrame": 9.8125,
+      "time": 0.29375,
+      "minAreaRatio": 0.9999994958597829,
+      "maxAreaRatio": 1.0000419834537462
+    },
+    {
+      "sourceFrame": 9.875,
+      "time": 0.29583333333333334,
+      "minAreaRatio": 0.9999994618059934,
+      "maxAreaRatio": 1.000056033100701
+    },
+    {
+      "sourceFrame": 9.9375,
+      "time": 0.29791666666666666,
+      "minAreaRatio": 0.9999994277522541,
+      "maxAreaRatio": 1.0000420880637673
+    },
+    {
+      "sourceFrame": 10,
+      "time": 0.3,
+      "minAreaRatio": 0.9999995294949855,
+      "maxAreaRatio": 1.0000004295623328
+    },
+    {
+      "sourceFrame": 10.0625,
+      "time": 0.3020833333333333,
+      "minAreaRatio": 0.999999509441544,
+      "maxAreaRatio": 1.0000437775127702
+    },
+    {
+      "sourceFrame": 10.125,
+      "time": 0.30416666666666664,
+      "minAreaRatio": 0.9999996683764669,
+      "maxAreaRatio": 1.000058513660318
+    },
+    {
+      "sourceFrame": 10.1875,
+      "time": 0.30625,
+      "minAreaRatio": 0.9999996752483638,
+      "maxAreaRatio": 1.0000438565275178
+    },
+    {
+      "sourceFrame": 10.25,
+      "time": 0.30833333333333335,
+      "minAreaRatio": 0.9999995483690134,
+      "maxAreaRatio": 1.000000771504224
+    },
+    {
+      "sourceFrame": 10.3125,
+      "time": 0.3104166666666667,
+      "minAreaRatio": 0.9999996070804343,
+      "maxAreaRatio": 1.000044209906307
+    },
+    {
+      "sourceFrame": 10.375,
+      "time": 0.3125,
+      "minAreaRatio": 0.9999995984363931,
+      "maxAreaRatio": 1.0000590855675555
+    },
+    {
+      "sourceFrame": 10.4375,
+      "time": 0.3145833333333333,
+      "minAreaRatio": 0.9999995897920619,
+      "maxAreaRatio": 1.000044390697917
+    },
+    {
+      "sourceFrame": 10.5,
+      "time": 0.31666666666666665,
+      "minAreaRatio": 0.9999995811476841,
+      "maxAreaRatio": 1.000000135324857
+    },
+    {
+      "sourceFrame": 10.5625,
+      "time": 0.31875,
+      "minAreaRatio": 0.9999996470089116,
+      "maxAreaRatio": 1.0000447643277932
+    },
+    {
+      "sourceFrame": 10.625,
+      "time": 0.32083333333333336,
+      "minAreaRatio": 0.999999619696263,
+      "maxAreaRatio": 1.0000596567695266
+    },
+    {
+      "sourceFrame": 10.6875,
+      "time": 0.3229166666666667,
+      "minAreaRatio": 0.9999995558684717,
+      "maxAreaRatio": 1.0000447482196375
+    },
+    {
+      "sourceFrame": 10.75,
+      "time": 0.325,
+      "minAreaRatio": 0.9999994920417727,
+      "maxAreaRatio": 1.0000004098266126
+    },
+    {
+      "sourceFrame": 10.8125,
+      "time": 0.32708333333333334,
+      "minAreaRatio": 0.9999995921256065,
+      "maxAreaRatio": 1.000045105238456
+    },
+    {
+      "sourceFrame": 10.875,
+      "time": 0.32916666666666666,
+      "minAreaRatio": 0.9999996028031712,
+      "maxAreaRatio": 1.0000601524181074
+    },
+    {
+      "sourceFrame": 10.9375,
+      "time": 0.33125,
+      "minAreaRatio": 0.999999598862215,
+      "maxAreaRatio": 1.0000451138183502
+    },
+    {
+      "sourceFrame": 11,
+      "time": 0.3333333333333333,
+      "minAreaRatio": 0.9999996322199426,
+      "maxAreaRatio": 1.00000034274558
+    },
+    {
+      "sourceFrame": 11.0625,
+      "time": 0.33541666666666664,
+      "minAreaRatio": 0.9999996387617038,
+      "maxAreaRatio": 1.0000553372304564
+    },
+    {
+      "sourceFrame": 11.125,
+      "time": 0.3375,
+      "minAreaRatio": 0.9999996719684563,
+      "maxAreaRatio": 1.0000748639395474
+    },
+    {
+      "sourceFrame": 11.1875,
+      "time": 0.33958333333333335,
+      "minAreaRatio": 0.9999996605047827,
+      "maxAreaRatio": 1.000056808388803
+    },
+    {
+      "sourceFrame": 11.25,
+      "time": 0.3416666666666667,
+      "minAreaRatio": 0.9999994141960589,
+      "maxAreaRatio": 1.0000004519473187
+    },
+    {
+      "sourceFrame": 11.3125,
+      "time": 0.34375,
+      "minAreaRatio": 0.9999996534282498,
+      "maxAreaRatio": 1.0000621195048631
+    },
+    {
+      "sourceFrame": 11.375,
+      "time": 0.3458333333333333,
+      "minAreaRatio": 0.9999996788756986,
+      "maxAreaRatio": 1.0000841469740007
+    },
+    {
+      "sourceFrame": 11.4375,
+      "time": 0.34791666666666665,
+      "minAreaRatio": 0.9999996942489691,
+      "maxAreaRatio": 1.00006389105104
+    },
+    {
+      "sourceFrame": 11.5,
+      "time": 0.35,
+      "minAreaRatio": 0.9999996408524404,
+      "maxAreaRatio": 1.0000004359033339
+    },
+    {
+      "sourceFrame": 11.5625,
+      "time": 0.35208333333333336,
+      "minAreaRatio": 0.999999695686919,
+      "maxAreaRatio": 1.000068130336785
+    },
+    {
+      "sourceFrame": 11.625,
+      "time": 0.3541666666666667,
+      "minAreaRatio": 0.9999996615815574,
+      "maxAreaRatio": 1.0000918388576412
+    },
+    {
+      "sourceFrame": 11.6875,
+      "time": 0.35625,
+      "minAreaRatio": 0.999999627491164,
+      "maxAreaRatio": 1.000069459979358
+    },
+    {
+      "sourceFrame": 11.75,
+      "time": 0.35833333333333334,
+      "minAreaRatio": 0.9999991543987324,
+      "maxAreaRatio": 1.000000395729449
+    },
+    {
+      "sourceFrame": 11.8125,
+      "time": 0.36041666666666666,
+      "minAreaRatio": 0.9999995817102234,
+      "maxAreaRatio": 1.0000725296382198
+    },
+    {
+      "sourceFrame": 11.875,
+      "time": 0.3625,
+      "minAreaRatio": 0.9999995551199441,
+      "maxAreaRatio": 1.000097671060263
+    },
+    {
+      "sourceFrame": 11.9375,
+      "time": 0.3645833333333333,
+      "minAreaRatio": 0.9999994327192754,
+      "maxAreaRatio": 1.0000737180719468
+    },
+    {
+      "sourceFrame": 12,
+      "time": 0.36666666666666664,
+      "minAreaRatio": 0.9999993616141171,
+      "maxAreaRatio": 1.0000005989136496
+    },
+    {
+      "sourceFrame": 12.0625,
+      "time": 0.36875,
+      "minAreaRatio": 0.9999994517077259,
+      "maxAreaRatio": 1.0042305347841372
+    },
+    {
+      "sourceFrame": 12.125,
+      "time": 0.37083333333333335,
+      "minAreaRatio": 0.999999612600336,
+      "maxAreaRatio": 1.0058582167442085
+    },
+    {
+      "sourceFrame": 12.1875,
+      "time": 0.3729166666666667,
+      "minAreaRatio": 0.9999996679373258,
+      "maxAreaRatio": 1.004541795388146
+    },
+    {
+      "sourceFrame": 12.25,
+      "time": 0.375,
+      "minAreaRatio": 0.9999997232979196,
+      "maxAreaRatio": 1.0000006865987077
+    },
+    {
+      "sourceFrame": 12.3125,
+      "time": 0.3770833333333333,
+      "minAreaRatio": 0.9999997526059468,
+      "maxAreaRatio": 1.0041228771293573
+    },
+    {
+      "sourceFrame": 12.375,
+      "time": 0.37916666666666665,
+      "minAreaRatio": 0.9999997819392695,
+      "maxAreaRatio": 1.0055872011818554
+    },
+    {
+      "sourceFrame": 12.4375,
+      "time": 0.38125,
+      "minAreaRatio": 0.999999682517969,
+      "maxAreaRatio": 1.0042512673876065
+    },
+    {
+      "sourceFrame": 12.5,
+      "time": 0.38333333333333336,
+      "minAreaRatio": 0.9999995603850688,
+      "maxAreaRatio": 1.000000506616245
+    },
+    {
+      "sourceFrame": 12.5625,
+      "time": 0.3854166666666667,
+      "minAreaRatio": 0.9999995600025693,
+      "maxAreaRatio": 1.003525675071166
+    },
+    {
+      "sourceFrame": 12.625,
+      "time": 0.3875,
+      "minAreaRatio": 0.9999995420745326,
+      "maxAreaRatio": 1.0047369452540327
+    },
+    {
+      "sourceFrame": 12.6875,
+      "time": 0.38958333333333334,
+      "minAreaRatio": 0.9999995241391133,
+      "maxAreaRatio": 1.0035767168367056
+    },
+    {
+      "sourceFrame": 12.75,
+      "time": 0.39166666666666666,
+      "minAreaRatio": 0.9999993876831843,
+      "maxAreaRatio": 1.0000001684703874
+    },
+    {
+      "sourceFrame": 12.8125,
+      "time": 0.39375,
+      "minAreaRatio": 0.9999995059958904,
+      "maxAreaRatio": 1.002904171073197
+    },
+    {
+      "sourceFrame": 12.875,
+      "time": 0.3958333333333333,
+      "minAreaRatio": 0.9999995800175256,
+      "maxAreaRatio": 1.0038847869092304
+    },
+    {
+      "sourceFrame": 12.9375,
+      "time": 0.39791666666666664,
+      "minAreaRatio": 0.9999996353591147,
+      "maxAreaRatio": 1.0029214177344186
+    },
+    {
+      "sourceFrame": 13,
+      "time": 0.4,
+      "minAreaRatio": 0.9999996483914001,
+      "maxAreaRatio": 1.000000716245831
+    },
+    {
+      "sourceFrame": 13.0625,
+      "time": 0.40208333333333335,
+      "minAreaRatio": 0.9999996605049488,
+      "maxAreaRatio": 1.0039743259111136
+    },
+    {
+      "sourceFrame": 13.125,
+      "time": 0.4041666666666667,
+      "minAreaRatio": 0.9999997121598487,
+      "maxAreaRatio": 1.0053030126584264
+    },
+    {
+      "sourceFrame": 13.1875,
+      "time": 0.40625,
+      "minAreaRatio": 0.9999997320021776,
+      "maxAreaRatio": 1.0039777407767017
+    },
+    {
+      "sourceFrame": 13.25,
+      "time": 0.4083333333333333,
+      "minAreaRatio": 0.9999994652015372,
+      "maxAreaRatio": 1.0000004003095664
+    },
+    {
+      "sourceFrame": 13.3125,
+      "time": 0.41041666666666665,
+      "minAreaRatio": 0.999999582769498,
+      "maxAreaRatio": 1.0030855172011306
+    },
+    {
+      "sourceFrame": 13.375,
+      "time": 0.4125,
+      "minAreaRatio": 0.999999683555521,
+      "maxAreaRatio": 1.0041066739594875
+    },
+    {
+      "sourceFrame": 13.4375,
+      "time": 0.41458333333333336,
+      "minAreaRatio": 0.9999996565746184,
+      "maxAreaRatio": 1.0030732108064684
+    },
+    {
+      "sourceFrame": 13.5,
+      "time": 0.4166666666666667,
+      "minAreaRatio": 0.9999995976691394,
+      "maxAreaRatio": 1.000000499222748
+    },
+    {
+      "sourceFrame": 13.5625,
+      "time": 0.41875,
+      "minAreaRatio": 0.9999996658784283,
+      "maxAreaRatio": 1.002437781245264
+    },
+    {
+      "sourceFrame": 13.625,
+      "time": 0.42083333333333334,
+      "minAreaRatio": 0.9999996435386126,
+      "maxAreaRatio": 1.003239823238871
+    },
+    {
+      "sourceFrame": 13.6875,
+      "time": 0.42291666666666666,
+      "minAreaRatio": 0.9999995889341378,
+      "maxAreaRatio": 1.00242117246958
+    },
+    {
+      "sourceFrame": 13.75,
+      "time": 0.425,
+      "minAreaRatio": 0.9999994679265326,
+      "maxAreaRatio": 1.000000586921004
+    },
+    {
+      "sourceFrame": 13.8125,
+      "time": 0.4270833333333333,
+      "minAreaRatio": 0.9999995948788154,
+      "maxAreaRatio": 1.001966122625292
+    },
+    {
+      "sourceFrame": 13.875,
+      "time": 0.42916666666666664,
+      "minAreaRatio": 0.9999996167256462,
+      "maxAreaRatio": 1.0026105946763293
+    },
+    {
+      "sourceFrame": 13.9375,
+      "time": 0.43125,
+      "minAreaRatio": 0.9999996131895176,
+      "maxAreaRatio": 1.0019492447696585
+    },
+    {
+      "sourceFrame": 14,
+      "time": 0.43333333333333335,
+      "minAreaRatio": 0.9999996299967632,
+      "maxAreaRatio": 1.0000005482976528
+    },
+    {
+      "sourceFrame": 14.0625,
+      "time": 0.4354166666666667,
+      "minAreaRatio": 0.9999995324409146,
+      "maxAreaRatio": 1.000534468191769
+    },
+    {
+      "sourceFrame": 14.125,
+      "time": 0.4375,
+      "minAreaRatio": 0.999999598256484,
+      "maxAreaRatio": 1.0007147228103643
+    },
+    {
+      "sourceFrame": 14.1875,
+      "time": 0.4395833333333333,
+      "minAreaRatio": 0.9999996567738412,
+      "maxAreaRatio": 1.000537604864458
+    },
+    {
+      "sourceFrame": 14.25,
+      "time": 0.44166666666666665,
+      "minAreaRatio": 0.9999995387689631,
+      "maxAreaRatio": 1.0000006417153804
+    },
+    {
+      "sourceFrame": 14.3125,
+      "time": 0.44375,
+      "minAreaRatio": 0.9999996112718232,
+      "maxAreaRatio": 1.0005923560638912
+    },
+    {
+      "sourceFrame": 14.375,
+      "time": 0.44583333333333336,
+      "minAreaRatio": 0.9999996577572873,
+      "maxAreaRatio": 1.000792252545543
+    },
+    {
+      "sourceFrame": 14.4375,
+      "time": 0.4479166666666667,
+      "minAreaRatio": 0.9999996939557991,
+      "maxAreaRatio": 1.0005960531853046
+    },
+    {
+      "sourceFrame": 14.5,
+      "time": 0.45,
+      "minAreaRatio": 0.9999996221983585,
+      "maxAreaRatio": 1.0000004343132392
+    },
+    {
+      "sourceFrame": 14.5625,
+      "time": 0.45208333333333334,
+      "minAreaRatio": 0.9999996760951828,
+      "maxAreaRatio": 1.0006631035781142
+    },
+    {
+      "sourceFrame": 14.625,
+      "time": 0.45416666666666666,
+      "minAreaRatio": 0.9999996013425102,
+      "maxAreaRatio": 1.0008865674218137
+    },
+    {
+      "sourceFrame": 14.6875,
+      "time": 0.45625,
+      "minAreaRatio": 0.9999995266785419,
+      "maxAreaRatio": 1.0006666945805254
+    },
+    {
+      "sourceFrame": 14.75,
+      "time": 0.4583333333333333,
+      "minAreaRatio": 0.9999994204428326,
+      "maxAreaRatio": 1.0000006362419815
+    },
+    {
+      "sourceFrame": 14.8125,
+      "time": 0.46041666666666664,
+      "minAreaRatio": 0.999999429953606,
+      "maxAreaRatio": 1.0007487749241013
+    },
+    {
+      "sourceFrame": 14.875,
+      "time": 0.4625,
+      "minAreaRatio": 0.9999993970890332,
+      "maxAreaRatio": 1.001001254812027
+    },
+    {
+      "sourceFrame": 14.9375,
+      "time": 0.46458333333333335,
+      "minAreaRatio": 0.999999254284057,
+      "maxAreaRatio": 1.0007528709923112
+    },
+    {
+      "sourceFrame": 15,
+      "time": 0.4666666666666667,
+      "minAreaRatio": 0.9999994510311486,
+      "maxAreaRatio": 1.0000003824382298
+    },
+    {
+      "sourceFrame": 15.0625,
+      "time": 0.46875,
+      "minAreaRatio": 0.9999991959364285,
+      "maxAreaRatio": 1.0013621956703538
+    },
+    {
+      "sourceFrame": 15.125,
+      "time": 0.4708333333333333,
+      "minAreaRatio": 0.999999302746431,
+      "maxAreaRatio": 1.0018221249452337
+    },
+    {
+      "sourceFrame": 15.1875,
+      "time": 0.47291666666666665,
+      "minAreaRatio": 0.9999994095564539,
+      "maxAreaRatio": 1.0013706375101314
+    },
+    {
+      "sourceFrame": 15.25,
+      "time": 0.475,
+      "minAreaRatio": 0.9999994865642561,
+      "maxAreaRatio": 1.0000004005526462
+    },
+    {
+      "sourceFrame": 15.3125,
+      "time": 0.47708333333333336,
+      "minAreaRatio": 0.9999996194513816,
+      "maxAreaRatio": 1.0016281091576753
+    },
+    {
+      "sourceFrame": 15.375,
+      "time": 0.4791666666666667,
+      "minAreaRatio": 0.9999997373305903,
+      "maxAreaRatio": 1.0021762467215514
+    },
+    {
+      "sourceFrame": 15.4375,
+      "time": 0.48125,
+      "minAreaRatio": 0.9999997965138842,
+      "maxAreaRatio": 1.0016359666520571
+    },
+    {
+      "sourceFrame": 15.5,
+      "time": 0.48333333333333334,
+      "minAreaRatio": 0.9999996998390107,
+      "maxAreaRatio": 1.0000007440173053
+    },
+    {
+      "sourceFrame": 15.5625,
+      "time": 0.48541666666666666,
+      "minAreaRatio": 0.9999998059200886,
+      "maxAreaRatio": 1.0019711040010588
+    },
+    {
+      "sourceFrame": 15.625,
+      "time": 0.4875,
+      "minAreaRatio": 0.9999998009549272,
+      "maxAreaRatio": 1.0026318666245178
+    },
+    {
+      "sourceFrame": 15.6875,
+      "time": 0.4895833333333333,
+      "minAreaRatio": 0.9999997165930905,
+      "maxAreaRatio": 1.0019762235972882
+    },
+    {
+      "sourceFrame": 15.75,
+      "time": 0.49166666666666664,
+      "minAreaRatio": 0.999999522554746,
+      "maxAreaRatio": 1.0000003496528098
+    },
+    {
+      "sourceFrame": 15.8125,
+      "time": 0.49375,
+      "minAreaRatio": 0.9999996101694135,
+      "maxAreaRatio": 1.0024137050320832
+    },
+    {
+      "sourceFrame": 15.875,
+      "time": 0.49583333333333335,
+      "minAreaRatio": 0.9999996143436924,
+      "maxAreaRatio": 1.0032184263883785
+    },
+    {
+      "sourceFrame": 15.9375,
+      "time": 0.4979166666666667,
+      "minAreaRatio": 0.9999994209709766,
+      "maxAreaRatio": 1.0024129745831807
+    },
+    {
+      "sourceFrame": 16,
+      "time": 0.5,
+      "minAreaRatio": 0.9999995420772231,
+      "maxAreaRatio": 1.0000002742691576
+    },
+    {
+      "sourceFrame": 16.0625,
+      "time": 0.5020833333333333,
+      "minAreaRatio": 0.9999993893163244,
+      "maxAreaRatio": 1.001731197010282
+    },
+    {
+      "sourceFrame": 16.125,
+      "time": 0.5041666666666667,
+      "minAreaRatio": 0.9999995748424606,
+      "maxAreaRatio": 1.0023049044416974
+    },
+    {
+      "sourceFrame": 16.1875,
+      "time": 0.50625,
+      "minAreaRatio": 0.9999996003506453,
+      "maxAreaRatio": 1.0017255347654113
+    },
+    {
+      "sourceFrame": 16.25,
+      "time": 0.5083333333333333,
+      "minAreaRatio": 0.9999995514366646,
+      "maxAreaRatio": 1.0000002974190256
+    },
+    {
+      "sourceFrame": 16.3125,
+      "time": 0.5104166666666666,
+      "minAreaRatio": 0.9999995248311664,
+      "maxAreaRatio": 1.002038589692005
+    },
+    {
+      "sourceFrame": 16.375,
+      "time": 0.5125,
+      "minAreaRatio": 0.9999994982629146,
+      "maxAreaRatio": 1.0027089121434054
+    },
+    {
+      "sourceFrame": 16.4375,
+      "time": 0.5145833333333333,
+      "minAreaRatio": 0.9999994717254905,
+      "maxAreaRatio": 1.0020239568104452
+    },
+    {
+      "sourceFrame": 16.5,
+      "time": 0.5166666666666667,
+      "minAreaRatio": 0.9999994452133455,
+      "maxAreaRatio": 1.0000004366937614
+    },
+    {
+      "sourceFrame": 16.5625,
+      "time": 0.51875,
+      "minAreaRatio": 0.9999995481718402,
+      "maxAreaRatio": 1.0023835332554074
+    },
+    {
+      "sourceFrame": 16.625,
+      "time": 0.5208333333333334,
+      "minAreaRatio": 0.9999996218042311,
+      "maxAreaRatio": 1.0031571250714593
+    },
+    {
+      "sourceFrame": 16.6875,
+      "time": 0.5229166666666667,
+      "minAreaRatio": 0.999999591508008,
+      "maxAreaRatio": 1.0023507533592264
+    },
+    {
+      "sourceFrame": 16.75,
+      "time": 0.525,
+      "minAreaRatio": 0.9999994799264225,
+      "maxAreaRatio": 1.0000003096752272
+    },
+    {
+      "sourceFrame": 16.8125,
+      "time": 0.5270833333333333,
+      "minAreaRatio": 0.9999994987661248,
+      "maxAreaRatio": 1.0027175955973895
+    },
+    {
+      "sourceFrame": 16.875,
+      "time": 0.5291666666666667,
+      "minAreaRatio": 0.9999995027431909,
+      "maxAreaRatio": 1.003580382556277
+    },
+    {
+      "sourceFrame": 16.9375,
+      "time": 0.53125,
+      "minAreaRatio": 0.9999994594021336,
+      "maxAreaRatio": 1.0026503433207186
+    },
+    {
+      "sourceFrame": 17,
+      "time": 0.5333333333333333,
+      "minAreaRatio": 0.9999994470060765,
+      "maxAreaRatio": 1.0000003516564535
+    },
+    {
+      "sourceFrame": 17.0625,
+      "time": 0.5354166666666667,
+      "minAreaRatio": 0.9999994568336081,
+      "maxAreaRatio": 1.0005002489942643
+    },
+    {
+      "sourceFrame": 17.125,
+      "time": 0.5375,
+      "minAreaRatio": 0.9999994066757899,
+      "maxAreaRatio": 1.0006680495168832
+    },
+    {
+      "sourceFrame": 17.1875,
+      "time": 0.5395833333333333,
+      "minAreaRatio": 0.9999993565149433,
+      "maxAreaRatio": 1.0005016345728726
+    },
+    {
+      "sourceFrame": 17.25,
+      "time": 0.5416666666666666,
+      "minAreaRatio": 0.9999993063504464,
+      "maxAreaRatio": 1.0000001650983545
+    },
+    {
+      "sourceFrame": 17.3125,
+      "time": 0.54375,
+      "minAreaRatio": 0.999999430339393,
+      "maxAreaRatio": 1.0005555120577827
+    },
+    {
+      "sourceFrame": 17.375,
+      "time": 0.5458333333333333,
+      "minAreaRatio": 0.9999995543260722,
+      "maxAreaRatio": 1.000741707818532
+    },
+    {
+      "sourceFrame": 17.4375,
+      "time": 0.5479166666666667,
+      "minAreaRatio": 0.9999996070636025,
+      "maxAreaRatio": 1.0005568924150772
+    },
+    {
+      "sourceFrame": 17.5,
+      "time": 0.55,
+      "minAreaRatio": 0.9999995564602538,
+      "maxAreaRatio": 1.000000221066188
+    },
+    {
+      "sourceFrame": 17.5625,
+      "time": 0.5520833333333334,
+      "minAreaRatio": 0.9999996387187958,
+      "maxAreaRatio": 1.0006195396800899
+    },
+    {
+      "sourceFrame": 17.625,
+      "time": 0.5541666666666667,
+      "minAreaRatio": 0.9999996371944585,
+      "maxAreaRatio": 1.0008268187813703
+    },
+    {
+      "sourceFrame": 17.6875,
+      "time": 0.55625,
+      "minAreaRatio": 0.999999635665991,
+      "maxAreaRatio": 1.0006206279253094
+    },
+    {
+      "sourceFrame": 17.75,
+      "time": 0.5583333333333333,
+      "minAreaRatio": 0.9999996155045047,
+      "maxAreaRatio": 1.0000004120270929
+    },
+    {
+      "sourceFrame": 17.8125,
+      "time": 0.5604166666666667,
+      "minAreaRatio": 0.9999997291252257,
+      "maxAreaRatio": 1.0006932721645543
+    },
+    {
+      "sourceFrame": 17.875,
+      "time": 0.5625,
+      "minAreaRatio": 0.9999998116885317,
+      "maxAreaRatio": 1.0009246463271462
+    },
+    {
+      "sourceFrame": 17.9375,
+      "time": 0.5645833333333333,
+      "minAreaRatio": 0.999999733408805,
+      "maxAreaRatio": 1.0006935543701323
+    },
+    {
+      "sourceFrame": 18,
+      "time": 0.5666666666666667,
+      "minAreaRatio": 0.9999993716683186,
+      "maxAreaRatio": 1.00000046628918
+    },
+    {
+      "sourceFrame": 18.0625,
+      "time": 0.56875,
+      "minAreaRatio": 0.999999667983653,
+      "maxAreaRatio": 1.000223735653662
+    },
+    {
+      "sourceFrame": 18.125,
+      "time": 0.5708333333333333,
+      "minAreaRatio": 0.9999997150154959,
+      "maxAreaRatio": 1.0002984620941793
+    },
+    {
+      "sourceFrame": 18.1875,
+      "time": 0.5729166666666666,
+      "minAreaRatio": 0.9999995943944108,
+      "maxAreaRatio": 1.000223982882583
+    },
+    {
+      "sourceFrame": 18.25,
+      "time": 0.575,
+      "minAreaRatio": 0.9999994186710789,
+      "maxAreaRatio": 1.000000278697156
+    },
+    {
+      "sourceFrame": 18.3125,
+      "time": 0.5770833333333333,
+      "minAreaRatio": 0.9999996087773586,
+      "maxAreaRatio": 1.0002286937937397
+    },
+    {
+      "sourceFrame": 18.375,
+      "time": 0.5791666666666667,
+      "minAreaRatio": 0.9999995634804946,
+      "maxAreaRatio": 1.0003052843813187
+    },
+    {
+      "sourceFrame": 18.4375,
+      "time": 0.58125,
+      "minAreaRatio": 0.9999995181832303,
+      "maxAreaRatio": 1.0002292756772688
+    },
+    {
+      "sourceFrame": 18.5,
+      "time": 0.5833333333333334,
+      "minAreaRatio": 0.9999994691626617,
+      "maxAreaRatio": 1.0000003602655534
+    },
+    {
+      "sourceFrame": 18.5625,
+      "time": 0.5854166666666667,
+      "minAreaRatio": 0.9999996447565218,
+      "maxAreaRatio": 1.0002359561208436
+    },
+    {
+      "sourceFrame": 18.625,
+      "time": 0.5875,
+      "minAreaRatio": 0.9999997488497422,
+      "maxAreaRatio": 1.0003149384886956
+    },
+    {
+      "sourceFrame": 18.6875,
+      "time": 0.5895833333333333,
+      "minAreaRatio": 0.9999998156632721,
+      "maxAreaRatio": 1.0002365077687037
+    },
+    {
+      "sourceFrame": 18.75,
+      "time": 0.5916666666666667,
+      "minAreaRatio": 0.9999996068690923,
+      "maxAreaRatio": 1.0000003237716912
+    },
+    {
+      "sourceFrame": 18.8125,
+      "time": 0.59375,
+      "minAreaRatio": 0.9999996990102621,
+      "maxAreaRatio": 1.0002451274480835
+    },
+    {
+      "sourceFrame": 18.875,
+      "time": 0.5958333333333333,
+      "minAreaRatio": 0.9999996313706082,
+      "maxAreaRatio": 1.000327280234622
+    },
+    {
+      "sourceFrame": 18.9375,
+      "time": 0.5979166666666667,
+      "minAreaRatio": 0.999999537653823,
+      "maxAreaRatio": 1.0002457026621236
+    },
+    {
+      "sourceFrame": 19,
+      "time": 0.6,
+      "minAreaRatio": 0.9999995721979663,
+      "maxAreaRatio": 1.0000003933028625
+    },
+    {
+      "sourceFrame": 19.0625,
+      "time": 0.6020833333333333,
+      "minAreaRatio": 0.9999994816771413,
+      "maxAreaRatio": 1.002555321023621
+    },
+    {
+      "sourceFrame": 19.125,
+      "time": 0.6041666666666666,
+      "minAreaRatio": 0.9999995748345278,
+      "maxAreaRatio": 1.00342933290591
+    },
+    {
+      "sourceFrame": 19.1875,
+      "time": 0.60625,
+      "minAreaRatio": 0.9999996679875056,
+      "maxAreaRatio": 1.0025876216604497
+    },
+    {
+      "sourceFrame": 19.25,
+      "time": 0.6083333333333333,
+      "minAreaRatio": 0.9999996811757846,
+      "maxAreaRatio": 1.0000002716878837
+    },
+    {
+      "sourceFrame": 19.3125,
+      "time": 0.6104166666666667,
+      "minAreaRatio": 0.999999684460534,
+      "maxAreaRatio": 1.003160486243155
+    },
+    {
+      "sourceFrame": 19.375,
+      "time": 0.6125,
+      "minAreaRatio": 0.9999996867492567,
+      "maxAreaRatio": 1.0042454212239555
+    },
+    {
+      "sourceFrame": 19.4375,
+      "time": 0.6145833333333334,
+      "minAreaRatio": 0.9999995976692335,
+      "maxAreaRatio": 1.0032062726999258
+    },
+    {
+      "sourceFrame": 19.5,
+      "time": 0.6166666666666667,
+      "minAreaRatio": 0.9999992882215617,
+      "maxAreaRatio": 1.0000003102729442
+    },
+    {
+      "sourceFrame": 19.5625,
+      "time": 0.61875,
+      "minAreaRatio": 0.9999995407976793,
+      "maxAreaRatio": 1.0041502832769633
+    },
+    {
+      "sourceFrame": 19.625,
+      "time": 0.6208333333333333,
+      "minAreaRatio": 0.9999995792905061,
+      "maxAreaRatio": 1.0055723401601275
+    },
+    {
+      "sourceFrame": 19.6875,
+      "time": 0.6229166666666667,
+      "minAreaRatio": 0.9999994852529476,
+      "maxAreaRatio": 1.004205982373858
+    },
+    {
+      "sourceFrame": 19.75,
+      "time": 0.625,
+      "minAreaRatio": 0.9999993150459348,
+      "maxAreaRatio": 1.0000005896651865
+    },
+    {
+      "sourceFrame": 19.8125,
+      "time": 0.6270833333333333,
+      "minAreaRatio": 0.9999993855841739,
+      "maxAreaRatio": 1.0057481695942467
+    },
+    {
+      "sourceFrame": 19.875,
+      "time": 0.6291666666666667,
+      "minAreaRatio": 0.9999994561208077,
+      "maxAreaRatio": 1.0077035358907884
+    },
+    {
+      "sourceFrame": 19.9375,
+      "time": 0.63125,
+      "minAreaRatio": 0.9999995266560958,
+      "maxAreaRatio": 1.0058027912466905
+    },
+    {
+      "sourceFrame": 20,
+      "time": 0.6333333333333333,
+      "minAreaRatio": 0.9999995842068796,
+      "maxAreaRatio": 1.00000034954111
+    },
+    {
+      "sourceFrame": 20.0625,
+      "time": 0.6354166666666666,
+      "minAreaRatio": 0.9999995585602706,
+      "maxAreaRatio": 1.0016178329372454
+    },
+    {
+      "sourceFrame": 20.125,
+      "time": 0.6375,
+      "minAreaRatio": 0.9999995328716915,
+      "maxAreaRatio": 1.0021541177965019
+    },
+    {
+      "sourceFrame": 20.1875,
+      "time": 0.6395833333333333,
+      "minAreaRatio": 0.9999995071510217,
+      "maxAreaRatio": 1.0016128439570753
+    },
+    {
+      "sourceFrame": 20.25,
+      "time": 0.6416666666666667,
+      "minAreaRatio": 0.9999994814091347,
+      "maxAreaRatio": 1.000000348877757
+    },
+    {
+      "sourceFrame": 20.3125,
+      "time": 0.64375,
+      "minAreaRatio": 0.9999995641536993,
+      "maxAreaRatio": 1.0013713502311015
+    },
+    {
+      "sourceFrame": 20.375,
+      "time": 0.6458333333333334,
+      "minAreaRatio": 0.9999996148613725,
+      "maxAreaRatio": 1.0018288487160958
+    },
+    {
+      "sourceFrame": 20.4375,
+      "time": 0.6479166666666667,
+      "minAreaRatio": 0.9999994550172799,
+      "maxAreaRatio": 1.0013715688634917
+    },
+    {
+      "sourceFrame": 20.5,
+      "time": 0.65,
+      "minAreaRatio": 0.9999992774818955,
+      "maxAreaRatio": 1.000000247161089
+    },
+    {
+      "sourceFrame": 20.5625,
+      "time": 0.6520833333333333,
+      "minAreaRatio": 0.999999378175834,
+      "maxAreaRatio": 1.001608637103761
+    },
+    {
+      "sourceFrame": 20.625,
+      "time": 0.6541666666666667,
+      "minAreaRatio": 0.9999994723513632,
+      "maxAreaRatio": 1.0021424290043854
+    },
+    {
+      "sourceFrame": 20.6875,
+      "time": 0.65625,
+      "minAreaRatio": 0.9999994611956583,
+      "maxAreaRatio": 1.0016045482943075
+    },
+    {
+      "sourceFrame": 20.75,
+      "time": 0.6583333333333333,
+      "minAreaRatio": 0.9999992439080887,
+      "maxAreaRatio": 1.0000001944818746
+    },
+    {
+      "sourceFrame": 20.8125,
+      "time": 0.6604166666666667,
+      "minAreaRatio": 0.9999993916985017,
+      "maxAreaRatio": 1.0018901018854787
+    },
+    {
+      "sourceFrame": 20.875,
+      "time": 0.6625,
+      "minAreaRatio": 0.9999994119597286,
+      "maxAreaRatio": 1.002513219045235
+    },
+    {
+      "sourceFrame": 20.9375,
+      "time": 0.6645833333333333,
+      "minAreaRatio": 0.9999993480699414,
+      "maxAreaRatio": 1.0018789126525958
+    },
+    {
+      "sourceFrame": 21,
+      "time": 0.6666666666666666,
+      "minAreaRatio": 0.9999993434190884,
+      "maxAreaRatio": 1.000000327054206
+    },
+    {
+      "sourceFrame": 21.0625,
+      "time": 0.66875,
+      "minAreaRatio": 0.9999994438767301,
+      "maxAreaRatio": 1.0021526932363085
+    },
+    {
+      "sourceFrame": 21.125,
+      "time": 0.6708333333333333,
+      "minAreaRatio": 0.9999995216215949,
+      "maxAreaRatio": 1.0028507670958449
+    },
+    {
+      "sourceFrame": 21.1875,
+      "time": 0.6729166666666667,
+      "minAreaRatio": 0.9999995434874049,
+      "maxAreaRatio": 1.0021220667615098
+    },
+    {
+      "sourceFrame": 21.25,
+      "time": 0.675,
+      "minAreaRatio": 0.9999995653548159,
+      "maxAreaRatio": 1.000000225193174
+    },
+    {
+      "sourceFrame": 21.3125,
+      "time": 0.6770833333333334,
+      "minAreaRatio": 0.9999995487992075,
+      "maxAreaRatio": 1.0024254094222111
+    },
+    {
+      "sourceFrame": 21.375,
+      "time": 0.6791666666666667,
+      "minAreaRatio": 0.9999995108003935,
+      "maxAreaRatio": 1.0031952139643487
+    },
+    {
+      "sourceFrame": 21.4375,
+      "time": 0.68125,
+      "minAreaRatio": 0.999999472803544,
+      "maxAreaRatio": 1.0023651948587207
+    },
+    {
+      "sourceFrame": 21.5,
+      "time": 0.6833333333333333,
+      "minAreaRatio": 0.9999994217701166,
+      "maxAreaRatio": 1.0000002564444488
+    },
+    {
+      "sourceFrame": 21.5625,
+      "time": 0.6854166666666667,
+      "minAreaRatio": 0.9999994564204346,
+      "maxAreaRatio": 1.0025662338031118
+    },
+    {
+      "sourceFrame": 21.625,
+      "time": 0.6875,
+      "minAreaRatio": 0.9999994780343127,
+      "maxAreaRatio": 1.0033476486432606
+    },
+    {
+      "sourceFrame": 21.6875,
+      "time": 0.6895833333333333,
+      "minAreaRatio": 0.9999994996502133,
+      "maxAreaRatio": 1.0024512572697524
+    },
+    {
+      "sourceFrame": 21.75,
+      "time": 0.6916666666666667,
+      "minAreaRatio": 0.9999995212683913,
+      "maxAreaRatio": 1.0000003686891548
+    },
+    {
+      "sourceFrame": 21.8125,
+      "time": 0.69375,
+      "minAreaRatio": 0.9999996746704748,
+      "maxAreaRatio": 1.0023028239298477
+    },
+    {
+      "sourceFrame": 21.875,
+      "time": 0.6958333333333333,
+      "minAreaRatio": 0.9999997692104272,
+      "maxAreaRatio": 1.0029314988052904
+    },
+    {
+      "sourceFrame": 21.9375,
+      "time": 0.6979166666666666,
+      "minAreaRatio": 0.9999996234562607,
+      "maxAreaRatio": 1.0020875227311346
+    },
+    {
+      "sourceFrame": 22,
+      "time": 0.7,
+      "minAreaRatio": 0.9999993957500213,
+      "maxAreaRatio": 1.000000551977222
+    },
+    {
+      "sourceFrame": 22.0625,
+      "time": 0.7020833333333333,
+      "minAreaRatio": 0.9999995480900519,
+      "maxAreaRatio": 1.0014040245092197
+    },
+    {
+      "sourceFrame": 22.125,
+      "time": 0.7041666666666667,
+      "minAreaRatio": 0.9999996783306379,
+      "maxAreaRatio": 1.0018055832901385
+    },
+    {
+      "sourceFrame": 22.1875,
+      "time": 0.70625,
+      "minAreaRatio": 0.9999995773658266,
+      "maxAreaRatio": 1.0013034808292498
+    },
+    {
+      "sourceFrame": 22.25,
+      "time": 0.7083333333333334,
+      "minAreaRatio": 0.9999994764041484,
+      "maxAreaRatio": 1.000000455723129
+    },
+    {
+      "sourceFrame": 22.3125,
+      "time": 0.7104166666666667,
+      "minAreaRatio": 0.9999995803324327,
+      "maxAreaRatio": 1.0010720600849388
+    },
+    {
+      "sourceFrame": 22.375,
+      "time": 0.7125,
+      "minAreaRatio": 0.9999996842613366,
+      "maxAreaRatio": 1.0013447738899603
+    },
+    {
+      "sourceFrame": 22.4375,
+      "time": 0.7145833333333333,
+      "minAreaRatio": 0.9999997862460359,
+      "maxAreaRatio": 1.0009590542415592
+    },
+    {
+      "sourceFrame": 22.5,
+      "time": 0.7166666666666667,
+      "minAreaRatio": 0.9999997608878561,
+      "maxAreaRatio": 1.0000004199022174
+    },
+    {
+      "sourceFrame": 22.5625,
+      "time": 0.71875,
+      "minAreaRatio": 0.9999998060571293,
+      "maxAreaRatio": 1.001103136716578
+    },
+    {
+      "sourceFrame": 22.625,
+      "time": 0.7208333333333333,
+      "minAreaRatio": 0.9999997199964179,
+      "maxAreaRatio": 1.0014719024002943
+    },
+    {
+      "sourceFrame": 22.6875,
+      "time": 0.7229166666666667,
+      "minAreaRatio": 0.9999996264845065,
+      "maxAreaRatio": 1.001104508561123
+    },
+    {
+      "sourceFrame": 22.75,
+      "time": 0.725,
+      "minAreaRatio": 0.999999518069206,
+      "maxAreaRatio": 1.000000464103882
+    },
+    {
+      "sourceFrame": 22.8125,
+      "time": 0.7270833333333333,
+      "minAreaRatio": 0.9997581476240679,
+      "maxAreaRatio": 1.001279834912829
+    },
+    {
+      "sourceFrame": 22.875,
+      "time": 0.7291666666666666,
+      "minAreaRatio": 0.9995792920712513,
+      "maxAreaRatio": 1.0017067694557842
+    },
+    {
+      "sourceFrame": 22.9375,
+      "time": 0.73125,
+      "minAreaRatio": 0.99961205507151,
+      "maxAreaRatio": 1.0012799924354079
+    },
+    {
+      "sourceFrame": 23,
+      "time": 0.7333333333333333,
+      "minAreaRatio": 0.9999995166391755,
+      "maxAreaRatio": 1.000000464268321
+    },
+    {
+      "sourceFrame": 23.0625,
+      "time": 0.7354166666666667,
+      "minAreaRatio": 0.9999994123804409,
+      "maxAreaRatio": 1.000749022298326
+    },
+    {
+      "sourceFrame": 23.125,
+      "time": 0.7375,
+      "minAreaRatio": 0.9999996412840924,
+      "maxAreaRatio": 1.001114832102247
+    },
+    {
+      "sourceFrame": 23.1875,
+      "time": 0.7395833333333334,
+      "minAreaRatio": 0.9999997364858763,
+      "maxAreaRatio": 1.0009191092909964
+    },
+    {
+      "sourceFrame": 23.25,
+      "time": 0.7416666666666667,
+      "minAreaRatio": 0.9999996949858898,
+      "maxAreaRatio": 1.000000263084225
+    },
+    {
+      "sourceFrame": 23.3125,
+      "time": 0.74375,
+      "minAreaRatio": 0.9999997582060036,
+      "maxAreaRatio": 1.0013486288040618
+    },
+    {
+      "sourceFrame": 23.375,
+      "time": 0.7458333333333333,
+      "minAreaRatio": 0.9999998214169281,
+      "maxAreaRatio": 1.0018712122610443
+    },
+    {
+      "sourceFrame": 23.4375,
+      "time": 0.7479166666666667,
+      "minAreaRatio": 0.9999997807292655,
+      "maxAreaRatio": 1.0014552524140712
+    },
+    {
+      "sourceFrame": 23.5,
+      "time": 0.75,
+      "minAreaRatio": 0.999999484931801,
+      "maxAreaRatio": 1.0000002850032057
+    },
+    {
+      "sourceFrame": 23.5625,
+      "time": 0.7520833333333333,
+      "minAreaRatio": 0.999999767909225,
+      "maxAreaRatio": 1.001549783717441
+    },
+    {
+      "sourceFrame": 23.625,
+      "time": 0.7541666666666667,
+      "minAreaRatio": 0.9999997863126856,
+      "maxAreaRatio": 1.0021105044175993
+    },
+    {
+      "sourceFrame": 23.6875,
+      "time": 0.75625,
+      "minAreaRatio": 0.9999996730344342,
+      "maxAreaRatio": 1.0016140940781257
+    },
+    {
+      "sourceFrame": 23.75,
+      "time": 0.7583333333333333,
+      "minAreaRatio": 0.999999543909992,
+      "maxAreaRatio": 1.000000772151295
+    },
+    {
+      "sourceFrame": 23.8125,
+      "time": 0.7604166666666666,
+      "minAreaRatio": 0.9999996801974478,
+      "maxAreaRatio": 1.0015422349828385
+    },
+    {
+      "sourceFrame": 23.875,
+      "time": 0.7625,
+      "minAreaRatio": 0.9999996558278579,
+      "maxAreaRatio": 1.0020823442427862
+    },
+    {
+      "sourceFrame": 23.9375,
+      "time": 0.7645833333333333,
+      "minAreaRatio": 0.9999995286861643,
+      "maxAreaRatio": 1.0015802284774857
+    },
+    {
+      "sourceFrame": 24,
+      "time": 0.7666666666666667,
+      "minAreaRatio": 0.9999993348933361,
+      "maxAreaRatio": 1.0000004745502094
+    },
+    {
+      "sourceFrame": 24.0625,
+      "time": 0.76875,
+      "minAreaRatio": 0.9999994529987134,
+      "maxAreaRatio": 1.0011606250841663
+    },
+    {
+      "sourceFrame": 24.125,
+      "time": 0.7708333333333334,
+      "minAreaRatio": 0.9999995338142498,
+      "maxAreaRatio": 1.001755980551054
+    },
+    {
+      "sourceFrame": 24.1875,
+      "time": 0.7729166666666667,
+      "minAreaRatio": 0.9999996145908707,
+      "maxAreaRatio": 1.0014641325614608
+    },
+    {
+      "sourceFrame": 24.25,
+      "time": 0.775,
+      "minAreaRatio": 0.9999996953261272,
+      "maxAreaRatio": 1.0000003051178001
+    },
+    {
+      "sourceFrame": 24.3125,
+      "time": 0.7770833333333333,
+      "minAreaRatio": 0.9999996959265884,
+      "maxAreaRatio": 1.0021304906236161
+    },
+    {
+      "sourceFrame": 24.375,
+      "time": 0.7791666666666667,
+      "minAreaRatio": 0.999999696483803,
+      "maxAreaRatio": 1.002958220710952
+    },
+    {
+      "sourceFrame": 24.4375,
+      "time": 0.78125,
+      "minAreaRatio": 0.9999996969965104,
+      "maxAreaRatio": 1.0023011117073182
+    },
+    {
+      "sourceFrame": 24.5,
+      "time": 0.7833333333333333,
+      "minAreaRatio": 0.9999996101558359,
+      "maxAreaRatio": 1.0000003808538225
+    },
+    {
+      "sourceFrame": 24.5625,
+      "time": 0.7854166666666667,
+      "minAreaRatio": 0.9999997007898764,
+      "maxAreaRatio": 1.0023327098890646
+    },
+    {
+      "sourceFrame": 24.625,
+      "time": 0.7875,
+      "minAreaRatio": 0.9999997150200313,
+      "maxAreaRatio": 1.0031727436296476
+    },
+    {
+      "sourceFrame": 24.6875,
+      "time": 0.7895833333333333,
+      "minAreaRatio": 0.9999997023061392,
+      "maxAreaRatio": 1.0024234133930074
+    },
+    {
+      "sourceFrame": 24.75,
+      "time": 0.7916666666666666,
+      "minAreaRatio": 0.9999996448380907,
+      "maxAreaRatio": 1.0000004717794355
+    },
+    {
+      "sourceFrame": 24.8125,
+      "time": 0.79375,
+      "minAreaRatio": 0.9999996175888202,
+      "maxAreaRatio": 1.0022039194365444
+    },
+    {
+      "sourceFrame": 24.875,
+      "time": 0.7958333333333333,
+      "minAreaRatio": 0.9999995902886587,
+      "maxAreaRatio": 1.0029710234919782
+    },
+    {
+      "sourceFrame": 24.9375,
+      "time": 0.7979166666666667,
+      "minAreaRatio": 0.9999995629373967,
+      "maxAreaRatio": 1.0022509829217627
+    },
+    {
+      "sourceFrame": 25,
+      "time": 0.8,
+      "minAreaRatio": 0.9999995124844806,
+      "maxAreaRatio": 1.0000004717125686
+    },
+    {
+      "sourceFrame": 25.0625,
+      "time": 0.8020833333333334,
+      "minAreaRatio": 0.9999995974465855,
+      "maxAreaRatio": 1.001157881407487
+    },
+    {
+      "sourceFrame": 25.125,
+      "time": 0.8041666666666667,
+      "minAreaRatio": 0.9999996592118124,
+      "maxAreaRatio": 1.0015400142470956
+    },
+    {
+      "sourceFrame": 25.1875,
+      "time": 0.80625,
+      "minAreaRatio": 0.9999996442560419,
+      "maxAreaRatio": 1.0011519039964578
+    },
+    {
+      "sourceFrame": 25.25,
+      "time": 0.8083333333333333,
+      "minAreaRatio": 0.9999995248843292,
+      "maxAreaRatio": 1.000000336890415
+    },
+    {
+      "sourceFrame": 25.3125,
+      "time": 0.8104166666666667,
+      "minAreaRatio": 0.9999996849078305,
+      "maxAreaRatio": 1.0013058840580686
+    },
+    {
+      "sourceFrame": 25.375,
+      "time": 0.8125,
+      "minAreaRatio": 0.9999997247517962,
+      "maxAreaRatio": 1.0017338644061684
+    },
+    {
+      "sourceFrame": 25.4375,
+      "time": 0.8145833333333333,
+      "minAreaRatio": 0.99999972131747,
+      "maxAreaRatio": 1.0012945054466849
+    },
+    {
+      "sourceFrame": 25.5,
+      "time": 0.8166666666666667,
+      "minAreaRatio": 0.9999997178844567,
+      "maxAreaRatio": 1.000000276419823
+    },
+    {
+      "sourceFrame": 25.5625,
+      "time": 0.81875,
+      "minAreaRatio": 0.9999997070021345,
+      "maxAreaRatio": 1.0014576106072426
+    },
+    {
+      "sourceFrame": 25.625,
+      "time": 0.8208333333333333,
+      "minAreaRatio": 0.9999996961210345,
+      "maxAreaRatio": 1.001930782894796
+    },
+    {
+      "sourceFrame": 25.6875,
+      "time": 0.8229166666666666,
+      "minAreaRatio": 0.9999996405371185,
+      "maxAreaRatio": 1.0014378813946219
+    },
+    {
+      "sourceFrame": 25.75,
+      "time": 0.825,
+      "minAreaRatio": 0.999999525350938,
+      "maxAreaRatio": 1.0000003596856077
+    },
+    {
+      "sourceFrame": 25.8125,
+      "time": 0.8270833333333333,
+      "minAreaRatio": 0.9999995629019496,
+      "maxAreaRatio": 1.0015909737773636
+    },
+    {
+      "sourceFrame": 25.875,
+      "time": 0.8291666666666667,
+      "minAreaRatio": 0.9999996004539786,
+      "maxAreaRatio": 1.0020991394063956
+    },
+    {
+      "sourceFrame": 25.9375,
+      "time": 0.83125,
+      "minAreaRatio": 0.9999996156547181,
+      "maxAreaRatio": 1.0015566276460635
+    },
+    {
+      "sourceFrame": 26,
+      "time": 0.8333333333333334,
+      "minAreaRatio": 0.9999996010558999,
+      "maxAreaRatio": 1.0000004072947835
+    },
+    {
+      "sourceFrame": 26.0625,
+      "time": 0.8354166666666667,
+      "minAreaRatio": 0.9999996347365008,
+      "maxAreaRatio": 1.0031082967297429
+    },
+    {
+      "sourceFrame": 26.125,
+      "time": 0.8375,
+      "minAreaRatio": 0.9999995715696198,
+      "maxAreaRatio": 1.0041561335137543
+    },
+    {
+      "sourceFrame": 26.1875,
+      "time": 0.8395833333333333,
+      "minAreaRatio": 0.999999482325692,
+      "maxAreaRatio": 1.0031239687867604
+    },
+    {
+      "sourceFrame": 26.25,
+      "time": 0.8416666666666667,
+      "minAreaRatio": 0.999999361422459,
+      "maxAreaRatio": 1.0000004112961203
+    },
+    {
+      "sourceFrame": 26.3125,
+      "time": 0.84375,
+      "minAreaRatio": 0.9999995571644044,
+      "maxAreaRatio": 1.0025174258603184
+    },
+    {
+      "sourceFrame": 26.375,
+      "time": 0.8458333333333333,
+      "minAreaRatio": 0.9999996647077011,
+      "maxAreaRatio": 1.0033579900845297
+    },
+    {
+      "sourceFrame": 26.4375,
+      "time": 0.8479166666666667,
+      "minAreaRatio": 0.9999996533078906,
+      "maxAreaRatio": 1.0025185585475793
+    },
+    {
+      "sourceFrame": 26.5,
+      "time": 0.85,
+      "minAreaRatio": 0.9999996195478542,
+      "maxAreaRatio": 1.000000373248576
+    },
+    {
+      "sourceFrame": 26.5625,
+      "time": 0.8520833333333333,
+      "minAreaRatio": 0.9999996528348787,
+      "maxAreaRatio": 1.0020552443340947
+    },
+    {
+      "sourceFrame": 26.625,
+      "time": 0.8541666666666666,
+      "minAreaRatio": 0.9999996861145123,
+      "maxAreaRatio": 1.00273696185921
+    },
+    {
+      "sourceFrame": 26.6875,
+      "time": 0.85625,
+      "minAreaRatio": 0.9999997007603316,
+      "maxAreaRatio": 1.0020496603640365
+    },
+    {
+      "sourceFrame": 26.75,
+      "time": 0.8583333333333333,
+      "minAreaRatio": 0.9999997079479556,
+      "maxAreaRatio": 1.0000003407229152
+    },
+    {
+      "sourceFrame": 26.8125,
+      "time": 0.8604166666666667,
+      "minAreaRatio": 0.9999997345118672,
+      "maxAreaRatio": 1.00169748461992
+    },
+    {
+      "sourceFrame": 26.875,
+      "time": 0.8625,
+      "minAreaRatio": 0.9999997542380143,
+      "maxAreaRatio": 1.0022582474320838
+    },
+    {
+      "sourceFrame": 26.9375,
+      "time": 0.8645833333333334,
+      "minAreaRatio": 0.9999997231835269,
+      "maxAreaRatio": 1.001689513821842
+    },
+    {
+      "sourceFrame": 27,
+      "time": 0.8666666666666667,
+      "minAreaRatio": 0.9999996903329036,
+      "maxAreaRatio": 1.0000002780481858
+    },
+    {
+      "sourceFrame": 27.0625,
+      "time": 0.86875,
+      "minAreaRatio": 0.9999996645249949,
+      "maxAreaRatio": 1.0004283164649799
+    },
+    {
+      "sourceFrame": 27.125,
+      "time": 0.8708333333333333,
+      "minAreaRatio": 0.9999997059965446,
+      "maxAreaRatio": 1.0005733727450503
+    },
+    {
+      "sourceFrame": 27.1875,
+      "time": 0.8729166666666667,
+      "minAreaRatio": 0.9999997152528756,
+      "maxAreaRatio": 1.0004316720430273
+    },
+    {
+      "sourceFrame": 27.25,
+      "time": 0.875,
+      "minAreaRatio": 0.9999996697587133,
+      "maxAreaRatio": 1.000000308154747
+    },
+    {
+      "sourceFrame": 27.3125,
+      "time": 0.8770833333333333,
+      "minAreaRatio": 0.999999645551219,
+      "maxAreaRatio": 1.0004055608707183
+    },
+    {
+      "sourceFrame": 27.375,
+      "time": 0.8791666666666667,
+      "minAreaRatio": 0.9999995885436276,
+      "maxAreaRatio": 1.0005423779977833
+    },
+    {
+      "sourceFrame": 27.4375,
+      "time": 0.88125,
+      "minAreaRatio": 0.9999995315415822,
+      "maxAreaRatio": 1.0004078663380154
+    },
+    {
+      "sourceFrame": 27.5,
+      "time": 0.8833333333333333,
+      "minAreaRatio": 0.9999994604635316,
+      "maxAreaRatio": 1.000000265896967
+    },
+    {
+      "sourceFrame": 27.5625,
+      "time": 0.8854166666666666,
+      "minAreaRatio": 0.9999995293863364,
+      "maxAreaRatio": 1.0003818715091302
+    },
+    {
+      "sourceFrame": 27.625,
+      "time": 0.8875,
+      "minAreaRatio": 0.9999995983092627,
+      "maxAreaRatio": 1.0005105096067868
+    },
+    {
+      "sourceFrame": 27.6875,
+      "time": 0.8895833333333333,
+      "minAreaRatio": 0.9999996288861522,
+      "maxAreaRatio": 1.0003836728062918
+    },
+    {
+      "sourceFrame": 27.75,
+      "time": 0.8916666666666667,
+      "minAreaRatio": 0.9999995974055953,
+      "maxAreaRatio": 1.000000345373278
+    },
+    {
+      "sourceFrame": 27.8125,
+      "time": 0.89375,
+      "minAreaRatio": 0.9999996673065465,
+      "maxAreaRatio": 1.0003585719210557
+    },
+    {
+      "sourceFrame": 27.875,
+      "time": 0.8958333333333334,
+      "minAreaRatio": 0.9999997200553106,
+      "maxAreaRatio": 1.0004791040144645
+    },
+    {
+      "sourceFrame": 27.9375,
+      "time": 0.8979166666666667,
+      "minAreaRatio": 0.9999997358275924,
+      "maxAreaRatio": 1.0003598508571636
+    },
+    {
+      "sourceFrame": 28,
+      "time": 0.9,
+      "minAreaRatio": 0.9999995677890479,
+      "maxAreaRatio": 1.000000299877537
+    },
+    {
+      "sourceFrame": 28.0625,
+      "time": 0.9020833333333333,
+      "minAreaRatio": 0.9999997363602291,
+      "maxAreaRatio": 1.0004509141028246
+    },
+    {
+      "sourceFrame": 28.125,
+      "time": 0.9041666666666667,
+      "minAreaRatio": 0.9999997112854279,
+      "maxAreaRatio": 1.0006024307886652
+    },
+    {
+      "sourceFrame": 28.1875,
+      "time": 0.90625,
+      "minAreaRatio": 0.9999996181525721,
+      "maxAreaRatio": 1.0004526178868929
+    },
+    {
+      "sourceFrame": 28.25,
+      "time": 0.9083333333333333,
+      "minAreaRatio": 0.9999995101159882,
+      "maxAreaRatio": 1.000000424443792
+    },
+    {
+      "sourceFrame": 28.3125,
+      "time": 0.9104166666666667,
+      "minAreaRatio": 0.9999995697164001,
+      "maxAreaRatio": 1.0004179409033531
+    },
+    {
+      "sourceFrame": 28.375,
+      "time": 0.9125,
+      "minAreaRatio": 0.9999996144151795,
+      "maxAreaRatio": 1.0005577933005854
+    },
+    {
+      "sourceFrame": 28.4375,
+      "time": 0.9145833333333333,
+      "minAreaRatio": 0.9999996529795275,
+      "maxAreaRatio": 1.0004187059499625
+    },
+    {
+      "sourceFrame": 28.5,
+      "time": 0.9166666666666666,
+      "minAreaRatio": 0.999999466768653,
+      "maxAreaRatio": 1.0000002683908236
+    },
+    {
+      "sourceFrame": 28.5625,
+      "time": 0.91875,
+      "minAreaRatio": 0.9999995550837333,
+      "maxAreaRatio": 1.0003866556088439
+    },
+    {
+      "sourceFrame": 28.625,
+      "time": 0.9208333333333333,
+      "minAreaRatio": 0.999999643417554,
+      "maxAreaRatio": 1.0005159725203445
+    },
+    {
+      "sourceFrame": 28.6875,
+      "time": 0.9229166666666667,
+      "minAreaRatio": 0.9999996069308612,
+      "maxAreaRatio": 1.0003871859238362
+    },
+    {
+      "sourceFrame": 28.75,
+      "time": 0.925,
+      "minAreaRatio": 0.9999995100643876,
+      "maxAreaRatio": 1.000000540765928
+    },
+    {
+      "sourceFrame": 28.8125,
+      "time": 0.9270833333333334,
+      "minAreaRatio": 0.9999996845005866,
+      "maxAreaRatio": 1.0003580079087486
+    },
+    {
+      "sourceFrame": 28.875,
+      "time": 0.9291666666666667,
+      "minAreaRatio": 0.999999741757283,
+      "maxAreaRatio": 1.000477630303147
+    },
+    {
+      "sourceFrame": 28.9375,
+      "time": 0.93125,
+      "minAreaRatio": 0.9999997147019205,
+      "maxAreaRatio": 1.0003583689134665
+    },
+    {
+      "sourceFrame": 29,
+      "time": 0.9333333333333333,
+      "minAreaRatio": 0.9999994990526471,
+      "maxAreaRatio": 1.0000003468914265
+    },
+    {
+      "sourceFrame": 29.0625,
+      "time": 0.9354166666666667,
+      "minAreaRatio": 0.9999997637777828,
+      "maxAreaRatio": 1.00035878974461
+    },
+    {
+      "sourceFrame": 29.125,
+      "time": 0.9375,
+      "minAreaRatio": 0.9999997905517323,
+      "maxAreaRatio": 1.0004784265918627
+    },
+    {
+      "sourceFrame": 29.1875,
+      "time": 0.9395833333333333,
+      "minAreaRatio": 0.9999997898744972,
+      "maxAreaRatio": 1.0003588095232188
+    },
+    {
+      "sourceFrame": 29.25,
+      "time": 0.9416666666666667,
+      "minAreaRatio": 0.9999995951403364,
+      "maxAreaRatio": 1.0000002994484336
+    },
+    {
+      "sourceFrame": 29.3125,
+      "time": 0.94375,
+      "minAreaRatio": 0.99999981141531,
+      "maxAreaRatio": 1.0003316889746177
+    },
+    {
+      "sourceFrame": 29.375,
+      "time": 0.9458333333333333,
+      "minAreaRatio": 0.9999997860819284,
+      "maxAreaRatio": 1.0004422241228335
+    },
+    {
+      "sourceFrame": 29.4375,
+      "time": 0.9479166666666666,
+      "minAreaRatio": 0.9999997013238051,
+      "maxAreaRatio": 1.0003315984397174
+    },
+    {
+      "sourceFrame": 29.5,
+      "time": 0.95,
+      "minAreaRatio": 0.9999995860277018,
+      "maxAreaRatio": 1.0000001833490155
+    },
+    {
+      "sourceFrame": 29.5625,
+      "time": 0.9520833333333333,
+      "minAreaRatio": 0.9999997471453943,
+      "maxAreaRatio": 1.0003072095750112
+    },
+    {
+      "sourceFrame": 29.625,
+      "time": 0.9541666666666667,
+      "minAreaRatio": 0.9999997860154599,
+      "maxAreaRatio": 1.0004095339564778
+    },
+    {
+      "sourceFrame": 29.6875,
+      "time": 0.95625,
+      "minAreaRatio": 0.9999997412675796,
+      "maxAreaRatio": 1.0003071368679863
+    },
+    {
+      "sourceFrame": 29.75,
+      "time": 0.9583333333333334,
+      "minAreaRatio": 0.9999995409662285,
+      "maxAreaRatio": 1.000000421243938
+    },
+    {
+      "sourceFrame": 29.8125,
+      "time": 0.9604166666666667,
+      "minAreaRatio": 0.9999997262765228,
+      "maxAreaRatio": 1.00028504254189
+    },
+    {
+      "sourceFrame": 29.875,
+      "time": 0.9625,
+      "minAreaRatio": 0.9999996966089961,
+      "maxAreaRatio": 1.0003796952082418
+    },
+    {
+      "sourceFrame": 29.9375,
+      "time": 0.9645833333333333,
+      "minAreaRatio": 0.9999996509619178,
+      "maxAreaRatio": 1.0002845415184716
+    },
+    {
+      "sourceFrame": 30,
+      "time": 0.9666666666666667,
+      "minAreaRatio": 0.9999994457109744,
+      "maxAreaRatio": 1.000000446659854
+    },
+    {
+      "sourceFrame": 30.0625,
+      "time": 0.96875,
+      "minAreaRatio": 0.9999995384711431,
+      "maxAreaRatio": 1.0001857970069834
+    },
+    {
+      "sourceFrame": 30.125,
+      "time": 0.9708333333333333,
+      "minAreaRatio": 0.9999996312315811,
+      "maxAreaRatio": 1.0002476616229743
+    },
+    {
+      "sourceFrame": 30.1875,
+      "time": 0.9729166666666667,
+      "minAreaRatio": 0.9999997239922906,
+      "maxAreaRatio": 1.0001857376657737
+    },
+    {
+      "sourceFrame": 30.25,
+      "time": 0.975,
+      "minAreaRatio": 0.9999996664235846,
+      "maxAreaRatio": 1.0000003130623187
+    },
+    {
+      "sourceFrame": 30.3125,
+      "time": 0.9770833333333333,
+      "minAreaRatio": 0.9999997283815076,
+      "maxAreaRatio": 1.000175107184736
+    },
+    {
+      "sourceFrame": 30.375,
+      "time": 0.9791666666666666,
+      "minAreaRatio": 0.999999790340466,
+      "maxAreaRatio": 1.0002332132375293
+    },
+    {
+      "sourceFrame": 30.4375,
+      "time": 0.98125,
+      "minAreaRatio": 0.9999997519798236,
+      "maxAreaRatio": 1.000174801191079
+    },
+    {
+      "sourceFrame": 30.5,
+      "time": 0.9833333333333333,
+      "minAreaRatio": 0.9999996475871981,
+      "maxAreaRatio": 1.000000394991492
+    },
+    {
+      "sourceFrame": 30.5625,
+      "time": 0.9854166666666667,
+      "minAreaRatio": 0.9999997313241743,
+      "maxAreaRatio": 1.0001648870492181
+    },
+    {
+      "sourceFrame": 30.625,
+      "time": 0.9875,
+      "minAreaRatio": 0.9999997699619294,
+      "maxAreaRatio": 1.0002195913013312
+    },
+    {
+      "sourceFrame": 30.6875,
+      "time": 0.9895833333333334,
+      "minAreaRatio": 0.9999996307582806,
+      "maxAreaRatio": 1.00016447984239
+    },
+    {
+      "sourceFrame": 30.75,
+      "time": 0.9916666666666667,
+      "minAreaRatio": 0.9999994915550905,
+      "maxAreaRatio": 1.00000036660356
+    },
+    {
+      "sourceFrame": 30.8125,
+      "time": 0.99375,
+      "minAreaRatio": 0.99999956842026,
+      "maxAreaRatio": 1.0001553814969328
+    },
+    {
+      "sourceFrame": 30.875,
+      "time": 0.9958333333333333,
+      "minAreaRatio": 0.9999996452869396,
+      "maxAreaRatio": 1.0002070553245515
+    },
+    {
+      "sourceFrame": 30.9375,
+      "time": 0.9979166666666667,
+      "minAreaRatio": 0.999999722154939,
+      "maxAreaRatio": 1.0001550962456096
+    },
+    {
+      "sourceFrame": 31,
+      "time": 1,
+      "minAreaRatio": 0.9999996116626622,
+      "maxAreaRatio": 1.0000003673989575
+    },
+    {
+      "sourceFrame": 31.0625,
+      "time": 1.0020833333333334,
+      "minAreaRatio": 0.9999997877646145,
+      "maxAreaRatio": 1.0001104140910642
+    },
+    {
+      "sourceFrame": 31.125,
+      "time": 1.0041666666666667,
+      "minAreaRatio": 0.9999997406499141,
+      "maxAreaRatio": 1.0001471806603526
+    },
+    {
+      "sourceFrame": 31.1875,
+      "time": 1.00625,
+      "minAreaRatio": 0.9999996338356596,
+      "maxAreaRatio": 1.0001103136356502
+    },
+    {
+      "sourceFrame": 31.25,
+      "time": 1.0083333333333333,
+      "minAreaRatio": 0.999999505143906,
+      "maxAreaRatio": 1.0000006452913026
+    },
+    {
+      "sourceFrame": 31.3125,
+      "time": 1.0104166666666667,
+      "minAreaRatio": 0.9999996009079014,
+      "maxAreaRatio": 1.000105405138945
+    },
+    {
+      "sourceFrame": 31.375,
+      "time": 1.0125,
+      "minAreaRatio": 0.9999996966796897,
+      "maxAreaRatio": 1.00014051358745
+    },
+    {
+      "sourceFrame": 31.4375,
+      "time": 1.0145833333333334,
+      "minAreaRatio": 0.9999997449327998,
+      "maxAreaRatio": 1.000105371407966
+    },
+    {
+      "sourceFrame": 31.5,
+      "time": 1.0166666666666666,
+      "minAreaRatio": 0.9999996094895706,
+      "maxAreaRatio": 1.0000003540449693
+    },
+    {
+      "sourceFrame": 31.5625,
+      "time": 1.01875,
+      "minAreaRatio": 0.9999997012893443,
+      "maxAreaRatio": 1.0001006963122292
+    },
+    {
+      "sourceFrame": 31.625,
+      "time": 1.0208333333333333,
+      "minAreaRatio": 0.999999715927232,
+      "maxAreaRatio": 1.0001340912348506
+    },
+    {
+      "sourceFrame": 31.6875,
+      "time": 1.0229166666666667,
+      "minAreaRatio": 0.9999996832416849,
+      "maxAreaRatio": 1.0001004094329977
+    },
+    {
+      "sourceFrame": 31.75,
+      "time": 1.025,
+      "minAreaRatio": 0.9999995684978914,
+      "maxAreaRatio": 1.0000005718841445
+    },
+    {
+      "sourceFrame": 31.8125,
+      "time": 1.0270833333333333,
+      "minAreaRatio": 0.9999996508858604,
+      "maxAreaRatio": 1.0000959615201919
+    },
+    {
+      "sourceFrame": 31.875,
+      "time": 1.0291666666666666,
+      "minAreaRatio": 0.9999997022389226,
+      "maxAreaRatio": 1.0001279184021614
+    },
+    {
+      "sourceFrame": 31.9375,
+      "time": 1.03125,
+      "minAreaRatio": 0.9999996313805114,
+      "maxAreaRatio": 1.0000957772141879
+    },
+    {
+      "sourceFrame": 32,
+      "time": 1.0333333333333334,
+      "minAreaRatio": 0.9999995158203168,
+      "maxAreaRatio": 1.000000264868726
+    },
+    {
+      "sourceFrame": 32.0625,
+      "time": 1.0354166666666667,
+      "minAreaRatio": 0.9999995973503011,
+      "maxAreaRatio": 1.0000853925451714
+    },
+    {
+      "sourceFrame": 32.125,
+      "time": 1.0375,
+      "minAreaRatio": 0.9999995969733266,
+      "maxAreaRatio": 1.0001139487467952
+    },
+    {
+      "sourceFrame": 32.1875,
+      "time": 1.0395833333333333,
+      "minAreaRatio": 0.9999995965962998,
+      "maxAreaRatio": 1.0000854555907746
+    },
+    {
+      "sourceFrame": 32.25,
+      "time": 1.0416666666666667,
+      "minAreaRatio": 0.9999995962215686,
+      "maxAreaRatio": 1.00000037493017
+    },
+    {
+      "sourceFrame": 32.3125,
+      "time": 1.04375,
+      "minAreaRatio": 0.9999997187791192,
+      "maxAreaRatio": 1.000082122548909
+    },
+    {
+      "sourceFrame": 32.375,
+      "time": 1.0458333333333334,
+      "minAreaRatio": 0.9999997194544732,
+      "maxAreaRatio": 1.0001094021595667
+    },
+    {
+      "sourceFrame": 32.4375,
+      "time": 1.0479166666666666,
+      "minAreaRatio": 0.9999996675935767,
+      "maxAreaRatio": 1.0000819911028733
+    },
+    {
+      "sourceFrame": 32.5,
+      "time": 1.05,
+      "minAreaRatio": 0.999999615737667,
+      "maxAreaRatio": 1.000000316777912
+    },
+    {
+      "sourceFrame": 32.5625,
+      "time": 1.0520833333333333,
+      "minAreaRatio": 0.9999996905406218,
+      "maxAreaRatio": 1.000078752215599
+    },
+    {
+      "sourceFrame": 32.625,
+      "time": 1.0541666666666667,
+      "minAreaRatio": 0.99999976534517,
+      "maxAreaRatio": 1.000104902849984
+    },
+    {
+      "sourceFrame": 32.6875,
+      "time": 1.05625,
+      "minAreaRatio": 0.9999996991880582,
+      "maxAreaRatio": 1.0000785825937852
+    },
+    {
+      "sourceFrame": 32.75,
+      "time": 1.0583333333333333,
+      "minAreaRatio": 0.9999996247196237,
+      "maxAreaRatio": 1.0000003095272492
+    },
+    {
+      "sourceFrame": 32.8125,
+      "time": 1.0604166666666666,
+      "minAreaRatio": 0.9999997238440583,
+      "maxAreaRatio": 1.000075595874513
+    },
+    {
+      "sourceFrame": 32.875,
+      "time": 1.0625,
+      "minAreaRatio": 0.9999997449322704,
+      "maxAreaRatio": 1.000100778375912
+    },
+    {
+      "sourceFrame": 32.9375,
+      "time": 1.0645833333333334,
+      "minAreaRatio": 0.9999997660226114,
+      "maxAreaRatio": 1.000075580924684
+    },
+    {
+      "sourceFrame": 33,
+      "time": 1.0666666666666667,
+      "minAreaRatio": 0.9999997238666787,
+      "maxAreaRatio": 1.0000007312230146
+    },
+    {
+      "sourceFrame": 33.0625,
+      "time": 1.06875,
+      "minAreaRatio": 0.9999997688834841,
+      "maxAreaRatio": 1.0000671708521902
+    },
+    {
+      "sourceFrame": 33.125,
+      "time": 1.0708333333333333,
+      "minAreaRatio": 0.99999978219881,
+      "maxAreaRatio": 1.0000894081728746
+    },
+    {
+      "sourceFrame": 33.1875,
+      "time": 1.0729166666666667,
+      "minAreaRatio": 0.9999997597203438,
+      "maxAreaRatio": 1.0000669327232121
+    },
+    {
+      "sourceFrame": 33.25,
+      "time": 1.075,
+      "minAreaRatio": 0.9999996456328789,
+      "maxAreaRatio": 1.0000003295841928
+    },
+    {
+      "sourceFrame": 33.3125,
+      "time": 1.0770833333333334,
+      "minAreaRatio": 0.9999996314157336,
+      "maxAreaRatio": 1.0000644739018782
+    },
+    {
+      "sourceFrame": 33.375,
+      "time": 1.0791666666666666,
+      "minAreaRatio": 0.9999996171999043,
+      "maxAreaRatio": 1.000085935118039
+    },
+    {
+      "sourceFrame": 33.4375,
+      "time": 1.08125,
+      "minAreaRatio": 0.9999995589819832,
+      "maxAreaRatio": 1.000064331071437
+    },
+    {
+      "sourceFrame": 33.5,
+      "time": 1.0833333333333333,
+      "minAreaRatio": 0.9999994826021571,
+      "maxAreaRatio": 1.0000003029289886
+    },
+    {
+      "sourceFrame": 33.5625,
+      "time": 1.0854166666666667,
+      "minAreaRatio": 0.9999995887627446,
+      "maxAreaRatio": 1.0000621011344746
+    },
+    {
+      "sourceFrame": 33.625,
+      "time": 1.0875,
+      "minAreaRatio": 0.9999996800269051,
+      "maxAreaRatio": 1.0000828288735437
+    },
+    {
+      "sourceFrame": 33.6875,
+      "time": 1.0895833333333333,
+      "minAreaRatio": 0.9999997247254684,
+      "maxAreaRatio": 1.0000620462265069
+    },
+    {
+      "sourceFrame": 33.75,
+      "time": 1.0916666666666666,
+      "minAreaRatio": 0.9999996168683616,
+      "maxAreaRatio": 1.0000003237558548
+    },
+    {
+      "sourceFrame": 33.8125,
+      "time": 1.09375,
+      "minAreaRatio": 0.9999997433658971,
+      "maxAreaRatio": 1.0000600386481564
+    },
+    {
+      "sourceFrame": 33.875,
+      "time": 1.0958333333333334,
+      "minAreaRatio": 0.999999817327328,
+      "maxAreaRatio": 1.0000800829868515
+    },
+    {
+      "sourceFrame": 33.9375,
+      "time": 1.0979166666666667,
+      "minAreaRatio": 0.9999998281212368,
+      "maxAreaRatio": 1.0000600851354557
+    },
+    {
+      "sourceFrame": 34,
+      "time": 1.1,
+      "minAreaRatio": 0.9999997641085954,
+      "maxAreaRatio": 1.0000004276725212
+    },
+    {
+      "sourceFrame": 34.0625,
+      "time": 1.1020833333333333,
+      "minAreaRatio": 0.9999998540662683,
+      "maxAreaRatio": 1.0000532998475018
+    },
+    {
+      "sourceFrame": 34.125,
+      "time": 1.1041666666666667,
+      "minAreaRatio": 0.9999998486508376,
+      "maxAreaRatio": 1.0000709553185956
+    },
+    {
+      "sourceFrame": 34.1875,
+      "time": 1.10625,
+      "minAreaRatio": 0.9999998096230023,
+      "maxAreaRatio": 1.0000531956774845
+    },
+    {
+      "sourceFrame": 34.25,
+      "time": 1.1083333333333334,
+      "minAreaRatio": 0.9999996001555307,
+      "maxAreaRatio": 1.0000003009313874
+    },
+    {
+      "sourceFrame": 34.3125,
+      "time": 1.1104166666666666,
+      "minAreaRatio": 0.9999997933626105,
+      "maxAreaRatio": 1.0000515852460228
+    },
+    {
+      "sourceFrame": 34.375,
+      "time": 1.1125,
+      "minAreaRatio": 0.99999971740523,
+      "maxAreaRatio": 1.0000687150039425
+    },
+    {
+      "sourceFrame": 34.4375,
+      "time": 1.1145833333333333,
+      "minAreaRatio": 0.9999995978119034,
+      "maxAreaRatio": 1.000051579131642
+    },
+    {
+      "sourceFrame": 34.5,
+      "time": 1.1166666666666667,
+      "minAreaRatio": 0.9999994335138799,
+      "maxAreaRatio": 1.0000002986180379
+    },
+    {
+      "sourceFrame": 34.5625,
+      "time": 1.11875,
+      "minAreaRatio": 0.9999995709643761,
+      "maxAreaRatio": 1.0000500047772618
+    },
+    {
+      "sourceFrame": 34.625,
+      "time": 1.1208333333333333,
+      "minAreaRatio": 0.9999997084151862,
+      "maxAreaRatio": 1.0000664881486818
+    },
+    {
+      "sourceFrame": 34.6875,
+      "time": 1.1229166666666666,
+      "minAreaRatio": 0.9999997933624947,
+      "maxAreaRatio": 1.0000497936074146
+    },
+    {
+      "sourceFrame": 34.75,
+      "time": 1.125,
+      "minAreaRatio": 0.9999997357207456,
+      "maxAreaRatio": 1.000000307715637
+    },
+    {
+      "sourceFrame": 34.8125,
+      "time": 1.1270833333333334,
+      "minAreaRatio": 0.9999998036114188,
+      "maxAreaRatio": 1.000048266638508
+    },
+    {
+      "sourceFrame": 34.875,
+      "time": 1.1291666666666667,
+      "minAreaRatio": 0.9999998111809674,
+      "maxAreaRatio": 1.000064301589553
+    },
+    {
+      "sourceFrame": 34.9375,
+      "time": 1.13125,
+      "minAreaRatio": 0.9999997166270793,
+      "maxAreaRatio": 1.0000481885120656
+    },
+    {
+      "sourceFrame": 35,
+      "time": 1.1333333333333333,
+      "minAreaRatio": 0.999999614877219,
+      "maxAreaRatio": 1.0000002745428893
+    },
+    {
+      "sourceFrame": 35.0625,
+      "time": 1.1354166666666667,
+      "minAreaRatio": 0.9999996249073517,
+      "maxAreaRatio": 1.0000420369158654
+    },
+    {
+      "sourceFrame": 35.125,
+      "time": 1.1375,
+      "minAreaRatio": 0.9999996051350766,
+      "maxAreaRatio": 1.0000559916538128
+    },
+    {
+      "sourceFrame": 35.1875,
+      "time": 1.1395833333333334,
+      "minAreaRatio": 0.9999995853622856,
+      "maxAreaRatio": 1.0000419389725759
+    },
+    {
+      "sourceFrame": 35.25,
+      "time": 1.1416666666666666,
+      "minAreaRatio": 0.9999994884834786,
+      "maxAreaRatio": 1.000000286729252
+    },
+    {
+      "sourceFrame": 35.3125,
+      "time": 1.14375,
+      "minAreaRatio": 0.9999995663262407,
+      "maxAreaRatio": 1.000040834223325
+    },
+    {
+      "sourceFrame": 35.375,
+      "time": 1.1458333333333333,
+      "minAreaRatio": 0.9999996441687672,
+      "maxAreaRatio": 1.0000544365364665
+    },
+    {
+      "sourceFrame": 35.4375,
+      "time": 1.1479166666666667,
+      "minAreaRatio": 0.9999996783133196,
+      "maxAreaRatio": 1.0000408179479314
+    },
+    {
+      "sourceFrame": 35.5,
+      "time": 1.15,
+      "minAreaRatio": 0.9999996097119896,
+      "maxAreaRatio": 1.0000002958826166
+    },
+    {
+      "sourceFrame": 35.5625,
+      "time": 1.1520833333333333,
+      "minAreaRatio": 0.9999997214356294,
+      "maxAreaRatio": 1.000039823426156
+    },
+    {
+      "sourceFrame": 35.625,
+      "time": 1.1541666666666666,
+      "minAreaRatio": 0.999999705843894,
+      "maxAreaRatio": 1.0000530648914303
+    },
+    {
+      "sourceFrame": 35.6875,
+      "time": 1.15625,
+      "minAreaRatio": 0.999999635057385,
+      "maxAreaRatio": 1.0000398318092922
+    },
+    {
+      "sourceFrame": 35.75,
+      "time": 1.1583333333333334,
+      "minAreaRatio": 0.9999995642741412,
+      "maxAreaRatio": 1.000000331354273
+    },
+    {
+      "sourceFrame": 35.8125,
+      "time": 1.1604166666666667,
+      "minAreaRatio": 0.999999640638717,
+      "maxAreaRatio": 1.0000388232102295
+    },
+    {
+      "sourceFrame": 35.875,
+      "time": 1.1625,
+      "minAreaRatio": 0.9999997142102021,
+      "maxAreaRatio": 1.0000516292418846
+    },
+    {
+      "sourceFrame": 35.9375,
+      "time": 1.1645833333333333,
+      "minAreaRatio": 0.9999997826605328,
+      "maxAreaRatio": 1.000038667930443
+    },
+    {
+      "sourceFrame": 36,
+      "time": 1.1666666666666667,
+      "minAreaRatio": 0.9999998055265673,
+      "maxAreaRatio": 1.000000358369271
+    },
+    {
+      "sourceFrame": 36.0625,
+      "time": 1.16875,
+      "minAreaRatio": 0.9999998427218902,
+      "maxAreaRatio": 1.0000330148013254
+    },
+    {
+      "sourceFrame": 36.125,
+      "time": 1.1708333333333334,
+      "minAreaRatio": 0.9999998656990237,
+      "maxAreaRatio": 1.0000439966371937
+    },
+    {
+      "sourceFrame": 36.1875,
+      "time": 1.1729166666666666,
+      "minAreaRatio": 0.999999840439955,
+      "maxAreaRatio": 1.0000329963191714
+    },
+    {
+      "sourceFrame": 36.25,
+      "time": 1.175,
+      "minAreaRatio": 0.9999997662574291,
+      "maxAreaRatio": 1.000000620093306
+    },
+    {
+      "sourceFrame": 36.3125,
+      "time": 1.1770833333333333,
+      "minAreaRatio": 0.9999998607029337,
+      "maxAreaRatio": 1.0000322919937186
+    },
+    {
+      "sourceFrame": 36.375,
+      "time": 1.1791666666666667,
+      "minAreaRatio": 0.9999998035362806,
+      "maxAreaRatio": 1.000043012494808
+    },
+    {
+      "sourceFrame": 36.4375,
+      "time": 1.18125,
+      "minAreaRatio": 0.9999996112072294,
+      "maxAreaRatio": 1.000032272893442
+    },
+    {
+      "sourceFrame": 36.5,
+      "time": 1.1833333333333333,
+      "minAreaRatio": 0.9999994132998976,
+      "maxAreaRatio": 1.0000003083125388
+    },
+    {
+      "sourceFrame": 36.5625,
+      "time": 1.1854166666666666,
+      "minAreaRatio": 0.9999994992052432,
+      "maxAreaRatio": 1.0000315517229799
+    },
+    {
+      "sourceFrame": 36.625,
+      "time": 1.1875,
+      "minAreaRatio": 0.999999585111326,
+      "maxAreaRatio": 1.0000419715680673
+    },
+    {
+      "sourceFrame": 36.6875,
+      "time": 1.1895833333333334,
+      "minAreaRatio": 0.9999996710181368,
+      "maxAreaRatio": 1.0000314275638758
+    },
+    {
+      "sourceFrame": 36.75,
+      "time": 1.1916666666666667,
+      "minAreaRatio": 0.9999997029608947,
+      "maxAreaRatio": 1.0000003427033821
+    },
+    {
+      "sourceFrame": 36.8125,
+      "time": 1.19375,
+      "minAreaRatio": 0.9999997704269872,
+      "maxAreaRatio": 1.000030723488326
+    },
+    {
+      "sourceFrame": 36.875,
+      "time": 1.1958333333333333,
+      "minAreaRatio": 0.9999997427287184,
+      "maxAreaRatio": 1.0000409473005485
+    },
+    {
+      "sourceFrame": 36.9375,
+      "time": 1.1979166666666667,
+      "minAreaRatio": 0.9999996225516301,
+      "maxAreaRatio": 1.0000306784841295
+    },
+    {
+      "sourceFrame": 37,
+      "time": 1.2,
+      "minAreaRatio": 0.9999994024655672,
+      "maxAreaRatio": 1.0000002647453337
+    },
+    {
+      "sourceFrame": 37.0625,
+      "time": 1.2020833333333334,
+      "minAreaRatio": 0.9999996001957561,
+      "maxAreaRatio": 1.0000247742875983
+    },
+    {
+      "sourceFrame": 37.125,
+      "time": 1.2041666666666666,
+      "minAreaRatio": 0.999999712664061,
+      "maxAreaRatio": 1.0000330446151988
+    },
+    {
+      "sourceFrame": 37.1875,
+      "time": 1.20625,
+      "minAreaRatio": 0.9999996607251435,
+      "maxAreaRatio": 1.0000248021845628
+    },
+    {
+      "sourceFrame": 37.25,
+      "time": 1.2083333333333333,
+      "minAreaRatio": 0.9999995948242558,
+      "maxAreaRatio": 1.0000004295583071
+    },
+    {
+      "sourceFrame": 37.3125,
+      "time": 1.2104166666666667,
+      "minAreaRatio": 0.9999996516258665,
+      "maxAreaRatio": 1.0000243645780456
+    },
+    {
+      "sourceFrame": 37.375,
+      "time": 1.2125,
+      "minAreaRatio": 0.9999996925972463,
+      "maxAreaRatio": 1.000032426201433
+    },
+    {
+      "sourceFrame": 37.4375,
+      "time": 1.2145833333333333,
+      "minAreaRatio": 0.9999997102853413,
+      "maxAreaRatio": 1.0000242930956318
+    },
+    {
+      "sourceFrame": 37.5,
+      "time": 1.2166666666666666,
+      "minAreaRatio": 0.999999678359315,
+      "maxAreaRatio": 1.000000468859423
+    },
+    {
+      "sourceFrame": 37.5625,
+      "time": 1.21875,
+      "minAreaRatio": 0.9999997454017777,
+      "maxAreaRatio": 1.0000238826758572
+    },
+    {
+      "sourceFrame": 37.625,
+      "time": 1.2208333333333334,
+      "minAreaRatio": 0.9999998124449287,
+      "maxAreaRatio": 1.0000318494826415
+    },
+    {
+      "sourceFrame": 37.6875,
+      "time": 1.2229166666666667,
+      "minAreaRatio": 0.9999997636459517,
+      "maxAreaRatio": 1.0000239250711749
+    },
+    {
+      "sourceFrame": 37.75,
+      "time": 1.225,
+      "minAreaRatio": 0.9999996365821091,
+      "maxAreaRatio": 1.0000004083533678
+    },
+    {
+      "sourceFrame": 37.8125,
+      "time": 1.2270833333333333,
+      "minAreaRatio": 0.9999996697074098,
+      "maxAreaRatio": 1.0000235012797911
+    },
+    {
+      "sourceFrame": 37.875,
+      "time": 1.2291666666666667,
+      "minAreaRatio": 0.9999995621116631,
+      "maxAreaRatio": 1.0000312325605365
+    },
+    {
+      "sourceFrame": 37.9375,
+      "time": 1.23125,
+      "minAreaRatio": 0.9999993299943628,
+      "maxAreaRatio": 1.0000233608159679
+    },
+    {
+      "sourceFrame": 38,
+      "time": 1.2333333333333334,
+      "minAreaRatio": 0.9999992883954854,
+      "maxAreaRatio": 1.0000004868331955
+    },
+    {
+      "sourceFrame": 38.0625,
+      "time": 1.2354166666666666,
+      "minAreaRatio": 0.999999409655941,
+      "maxAreaRatio": 1.0000168885842962
+    },
+    {
+      "sourceFrame": 38.125,
+      "time": 1.2375,
+      "minAreaRatio": 0.999999721439109,
+      "maxAreaRatio": 1.0000225202915807
+    },
+    {
+      "sourceFrame": 38.1875,
+      "time": 1.2395833333333333,
+      "minAreaRatio": 0.9999998790268447,
+      "maxAreaRatio": 1.0000168269158558
+    },
+    {
+      "sourceFrame": 38.25,
+      "time": 1.2416666666666667,
+      "minAreaRatio": 0.9999998218042374,
+      "maxAreaRatio": 1.0000003450056503
+    },
+    {
+      "sourceFrame": 38.3125,
+      "time": 1.24375,
+      "minAreaRatio": 0.9999998714062683,
+      "maxAreaRatio": 1.0000165781249601
+    },
+    {
+      "sourceFrame": 38.375,
+      "time": 1.2458333333333333,
+      "minAreaRatio": 0.999999778188452,
+      "maxAreaRatio": 1.0000221548414259
+    },
+    {
+      "sourceFrame": 38.4375,
+      "time": 1.2479166666666666,
+      "minAreaRatio": 0.9999996551678023,
+      "maxAreaRatio": 1.0000165728433754
+    },
+    {
+      "sourceFrame": 38.5,
+      "time": 1.25,
+      "minAreaRatio": 0.9999995321468635,
+      "maxAreaRatio": 1.000000340433294
+    },
+    {
+      "sourceFrame": 38.5625,
+      "time": 1.2520833333333334,
+      "minAreaRatio": 0.9999996400937817,
+      "maxAreaRatio": 1.0000163877796497
+    },
+    {
+      "sourceFrame": 38.625,
+      "time": 1.2541666666666667,
+      "minAreaRatio": 0.9999996267805056,
+      "maxAreaRatio": 1.0000219106696935
+    },
+    {
+      "sourceFrame": 38.6875,
+      "time": 1.25625,
+      "minAreaRatio": 0.9999995820868083,
+      "maxAreaRatio": 1.0000164340382796
+    },
+    {
+      "sourceFrame": 38.75,
+      "time": 1.2583333333333333,
+      "minAreaRatio": 0.9999995373935963,
+      "maxAreaRatio": 1.0000003900085552
+    },
+    {
+      "sourceFrame": 38.8125,
+      "time": 1.2604166666666667,
+      "minAreaRatio": 0.9999996342608417,
+      "maxAreaRatio": 1.0000162335850915
+    },
+    {
+      "sourceFrame": 38.875,
+      "time": 1.2625,
+      "minAreaRatio": 0.9999997014480622,
+      "maxAreaRatio": 1.0000216294548203
+    },
+    {
+      "sourceFrame": 38.9375,
+      "time": 1.2645833333333334,
+      "minAreaRatio": 0.9999996325550854,
+      "maxAreaRatio": 1.0000161777264562
+    },
+    {
+      "sourceFrame": 39,
+      "time": 1.2666666666666666,
+      "minAreaRatio": 0.9999995636628541,
+      "maxAreaRatio": 1.0000003388163652
+    },
+    {
+      "sourceFrame": 39.0625,
+      "time": 1.26875,
+      "minAreaRatio": 0.999999618118953,
+      "maxAreaRatio": 1.0000135300800794
+    },
+    {
+      "sourceFrame": 39.125,
+      "time": 1.2708333333333333,
+      "minAreaRatio": 0.9999996430115723,
+      "maxAreaRatio": 1.0000180830096201
+    },
+    {
+      "sourceFrame": 39.1875,
+      "time": 1.2729166666666667,
+      "minAreaRatio": 0.9999995497828804,
+      "maxAreaRatio": 1.0000134954697715
+    },
+    {
+      "sourceFrame": 39.25,
+      "time": 1.275,
+      "minAreaRatio": 0.9999994118539492,
+      "maxAreaRatio": 1.0000003135144269
+    },
+    {
+      "sourceFrame": 39.3125,
+      "time": 1.2770833333333333,
+      "minAreaRatio": 0.9999996203721464,
+      "maxAreaRatio": 1.0000133765927373
+    },
+    {
+      "sourceFrame": 39.375,
+      "time": 1.2791666666666666,
+      "minAreaRatio": 0.9999997245831711,
+      "maxAreaRatio": 1.000017923140354
+    },
+    {
+      "sourceFrame": 39.4375,
+      "time": 1.28125,
+      "minAreaRatio": 0.9999998287939336,
+      "maxAreaRatio": 1.0000134295693286
+    },
+    {
+      "sourceFrame": 39.5,
+      "time": 1.2833333333333334,
+      "minAreaRatio": 0.9999998857944821,
+      "maxAreaRatio": 1.0000003690389985
+    },
+    {
+      "sourceFrame": 39.5625,
+      "time": 1.2854166666666667,
+      "minAreaRatio": 0.9999999006338445,
+      "maxAreaRatio": 1.000013321429846
+    },
+    {
+      "sourceFrame": 39.625,
+      "time": 1.2875,
+      "minAreaRatio": 0.9999998707701692,
+      "maxAreaRatio": 1.0000177806324204
+    },
+    {
+      "sourceFrame": 39.6875,
+      "time": 1.2895833333333333,
+      "minAreaRatio": 0.9999998398527785,
+      "maxAreaRatio": 1.000013295160147
+    },
+    {
+      "sourceFrame": 39.75,
+      "time": 1.2916666666666667,
+      "minAreaRatio": 0.9999997276773143,
+      "maxAreaRatio": 1.0000002580101515
+    },
+    {
+      "sourceFrame": 39.8125,
+      "time": 1.29375,
+      "minAreaRatio": 0.9999997831350564,
+      "maxAreaRatio": 1.000013213029608
+    },
+    {
+      "sourceFrame": 39.875,
+      "time": 1.2958333333333334,
+      "minAreaRatio": 0.9999998087918627,
+      "maxAreaRatio": 1.000017686056041
+    },
+    {
+      "sourceFrame": 39.9375,
+      "time": 1.2979166666666666,
+      "minAreaRatio": 0.9999997604434305,
+      "maxAreaRatio": 1.0000133049708277
+    },
+    {
+      "sourceFrame": 40,
+      "time": 1.3,
+      "minAreaRatio": 0.9999996488907703,
+      "maxAreaRatio": 1.0000003554301664
+    },
+    {
+      "sourceFrame": 40.0625,
+      "time": 1.3020833333333333,
+      "minAreaRatio": 0.9999997011428339,
+      "maxAreaRatio": 1.0000104771091862
+    },
+    {
+      "sourceFrame": 40.125,
+      "time": 1.3041666666666667,
+      "minAreaRatio": 0.9999996935923228,
+      "maxAreaRatio": 1.0000139023448944
+    },
+    {
+      "sourceFrame": 40.1875,
+      "time": 1.30625,
+      "minAreaRatio": 0.999999686041523,
+      "maxAreaRatio": 1.0000103627586536
+    },
+    {
+      "sourceFrame": 40.25,
+      "time": 1.3083333333333333,
+      "minAreaRatio": 0.9999996188881717,
+      "maxAreaRatio": 1.0000004693300877
+    },
+    {
+      "sourceFrame": 40.3125,
+      "time": 1.3104166666666666,
+      "minAreaRatio": 0.9999996970174354,
+      "maxAreaRatio": 1.0000102939790154
+    },
+    {
+      "sourceFrame": 40.375,
+      "time": 1.3125,
+      "minAreaRatio": 0.9999997325969179,
+      "maxAreaRatio": 1.0000138089829234
+    },
+    {
+      "sourceFrame": 40.4375,
+      "time": 1.3145833333333334,
+      "minAreaRatio": 0.9999996947523819,
+      "maxAreaRatio": 1.0000104171555275
+    },
+    {
+      "sourceFrame": 40.5,
+      "time": 1.3166666666666667,
+      "minAreaRatio": 0.9999996164397617,
+      "maxAreaRatio": 1.0000003185984823
+    },
+    {
+      "sourceFrame": 40.5625,
+      "time": 1.31875,
+      "minAreaRatio": 0.9999996610613253,
+      "maxAreaRatio": 1.0000103348142622
+    },
+    {
+      "sourceFrame": 40.625,
+      "time": 1.3208333333333333,
+      "minAreaRatio": 0.9999997056839018,
+      "maxAreaRatio": 1.0000136874296084
+    },
+    {
+      "sourceFrame": 40.6875,
+      "time": 1.3229166666666667,
+      "minAreaRatio": 0.9999997503062996,
+      "maxAreaRatio": 1.0000101880773398
+    },
+    {
+      "sourceFrame": 40.75,
+      "time": 1.325,
+      "minAreaRatio": 0.9999996910284612,
+      "maxAreaRatio": 1.0000004187358031
+    },
+    {
+      "sourceFrame": 40.8125,
+      "time": 1.3270833333333334,
+      "minAreaRatio": 0.999999762554866,
+      "maxAreaRatio": 1.0000100993448935
+    },
+    {
+      "sourceFrame": 40.875,
+      "time": 1.3291666666666666,
+      "minAreaRatio": 0.9999997626120372,
+      "maxAreaRatio": 1.0000135509308168
+    },
+    {
+      "sourceFrame": 40.9375,
+      "time": 1.33125,
+      "minAreaRatio": 0.9999997141690923,
+      "maxAreaRatio": 1.0000102027690516
+    },
+    {
+      "sourceFrame": 41,
+      "time": 1.3333333333333333,
+      "minAreaRatio": 0.9999995960531262,
+      "maxAreaRatio": 1.0000002593527217
+    },
+    {
+      "sourceFrame": 41.0625,
+      "time": 1.3354166666666667,
+      "minAreaRatio": 0.9999996692662428,
+      "maxAreaRatio": 1.0000072563516231
+    },
+    {
+      "sourceFrame": 41.125,
+      "time": 1.3375,
+      "minAreaRatio": 0.9999996547152087,
+      "maxAreaRatio": 1.000009614530909
+    },
+    {
+      "sourceFrame": 41.1875,
+      "time": 1.3395833333333333,
+      "minAreaRatio": 0.999999509329695,
+      "maxAreaRatio": 1.0000071381091185
+    },
+    {
+      "sourceFrame": 41.25,
+      "time": 1.3416666666666666,
+      "minAreaRatio": 0.9999993639416781,
+      "maxAreaRatio": 1.0000002229304124
+    },
+    {
+      "sourceFrame": 41.3125,
+      "time": 1.34375,
+      "minAreaRatio": 0.9999996022570875,
+      "maxAreaRatio": 1.0000071160801725
+    },
+    {
+      "sourceFrame": 41.375,
+      "time": 1.3458333333333334,
+      "minAreaRatio": 0.9999997429033155,
+      "maxAreaRatio": 1.0000095927279615
+    },
+    {
+      "sourceFrame": 41.4375,
+      "time": 1.3479166666666667,
+      "minAreaRatio": 0.9999997650748242,
+      "maxAreaRatio": 1.0000072632746304
+    },
+    {
+      "sourceFrame": 41.5,
+      "time": 1.35,
+      "minAreaRatio": 0.9999997323088701,
+      "maxAreaRatio": 1.00000054178611
+    },
+    {
+      "sourceFrame": 41.5625,
+      "time": 1.3520833333333333,
+      "minAreaRatio": 0.9999997479717825,
+      "maxAreaRatio": 1.0000072587243074
+    },
+    {
+      "sourceFrame": 41.625,
+      "time": 1.3541666666666667,
+      "minAreaRatio": 0.9999997636349098,
+      "maxAreaRatio": 1.0000096046520988
+    },
+    {
+      "sourceFrame": 41.6875,
+      "time": 1.35625,
+      "minAreaRatio": 0.9999996046932604,
+      "maxAreaRatio": 1.0000071715271515
+    },
+    {
+      "sourceFrame": 41.75,
+      "time": 1.3583333333333334,
+      "minAreaRatio": 0.9999994173075563,
+      "maxAreaRatio": 1.0000003695326152
+    },
+    {
+      "sourceFrame": 41.8125,
+      "time": 1.3604166666666666,
+      "minAreaRatio": 0.9999996173522223,
+      "maxAreaRatio": 1.0000070378171462
+    },
+    {
+      "sourceFrame": 41.875,
+      "time": 1.3625,
+      "minAreaRatio": 0.9999997185245162,
+      "maxAreaRatio": 1.0000093570889845
+    },
+    {
+      "sourceFrame": 41.9375,
+      "time": 1.3645833333333333,
+      "minAreaRatio": 0.9999996756606606,
+      "maxAreaRatio": 1.0000069229637163
+    },
+    {
+      "sourceFrame": 42,
+      "time": 1.3666666666666667,
+      "minAreaRatio": 0.9999996984776659,
+      "maxAreaRatio": 1.0000002614055858
+    },
+    {
+      "sourceFrame": 42.0625,
+      "time": 1.36875,
+      "minAreaRatio": 0.9999996415848448,
+      "maxAreaRatio": 1.000003932267438
+    },
+    {
+      "sourceFrame": 42.125,
+      "time": 1.3708333333333333,
+      "minAreaRatio": 0.9999996494419707,
+      "maxAreaRatio": 1.0000053858142686
+    },
+    {
+      "sourceFrame": 42.1875,
+      "time": 1.3729166666666666,
+      "minAreaRatio": 0.9999996572987757,
+      "maxAreaRatio": 1.000004098460117
+    },
+    {
+      "sourceFrame": 42.25,
+      "time": 1.375,
+      "minAreaRatio": 0.9999996020623158,
+      "maxAreaRatio": 1.000000359085244
+    },
+    {
+      "sourceFrame": 42.3125,
+      "time": 1.3770833333333334,
+      "minAreaRatio": 0.9999996648623253,
+      "maxAreaRatio": 1.0000041190177396
+    },
+    {
+      "sourceFrame": 42.375,
+      "time": 1.3791666666666667,
+      "minAreaRatio": 0.9999996645690635,
+      "maxAreaRatio": 1.0000054316733917
+    },
+    {
+      "sourceFrame": 42.4375,
+      "time": 1.38125,
+      "minAreaRatio": 0.9999996642754676,
+      "maxAreaRatio": 1.000004007475025
+    },
+    {
+      "sourceFrame": 42.5,
+      "time": 1.3833333333333333,
+      "minAreaRatio": 0.999999663981745,
+      "maxAreaRatio": 1.0000004835140506
+    },
+    {
+      "sourceFrame": 42.5625,
+      "time": 1.3854166666666667,
+      "minAreaRatio": 0.9999997193340209,
+      "maxAreaRatio": 1.00000393540508
+    },
+    {
+      "sourceFrame": 42.625,
+      "time": 1.3875,
+      "minAreaRatio": 0.9999997592528562,
+      "maxAreaRatio": 1.000005292450654
+    },
+    {
+      "sourceFrame": 42.6875,
+      "time": 1.3895833333333334,
+      "minAreaRatio": 0.9999996538246427,
+      "maxAreaRatio": 1.000003917272484
+    },
+    {
+      "sourceFrame": 42.75,
+      "time": 1.3916666666666666,
+      "minAreaRatio": 0.9999995483983415,
+      "maxAreaRatio": 1.0000003588888178
+    },
+    {
+      "sourceFrame": 42.8125,
+      "time": 1.39375,
+      "minAreaRatio": 0.9999996329595766,
+      "maxAreaRatio": 1.0000039254464543
+    },
+    {
+      "sourceFrame": 42.875,
+      "time": 1.3958333333333333,
+      "minAreaRatio": 0.9999997026203413,
+      "maxAreaRatio": 1.0000053137588443
+    },
+    {
+      "sourceFrame": 42.9375,
+      "time": 1.3979166666666667,
+      "minAreaRatio": 0.9999997396788054,
+      "maxAreaRatio": 1.0000039749286256
+    },
+    {
+      "sourceFrame": 43,
+      "time": 1.4,
+      "minAreaRatio": 0.999999673724705,
+      "maxAreaRatio": 1.000000420424135
+    },
+    {
+      "sourceFrame": 43.0625,
+      "time": 1.4020833333333333,
+      "minAreaRatio": 0.9999996945743908,
+      "maxAreaRatio": 1.0000014227813743
+    },
+    {
+      "sourceFrame": 43.125,
+      "time": 1.4041666666666666,
+      "minAreaRatio": 0.9999997154239351,
+      "maxAreaRatio": 1.0000019203522224
+    },
+    {
+      "sourceFrame": 43.1875,
+      "time": 1.40625,
+      "minAreaRatio": 0.9999997018138591,
+      "maxAreaRatio": 1.0000014018220487
+    },
+    {
+      "sourceFrame": 43.25,
+      "time": 1.4083333333333334,
+      "minAreaRatio": 0.9999996835487975,
+      "maxAreaRatio": 1.0000003590768198
+    },
+    {
+      "sourceFrame": 43.3125,
+      "time": 1.4104166666666667,
+      "minAreaRatio": 0.999999747704484,
+      "maxAreaRatio": 1.000001422065168
+    },
+    {
+      "sourceFrame": 43.375,
+      "time": 1.4125,
+      "minAreaRatio": 0.9999997607023243,
+      "maxAreaRatio": 1.000001961721366
+    },
+    {
+      "sourceFrame": 43.4375,
+      "time": 1.4145833333333333,
+      "minAreaRatio": 0.9999997409521344,
+      "maxAreaRatio": 1.0000014861065856
+    },
+    {
+      "sourceFrame": 43.5,
+      "time": 1.4166666666666667,
+      "minAreaRatio": 0.9999996541508768,
+      "maxAreaRatio": 1.000000358797804
+    },
+    {
+      "sourceFrame": 43.5625,
+      "time": 1.41875,
+      "minAreaRatio": 0.9999997014576429,
+      "maxAreaRatio": 1.000001522938303
+    },
+    {
+      "sourceFrame": 43.625,
+      "time": 1.4208333333333334,
+      "minAreaRatio": 0.999999748764451,
+      "maxAreaRatio": 1.0000020362689142
+    },
+    {
+      "sourceFrame": 43.6875,
+      "time": 1.4229166666666666,
+      "minAreaRatio": 0.999999773879301,
+      "maxAreaRatio": 1.0000015352253926
+    },
+    {
+      "sourceFrame": 43.75,
+      "time": 1.425,
+      "minAreaRatio": 0.9999997597408816,
+      "maxAreaRatio": 1.000000326522502
+    },
+    {
+      "sourceFrame": 43.8125,
+      "time": 1.4270833333333333,
+      "minAreaRatio": 0.9999997696699486,
+      "maxAreaRatio": 1.0000015350781704
+    },
+    {
+      "sourceFrame": 43.875,
+      "time": 1.4291666666666667,
+      "minAreaRatio": 0.9999997411576421,
+      "maxAreaRatio": 1.0000020368550329
+    },
+    {
+      "sourceFrame": 43.9375,
+      "time": 1.43125,
+      "minAreaRatio": 0.9999997126451866,
+      "maxAreaRatio": 1.000001525218105
+    },
+    {
+      "sourceFrame": 44,
+      "time": 1.4333333333333333,
+      "minAreaRatio": 0.9999995820332905,
+      "maxAreaRatio": 1.0000003240468796
+    },
+    {
+      "sourceFrame": 44.0625,
+      "time": 1.4354166666666666,
+      "minAreaRatio": 0.9999996751368043,
+      "maxAreaRatio": 1.000000323611133
+    },
+    {
+      "sourceFrame": 44.125,
+      "time": 1.4375,
+      "minAreaRatio": 0.9999997025280902,
+      "maxAreaRatio": 1.0000003231754637
+    },
+    {
+      "sourceFrame": 44.1875,
+      "time": 1.4395833333333334,
+      "minAreaRatio": 0.9999996641500214,
+      "maxAreaRatio": 1.0000004108685165
+    },
+    {
+      "sourceFrame": 44.25,
+      "time": 1.4416666666666667,
+      "minAreaRatio": 0.9999996108698096,
+      "maxAreaRatio": 1.0000004935356364
+    },
+    {
+      "sourceFrame": 44.3125,
+      "time": 1.44375,
+      "minAreaRatio": 0.999999725225461,
+      "maxAreaRatio": 1.0000004386325565
+    },
+    {
+      "sourceFrame": 44.375,
+      "time": 1.4458333333333333,
+      "minAreaRatio": 0.9999998187619871,
+      "maxAreaRatio": 1.0000004161687506
+    },
+    {
+      "sourceFrame": 44.4375,
+      "time": 1.4479166666666667,
+      "minAreaRatio": 0.9999997381676884,
+      "maxAreaRatio": 1.0000004161145237
+    },
+    {
+      "sourceFrame": 44.5,
+      "time": 1.45,
+      "minAreaRatio": 0.9999996305618036,
+      "maxAreaRatio": 1.0000004160602662
+    },
+    {
+      "sourceFrame": 44.5625,
+      "time": 1.4520833333333334,
+      "minAreaRatio": 0.9999997187671397,
+      "maxAreaRatio": 1.0000003722801356
+    },
+    {
+      "sourceFrame": 44.625,
+      "time": 1.4541666666666666,
+      "minAreaRatio": 0.9999997855558623,
+      "maxAreaRatio": 1.0000003643938442
+    },
+    {
+      "sourceFrame": 44.6875,
+      "time": 1.45625,
+      "minAreaRatio": 0.9999997557289529,
+      "maxAreaRatio": 1.0000003565075954
+    },
+    {
+      "sourceFrame": 44.75,
+      "time": 1.4583333333333333,
+      "minAreaRatio": 0.9999996465678238,
+      "maxAreaRatio": 1.0000003486212465
+    },
+    {
+      "sourceFrame": 44.8125,
+      "time": 1.4604166666666667,
+      "minAreaRatio": 0.9999997683743971,
+      "maxAreaRatio": 1.0000003487325526
+    },
+    {
+      "sourceFrame": 44.875,
+      "time": 1.4625,
+      "minAreaRatio": 0.9999998343082855,
+      "maxAreaRatio": 1.000000371029751
+    },
+    {
+      "sourceFrame": 44.9375,
+      "time": 1.4645833333333333,
+      "minAreaRatio": 0.9999998542963597,
+      "maxAreaRatio": 1.0000003933269195
+    },
+    {
+      "sourceFrame": 45,
+      "time": 1.4666666666666666,
+      "minAreaRatio": 0.9999996936009503,
+      "maxAreaRatio": 1.0000003694091686
+    }
+  ]
+}
