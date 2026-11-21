@@ -12,3 +12,5 @@ option.SATURATION=Saturação
 option.CONTRAST=Contraste
 option.MAGIC=Intensidade mágica
 option.WATER_SSR=Reflexos do cenário (SSR)
+screen.LAVA=Lava
+option.LAVA_DETAIL=Detalhe da lava

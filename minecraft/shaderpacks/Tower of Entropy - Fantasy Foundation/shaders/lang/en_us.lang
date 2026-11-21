@@ -12,3 +12,5 @@ option.SATURATION=Saturation
 option.CONTRAST=Contrast
 option.MAGIC=Magic intensity
 option.WATER_SSR=Scene reflections (SSR)
+screen.LAVA=Lava
+option.LAVA_DETAIL=Lava detail

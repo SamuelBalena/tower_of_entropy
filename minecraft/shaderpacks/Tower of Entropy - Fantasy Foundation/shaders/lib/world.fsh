@@ -13,10 +13,24 @@ varying vec3 viewPos, normalView;
 varying float waterMaterial;
 #include "/lib/water_optics.glsl"
 #endif
+#ifdef LAVA
+varying float lavaMaterial;
+#include "/lib/lava.glsl"
+#endif
 /* DRAWBUFFERS:0 */
 void main() {
     vec4 base = texture2D(gtexture, uv) * tint;
     if (base.a < alphaTestRef) discard;
+#ifdef LAVA
+    // Derivatives of the actual mesh also identify fluid sides with an up-facing vertex normal.
+    vec3 face = cross(dFdx(viewPos), dFdy(viewPos));
+    if (lavaMaterial > 0.5) {
+        float fog = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
+        vec3 molten = lavaColor(viewPos, face, lavaMaterial > 1.5, base.rg);
+        gl_FragData[0] = vec4(mix(molten, lightingFog(), fog), 1.0);
+        return;
+    }
+#endif
 #ifdef WORLD_LIGHTING
     vec3 rgb = base.rgb * worldLighting(viewPos, normalize(normalView), lightUV);
     vec3 haze = lightingFog();

@@ -1,5 +1,6 @@
 #define SHADOW_RESOLUTION 1024 // [512 1024 2048]
 #define SHADOW_FILTER 1 // [0 1 2]
+#define LAVA_DETAIL 1 // [0 1 2]
 #define WATER_DETAIL 1 // [0 1 2]
 #define WATER_SSR 1 // [0 1]
 #define EXPOSURE 1.00 // [0.85 0.95 1.00 1.05 1.15]

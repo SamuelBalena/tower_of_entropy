@@ -35,13 +35,19 @@ public final class ShaderBenchmark {
             "crowd", "armor", "camera_tunnel", "camera_restore", "golden_hour", "rain", "combat", "camera_tunnel_opaque", "camera_tunnel_clear", "village_still", "village_walk", "village_sprint", "village_turn", "village_shoulder", "dawn", "sunset", "village_night", "village_rain",
             "sky_sunrise", "sky_morning", "sky_noon", "sky_afternoon", "sky_sunset", "sky_dusk", "sky_night",
             "lake_shallow", "river_trees", "lake_deep", "water_sunset", "water_moon", "water_rain",
-            "water_swim", "water_submerged", "waterside_village", "water_cave", "water_turn", "water_edge"};
+            "water_swim", "water_submerged", "waterside_village", "water_cave", "water_turn", "water_edge",
+            "lava_pool", "lava_nether", "lava_river", "lava_fall", "lava_cave", "lava_water", "lava_obsidian",
+            "lava_day", "lava_night", "lava_player", "lava_turn", "lava_close", "lava_mobs"};
     private static final boolean S0013 = Boolean.getBoolean("toe.s0013.qa");
     private static final int ORIGINAL_SCENES = 15;
     private static final int[] SHARPNESS_SCENES = {15, 16, 17, 18, 19, 12, 3, 8};
     private static final boolean S0014 = Boolean.getBoolean("toe.s0014.qa");
     private static final boolean S0015 = Boolean.getBoolean("toe.s0015.qa");
     private static final boolean S0016 = Boolean.getBoolean("toe.s0016.qa");
+    private static final boolean LAVA = Boolean.getBoolean("toe.s00161.qa");
+    private static final int[] LAVA_SCENES = Boolean.getBoolean("toe.s00161.quick")
+            ? new int[]{44, 43, 46, 47}
+            : new int[]{43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 44};
     private static final int[] WATER_SCENES = Boolean.getBoolean("toe.s0016.quick")
             ? new int[]{31, 32, 34, 35, 39, 41}
             : new int[]{31, 32, 33, 34, 35, 36, 7, 37, 38, 39, 40, 41, 42, 8, 9, 12};
@@ -66,7 +72,7 @@ public final class ShaderBenchmark {
         if (!opening && mc.screen instanceof TitleScreen && mc.getOverlay() == null && ++titleTicks > 40) {
             opening = true;
             mc.options.pauseOnLostFocus = false;
-            if (S0016 && System.getProperty("toe.s0016.width") != null) {
+            if ((S0016 || LAVA) && System.getProperty("toe.s0016.width") != null) {
                 mc.getWindow().setWindowed(Integer.getInteger("toe.s0016.width"), Integer.getInteger("toe.s0016.height"));
             }
             mc.createWorldOpenFlows().loadLevel(mc.screen, "Global Survival one");
@@ -91,6 +97,7 @@ public final class ShaderBenchmark {
             mc.options.keySprint.setDown(tick >= 24);
         }
         if (S0016 && scene == 41) mc.player.setYRot(39.0f * (float)Math.sin(tick * 0.23f));
+        if (LAVA && scene == 53) mc.player.setYRot(34.0f * (float)Math.sin(tick * .27f));
         if (scene == 12 && (tick == 43 || tick == 65 || tick == 86)) attack();
         if (tick == WARMUP) {
             samples.clear();
@@ -134,6 +141,8 @@ public final class ShaderBenchmark {
             scene = ++selectedScene < LIGHTING_SCENES.length ? LIGHTING_SCENES[selectedScene] : SCENES.length;
         } else if (S0015) {
             scene = ++selectedScene < SKY_SCENES.length ? SKY_SCENES[selectedScene] : SCENES.length;
+        } else if (LAVA) {
+            scene = ++selectedScene < LAVA_SCENES.length ? LAVA_SCENES[selectedScene] : SCENES.length;
         } else if (S0016) {
             mc.options.keyUp.setDown(false);
             mc.options.keySprint.setDown(false);
@@ -141,11 +150,11 @@ public final class ShaderBenchmark {
         } else {
             ++scene;
         }
-        if (scene >= (S0013 || S0014 || S0015 || S0016 ? SCENES.length : ORIGINAL_SCENES)) {
+        if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA ? SCENES.length : ORIGINAL_SCENES)) {
             mc.stop();
             return;
         }
-        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37
+        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37 || scene == 52
                 ? CameraType.THIRD_PERSON_BACK : CameraType.FIRST_PERSON);
         setMinimumOpacity(scene == 13 ? 1.0 : scene == 14 ? 0.0 : .12);
         if (S0013 || S0014) setCameraOption("RIGHT_SHOULDER", true);
@@ -304,6 +313,10 @@ public final class ShaderBenchmark {
     }
 
     private static void prepare(ServerPlayer player, int stage) {
+        if (stage >= 43) {
+            prepareLava(player, stage);
+            return;
+        }
         ServerLevel level = player.serverLevel();
         if (stage == 0 || (S0013 || S0014) && stage == 15 || S0015 && stage == 24 || S0016 && stage == 31 || Boolean.getBoolean("toe.s001.oneScene")) {
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, level.getServer());
@@ -514,6 +527,128 @@ public final class ShaderBenchmark {
             put(level, 0, Y + 2, 0, Blocks.SANDSTONE);
             put(level, 0, Y + 3, 0, Blocks.SANDSTONE);
         }
+    }
+
+    private static void prepareLava(ServerPlayer player, int stage) {
+        var server = player.serverLevel().getServer();
+        var level = server.overworld();
+        for (var mob : mobs) mob.discard();
+        mobs.clear();
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, server);
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, server);
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOFIRETICK).set(false, server);
+        level.setWeatherParameters(20000, 0, false, false);
+        player.setGameMode(GameType.SURVIVAL);
+        player.setInvulnerable(true);
+        player.getInventory().clearContent();
+        if (stage == 44) {
+            prepareNetherOcean(player, server.getLevel(net.minecraft.world.level.Level.NETHER));
+            return;
+        }
+        level.setDayTime(stage == 51 ? 17000 : 5700);
+        int anchorZ = 80;
+        boolean river = stage == 45;
+        boolean fall = stage == 46;
+        boolean cave = stage == 47;
+        var random = new Random(3193);
+        for (int x = -16; x <= 16; ++x) for (int z = -12; z <= 24; ++z) {
+            boolean lava = z >= 0 && z <= 17 && Math.abs(x) <= (river ? 3 : 8);
+            if (stage == 48 && x >= 2) lava = false;
+            boolean water = stage == 48 && x >= 3 && x <= 10 && z >= 0 && z <= 17;
+            for (int y = river ? -7 : -2; y <= -2; ++y)
+                put(level, x, Y + y, anchorZ + z, Blocks.STONE);
+            put(level, x, Y - 1, anchorZ + z, lava || water ? Blocks.SMOOTH_BASALT : Blocks.STONE);
+            Block shore = stage == 49 ? Blocks.OBSIDIAN : random.nextInt(5) == 0 ? Blocks.SMOOTH_BASALT
+                    : cave || random.nextInt(4) == 0 ? Blocks.BLACKSTONE : Blocks.STONE;
+            put(level, x, Y, anchorZ + z, water ? Blocks.WATER : lava && !river ? Blocks.LAVA : lava ? Blocks.AIR : shore);
+            for (int y = 1; y <= 8; ++y) {
+                boolean caveWall = cave && (y == 5 || Math.abs(x) == 16 || z == -12 || z == 24);
+                boolean cliff = fall && z >= 13 && z <= 17 && Math.abs(x) <= 5 && y <= 6 + (x % 3 == 0 ? 1 : 0);
+                put(level, x, Y + y, anchorZ + z, caveWall ? Blocks.DEEPSLATE : cliff ? Blocks.BASALT : Blocks.AIR);
+            }
+        }
+        if (river) {
+            for (int z = 0; z < 18; ++z) for (int x = -3; x <= 3; ++x) {
+                int step = z / 3;
+                put(level, x, Y - 1 - step, anchorZ + z, Blocks.BLACKSTONE);
+                for (int y = Y - step; y <= Y; ++y) put(level, x, y, anchorZ + z, Blocks.AIR);
+                if (Math.abs(x) <= 2) {
+                    int fluidLevel = z % 3 == 0 ? 0 : z % 3 * 2;
+                    level.setBlock(new BlockPos(x, Y - step, anchorZ + z),
+                            Blocks.LAVA.defaultBlockState().setValue(net.minecraft.world.level.block.LiquidBlock.LEVEL, fluidLevel),
+                            Block.UPDATE_CLIENTS);
+                }
+            }
+            for (int x = -2; x <= 2; ++x)
+                level.setBlock(new BlockPos(x, Y, anchorZ), Blocks.LAVA.defaultBlockState(), Block.UPDATE_ALL);
+        }
+        if (fall) for (int x : new int[]{-2, -1, 0, 2}) {
+            for (int y = 1; y <= 6; ++y) {
+                level.setBlock(new BlockPos(x, Y + y, anchorZ + 12),
+                        Blocks.LAVA.defaultBlockState().setValue(net.minecraft.world.level.block.LiquidBlock.LEVEL, 8),
+                        Block.UPDATE_CLIENTS);
+            }
+            level.setBlock(new BlockPos(x, Y + 7, anchorZ + 12), Blocks.LAVA.defaultBlockState(), Block.UPDATE_ALL);
+        }
+        if (stage == 52) {
+            player.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
+            player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
+        }
+        if (stage == 55) {
+            for (int x = -10; x <= 10; x += 2) for (int z : new int[]{-1, 19, 21}) {
+                var mob = EntityType.ZOMBIE.create(level);
+                if (mob == null) continue;
+                mob.setNoAi(true);
+                mob.setInvulnerable(true);
+                mob.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
+                mob.setPos(x + 0.5, Y + 1, anchorZ + z + 0.5);
+                level.addFreshEntity(mob);
+                mobs.add(mob);
+            }
+        }
+        double x = river ? 4.5 : 0.5;
+        double z = stage == 54 ? -0.5 : stage == 52 ? -2.5 : fall ? -5.5 : -2.5;
+        player.teleportTo(level, x, Y + 1, anchorZ + z, river ? 26 : 0, fall ? -2 : stage == 54 ? 56 : 21);
+        player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
+    }
+
+    private static void prepareNetherOcean(ServerPlayer player, ServerLevel level) {
+        // Fixed sampling order gives each preset the same natural sea and camera.
+        BlockPos best = null;
+        int score = -1;
+        for (int x = -56; x <= 56; x += 16) for (int z = -56; z <= 56; z += 16) {
+            if (!level.getBlockState(new BlockPos(x, 31, z)).is(Blocks.LAVA)) continue;
+            int open = 0;
+            for (int dx = -6; dx <= 6; dx += 3) for (int dz = -6; dz <= 6; dz += 3) {
+                if (level.getBlockState(new BlockPos(x + dx, 31, z + dz)).is(Blocks.LAVA)
+                        && level.isEmptyBlock(new BlockPos(x + dx, 37, z + dz))) ++open;
+            }
+            if (open > score && level.isEmptyBlock(new BlockPos(x, 39, z))) {
+                score = open;
+                best = new BlockPos(x, 37, z);
+            }
+            if (score == 25) break;
+        }
+        if (best == null) throw new IllegalStateException("QA seed did not expose a Nether lava sea near the origin");
+        float yaw = 0;
+        int bestView = -1;
+        for (int angle = 0; angle < 360; angle += 45) {
+            int visible = 0;
+            for (int distance = 4; distance <= 40; distance += 4) {
+                double radians = Math.toRadians(angle);
+                int x = best.getX() - (int)Math.round(Math.sin(radians) * distance);
+                int z = best.getZ() + (int)Math.round(Math.cos(radians) * distance);
+                if (level.getBlockState(new BlockPos(x, 31, z)).is(Blocks.LAVA)) ++visible;
+            }
+            if (visible > bestView) {
+                bestView = visible;
+                yaw = angle;
+            }
+        }
+        level.setBlock(best, Blocks.BLACKSTONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+        player.teleportTo(level, best.getX() + .5, best.getY() + 1, best.getZ() + .5, yaw, 14);
+        player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
+        LogUtils.getLogger().info("TOE_S00161_OCEAN {} yaw={} seaSamples={}", best, yaw, bestView);
     }
 
     private static void prepareWater(ServerPlayer player, int stage) {
