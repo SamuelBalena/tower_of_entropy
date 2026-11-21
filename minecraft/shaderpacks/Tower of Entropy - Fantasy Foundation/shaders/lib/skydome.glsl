@@ -19,5 +19,9 @@ vec3 renderSkydome(vec3 ray, vec3 sun, vec3 moon) {
     float night = (1.0 - smoothstep(-0.29, -0.08, sun.y)) * (1.0 - rain);
     if (night > 0.001) sky += starLight(ray, night);
     sky = celestialLight(sky, ray, sun, moon, 1.0 - rain);
+#ifdef REFLECTION_SKY_WITHOUT_CLOUDS
+    return sky;
+#else
     return shadeClouds(sky, ray, sun, moon, day, twilight, rain);
+#endif
 }

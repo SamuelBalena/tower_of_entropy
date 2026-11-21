@@ -24,6 +24,12 @@ gradle.beforeProject { p ->
             }
             p.minecraft.runs.client.workingDirectory(p.file(p.property('toeS001Bench')))
             p.minecraft.runs.client.property('toe.s001.bench', 'true')
+            if (p.hasProperty('toeS0016Qa')) p.minecraft.runs.client.property('toe.s0016.qa', 'true')
+            if (p.hasProperty('toeS0016Width')) {
+                p.minecraft.runs.client.property('toe.s0016.width', p.property('toeS0016Width'))
+                p.minecraft.runs.client.property('toe.s0016.height', p.property('toeS0016Height'))
+            }
+            if (p.hasProperty('toeS0016Quick')) p.minecraft.runs.client.property('toe.s0016.quick', 'true')
             if (p.hasProperty('toeS0015Qa')) p.minecraft.runs.client.property('toe.s0015.qa', 'true')
             if (p.hasProperty('toeS0014Qa')) p.minecraft.runs.client.property('toe.s0014.qa', 'true')
             if (p.hasProperty('toeS0013Qa')) p.minecraft.runs.client.property('toe.s0013.qa', 'true')

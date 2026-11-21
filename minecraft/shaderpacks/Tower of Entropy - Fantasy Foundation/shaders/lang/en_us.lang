@@ -11,3 +11,4 @@ option.EXPOSURE=Exposure
 option.SATURATION=Saturation
 option.CONTRAST=Contrast
 option.MAGIC=Magic intensity
+option.WATER_SSR=Scene reflections (SSR)

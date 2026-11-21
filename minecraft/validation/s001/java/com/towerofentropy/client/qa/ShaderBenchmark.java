@@ -33,12 +33,18 @@ public final class ShaderBenchmark {
     private static final boolean ENABLED = Boolean.getBoolean("toe.s001.bench");
     private static final String[] SCENES = {"forest", "plains", "cave", "water", "underwater", "night_torches",
             "crowd", "armor", "camera_tunnel", "camera_restore", "golden_hour", "rain", "combat", "camera_tunnel_opaque", "camera_tunnel_clear", "village_still", "village_walk", "village_sprint", "village_turn", "village_shoulder", "dawn", "sunset", "village_night", "village_rain",
-            "sky_sunrise", "sky_morning", "sky_noon", "sky_afternoon", "sky_sunset", "sky_dusk", "sky_night"};
+            "sky_sunrise", "sky_morning", "sky_noon", "sky_afternoon", "sky_sunset", "sky_dusk", "sky_night",
+            "lake_shallow", "river_trees", "lake_deep", "water_sunset", "water_moon", "water_rain",
+            "water_swim", "water_submerged", "waterside_village", "water_cave", "water_turn", "water_edge"};
     private static final boolean S0013 = Boolean.getBoolean("toe.s0013.qa");
     private static final int ORIGINAL_SCENES = 15;
     private static final int[] SHARPNESS_SCENES = {15, 16, 17, 18, 19, 12, 3, 8};
     private static final boolean S0014 = Boolean.getBoolean("toe.s0014.qa");
     private static final boolean S0015 = Boolean.getBoolean("toe.s0015.qa");
+    private static final boolean S0016 = Boolean.getBoolean("toe.s0016.qa");
+    private static final int[] WATER_SCENES = Boolean.getBoolean("toe.s0016.quick")
+            ? new int[]{31, 32, 34, 35, 39, 41}
+            : new int[]{31, 32, 33, 34, 35, 36, 7, 37, 38, 39, 40, 41, 42, 8, 9, 12};
     private static final int[] SKY_SCENES = {24, 25, 26, 27, 28, 29, 30, 0, 3, 7, 8, 9, 12, 4};
     private static final int[] LIGHTING_SCENES = {15, 0, 1, 20, 21, 22, 23, 7, 8, 9, 12, 4, 3};
     private static int selectedScene = -1;
@@ -60,6 +66,9 @@ public final class ShaderBenchmark {
         if (!opening && mc.screen instanceof TitleScreen && mc.getOverlay() == null && ++titleTicks > 40) {
             opening = true;
             mc.options.pauseOnLostFocus = false;
+            if (S0016 && System.getProperty("toe.s0016.width") != null) {
+                mc.getWindow().setWindowed(Integer.getInteger("toe.s0016.width"), Integer.getInteger("toe.s0016.height"));
+            }
             mc.createWorldOpenFlows().loadLevel(mc.screen, "Global Survival one");
         }
         if (mc.player == null || mc.screen != null) return;
@@ -77,6 +86,11 @@ public final class ShaderBenchmark {
         if (!ready || scene >= SCENES.length) return;
         ++tick;
         if (S0013) sharpnessInput(mc);
+        if (S0016 && scene == 37) {
+            mc.options.keyUp.setDown(tick >= 24);
+            mc.options.keySprint.setDown(tick >= 24);
+        }
+        if (S0016 && scene == 41) mc.player.setYRot(39.0f * (float)Math.sin(tick * 0.23f));
         if (scene == 12 && (tick == 43 || tick == 65 || tick == 86)) attack();
         if (tick == WARMUP) {
             samples.clear();
@@ -120,14 +134,18 @@ public final class ShaderBenchmark {
             scene = ++selectedScene < LIGHTING_SCENES.length ? LIGHTING_SCENES[selectedScene] : SCENES.length;
         } else if (S0015) {
             scene = ++selectedScene < SKY_SCENES.length ? SKY_SCENES[selectedScene] : SCENES.length;
+        } else if (S0016) {
+            mc.options.keyUp.setDown(false);
+            mc.options.keySprint.setDown(false);
+            scene = ++selectedScene < WATER_SCENES.length ? WATER_SCENES[selectedScene] : SCENES.length;
         } else {
             ++scene;
         }
-        if (scene >= (S0013 || S0014 || S0015 ? SCENES.length : ORIGINAL_SCENES)) {
+        if (scene >= (S0013 || S0014 || S0015 || S0016 ? SCENES.length : ORIGINAL_SCENES)) {
             mc.stop();
             return;
         }
-        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24)
+        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37
                 ? CameraType.THIRD_PERSON_BACK : CameraType.FIRST_PERSON);
         setMinimumOpacity(scene == 13 ? 1.0 : scene == 14 ? 0.0 : .12);
         if (S0013 || S0014) setCameraOption("RIGHT_SHOULDER", true);
@@ -163,9 +181,14 @@ public final class ShaderBenchmark {
         LogUtils.getLogger().info("TOE_S0011_OCULUS {} composites={} binds={}", SCENES[scene],
                 delta("ContextualPlayerLayer", "oculusComposites", initialOculus),
                 delta("ContextualPlayerLayer", "oculusCaptureBinds", initialOculusBinds));
-        if (S0014 || S0015) {
+        if (S0014 || S0015 || S0016) {
             LogUtils.getLogger().info("TOE_S0014_WEATHER {} time={} rain={}", SCENES[scene],
                     mc.level.getDayTime(), mc.level.getRainLevel(1.0f));
+        }
+        if (S0016 && (scene == 37 || scene == 38 || scene == 41)) {
+            LogUtils.getLogger().info("TOE_S0016_MOTION {} swimming={} submerged={} pos={} yaw={}",
+                    SCENES[scene], mc.player.isSwimming(), mc.player.isUnderWater(),
+                    mc.player.position(), mc.player.getYRot());
         }
     }
 
@@ -282,7 +305,7 @@ public final class ShaderBenchmark {
 
     private static void prepare(ServerPlayer player, int stage) {
         ServerLevel level = player.serverLevel();
-        if (stage == 0 || (S0013 || S0014) && stage == 15 || S0015 && stage == 24 || Boolean.getBoolean("toe.s001.oneScene")) {
+        if (stage == 0 || (S0013 || S0014) && stage == 15 || S0015 && stage == 24 || S0016 && stage == 31 || Boolean.getBoolean("toe.s001.oneScene")) {
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOBLOCKDROPS).set(false, level.getServer());
@@ -294,9 +317,20 @@ public final class ShaderBenchmark {
         mobs.clear();
         for (var item : level.getEntitiesOfClass(ItemEntity.class, new AABB(-20, Y - 5, -16, 20, Y + 15, 30))) item.discard();
         var random = new Random(30791);
-        boolean rain = stage == 11 || stage == 23;
+        boolean rain = stage == 11 || stage == 23 || stage == 36;
         level.setWeatherParameters(rain ? 0 : 10000, rain ? 10000 : 0, rain, false);
-        if (S0015) {
+        if (S0016) {
+            level.setRainLevel(rain ? 1.0f : 0.0f);
+            level.setThunderLevel(0.0f);
+            player.connection.send(new net.minecraft.network.protocol.game.ClientboundGameEventPacket(
+                    net.minecraft.network.protocol.game.ClientboundGameEventPacket.RAIN_LEVEL_CHANGE,
+                    rain ? 1.0f : 0.0f));
+            level.setDayTime(switch (stage) {
+                case 34 -> 12400;
+                case 35 -> 14800;
+                default -> 3900;
+            });
+        } else if (S0015) {
             level.setDayTime(switch (stage) {
                 case 24 -> 23600;
                 case 25 -> 2300;
@@ -328,6 +362,9 @@ public final class ShaderBenchmark {
             put(level, x, Y - 1, z, stage == 2 || stage == 8 || stage == 13 || stage == 14 ? Blocks.STONE
                     : stage == 3 || stage == 4 ? Blocks.SAND : Blocks.GRASS_BLOCK);
             for (int y = 0; y <= 7; y++) put(level, x, Y + y, z, Blocks.AIR);
+            if (S0016 && stage < 31) {
+                for (int y = -8; y < -2; y++) put(level, x, Y + y, z, Blocks.STONE);
+            }
             if (stage == 0 || stage == 1 || stage == 5 || stage == 7 || stage == 10 || stage == 11 || stage >= 24) {
                 int r = random.nextInt(24);
                 if (Math.abs(x) > 2 || Math.abs(z) > 3) {
@@ -335,6 +372,10 @@ public final class ShaderBenchmark {
                     if (r >= 3 && r < 8) put(level, x, Y, z, Blocks.GRASS);
                 }
             }
+        }
+        if (stage >= 31) {
+            prepareWater(player, stage);
+            return;
         }
         switch (stage) {
             case 0 -> {
@@ -473,6 +514,68 @@ public final class ShaderBenchmark {
             put(level, 0, Y + 2, 0, Blocks.SANDSTONE);
             put(level, 0, Y + 3, 0, Blocks.SANDSTONE);
         }
+    }
+
+    private static void prepareWater(ServerPlayer player, int stage) {
+        ServerLevel level = player.serverLevel();
+        int halfWidth = stage == 32 ? 7 : 15;
+        int deep = stage == 33 ? 8 : stage == 31 ? 2 : 5;
+        for (int x = -16; x <= 16; ++x) for (int z = -12; z <= 25; ++z) {
+            boolean wet = Math.abs(x) <= halfWidth && z >= -10 && z <= 23;
+            int depth = wet ? Math.min(deep, Math.min(halfWidth + 1 - Math.abs(x), z + 11)) : 0;
+            for (int y = -8; y <= 0; ++y) {
+                var block = y > -depth ? Blocks.WATER : y == -depth && wet
+                        ? ((x + z * 3) % 11 == 0 ? Blocks.PRISMARINE : Blocks.SAND)
+                        : y == 0 ? Blocks.GRASS_BLOCK : Blocks.STONE;
+                put(level, x, Y + y, z, block);
+            }
+        }
+        if (stage == 32 || stage == 39 || stage >= 41) {
+            for (int z = 1; z <= 22; z += 6) {
+                for (int x : new int[]{-halfWidth - 1, halfWidth + 1}) {
+                    for (int y = 1; y <= 4; ++y) put(level, x, Y + y, z, Blocks.OAK_LOG);
+                    for (int dx = -2; dx <= 2; ++dx) for (int dz = -2; dz <= 2; ++dz) {
+                        if (Math.abs(dx) + Math.abs(dz) <= 3) {
+                            var leaves = Blocks.OAK_LEAVES.defaultBlockState()
+                                    .setValue(net.minecraft.world.level.block.LeavesBlock.PERSISTENT, true);
+                            level.setBlock(new BlockPos(x + dx, Y + 5, z + dz), leaves, Block.UPDATE_CLIENTS);
+                            if (Math.abs(dx) + Math.abs(dz) <= 1)
+                                level.setBlock(new BlockPos(x + dx, Y + 6, z + dz), leaves, Block.UPDATE_CLIENTS);
+                        }
+                    }
+                }
+            }
+        }
+        if (stage == 39 || stage == 42) {
+            for (int x = -6; x <= 6; ++x) for (int z = 19; z <= 24; ++z) {
+                put(level, x, Y, z, Blocks.COBBLESTONE);
+                for (int y = 1; y <= 4; ++y) {
+                    var block = y == 4 ? Blocks.SPRUCE_PLANKS : y == 2 && x % 3 == 0 ? Blocks.GLASS : Blocks.OAK_PLANKS;
+                    put(level, x, Y + y, z, block);
+                }
+            }
+            for (int x : new int[]{-5, 5}) put(level, x, Y + 1, 18, Blocks.LANTERN);
+        }
+        if (stage == 40) {
+            for (int x = -15; x <= 15; ++x) for (int z = -12; z <= 24; ++z) {
+                put(level, x, Y + 5, z, Blocks.DEEPSLATE);
+                if (Math.abs(x) == 15 || z == 24 || z == -12)
+                    for (int y = 1; y < 5; ++y) put(level, x, Y + y, z, Blocks.DEEPSLATE);
+            }
+            for (int z = -7; z <= 20; z += 6) for (int x : new int[]{-6, 6}) {
+                put(level, x, Y, z, Blocks.TUFF);
+                put(level, x, Y + 1, z, Blocks.TORCH);
+            }
+        }
+        boolean swimming = stage == 37 || stage == 38;
+        double x = stage == 34 ? 13.5 : stage == 35 ? -12.5 : stage == 42 ? 6.5 : 0.5;
+        double z = stage == 34 || stage == 35 ? 1.5 : swimming ? -5.5 : -9.5;
+        int base = swimming ? Y - 3 : Y + 1;
+        if (!swimming) put(level, (int)Math.floor(x), Y, (int)Math.floor(z), Blocks.SMOOTH_STONE);
+        float yaw = stage == 34 ? 90 : stage == 35 ? -90 : stage == 42 ? -23 : 0;
+        float pitch = stage == 34 ? 8 : stage == 35 ? 32 : swimming ? -4 : 16;
+        player.teleportTo(level, x, base, z, yaw, pitch);
+        player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
     }
 
     private static void village(ServerLevel level) {

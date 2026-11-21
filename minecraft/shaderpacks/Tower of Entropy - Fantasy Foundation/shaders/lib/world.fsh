@@ -10,10 +10,8 @@ varying vec3 viewPos, normalView;
 #include "/lib/lighting.glsl"
 #endif
 #ifdef WATER
-uniform float frameTimeCounter;
-uniform vec3 cameraPosition;
-uniform mat4 gbufferModelViewInverse;
 varying float waterMaterial;
+#include "/lib/water_optics.glsl"
 #endif
 /* DRAWBUFFERS:0 */
 void main() {
@@ -29,23 +27,8 @@ void main() {
 #endif
 #ifdef WATER
     if (waterMaterial > 0.5) {
-        vec3 ray = normalize(mat3(gbufferModelViewInverse) * viewPos);
-        vec3 normal = normalize(mat3(gbufferModelViewInverse) * normalView);
-#if WATER_DETAIL > 0
-        vec2 p = ((gbufferModelViewInverse * vec4(viewPos, 1.0)).xz + cameraPosition.xz);
-        normal.xz += 0.065 * vec2(sin(p.x * 1.9 + frameTimeCounter * 1.30 + p.y * 0.7),
-                                  cos(p.y * 1.5 - frameTimeCounter * 0.87 + p.x));
-        normal = normalize(normal);
-#endif
-        float fresnel = pow(1.0 - clamp(dot(-ray, normal), 0.0, 1.0), 3.0);
-        rgb = mix(rgb, vec3(0.14, 0.46, 0.52) * lm, 0.30);
-#if WATER_DETAIL == 2
-        vec3 reflection = skyGradient(reflect(ray, normal));
-#else
-        vec3 reflection = horizonColor();
-#endif
-        rgb = mix(rgb, reflection * mix(0.32, 1.0, daylight()), fresnel * (0.19 + 0.10 * float(WATER_DETAIL)));
-        base.a = clamp(base.a * 0.80 + fresnel * 0.16, 0.22, 0.76);
+        gl_FragData[0] = vec4(waterColor(viewPos, normalView, lightUV), 1.0);
+        return;
     }
 #endif
     float fog = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
