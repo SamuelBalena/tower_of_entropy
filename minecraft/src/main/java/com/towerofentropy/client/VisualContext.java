@@ -35,7 +35,7 @@ public final class VisualContext {
  public static String selected(){var mc=Minecraft.getInstance();var p=mc.player;if(p==null||PREVIOUS)return null;
   if(p.isDeadOrDying())return "death";
   if(p.isPassenger()||p.isFallFlying()||p.onClimbable()||p.getAbilities().flying||p.isInLava()||p.getPose()==Pose.SWIMMING&&!p.isInWater())return null;
-  if(p.isInWater()){return p.getDeltaMovement().lengthSqr()>.003?"swim":"swim_idle";}
+  if(p.isInWater()){return HorizontalLocomotion.swimMoving()?"swim":"swim_idle";}
   if(age-lastHit<4)return hit;
   String parkour=ClientWallVisual.clip();if(parkour!=null)return parkour;
   if(wallFlight){

@@ -1,0 +1,13 @@
+profile.LEVE=Leve
+profile.EQUILIBRADO=Equilibrado
+profile.ALTO=Alto
+screen.ILUMINACAO=Iluminação e cor
+screen.SOMBRAS=Sombras
+screen.AGUA=Água
+option.SHADOW_RESOLUTION=Resolução das sombras
+option.SHADOW_FILTER=Suavização das sombras
+option.WATER_DETAIL=Detalhe da água
+option.EXPOSURE=Exposição
+option.SATURATION=Saturação
+option.CONTRAST=Contraste
+option.MAGIC=Intensidade mágica

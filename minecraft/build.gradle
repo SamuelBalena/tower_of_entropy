@@ -24,7 +24,7 @@ if (!['toeCombatTest','toeCombatRestartCheck','toeVisualTest','toeLocomotionTest
 if (project.hasProperty('toeGlobalTest')) sourceSets.main.java.srcDir 'validation/a3_1/java'
 if (project.hasProperty('toeGlobalCoverage') || project.hasProperty('toeExpansionTest')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3/java' }
 if (project.hasProperty('toeExpansionTest')) sourceSets.main.java.srcDir 'validation/expansion/java'
-if (project.hasProperty('toeW002Qa') || project.hasProperty('toeW0021Qa')) sourceSets.main.java.srcDir 'validation/w002/java'
+if (project.hasProperty('toeW002Qa') || project.hasProperty('toeW0021Qa') || project.hasProperty('toeW0023Qa') || project.hasProperty('toeC002Qa') || project.hasProperty('toeC0021Qa')) sourceSets.main.java.srcDir 'validation/w002/java'
 if (project.hasProperty('toeA12Test')) sourceSets.main.java.srcDir 'validation/a1_2/java'
 if (project.hasProperty('toeA2Test')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a2/java' }
 if (project.hasProperty('toeA3Test')) { sourceSets.main.java.srcDir 'validation/a1_2/java'; sourceSets.main.java.srcDir 'validation/a3/java' }
@@ -266,17 +266,45 @@ minecraft {
                     property 'toe.a3.output', project.file('animation_pipeline/converted/corrections-qa/runtime').absolutePath
                 }
             }
+            if (project.hasProperty('toeA001Qa')) {
+                property 'toe.a001.qa', 'true'
+                if (project.hasProperty('toeA001ParkourDir')) {
+                    workingDirectory project.file(project.property('toeA001ParkourDir'))
+                    property 'toe.a3.output', project.file(project.property('toeA001ParkourDir')).absolutePath
+                }
+            }
+            if (project.hasProperty('toeCombatDiagnosticsDefault'))
+                property 'toe.combat.diagnostics.default', project.property('toeCombatDiagnosticsDefault')
+            if (project.hasProperty('toeC0021Qa')) {
+                workingDirectory project.file(project.property('toeW002GameDir'))
+                property 'toe.c0021.qa', 'true'
+                if (project.hasProperty('toeA001Qa')) property 'toe.a001.qa', 'true'
+                if (project.hasProperty('toeQaGraphicsMode')) property 'toe.qa.graphicsMode', project.property('toeQaGraphicsMode')
+                if (project.hasProperty('toeGlobalSlim')) property 'toe.qa.slim', 'true'
+            }
+            if (project.hasProperty('toeC002Qa')) {
+                workingDirectory project.file(project.property('toeW002GameDir'))
+                property 'toe.c002.qa', 'true'
+            }
+            if (project.hasProperty('toeW0023Qa')) {
+                property 'toe.combat.diagnostics.default', 'false'
+                if (project.hasProperty('toeW0023WithoutDiagnostics')) property 'toe.w0023.withoutDiagnostics', 'true'
+                workingDirectory project.file(project.property('toeW002GameDir'))
+                property 'toe.w0023.qa', 'true'
+            }
             if (project.hasProperty('toeW002Qa') || project.hasProperty('toeW0021Qa')) {
                 def profile = project.hasProperty('toeGlobalSlim') ? 'slim' : 'classic'
                 profile += project.findProperty('toeW002Run') ? '-' + project.property('toeW002Run') : ''
                 def folder = project.hasProperty('toeW0021Qa') ? 'w0021-qa' : 'w002-qa'
-                workingDirectory project.file('run-' + folder + '/' + profile)
+                workingDirectory project.file(project.findProperty('toeW002GameDir') ?: 'run-' + folder + '/' + profile)
                 if (project.hasProperty('toeW0021Qa')) property 'toe.combat.roll.trace', 'true'
                 if (!project.hasProperty('toeW002Regression')) {
                     property 'toe.w002.qa', 'true'
                     property 'toe.expansion.test', 'false'
                 }
                 property 'toe.a3.output', project.file('animation_pipeline/converted/' + folder + '/' + profile).absolutePath
+                if (project.hasProperty('toeW002Profile')) property 'toe.w002.profile', 'true'
+                if (project.hasProperty('toeW002Counters')) property 'toe.w002.counters', 'true'
                 if (project.hasProperty('toeW002WalkTrace')) property 'toe.w002.walk.trace', 'true'
                 if (project.hasProperty('toeGlobalSlim')) property 'toe.qa.slim', 'true'
             }
@@ -538,6 +566,8 @@ tasks.register('prepareWallPrototypesR3', Exec) {
     commandLine 'node', 'animation_pipeline/scripts/package-expansion.cjs', '--wall-prototypes'
 }
 tasks.named('processResources').configure { dependsOn 'prepareWallPrototypesR3' }
+
+apply from: 'gradle/run-client-shaders.gradle'
 
 repositories {
     flatDir { dirs 'dependencies/cpm' }

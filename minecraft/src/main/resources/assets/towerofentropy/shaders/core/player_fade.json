@@ -1,0 +1,8 @@
+{
+  "vertex": "towerofentropy:player_fade",
+  "fragment": "towerofentropy:player_fade",
+  "blend": {"func": "add", "srcrgb": "1", "dstrgb": "1-srcalpha", "srcalpha": "1", "dstalpha": "1-srcalpha"},
+  "attributes": ["Position", "UV0"],
+  "samplers": [{"name": "PlayerColor"}, {"name": "PlayerDepth"}],
+  "uniforms": [{"name": "Opacity", "type": "float", "count": 1, "values": [1.0]}]
+}

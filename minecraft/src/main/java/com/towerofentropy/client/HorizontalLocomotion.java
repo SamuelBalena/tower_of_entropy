@@ -15,7 +15,7 @@ public final class HorizontalLocomotion {
     private static LocalPlayer owner;
     private static String gait = "idle";
     private static float previousYaw, yaw;
-    private static boolean hasHeading, wasAirborne;
+    private static boolean hasHeading, wasAirborne, swimMoving;
     private static int keepHeadingUntil;
 
     @SubscribeEvent
@@ -28,6 +28,7 @@ public final class HorizontalLocomotion {
             gait = "idle";
             hasHeading = false;
             wasAirborne = false;
+            swimMoving = false;
             keepHeadingUntil = 0;
         }
         if (player == null) return;
@@ -40,19 +41,30 @@ public final class HorizontalLocomotion {
         boolean idle = MOTION.state() == HorizontalMotion.State.IDLE;
         gait = idle ? "idle" : player.isSprinting() && speed > .14 ? "sprint"
                 : speed < (gait.equals("walk") ? .235 : .217) ? "walk" : "jog";
+        boolean aquatic = player.isInWater();
+        double dy = player.getY() - player.yo;
+        double threshold = swimMoving ? .010 : .018;
+        boolean verticalStroke = player.input != null && (player.input.jumping || player.input.shiftKeyDown)
+                && Math.abs(dy) > threshold;
+        boolean swimInput = player.input != null
+                && (Math.abs(player.input.leftImpulse) > .001f || Math.abs(player.input.forwardImpulse) > .001f);
+        // Gravity and buoyancy alone do not trigger strokes on a resting swimmer.
+        swimMoving = aquatic && (swimInput || verticalStroke || dx * dx + dz * dz > threshold * threshold);
         boolean airborne = !player.onGround();
         if (wasAirborne && !airborne) keepHeadingUntil = player.tickCount + 4;
         wasAirborne = airborne;
         boolean jumpHeading = airborne || player.tickCount < keepHeadingUntil;
         previousYaw = hasHeading ? yaw : player.yBodyRot;
         double displacement = Math.hypot(dx, dz);
-        boolean moving = jumpHeading ? displacement >= .025 && displacement <= 1 : !idle;
+        boolean moving = aquatic ? displacement >= .008 && displacement <= 1 : jumpHeading ? displacement >= .025 && displacement <= 1 : !idle;
         float target = moving ? (float)Math.toDegrees(Math.atan2(-dx, dz))
-                : jumpHeading ? previousYaw : player.yBodyRot;
+                : aquatic || jumpHeading ? previousYaw : player.yBodyRot;
         float change = .42f * Mth.wrapDegrees(target - previousYaw);
         yaw = previousYaw + (jumpHeading ? Mth.clamp(change, -35, 35) : change);
         hasHeading = true;
     }
+
+    static boolean swimMoving() { return swimMoving; }
 
     static String gait() {
         return gait;

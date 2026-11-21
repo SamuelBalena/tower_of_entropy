@@ -25,7 +25,7 @@ public final class CombatController {
     public enum Mode { AUTO, ON, OFF }
     private static final Map<UUID,Mode> MODES=new ConcurrentHashMap<>();
     public static Mode mode(UUID id){return MODES.getOrDefault(id,Mode.AUTO);}
-    public static boolean supportedWeapon(ServerPlayer p){return p.getMainHandItem().getItem() instanceof SwordItem;}
+    public static boolean supportedWeapon(ServerPlayer p){return EffectiveEquipment.selected(p).getItem() instanceof SwordItem;}
     private static boolean desired(ServerPlayer p){return p.isAlive()&&!p.isSpectator()&&mode(p.getUUID())!=Mode.OFF&&(mode(p.getUUID())==Mode.ON||supportedWeapon(p));}
     public record Status(boolean attacking, boolean started, int accepted, int impacts, int hits,
                          long startedTick, long impactTick, int targetId) { }

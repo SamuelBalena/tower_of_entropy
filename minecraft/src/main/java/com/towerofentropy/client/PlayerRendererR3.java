@@ -12,6 +12,7 @@ import dev.phe.polymesh.client.GltfModelRenderer;
 import dev.phe.polymesh.model.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -57,11 +58,17 @@ public final class PlayerRendererR3 {
     private static double jogClock;
     private static double cyclePhase,playbackRate=1;
     private static final Matrix4f sampledAnchor=new Matrix4f();
-    private static final Quaternionf wrist0=new Quaternionf(),wrist1=new Quaternionf();
-    public static long pipelineNanos,poseNanos;
+    private static final Quaternionf wrist0 = new Quaternionf();
+    private static final org.joml.Vector3f wristPivot = new org.joml.Vector3f();
+    private static final java.util.Map<JsonObject, WristFrame> wristFrames = new java.util.IdentityHashMap<>();
+    private record Wrist(float x, float y, float z, Quaternionf rotation) {}
+    private record WristFrame(Wrist right, Wrist left) {}
+    public static long pipelineNanos,poseNanos,armorNanos,armorDraws;
     public static R3VisualPose visualPose(){return visualPose;}
     public static Matrix4f[] displayed(){return displayed;}
     private static final class SkinRenderer extends GltfModelRenderer {
+        private R3Armor armor;
+        private PlayerRenderer armorParent;
         SkinRenderer(ResourceLocation model){super(model);}
         @Override protected ResourceLocation resolveTexture(RuntimeMaterial material){return skin;}
     }
@@ -124,8 +131,11 @@ public final class PlayerRendererR3 {
         var resource=slim?SLIM_MODEL:MODEL;
         var model=PolymeshApi.loadModel(resource);
         if(model==null){fallbackReason="missing model "+resource+": vanilla/CPM";return;}
+        var profiler=mc.getProfiler();
+        profiler.push("toeR3");
+        boolean profilingPose=false;
         try{
-            if(loaded!=model){loaded=model;renderer=new SkinRenderer(resource);requested="";upperBody=new UpperBodyPose(model);visualPose=R3VisualPose.LEGACY?null:new R3VisualPose(model,PREVIOUS?"visual-support.json":VisualContext.PREVIOUS?"a2-support.json":"a3-support.json");
+            if(loaded!=model){wristFrames.clear();loaded=model;renderer=new SkinRenderer(resource);requested="";upperBody=new UpperBodyPose(model);visualPose=R3VisualPose.LEGACY?null:new R3VisualPose(model,PREVIOUS?"visual-support.json":VisualContext.PREVIOUS?"a2-support.json":"a3-support.json");
                 try(var in=mc.getResourceManager().open(new ResourceLocation("towerofentropy",PREVIOUS?"r3-poses.json":VisualContext.PREVIOUS?"a2-poses.json":"a3-poses.json"))){poses=JsonParser.parseReader(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();}
                 if(!PREVIOUS&&!VisualContext.PREVIOUS){
                     try(var in=mc.getResourceManager().open(new ResourceLocation("towerofentropy","expansion-poses.json"))){
@@ -141,6 +151,7 @@ public final class PlayerRendererR3 {
                 }
             }
             long pipelineStart=System.nanoTime();
+            profiler.push("toeR3Pose");profilingPose=true;
             var c=controller();boolean loop=HorizontalLocomotion.loop(wanted);
             if(!requested.equals(wanted)||(forcedClip==null&&!ClientCombatState.clip().isEmpty()&&combatStart!=ClientCombatState.started())){c.play("UAL_"+wanted,loop);if(R3VisualPose.LEGACY||!loop)c.setAnimationTime(0);requested=wanted;combatStart=ClientCombatState.started();}
             double now=player.level().getGameTime()+event.getPartialTick();
@@ -172,11 +183,12 @@ public final class PlayerRendererR3 {
             if(!PREVIOUS&&!VisualContext.PREVIOUS&&(airSword||swordBlock||VisualContext.upper(wanted))&&!wanted.startsWith("bow_")){String lower=player.isCrouching()?(HorizontalLocomotion.MOTION.speed()>.012?"crouch_move":"crouch_idle"):!player.onGround()?(airSword?VisualContext.airbornePose():"jump_loop"):HorizontalLocomotion.gait();globals=upperBody.compose(globals,lower,(float)cyclePhase,0,event.getPartialTick());}
             Matrix4f anchorTransform=null;
             if(!R3VisualPose.LEGACY){anchorTransform=sampleAnchor(wanted,c.getAnimationTime());globals=visualPose.apply(globals,wanted,ClientCombatState.started(),c.getAnimationTime(),now/20,anchorTransform,player.onGround());anchorTransform=visualPose.anchor();}
+            profiler.pop();profilingPose=false;
             displayed=globals;poseNanos+=System.nanoTime()-pipelineStart;
             skin=player.getSkinTextureLocation();lastYaw=ClientRollMotion.visual()||(!R3VisualPose.LEGACY&&ClientRollMotion.pending())?ClientRollMotion.yaw():wanted.startsWith("bow_")?player.getYRot()-UpperBodyPose.facing(model,c,globals):Mth.rotLerp(event.getPartialTick(),player.yBodyRotO,player.yBodyRot);lastLight=event.getPackedLight();
             if(forcedClip==null&&ClientWallVisual.owns(wanted))lastYaw=ClientWallVisual.yaw();
             if(!VisualContext.PREVIOUS&&(wanted.equals("backward")||wanted.startsWith("strafe_")))lastYaw=player.getYRot();
-            if(!PREVIOUS&&!VisualContext.PREVIOUS&&forcedClip==null&&(airSword||wanted.equals("idle")||wanted.equals("walk")||wanted.equals("jog")||wanted.equals("sprint")||wanted.startsWith("jump_")))
+            if(!PREVIOUS&&!VisualContext.PREVIOUS&&forcedClip==null&&(airSword||wanted.equals("idle")||wanted.equals("walk")||wanted.equals("jog")||wanted.equals("sprint")||wanted.startsWith("jump_")||wanted.startsWith("swim")))
                 lastYaw=HorizontalLocomotion.travelYaw(event.getPartialTick(),lastYaw);
             long start=System.nanoTime();var ps=event.getPoseStack();ps.pushPose();
             try{
@@ -185,13 +197,23 @@ public final class PlayerRendererR3 {
                 if(wanted.startsWith("swim"))ps.translate(0,-.40,0);
                 ps.last().pose().normal(ps.last().normal()); // exact inverse transpose for the handedness reflection
                 renderer.renderModel(model,globals,ps.last(),event.getMultiBufferSource(),event.getPackedLight(),OverlayTexture.NO_OVERLAY,0xffffffff);
+                if (hasArmor(player)) {
+                    long armorStarted = System.nanoTime();
+                    if (renderer.armorParent != event.getRenderer()) {
+                        renderer.armor = new R3Armor(model, event.getRenderer(), slim);
+                        renderer.armorParent = event.getRenderer();
+                    }
+                    renderer.armor.render(player, globals, ps, event.getMultiBufferSource(), event.getPackedLight());
+                    armorNanos += System.nanoTime() - armorStarted;
+                    armorDraws++;
+                }
                 String clip=c.getAnimationName();
                 boolean bow=!VisualContext.PREVIOUS&&clip.startsWith("UAL_bow_");
                 var actionHand=(clip.equals("UAL_consume")||bow)&&player.isUsingItem()?player.getUsedItemHand()
                     :bow&&!clip.equals("UAL_bow_idle")?VisualContext.bowHand:InteractionHand.MAIN_HAND;
                 boolean dedicatedLeft=bow||clip.equals("UAL_consume")||clip.equals("UAL_torch");
                 for(var hand:InteractionHand.values()){
-                    var stack=player.getItemInHand(hand);
+                    var stack=hand==InteractionHand.MAIN_HAND ? com.towerofentropy.combat.EffectiveEquipment.selected(player) : player.getOffhandItem();
                     if(stack.isEmpty())continue;
                     if(hand==InteractionHand.MAIN_HAND
                             &&com.towerofentropy.combat.WeaponTags.isWeapon(stack)&&!ClientWeaponState.canUse(hand)){
@@ -208,6 +230,7 @@ public final class PlayerRendererR3 {
             // Cancel only after a complete successful draw; suppresses vanilla and CPM layers/items once.
             event.setCanceled(true);
         }catch(Exception ex){++errors;if(slim)slimUnavailable=true;else enabled=false;LogUtils.getLogger().error("TOE_R3 RENDER_DISABLED_FALLBACK",ex);}
+        finally{if(profilingPose)profiler.pop();profiler.pop();}
     }
     private static JsonObject anchor(String clip,float time){
         var info=poses.getAsJsonObject(clip);if(info==null)info=poses.getAsJsonObject("idle");
@@ -220,14 +243,49 @@ public final class PlayerRendererR3 {
     private static Matrix4f sampleAnchor(String clip,float time){
         return sampleAnchor(clip,time,303);
     }
-    private static Matrix4f sampleAnchor(String clip,float time,int id){
-        var info=poses.getAsJsonObject(clip);if(info==null)info=poses.getAsJsonObject("idle");var frames=info.getAsJsonArray("frames");float duration=info.get("duration").getAsFloat()/1000;
-        boolean loop=HorizontalLocomotion.loop(clip);float phase=loop?time%duration:Math.min(time,duration);float index=phase/duration*(loop?frames.size():frames.size()-1);int i=Math.min(frames.size()-1,(int)index),j=loop?(i+1)%frames.size():Math.min(frames.size()-1,i+1);float t=index-i;
-        JsonObject a=null,b=null;for(var v:frames.get(i).getAsJsonObject().getAsJsonArray("components"))if(v.getAsJsonObject().get("storeID").getAsInt()==id)a=v.getAsJsonObject();for(var v:frames.get(j).getAsJsonObject().getAsJsonArray("components"))if(v.getAsJsonObject().get("storeID").getAsInt()==id)b=v.getAsJsonObject();
-        var p=a.getAsJsonObject("pos");var n=b.getAsJsonObject("pos");var r=a.getAsJsonObject("rotation");var s=b.getAsJsonObject("rotation");wrist0.rotationZYX(rad(r,"z"),rad(r,"y"),rad(r,"x"));wrist1.rotationZYX(rad(s,"z"),rad(s,"y"),rad(s,"x"));wrist0.slerp(wrist1,t).normalize();
-        if(id==302){var pivot=new org.joml.Vector3f(1/16f,10/16f,-2/16f);wrist0.transform(pivot);return sampledAnchor.translation(1/16f-pivot.x,6/16f-pivot.y,-2/16f-pivot.z).rotate(wrist0);}
-        return sampledAnchor.translation(Mth.lerp(t,p.get("x").getAsFloat(),n.get("x").getAsFloat())/16,Mth.lerp(t,p.get("y").getAsFloat(),n.get("y").getAsFloat())/16,Mth.lerp(t,p.get("z").getAsFloat(),n.get("z").getAsFloat())/16).rotate(wrist0);
+    private static Matrix4f sampleAnchor(String clip, float time, int id) {
+        var info = poses.getAsJsonObject(clip);
+        if (info == null) info = poses.getAsJsonObject("idle");
+        var frames = info.getAsJsonArray("frames");
+        float duration = info.get("duration").getAsFloat() / 1000;
+        boolean loop = HorizontalLocomotion.loop(clip);
+        float phase = loop ? time % duration : Math.min(time, duration);
+        float index = phase / duration * (loop ? frames.size() : frames.size() - 1);
+        int i = Math.min(frames.size() - 1, (int) index);
+        int j = loop ? (i + 1) % frames.size() : Math.min(frames.size() - 1, i + 1);
+        float t = index - i;
+        var first = wristFrames.computeIfAbsent(frames.get(i).getAsJsonObject(), PlayerRendererR3::readWrists);
+        var second = wristFrames.computeIfAbsent(frames.get(j).getAsJsonObject(), PlayerRendererR3::readWrists);
+        boolean left = id == 302;
+        var a = left ? first.left() : first.right();
+        var b = left ? second.left() : second.right();
+        if (a == null || b == null) throw new IllegalStateException("Original wrist anchor missing: " + id);
+        wrist0.set(a.rotation()).slerp(b.rotation(), t).normalize();
+        if (left) {
+            wrist0.transform(wristPivot.set(1/16f, 10/16f, -2/16f));
+            return sampledAnchor.translation(1/16f - wristPivot.x, 6/16f - wristPivot.y, -2/16f - wristPivot.z).rotate(wrist0);
+        }
+        return sampledAnchor.translation(Mth.lerp(t, a.x(), b.x()) / 16,
+                Mth.lerp(t, a.y(), b.y()) / 16, Mth.lerp(t, a.z(), b.z()) / 16).rotate(wrist0);
     }
+
+    private static WristFrame readWrists(JsonObject frame) {
+        Wrist right = null, left = null;
+        for (var entry : frame.getAsJsonArray("components")) {
+            var component = entry.getAsJsonObject();
+            int id = component.get("storeID").getAsInt();
+            if (id != 302 && id != 303) continue;
+            var position = component.getAsJsonObject("pos");
+            var rotation = component.getAsJsonObject("rotation");
+            var wrist = new Wrist(position.get("x").getAsFloat(), position.get("y").getAsFloat(),
+                    position.get("z").getAsFloat(), new Quaternionf().rotationZYX(
+                            rad(rotation, "z"), rad(rotation, "y"), rad(rotation, "x")));
+            if (id == 302) left = wrist;
+            else right = wrist;
+        }
+        return new WristFrame(right, left);
+    }
+
     private static void sheathed(AbstractClientPlayer player,ItemStack stack,PoseStack pose,
             RenderPlayerEvent.Pre event,AnimationController controller,Matrix4f[] globals){
         pose.pushPose();
@@ -265,10 +323,15 @@ public final class PlayerRendererR3 {
         }finally{ps.popPose();}
     }
     private static float rad(JsonObject r,String k){return (float)Math.toRadians(r.get(k).getAsFloat());}
+    private static boolean hasArmor(AbstractClientPlayer player) {
+        for (var item : player.getArmorSlots()) if (!item.isEmpty()) return true;
+        return false;
+    }
+
     public static String equipmentReason(AbstractClientPlayer p){
         for(var part:new net.minecraft.world.entity.player.PlayerModelPart[]{net.minecraft.world.entity.player.PlayerModelPart.HAT,net.minecraft.world.entity.player.PlayerModelPart.JACKET,net.minecraft.world.entity.player.PlayerModelPart.LEFT_SLEEVE,net.minecraft.world.entity.player.PlayerModelPart.RIGHT_SLEEVE,net.minecraft.world.entity.player.PlayerModelPart.LEFT_PANTS_LEG,net.minecraft.world.entity.player.PlayerModelPart.RIGHT_PANTS_LEG})if(!p.isModelPartShown(part))return "camadas da skin";
         if((PREVIOUS||VisualContext.PREVIOUS)&&p.getMainArm()!=HumanoidArm.RIGHT)return "mao esquerda";
-        for(var item:p.getArmorSlots())if(!item.isEmpty())return "armadura";
+        for (var item : p.getArmorSlots()) if (!item.isEmpty() && (PREVIOUS || VisualContext.PREVIOUS || !R3Armor.supports(item))) return "armadura";
         if((PREVIOUS||VisualContext.PREVIOUS)&&!p.getOffhandItem().isEmpty())return "offhand";
         if(p.getCloakTextureLocation()!=null&&p.isModelPartShown(net.minecraft.world.entity.player.PlayerModelPart.CAPE))return "capa";
         return "";

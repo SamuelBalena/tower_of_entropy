@@ -199,7 +199,7 @@ final class WeaponBlockRuntimeTest {
         p.getInventory().offhand.set(0, ItemStack.EMPTY);
         p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetCarriedItemPacket(8));
         p.inventoryMenu.broadcastFullState();
-        if (item instanceof net.minecraft.world.item.SwordItem) WeaponReadiness.toggle(p);
+        if (WeaponTags.isWeapon(EffectiveEquipment.selected(p))) WeaponReadiness.toggle(p);
     }
 
     private static void serverBoundaries(ServerPlayer p) {
@@ -212,6 +212,7 @@ final class WeaponBlockRuntimeTest {
         check("delayed_tool_progress", flag(p.gameMode, "f_9253_"), POS);
         p.getInventory().setItem(8, new ItemStack(Items.IRON_SWORD));
         p.inventoryMenu.broadcastFullState();
+        WeaponReadiness.toggle(p);
     }
 
     private static boolean flag(ServerPlayerGameMode gameMode, String srgName) {

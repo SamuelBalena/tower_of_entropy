@@ -8,6 +8,8 @@ import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.util.AbortableIterationConsumer;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -16,7 +18,6 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
@@ -37,7 +38,25 @@ public final class WeaponReadiness {
             AttributeModifier.Operation.MULTIPLY_TOTAL);
     private static final Map<UUID, Session> PLAYERS = new HashMap<>();
 
-    private static final class Session {
+    private static final EntityTypeTest<net.minecraft.world.entity.Entity, Mob> MOBS = EntityTypeTest.forClass(Mob.class);
+
+    private static final class Session implements AbortableIterationConsumer<Mob> {
+        final ServerPlayer owner;
+        boolean foundThreat, census, measuring;
+        int visited, matches;
+
+        Session(ServerPlayer owner) { this.owner = owner; }
+
+        @Override
+        public Continuation accept(Mob mob) {
+            if (measuring) visited++;
+            if (!isThreat(mob, owner)) return Continuation.CONTINUE;
+            foundThreat = true;
+            if (!census) return Continuation.ABORT;
+            matches++;
+            return Continuation.CONTINUE;
+        }
+
         ItemStack equipped = ItemStack.EMPTY;
         int slot = -1;
         WeaponState weapon = WeaponState.SHEATHED, sentWeapon;
@@ -48,23 +67,27 @@ public final class WeaponReadiness {
     private WeaponReadiness() {}
 
     public static boolean canUse(ServerPlayer player, InteractionHand hand) {
-        if (!WeaponTags.isWeapon(player.getItemInHand(hand))) return true;
+        if (hand == InteractionHand.OFF_HAND) return !WeaponTags.isWeapon(player.getOffhandItem());
+        return !WeaponTags.isWeapon(EffectiveEquipment.selected(player)) || posture(player) == WeaponState.DRAWN;
+    }
+
+    public static WeaponState posture(ServerPlayer player) {
         var s = PLAYERS.get(player.getUUID());
-        return hand == InteractionHand.MAIN_HAND && s != null && s.weapon == WeaponState.DRAWN
-                && s.equipped == player.getMainHandItem() && s.slot == player.getInventory().selected;
+        return s != null && s.equipped == EffectiveEquipment.selected(player)
+                && s.slot == player.getInventory().selected ? s.weapon : WeaponState.SHEATHED;
     }
 
     public static ThreatMode threat(ServerPlayer player) {
         var s = PLAYERS.get(player.getUUID());
-        return s != null && s.equipped == player.getMainHandItem() && s.slot == player.getInventory().selected
+        return s != null && s.equipped == EffectiveEquipment.selected(player) && s.slot == player.getInventory().selected
                 ? s.threat : ThreatMode.EXPLORATION;
     }
 
     private static Session equipment(ServerPlayer p) {
-        var s = PLAYERS.computeIfAbsent(p.getUUID(), ignored -> new Session());
-        ItemStack equipped = p.getMainHandItem();
+        var s = PLAYERS.computeIfAbsent(p.getUUID(), ignored -> new Session(p));
+        ItemStack equipped = EffectiveEquipment.selected(p);
         int slot = p.getInventory().selected;
-        if (s.equipped != equipped || s.slot != slot || !WeaponTags.isWeapon(equipped)) {
+        if (s.equipped != equipped || s.slot != slot || (s.weapon != WeaponState.SHEATHED && !WeaponTags.isWeapon(equipped))) {
             if (WeaponTags.isWeapon(s.equipped)) CombatController.cancel(p);
             s.equipped = equipped;
             s.slot = slot;
@@ -75,6 +98,8 @@ public final class WeaponReadiness {
     }
 
     public static void toggle(ServerPlayer p) {
+        var diagnostics = CombatDiagnostics.of(p);
+        if (diagnostics != null) diagnostics.toggleRequest();
         if (!p.isAlive() || p.isSpectator() || p.containerMenu != p.inventoryMenu || p.isUsingItem()
                 || RollController.busy(p.getUUID()) || WallSlide.holdsPlayer(p)) return;
         var attack = CombatController.status(p.getUUID());
@@ -82,6 +107,8 @@ public final class WeaponReadiness {
         var s = equipment(p);
         if (!WeaponTags.isWeapon(s.equipped) || s.weapon == WeaponState.DRAWING || s.weapon == WeaponState.SHEATHING) return;
         s.weapon = s.weapon == WeaponState.DRAWN ? WeaponState.SHEATHING : WeaponState.DRAWING;
+        if (diagnostics != null) diagnostics.toggleAccepted();
+        WeaponBlockProtection.abort(p);
         s.transitionEnd = p.level().getGameTime() + TRANSITION_TICKS;
         if (s.weapon == WeaponState.SHEATHING) s.threatUntil = 0;
         publish(p, s, ThreatMode.EXPLORATION);
@@ -106,9 +133,21 @@ public final class WeaponReadiness {
         }
         if (now >= s.nextScan) {
             s.nextScan = now + SCAN_TICKS;
-            var threats = p.serverLevel().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(THREAT_RADIUS),
-                    mob -> isThreat(mob, p));
-            if (!threats.isEmpty()) s.threatUntil = now + CombatConfig.THREAT_GRACE.get();
+            var profiler = p.level().getProfiler();
+            profiler.push("toeThreatScan");
+            try {
+                var diagnostics = CombatDiagnostics.of(p);
+                s.measuring = diagnostics != null;
+                s.census = s.measuring && diagnostics.needsCensus();
+                s.visited = s.matches = 0;
+                long started = s.measuring ? System.nanoTime() : 0;
+                s.foundThreat = false;
+                p.serverLevel().getEntities().get(MOBS, p.getBoundingBox().inflate(THREAT_RADIUS), s);
+                if (s.measuring) diagnostics.scan(s.visited, s.matches, System.nanoTime() - started, s.census);
+                if (s.foundThreat) s.threatUntil = now + CombatConfig.THREAT_GRACE.get();
+            } finally {
+                profiler.pop();
+            }
         }
         publish(p, s, now < s.threatUntil ? ThreatMode.COMBAT : ThreatMode.ARMED);
     }
@@ -121,23 +160,24 @@ public final class WeaponReadiness {
     }
 
     private static void publish(ServerPlayer p, Session s, ThreatMode next) {
+        boolean combatChanged = (s.threat == ThreatMode.COMBAT) != (next == ThreatMode.COMBAT);
         s.threat = next;
         if (s.sentWeapon == s.weapon && s.sentThreat == next) return;
-        var speed = p.getAttribute(Attributes.MOVEMENT_SPEED);
-        if (speed != null) {
-            if (next == ThreatMode.COMBAT) {
-                if (speed.getModifier(SPEED_ID) == null) speed.addTransientModifier(SPEED);
-            } else speed.removeModifier(SPEED_ID);
+        var diagnostics = CombatDiagnostics.of(p);
+        if (diagnostics != null) diagnostics.state();
+        if (combatChanged) {
+            var speed = p.getAttribute(Attributes.MOVEMENT_SPEED);
+            if (speed != null) {
+                if (next == ThreatMode.COMBAT) speed.addTransientModifier(SPEED);
+                else speed.removeModifier(SPEED_ID);
+                if (diagnostics != null) diagnostics.speedChange();
+                p.level().getProfiler().incrementCounter("toeCombatSpeedChange");
+            }
         }
+        p.level().getProfiler().incrementCounter("toeWeaponTransition");
         s.sentWeapon = s.weapon;
         s.sentThreat = next;
         ActionNetwork.weaponState(p, s.weapon, next);
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void attack(AttackEntityEvent event) {
-        if (event.getEntity() instanceof ServerPlayer p && !canUse(p, InteractionHand.MAIN_HAND))
-            event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -166,7 +206,7 @@ public final class WeaponReadiness {
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) {
         if (e.getEntity() instanceof ServerPlayer p) { reset(p, true); CombatController.cancel(p); }
     }
-    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if (e.getEntity() instanceof ServerPlayer p) reset(p, false); }
-    @SubscribeEvent public static void stop(ServerStoppedEvent ignored) { PLAYERS.clear(); }
+    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if (e.getEntity() instanceof ServerPlayer p) { CombatDiagnostics.stop(p); reset(p, false); } }
+    @SubscribeEvent public static void stop(ServerStoppedEvent ignored) { PLAYERS.clear(); CombatDiagnostics.clear(); }
 
 }

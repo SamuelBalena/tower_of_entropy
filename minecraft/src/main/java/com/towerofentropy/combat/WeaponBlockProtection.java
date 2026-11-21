@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerPlayerGameMode;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.level.BlockEvent;
@@ -22,7 +21,7 @@ public final class WeaponBlockProtection {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void attackBlock(LeftClickBlock event) {
         if (event.getAction() == LeftClickBlock.Action.ABORT
-                || !WeaponTags.isWeapon(event.getEntity().getItemInHand(event.getHand()))) return;
+                || !EffectiveEquipment.blocksMining(event.getEntity())) return;
         event.setUseBlock(Event.Result.DENY);
         event.setUseItem(Event.Result.DENY);
         event.setCanceled(true);
@@ -36,18 +35,16 @@ public final class WeaponBlockProtection {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void breakSpeed(PlayerEvent.BreakSpeed event) {
-        if (WeaponTags.isWeapon(event.getEntity().getMainHandItem())) event.setNewSpeed(0);
+        if (EffectiveEquipment.blocksMining(event.getEntity())) event.setNewSpeed(0);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void breakBlock(BlockEvent.BreakEvent event) {
-        if (WeaponTags.isWeapon(event.getPlayer().getMainHandItem())) event.setCanceled(true);
+        if (EffectiveEquipment.blocksMining(event.getPlayer())) event.setCanceled(true);
     }
 
-    @SubscribeEvent
-    public static void abortAfterEquipmentChange(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.START && event.player instanceof ServerPlayer player
-                && WeaponTags.isWeapon(player.getMainHandItem())) MiningState.abort(player);
+    static void abort(ServerPlayer player) {
+        MiningState.abort(player);
     }
 
     /** Forge exposes no method to abort both active and delayed destruction. Clear both vanilla states. */

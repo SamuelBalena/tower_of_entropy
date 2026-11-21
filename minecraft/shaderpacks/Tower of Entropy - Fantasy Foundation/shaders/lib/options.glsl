@@ -1,0 +1,9 @@
+#define SHADOW_RESOLUTION 1024 // [512 1024 2048]
+#define SHADOW_FILTER 1 // [0 1 2]
+#define WATER_DETAIL 1 // [0 1 2]
+#define EXPOSURE 1.00 // [0.85 0.95 1.00 1.05 1.15]
+#define SATURATION 1.12 // [1.00 1.06 1.12 1.18 1.24]
+#define CONTRAST 1.05 // [0.95 1.00 1.05 1.10 1.15]
+#define MAGIC 0.60 // [0.00 0.30 0.60 1.00]
+const int shadowMapResolution = SHADOW_RESOLUTION;
+const float shadowDistance = 70.0;

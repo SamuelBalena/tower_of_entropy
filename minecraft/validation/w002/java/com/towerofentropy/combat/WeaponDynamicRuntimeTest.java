@@ -46,6 +46,12 @@ public final class WeaponDynamicRuntimeTest {
     private static final int SPRINT_KEY = Boolean.getBoolean("toe.qa.slim") ? GLFW.GLFW_KEY_K : GLFW.GLFW_KEY_LEFT_CONTROL;
     private static final InputConstants.Key SPRINT = InputConstants.Type.KEYSYM.getOrCreate(SPRINT_KEY);
     private static boolean sprintHeld, rollClip;
+    private static final BlockPos SHEATHED_BLOCK = new BlockPos(0, 101, 2);
+    private static boolean punchMining;
+    private static final boolean COUNTERS = Boolean.getBoolean("toe.w002.counters");
+    private static final int[] COUNTER_THREAT_AGES = {842, 850, 932, 940};
+
+    static int profileAge() { return age; }
 
     private static void check(String name, boolean ok, Object detail) {
         LogUtils.getLogger().info("TOE_W002 {} {} {}", name, ok ? "PASS" : "FAIL", detail);
@@ -75,7 +81,33 @@ public final class WeaponDynamicRuntimeTest {
             mc.options.toggleSprint().set(Boolean.getBoolean("toe.qa.slim"));
             KeyMapping.resetMapping();
         }
-        if (age == 24 || age == 60 || age == 88) KeyMapping.click(ActionKeys.WEAPON.getKey());
+        if (age == 8) check("tab_default", ActionKeys.WEAPON.getDefaultKey().getValue() == GLFW.GLFW_KEY_TAB
+                && ActionKeys.WEAPON.getKey().equals(ActionKeys.WEAPON.getDefaultKey()), ActionKeys.WEAPON.getKey());
+        if (age == 20) check("client_sheathed_empty_hand", mc.player.getMainHandItem().isEmpty()
+                && EffectiveEquipment.selected(mc.player).is(Items.IRON_SWORD), EffectiveEquipment.selected(mc.player));
+        if (age == 24) {
+            mc.options.keyPlayerList.setDown(true);
+            check("shared_tab_hides_player_list", !ActionKeys.playerListDown(mc.options.keyPlayerList), "");
+            mc.options.keyPlayerList.setDown(false);
+            weaponKey(GLFW.GLFW_KEY_TAB, GLFW.GLFW_PRESS);
+        }
+        if (age > 24 && age < 46) weaponKey(GLFW.GLFW_KEY_TAB, GLFW.GLFW_REPEAT);
+        if (age == 46) weaponKey(GLFW.GLFW_KEY_TAB, GLFW.GLFW_RELEASE);
+        if (age == 60) weaponKey(GLFW.GLFW_KEY_TAB, GLFW.GLFW_PRESS);
+        if (age == 61) weaponKey(GLFW.GLFW_KEY_TAB, GLFW.GLFW_RELEASE);
+        if (age == 85) {
+            ActionKeys.WEAPON.setKey(InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_K));
+            KeyMapping.resetMapping();
+            mc.options.keyPlayerList.setDown(true);
+            check("player_list_after_remap", ActionKeys.playerListDown(mc.options.keyPlayerList), "");
+            mc.options.keyPlayerList.setDown(false);
+        }
+        if (age == 88) weaponKey(GLFW.GLFW_KEY_K, GLFW.GLFW_PRESS);
+        if (age == 89) weaponKey(GLFW.GLFW_KEY_K, GLFW.GLFW_RELEASE);
+        if (age == 115) {
+            ActionKeys.WEAPON.setKey(ActionKeys.WEAPON.getDefaultKey());
+            KeyMapping.resetMapping();
+        }
         if (age == 22 || age == 50 || age == 75 || age == 124 || age == 155 || age == 234 || age == 268 || age == 341 || age == 358) {
             var directory = new File(System.getProperty("toe.a3.output"));
             new File(directory, "screenshots").mkdirs();
@@ -83,9 +115,9 @@ public final class WeaponDynamicRuntimeTest {
         }
         if (age == 124) manualDistance = cameraDistance(mc);
         if (age == 155) check("confirmed_combat_zoom", ClientWeaponState.inCombat()
-                && Math.abs(cameraDistance(mc)-manualDistance+.75) < .08, manualDistance + " -> " + cameraDistance(mc));
+                && Math.abs(cameraDistance(mc)-manualDistance+.40) < .08, manualDistance + " -> " + cameraDistance(mc));
         if (age == 156) cameraKey(GLFW.GLFW_KEY_DOWN, 1);
-        if (age == 167) check("manual_zoom_during_combat", Math.abs(cameraDistance(mc)-(manualDistance-.25)) < .08, cameraDistance(mc));
+        if (age == 167) check("manual_zoom_during_combat", Math.abs(cameraDistance(mc)-(manualDistance+.10)) < .08, cameraDistance(mc));
         if (age == 168) {
             cameraKey(GLFW.GLFW_KEY_UP, 5);
             cameraKey(GLFW.GLFW_KEY_LEFT, 1);
@@ -123,7 +155,26 @@ public final class WeaponDynamicRuntimeTest {
         }
         if (age >= 324 && age <= 330) mc.options.keyJump.setDown(age == 324);
         if (age >= 339 && age <= 383) mc.options.keyUp.setDown(age < 383);
-        if (age == 720) mc.stop();
+        if (age >= 700 && age <= 750) {
+            mc.player.setXRot(13);
+            mc.player.setYRot(0);
+        }
+        if (age == 713) KeyMapping.click(mc.options.keyAttack.getKey());
+        if (age >= 713 && age < 749) {
+            mc.options.keyAttack.setDown(true);
+            var controller = PlayerRendererR3.controller();
+            punchMining |= controller != null && controller.getAnimationName().startsWith("UAL_punch_");
+        }
+        if (age == 749) {
+            mc.options.keyAttack.setDown(false);
+            check("sheathed_client_mining_and_punch", punchMining && mc.level.getBlockState(SHEATHED_BLOCK).isAir(), punchMining);
+        }
+        if (age == (COUNTERS ? 1060 : 825)) mc.stop();
+    }
+
+    private static void weaponKey(int key, int action) {
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(
+                new net.minecraftforge.client.event.InputEvent.Key(key, 0, action, 0));
     }
 
     private static void cameraKey(int code, int times) {
@@ -177,7 +228,7 @@ public final class WeaponDynamicRuntimeTest {
             stage++;
         }
         if (stage == 1 && age >= 40) {
-            check("draw_h", WeaponReadiness.threat(p) == WeaponReadiness.ThreatMode.ARMED && WeaponReadiness.canUse(p, InteractionHand.MAIN_HAND), "");
+            check("draw_tab_without_repeat", WeaponReadiness.threat(p) == WeaponReadiness.ThreatMode.ARMED && WeaponReadiness.canUse(p, InteractionHand.MAIN_HAND), "");
             mob = spawn(p, EntityType.ZOMBIE, 14);
             stage++;
         }
@@ -186,7 +237,7 @@ public final class WeaponDynamicRuntimeTest {
             stage++;
         }
         if (stage == 3 && age >= 74) {
-            check("sheath_h", WeaponReadiness.threat(p) == WeaponReadiness.ThreatMode.EXPLORATION && !WeaponReadiness.canUse(p, InteractionHand.MAIN_HAND), "");
+            check("sheath_tab", WeaponReadiness.threat(p) == WeaponReadiness.ThreatMode.EXPLORATION && !WeaponReadiness.canUse(p, InteractionHand.MAIN_HAND), "");
             stage++;
         }
         if (stage == 4 && age >= 107) {
@@ -194,7 +245,7 @@ public final class WeaponDynamicRuntimeTest {
             spawn(p, EntityType.ENDERMAN, 15);
             spawn(p, EntityType.COW, 13).setTarget(p);
             spawn(p, EntityType.CHICKEN, 16).setTarget(p);
-            check("drawn_attack", CombatController.requestAttack(p, false).equals("accepted"), "");
+            check("drawn_attack_after_remap", CombatController.requestAttack(p, false).equals("accepted"), "");
 
             stage++;
         }
@@ -303,6 +354,49 @@ public final class WeaponDynamicRuntimeTest {
             lastThreat = now;
             stage = 16;
         }
+        if (stage == 17 && age >= 690) {
+            WeaponReadiness.toggle(p);
+            stage++;
+        }
+        if (stage == 18 && age >= 704) {
+            testSheathedGameplay(p);
+            stage++;
+        }
+        if (stage == 19 && age >= 752) {
+            check("sheathed_server_mining", p.level().getBlockState(SHEATHED_BLOCK).isAir()
+                    && EffectiveEquipment.selected(p).getDamageValue() == 0, p.level().getBlockState(SHEATHED_BLOCK));
+            var sword = EffectiveEquipment.selected(p);
+            var swap = new net.minecraft.network.protocol.game.ServerboundPlayerActionPacket(
+                    net.minecraft.network.protocol.game.ServerboundPlayerActionPacket.Action.SWAP_ITEM_WITH_OFFHAND,
+                    BlockPos.ZERO, net.minecraft.core.Direction.DOWN);
+            p.connection.handlePlayerAction(swap);
+            boolean swapped = EffectiveEquipment.selected(p).isEmpty() && p.getOffhandItem() == sword;
+            p.connection.handlePlayerAction(swap);
+            check("sheathed_hotbar_offhand_swap_preserves_stack",
+                    swapped && EffectiveEquipment.selected(p) == sword && p.getOffhandItem().isEmpty(), sword);
+            stage++;
+        }
+        if (stage == 20 && age >= 768) {
+            p.getInventory().setItem(0, ItemStack.EMPTY);
+            p.inventoryMenu.broadcastFullState();
+            stage++;
+        }
+        if (COUNTERS && stage == 21 && age >= 815) {
+            p.getInventory().setItem(0, new ItemStack(Items.IRON_SWORD));
+            p.inventoryMenu.broadcastFullState();
+            WeaponReadiness.toggle(p);
+            stage++;
+        }
+        int counterPhase = stage - 22;
+        if (counterPhase >= 0 && counterPhase < COUNTER_THREAT_AGES.length && age >= COUNTER_THREAT_AGES[counterPhase]) {
+            if (counterPhase % 2 == 0) {
+                mob = spawn(p, EntityType.ZOMBIE, 7);
+                mob.setTarget(p);
+            } else {
+                mob.discard();
+            }
+            stage++;
+        }
         if (stage == 16 && now-lastThreat >= 8) {
             check(EntityType.getKey(mob.getType()).getPath() + "_actual_target",
                     WeaponReadiness.threat(p) == WeaponReadiness.ThreatMode.COMBAT, mob.getTarget());
@@ -311,6 +405,42 @@ public final class WeaponDynamicRuntimeTest {
             lastThreat = now;
             stage = 15;
         }
+    }
+
+    private static void testSheathedGameplay(ServerPlayer p) {
+        var level = p.serverLevel();
+        p.teleportTo(level, .5, 100, .5, 0, 13);
+        var sword = EffectiveEquipment.selected(p);
+        p.getInventory().setItem(0, ItemStack.EMPTY);
+        var web = Blocks.COBWEB.defaultBlockState();
+        float bareSpeed = p.getDestroySpeed(web);
+        boolean bareHarvest = p.hasCorrectToolForDrops(web);
+        p.getInventory().setItem(0, sword);
+        sword.enchant(net.minecraft.world.item.enchantment.Enchantments.BLOCK_EFFICIENCY, 5);
+        sword.enchant(net.minecraft.world.item.enchantment.Enchantments.SHARPNESS, 5);
+        check("sheathed_speed_and_harvest_match_empty", sword.getDestroySpeed(web) > bareSpeed
+                && p.getDestroySpeed(web) == bareSpeed && p.hasCorrectToolForDrops(web) == bareHarvest, bareSpeed);
+        check("server_sheathed_empty_hand", p.getMainHandItem().isEmpty() && !EffectiveEquipment.blocksMining(p), sword);
+        var cow = spawn(p, EntityType.COW, 1);
+        cow.setInvulnerable(false);
+        float health = cow.getHealth();
+        p.attack(cow);
+        float damage = health - cow.getHealth();
+        check("unarmed_damage_and_no_durability", damage > 0 && damage <= 1.01 && sword.getDamageValue() == 0, damage);
+        cow.discard();
+        check("enchanted_sword_still_selected", EffectiveEquipment.selected(p) == sword && sword.isEnchanted(), sword);
+        var lever = SHEATHED_BLOCK.east();
+        level.setBlockAndUpdate(lever, Blocks.LEVER.defaultBlockState()
+                .setValue(net.minecraft.world.level.block.LeverBlock.FACE,
+                        net.minecraft.world.level.block.state.properties.AttachFace.FLOOR));
+        var hit = new net.minecraft.world.phys.BlockHitResult(net.minecraft.world.phys.Vec3.atCenterOf(lever),
+                net.minecraft.core.Direction.UP, lever, false);
+        var result = p.gameMode.useItemOn(p, level, p.getMainHandItem(), InteractionHand.MAIN_HAND, hit);
+        check("sheathed_use_block", result.consumesAction()
+                && level.getBlockState(lever).getValue(net.minecraft.world.level.block.LeverBlock.POWERED), result);
+        level.setBlockAndUpdate(lever, Blocks.AIR.defaultBlockState());
+        level.setBlockAndUpdate(SHEATHED_BLOCK, Blocks.DIRT.defaultBlockState());
+        p.inventoryMenu.broadcastFullState();
     }
 
     @SuppressWarnings("unchecked")

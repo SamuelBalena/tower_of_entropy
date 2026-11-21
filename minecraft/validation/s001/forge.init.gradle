@@ -1,0 +1,40 @@
+gradle.beforeProject { p ->
+    p.pluginManager.withPlugin('net.minecraftforge.gradle') {
+        if (p.hasProperty('toeS001Standalone')) {
+            p.configurations.named('implementation').configure {
+                withDependencies { dependencies ->
+                    dependencies.removeAll { it.group == 'local' || it.group == 'r2' }
+                }
+            }
+        }
+        if (p.hasProperty('toeS001Loader') || p.hasProperty('toeS001Embeddium')) {
+            p.repositories.flatDir { dirs p.file('.downloads/s001') }
+            p.dependencies.add('runtimeOnly', p.fg.deobf('s001:embeddium:0.3.31'))
+            if (p.hasProperty('toeS001Loader')) p.dependencies.add('runtimeOnly', p.fg.deobf('s001:oculus:1.8.0'))
+        }
+    }
+    p.afterEvaluate {
+        if (p.hasProperty('toeS001Bench')) {
+            if (p.hasProperty('toeS001Standalone')) {
+                p.sourceSets.main.java.setSrcDirs(['validation/s001/java'])
+                p.sourceSets.main.resources.setSrcDirs(['validation/s001/resources'])
+            } else {
+                p.sourceSets.main.java.srcDir('validation/s001/java')
+                p.sourceSets.main.java.exclude('**/ShaderBenchmarkMod.java')
+            }
+            p.minecraft.runs.client.workingDirectory(p.file(p.property('toeS001Bench')))
+            p.minecraft.runs.client.property('toe.s001.bench', 'true')
+            if (p.hasProperty('toeS0013Qa')) p.minecraft.runs.client.property('toe.s0013.qa', 'true')
+            if (p.hasProperty('toeS001Scene')) p.minecraft.runs.client.property('toe.s001.scene', p.property('toeS001Scene'))
+            if (p.hasProperty('toeS001OneScene')) p.minecraft.runs.client.property('toe.s001.oneScene', 'true')
+        }
+        if (p.hasProperty('toeS001Loader') && p.hasProperty('toeC0021Qa')) {
+            p.minecraft.runs.client.property('toe.s0011.qa', 'true')
+        }
+        if (p.hasProperty('toeS001BuildAudit')) {
+            p.tasks.named('jar').configure {
+                destinationDirectory.set(p.layout.projectDirectory.dir('.logs/s001-build/libs'))
+            }
+        }
+    }
+}

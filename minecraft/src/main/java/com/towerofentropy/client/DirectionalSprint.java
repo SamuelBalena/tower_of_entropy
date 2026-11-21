@@ -10,11 +10,16 @@ public final class DirectionalSprint {
 
     public static boolean canStart(boolean vanilla, LocalPlayer player) {
         return vanilla || (CombatSprint.down(Minecraft.getInstance().options.keySprint)
-                && sidewaysOrBackward(player.input, player));
+                && (sidewaysOrBackward(player.input, player) || player.isUnderWater() && aquaticImpulse(player.input)));
     }
 
     public static boolean hasImpulse(Input input, LocalPlayer player) {
-        return input.hasForwardImpulse() || sidewaysOrBackward(input, player);
+        return input.hasForwardImpulse() || sidewaysOrBackward(input, player)
+                || (player.isInWater() && (player.isUnderWater() || player.isSwimming()) && aquaticImpulse(input));
+    }
+
+    private static boolean aquaticImpulse(Input input) {
+        return Math.abs(input.leftImpulse) > 1e-5f || Math.abs(input.forwardImpulse) > 1e-5f;
     }
 
     private static boolean sidewaysOrBackward(Input input, LocalPlayer player) {

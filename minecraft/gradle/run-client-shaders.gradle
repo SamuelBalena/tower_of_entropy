@@ -1,0 +1,68 @@
+import java.nio.file.FileAlreadyExistsException
+import java.nio.file.Files
+import java.nio.file.StandardOpenOption
+
+def developmentDirectory = file('run')
+def primaryClient = file(minecraft.runs.client.workingDirectory) == developmentDirectory
+def clientRequested = gradle.startParameter.taskNames.any { it.tokenize(':').last() == 'runClient' }
+def isolatedShaderProfile = ['toeS001Loader', 'toeS001Embeddium', 'toeS001Bench', 'toeS001Standalone'].any {
+    project.hasProperty(it)
+}
+if (!primaryClient || !clientRequested || isolatedShaderProfile || project.hasProperty('toeNoOculus')) {
+    return
+}
+
+def shaderDependencies = file('.downloads/s001')
+def cachedEmbeddium = new File(shaderDependencies, 'embeddium-0.3.31.jar').isFile()
+def cachedOculus = new File(shaderDependencies, 'oculus-1.8.0.jar').isFile()
+
+repositories {
+    if (cachedEmbeddium || cachedOculus) {
+        flatDir {
+            dirs shaderDependencies
+            content { includeGroup 'toe.shaderdev.local' }
+        }
+    }
+    if (!cachedEmbeddium || !cachedOculus) {
+        maven {
+            name = 'ModrinthShaderReleases'
+            url = 'https://api.modrinth.com/maven'
+            content {
+                if (!cachedEmbeddium) includeModule('maven.modrinth', 'sk9rgfiA')
+                if (!cachedOculus) includeModule('maven.modrinth', 'GchcoXML')
+            }
+            metadataSources { artifact() }
+        }
+    }
+}
+dependencies {
+    runtimeOnly fg.deobf(cachedEmbeddium ? 'toe.shaderdev.local:embeddium:0.3.31' : 'maven.modrinth:sk9rgfiA:UTbfe5d1')
+    runtimeOnly fg.deobf(cachedOculus ? 'toe.shaderdev.local:oculus:1.8.0' : 'maven.modrinth:GchcoXML:iQ1SwGc3')
+}
+
+def packName = 'Tower of Entropy - Fantasy Foundation.zip'
+def preparePack = tasks.register('prepareRunClientShaderpack', Copy) {
+    from(file("shaderpacks/${packName}"))
+    into(new File(developmentDirectory, 'shaderpacks'))
+}
+
+def initializePreferences = tasks.register('initializeRunClientOculusPreferences') {
+    doLast {
+        def config = new File(developmentDirectory, 'config/oculus.properties').toPath()
+        Files.createDirectories(config.parent)
+        def preferences = new Properties()
+        preferences.setProperty('shaderPack', packName)
+        preferences.setProperty('enableShaders', 'true')
+        try {
+            Files.newOutputStream(config, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE).withCloseable {
+                preferences.store(it, 'Tower of Entropy runClient initial shader selection')
+            }
+        } catch (FileAlreadyExistsException ignored) {
+            // Oculus owns all preferences after first initialization.
+        }
+    }
+}
+
+tasks.matching { it.name == 'runClient' }.configureEach {
+    dependsOn(preparePack, initializePreferences)
+}

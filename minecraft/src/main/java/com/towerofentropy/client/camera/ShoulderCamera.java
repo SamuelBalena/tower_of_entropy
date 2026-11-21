@@ -6,7 +6,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,12 +19,16 @@ import net.minecraftforge.fml.common.Mod;
 public final class ShoulderCamera {
     private static final double AIM_RANGE = 96;
     private static final double RESPONSE_SECONDS = 0.085;
-    static final double COMBAT_APPROACH = .75;
+    static final double COMBAT_APPROACH = .40;
     private static final double COLLISION_RADIUS = 0.10;
+    private static final double COLLISION_SKIN = 0.02;
+    private static final CameraSweep SWEEP = new CameraSweep();
+    private static final Shapes.DoubleLineConsumer INCLUDE_BOX = SWEEP::include;
     private static long previousFrame;
     private static ClientLevel level;
     private static Vec3 followedEye;
     private static double aimParallax, usableFraction;
+    private static double opacity = 1;
     private static double distance, shoulder, height;
 
     private ShoulderCamera() {}
@@ -42,7 +47,12 @@ public final class ShoulderCamera {
             event.setFOV(mc.options.fov().get());
     }
 
+    public static float characterOpacity(Minecraft mc) {
+        return level == mc.level && active(mc) ? (float) opacity : 1;
+    }
+
     static void reset() {
+        opacity = 1;
         previousFrame = 0;
         level = null;
         followedEye = null;
@@ -51,6 +61,17 @@ public final class ShoulderCamera {
     public static boolean apply(Camera camera, float partialTick) {
         var mc = Minecraft.getInstance();
         if (!active(mc) || camera.getEntity() != mc.player || !(camera instanceof CameraPoseAccess access)) return false;
+        var profiler = mc.getProfiler();
+        profiler.push("toeShoulderCamera");
+        try {
+            applyPose(mc, camera, access, partialTick);
+        } finally {
+            profiler.pop();
+        }
+        return true;
+    }
+
+    private static void applyPose(Minecraft mc, Camera camera, CameraPoseAccess access, float partialTick) {
         long now = System.nanoTime();
         double elapsed = (now - previousFrame) * 1e-9;
         Vec3 eye = camera.getPosition();
@@ -74,6 +95,12 @@ public final class ShoulderCamera {
         usableFraction = fresh || unobstructed <= usableFraction ? unobstructed
                 : CameraDamping.approach(usableFraction, unobstructed, elapsed, .09);
         Vec3 position = eye.add(offset.scale(usableFraction));
+        // Projected body size depends on proximity and FOV. No fade during manual zoom by itself.
+        double clearance = position.distanceTo(eye) * Math.tan(Math.toRadians(mc.options.fov().get() * .5))
+                / Math.tan(Math.toRadians(35));
+        double target = usableFraction < .995 ? CharacterOpacity.target(clearance, CameraSettings.FADE_COMFORTABLE.get(),
+                CameraSettings.FADE_CLOSE.get(), CameraSettings.FADE_MINIMUM.get()) : 1;
+        opacity = CharacterOpacity.update(fresh ? 1 : opacity, target, fresh ? 1.0 / 60 : elapsed);
 
         // Smooth only the reciprocal focus distance. The mouse direction is sampled raw every frame.
         Vec3 aimEye = mc.player.getEyePosition(partialTick);
@@ -83,7 +110,6 @@ public final class ShoulderCamera {
         float yaw = (float) Math.toDegrees(Math.atan2(-aim.x, aim.z));
         float pitch = (float) Math.toDegrees(-Math.atan2(aim.y, aim.horizontalDistance()));
         access.toeSetPose(position, yaw, pitch);
-        return true;
     }
 
     private static void updateOffsets(Minecraft mc, double elapsed, boolean fresh) {
@@ -100,23 +126,18 @@ public final class ShoulderCamera {
         height = fresh ? targetHeight : CameraDamping.approach(height, targetHeight, elapsed, RESPONSE_SECONDS);
     }
 
-    private static double collisionFraction(Minecraft mc, Vec3 pivot, Vec3 offset) {
+    static double collisionFraction(Minecraft mc, Vec3 pivot, Vec3 offset) {
         double length = offset.length();
-        double fraction = 1;
-        // Vanilla-style corner probes along the complete offset, including its lateral component.
-        for (int i = 0; i < 8; i++) {
-            Vec3 start = pivot.add(corner(i, 1), corner(i, 2), corner(i, 4));
-            var hit = mc.level.clip(new ClipContext(start, start.add(offset),
-                    ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, mc.player));
-            if (hit.getType() != HitResult.Type.MISS) {
-                fraction = Math.min(fraction, Math.max(0, (start.distanceTo(hit.getLocation()) - .02) / length));
-            }
+        if (length == 0) return 1;
+        Vec3 endpoint = pivot.add(offset);
+        var bounds = new AABB(pivot, endpoint).inflate(COLLISION_RADIUS);
+        SWEEP.reset(pivot.x, pivot.y, pivot.z, offset.x, offset.y, offset.z,
+                COLLISION_RADIUS, COLLISION_SKIN / length);
+        for (var shape : mc.level.getBlockCollisions(mc.player, bounds)) {
+            shape.forAllBoxes(INCLUDE_BOX);
+            if (SWEEP.fraction() == 0) break;
         }
-        return fraction;
-    }
-
-    private static double corner(int index, int mask) {
-        return (index & mask) == 0 ? -COLLISION_RADIUS : COLLISION_RADIUS;
+        return SWEEP.fraction();
     }
 
     private static Vec3 aimPoint(Minecraft mc, float partialTick) {
@@ -125,10 +146,9 @@ public final class ShoulderCamera {
 
         var player = mc.player;
         Vec3 eye = player.getEyePosition(partialTick);
-        Vec3 ray = player.getViewVector(partialTick).scale(AIM_RANGE);
         Vec3 block = player.pick(AIM_RANGE, partialTick, false).getLocation();
         var entity = ProjectileUtil.getEntityHitResult(player, eye, block,
-                player.getBoundingBox().expandTowards(ray).inflate(1),
+                player.getBoundingBox().expandTowards(block.subtract(eye)).inflate(1),
                 candidate -> candidate.isPickable() && !candidate.isSpectator(), eye.distanceToSqr(block));
         return entity == null ? block : entity.getLocation();
     }

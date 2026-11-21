@@ -1,7 +1,7 @@
 package com.towerofentropy.client;
 
 import com.towerofentropy.animation.ActionNetwork;
-import com.towerofentropy.combat.WeaponTags;
+import com.towerofentropy.combat.EffectiveEquipment;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
@@ -20,13 +20,8 @@ public final class CombatInput {
  @SubscribeEvent(priority=EventPriority.HIGHEST)
  public static void weaponBlock(InputEvent.InteractionKeyMappingTriggered event) {
   var mc=Minecraft.getInstance();
-  if(mc.player!=null&&!ClientWeaponState.canUse(event.getHand())&&event.isAttack()){
-   event.setSwingHand(false);
-   event.setCanceled(true);
-   return;
-  }
   if(!event.isAttack()||mc.player==null||mc.hitResult==null||mc.hitResult.getType()!=HitResult.Type.BLOCK
-          ||!WeaponTags.isWeapon(mc.player.getItemInHand(event.getHand())))return;
+          ||!EffectiveEquipment.blocksMining(mc.player))return;
   event.setSwingHand(false);
   event.setCanceled(true);
   if(mc.gameMode!=null&&mc.gameMode.isDestroying())mc.gameMode.stopDestroyBlock();

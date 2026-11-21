@@ -50,7 +50,7 @@ public final class RollController {
   // Polymesh owns the visual clock. Optional CPM registry readiness must not delay a physical action.
   animationStarted(p);return result;
  }
- public static void animationStarted(ServerPlayer p){var s=SESSIONS.get(p.getUUID());if(s==null||s.start>=0)return;s.start=p.serverLevel().getGameTime();s.originX=p.getX();s.originZ=p.getZ();s.lastX=p.getX();s.lastY=p.getY();s.lastZ=p.getZ();publish(p,s,"moving");ActionNetwork.rollState(p,true,s.start,s.direction.x(),s.direction.z());}
+ public static void animationStarted(ServerPlayer p){var s=SESSIONS.get(p.getUUID());if(s==null||s.start>=0)return;s.start=p.serverLevel().getGameTime();s.originX=p.getX();s.originZ=p.getZ();s.lastX=p.getX();s.lastY=p.getY();s.lastZ=p.getZ();publish(p,s,"moving");var diagnostics=CombatDiagnostics.of(p);if(diagnostics!=null)diagnostics.rollStarted();ActionNetwork.rollState(p,true,s.start,s.direction.x(),s.direction.z());}
  public static boolean iframe(ServerPlayer p){var s=SESSIONS.get(p.getUUID());if(s==null||s.start<0)return false;long t=p.serverLevel().getGameTime()-s.start;return t>=3&&t<10;}
  public static void finished(ServerPlayer p,long start){
   var s=SESSIONS.get(p.getUUID());if(s==null||s.start!=start)return;s.finished=true;
@@ -62,6 +62,7 @@ public final class RollController {
  }
  private static void zeroHorizontal(ServerPlayer p){var v=p.getDeltaMovement();p.setDeltaMovement(0,v.y,0);p.hurtMarked=true;}
  public static void cancel(ServerPlayer p,String reason){var s=SESSIONS.remove(p.getUUID());if(s==null)return;
+  var diagnostics=CombatDiagnostics.of(p);if(diagnostics!=null)diagnostics.rollEnded(reason);
   if(s.contextual&&Boolean.getBoolean("toe.combat.roll.trace"))
    com.mojang.logging.LogUtils.getLogger().info("TOE_W0021_ROLL_END player={} reason={} distance={}",p.getScoreboardName(),reason,s.distance);
   zeroHorizontal(p);LAST.put(p.getUUID(),new Status(false,s.start>=0,s.start,s.direction.x(),s.direction.z(),s.distance,reason));ActionNetwork.rollState(p,false,s.start,s.direction.x(),s.direction.z());}

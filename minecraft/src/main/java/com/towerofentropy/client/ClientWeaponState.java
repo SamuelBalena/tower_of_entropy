@@ -6,8 +6,11 @@ import com.towerofentropy.combat.WeaponTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.player.Player;
+import com.towerofentropy.combat.EffectiveEquipment;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -20,6 +23,16 @@ public final class ClientWeaponState {
 
     private ClientWeaponState() {}
 
+    public static void registerEquipment() {
+        EffectiveEquipment.registerClient(
+                player -> !player.isLocalPlayer() || posture(player) == WeaponState.DRAWN,
+                player -> player.isLocalPlayer() && posture(player) != WeaponState.SHEATHED);
+    }
+
+    private static WeaponState posture(Player player) {
+        return selectedWeapon(player) ? weapon : WeaponState.SHEATHED;
+    }
+
     public static void accept(WeaponState next, ThreatMode mode, int selectedSlot, int selectedItemId) {
         var p = Minecraft.getInstance().player;
         if (p == null) return;
@@ -31,22 +44,31 @@ public final class ClientWeaponState {
 
     public static boolean canUse(InteractionHand hand) {
         var p = Minecraft.getInstance().player;
-        if (p == null || !WeaponTags.isWeapon(p.getItemInHand(hand))) return true;
-        return hand == InteractionHand.MAIN_HAND && weapon == WeaponState.DRAWN && selectedWeapon();
+        if (p == null || !WeaponTags.isWeapon((hand == InteractionHand.MAIN_HAND ? EffectiveEquipment.selected(p) : p.getOffhandItem()))) return true;
+        return hand == InteractionHand.MAIN_HAND && weapon == WeaponState.DRAWN && selectedWeapon(p);
     }
 
     public static boolean inCombat() {
-        return threat == ThreatMode.COMBAT && selectedWeapon();
+        return threat == ThreatMode.COMBAT && selectedWeapon(Minecraft.getInstance().player);
     }
 
-    private static boolean selectedWeapon() {
-        var p = Minecraft.getInstance().player;
-        return p != null && slot == p.getInventory().selected && itemId == Item.getId(p.getMainHandItem().getItem())
-                && WeaponTags.isWeapon(p.getMainHandItem());
+    private static boolean selectedWeapon(Player p) {
+        return p != null && slot == p.getInventory().selected && itemId == Item.getId(EffectiveEquipment.selected(p).getItem())
+                && WeaponTags.isWeapon(EffectiveEquipment.selected(p));
+    }
+
+    @SubscribeEvent
+    public static void tick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && weapon != WeaponState.SHEATHED
+                && !selectedWeapon(Minecraft.getInstance().player)) clear();
     }
 
     @SubscribeEvent
     public static void logout(ClientPlayerNetworkEvent.LoggingOut ignored) {
+        clear();
+    }
+
+    private static void clear() {
         weapon = WeaponState.SHEATHED;
         threat = ThreatMode.EXPLORATION;
         itemId = -1;

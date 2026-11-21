@@ -10,6 +10,17 @@ import net.minecraftforge.fml.common.Mod;
 public final class CombatCommands {
     @SubscribeEvent public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("toe_combat").requires(s->s.hasPermission(2))
+            .then(Commands.literal("diagnostics")
+                .then(Commands.literal("on").executes(c -> {
+                    CombatDiagnostics.start(c.getSource().getPlayerOrException());
+                    c.getSource().sendSuccess(() -> Component.literal("TOE diagnostics on. See latest.log."), false);
+                    return 1;
+                }))
+                .then(Commands.literal("off").executes(c -> {
+                    CombatDiagnostics.disable();
+                    c.getSource().sendSuccess(() -> Component.literal("TOE diagnostics off."), false);
+                    return 1;
+                })))
             .then(Commands.literal("auto").executes(c->{try{CombatController.automatic(c.getSource().getPlayerOrException());c.getSource().sendSuccess(()->Component.literal("TOE combat AUTO: sword activates automatically."),false);return 1;}catch(Exception ex){c.getSource().sendFailure(Component.literal(ex.getMessage()));return 0;}}))
             .then(Commands.literal("on").executes(c->{
                 try{CombatController.enable(c.getSource().getPlayerOrException());

@@ -18,6 +18,7 @@ public final class CameraSettings {
     static final ForgeConfigSpec.DoubleValue SHOULDER_OFFSET;
     static final ForgeConfigSpec.DoubleValue HEIGHT_OFFSET;
     static final ForgeConfigSpec.BooleanValue RIGHT_SHOULDER;
+    static final ForgeConfigSpec.DoubleValue FADE_MINIMUM, FADE_CLOSE, FADE_COMFORTABLE;
 
     static {
         var builder = new ForgeConfigSpec.Builder();
@@ -28,6 +29,11 @@ public final class CameraSettings {
         COMPOSITION_VERSION = builder.defineInRange("compositionVersion", 0, 0, 1);
         ZOOM_BINDING_VERSION = builder.defineInRange("zoomBindingVersion", 0, 0, 1);
         SHOULDER_BINDING_VERSION = builder.defineInRange("shoulderBindingVersion", 0, 0, 1);
+        builder.push("characterFade");
+        FADE_MINIMUM = builder.defineInRange("minimumOpacity", .12, 0.0, 1.0);
+        FADE_CLOSE = builder.defineInRange("veryCloseDistance", .95, .25, 1.45);
+        FADE_COMFORTABLE = builder.defineInRange("comfortableDistance", 2.35, 1.5, 4.0);
+        builder.pop();
         SPEC = builder.build();
     }
 

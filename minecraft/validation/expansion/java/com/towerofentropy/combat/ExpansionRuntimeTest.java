@@ -1,5 +1,8 @@
 package com.towerofentropy.combat;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
 import com.mojang.logging.LogUtils;
 import com.towerofentropy.client.PlayerRendererR3;
 import com.towerofentropy.client.ClientWallVisual;
@@ -65,6 +68,9 @@ public final class ExpansionRuntimeTest {
     private static int prototypeClimbStart;
     private static final Set<String> groundClips = new HashSet<>(), verticalClips = new HashSet<>(),
             awayClips = new HashSet<>();
+    private static final boolean ARMOR = Boolean.getBoolean("toe.a001.qa");
+    private static final Set<String> armoredClips = new java.util.TreeSet<>();
+    private static long previousArmorFrames;
     private static boolean wallLedgeJump, ledgeClimbClip, verticalRecontact, isolatedVerticalStarted, isolatedWallRemoved;
     private static final Set<String> isolatedVerticalClips = new HashSet<>();
     private static boolean jumpRequested, caught, climbed, ledgeClimbRequested, caughtAfterWall, blockedCatch, leftMining;
@@ -96,6 +102,12 @@ public final class ExpansionRuntimeTest {
             // Clearing old support blocks can drop items into the first empty hotbar slot.
             p.getInventory().selected = EMPTY_HAND_SLOT;
             p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetCarriedItemPacket(EMPTY_HAND_SLOT));
+            if (ARMOR) {
+                var diamond = new net.minecraft.world.item.Item[]{Items.DIAMOND_BOOTS, Items.DIAMOND_LEGGINGS,
+                        Items.DIAMOND_CHESTPLATE, Items.DIAMOND_HELMET};
+                for (int slot = 0; slot < diamond.length; slot++)
+                    p.getInventory().armor.set(slot, new ItemStack(diamond[slot]));
+            }
             p.inventoryMenu.broadcastFullState();
             serverLevel.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, p.server);
             serverLevel.setDayTime(18000);
@@ -262,6 +274,10 @@ public final class ExpansionRuntimeTest {
                     && Math.abs(Mth.wrapDegrees(PlayerRendererR3.lastYaw - 180)) < 15;
         }
         if (age >= 730 && Boolean.getBoolean("toe.parkour.test")) parkour(mc, clip);
+        if (ARMOR && PlayerRendererR3.armorDraws > previousArmorFrames && !clip.isBlank()) {
+            previousArmorFrames = PlayerRendererR3.armorDraws;
+            if (armoredClips.add(clip)) capture(mc, "a001-" + clip);
+        }
         if (PROTOTYPES && age >= 1340) compareProfiles(mc, clip);
         if (EIGHT) {
             originalSlide |= ClientWallVisual.active() && clip.equals("UAL_wall_slide");
@@ -333,6 +349,7 @@ public final class ExpansionRuntimeTest {
                 check("original_wall_clips", originalSlide && originalHang && originalClimb,
                         "slide="+originalSlide+" hang="+originalHang+" climb="+originalClimb);
             }
+            if (ARMOR) check("a001_armored_clips", !armoredClips.isEmpty(), armoredClips.toString());
             mc.stop();
         }
     }
