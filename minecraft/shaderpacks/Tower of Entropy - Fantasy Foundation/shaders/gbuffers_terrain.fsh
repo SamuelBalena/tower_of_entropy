@@ -1,3 +1,3 @@
 #version 120
-#define TERRAIN
+#define WORLD_LIGHTING
 #include "/lib/world.fsh"

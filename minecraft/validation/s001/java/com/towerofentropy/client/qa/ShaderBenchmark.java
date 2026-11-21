@@ -32,11 +32,13 @@ import org.lwjgl.opengl.GL11;
 public final class ShaderBenchmark {
     private static final boolean ENABLED = Boolean.getBoolean("toe.s001.bench");
     private static final String[] SCENES = {"forest", "plains", "cave", "water", "underwater", "night_torches",
-            "crowd", "armor", "camera_tunnel", "camera_restore", "golden_hour", "rain", "combat", "camera_tunnel_opaque", "camera_tunnel_clear", "village_still", "village_walk", "village_sprint", "village_turn", "village_shoulder"};
+            "crowd", "armor", "camera_tunnel", "camera_restore", "golden_hour", "rain", "combat", "camera_tunnel_opaque", "camera_tunnel_clear", "village_still", "village_walk", "village_sprint", "village_turn", "village_shoulder", "dawn", "sunset", "village_night", "village_rain"};
     private static final boolean S0013 = Boolean.getBoolean("toe.s0013.qa");
     private static final int ORIGINAL_SCENES = 15;
     private static final int[] SHARPNESS_SCENES = {15, 16, 17, 18, 19, 12, 3, 8};
-    private static int sharpnessScene = -1;
+    private static final boolean S0014 = Boolean.getBoolean("toe.s0014.qa");
+    private static final int[] LIGHTING_SCENES = {15, 0, 1, 20, 21, 22, 23, 7, 8, 9, 12, 4, 3};
+    private static int selectedScene = -1;
     private static final int Y = 108;
     private static final int WARMUP = 48;
     private static final int END = 108;
@@ -110,18 +112,20 @@ public final class ShaderBenchmark {
         if (S0013) {
             mc.options.keyUp.setDown(false);
             mc.options.keySprint.setDown(false);
-            scene = ++sharpnessScene < SHARPNESS_SCENES.length ? SHARPNESS_SCENES[sharpnessScene] : SCENES.length;
+            scene = ++selectedScene < SHARPNESS_SCENES.length ? SHARPNESS_SCENES[selectedScene] : SCENES.length;
+        } else if (S0014) {
+            scene = ++selectedScene < LIGHTING_SCENES.length ? LIGHTING_SCENES[selectedScene] : SCENES.length;
         } else {
             ++scene;
         }
-        if (scene >= (S0013 ? SCENES.length : ORIGINAL_SCENES)) {
+        if (scene >= (S0013 || S0014 ? SCENES.length : ORIGINAL_SCENES)) {
             mc.stop();
             return;
         }
         mc.options.setCameraType((scene >= 7 && scene <= 9) || scene >= 12
                 ? CameraType.THIRD_PERSON_BACK : CameraType.FIRST_PERSON);
         setMinimumOpacity(scene == 13 ? 1.0 : scene == 14 ? 0.0 : .12);
-        if (S0013) setCameraOption("RIGHT_SHOULDER", true);
+        if (S0013 || S0014) setCameraOption("RIGHT_SHOULDER", true);
         var server = mc.getSingleplayerServer();
         var id = mc.player.getUUID();
         int stage = scene;
@@ -154,6 +158,10 @@ public final class ShaderBenchmark {
         LogUtils.getLogger().info("TOE_S0011_OCULUS {} composites={} binds={}", SCENES[scene],
                 delta("ContextualPlayerLayer", "oculusComposites", initialOculus),
                 delta("ContextualPlayerLayer", "oculusCaptureBinds", initialOculusBinds));
+        if (S0014) {
+            LogUtils.getLogger().info("TOE_S0014_WEATHER {} time={} rain={}", SCENES[scene],
+                    mc.level.getDayTime(), mc.level.getRainLevel(1.0f));
+        }
     }
 
     private static double meanMillis(long nanos, long count) {
@@ -194,7 +202,9 @@ public final class ShaderBenchmark {
             var minimum = settings.getDeclaredField(field);
             minimum.setAccessible(true);
             var value = minimum.get(null);
-            value.getClass().getMethod("set", Object.class).invoke(value, option);
+            if (!option.equals(value.getClass().getMethod("get").invoke(value))) {
+                value.getClass().getMethod("set", Object.class).invoke(value, option);
+            }
         } catch (ClassNotFoundException standalone) {
             // The standalone fixture uses the vanilla camera.
         } catch (ReflectiveOperationException failure) {
@@ -251,6 +261,11 @@ public final class ShaderBenchmark {
             var directives = program.getClass().getMethod("getPackDirectives").invoke(program);
             var shadow = directives.getClass().getMethod("getShadowDirectives").invoke(directives);
             var size = shadow.getClass().getMethod("getResolution").invoke(shadow);
+            if (S0014) {
+                LogUtils.getLogger().info("TOE_S0014_SHADOW range={} renderMultiplier={}",
+                        shadow.getClass().getMethod("getDistance").invoke(shadow),
+                        shadow.getClass().getMethod("getDistanceRenderMul").invoke(shadow));
+            }
             return iris.getMethod("getCurrentPackName").invoke(null) + "/"
                     + pack.getClass().getMethod("getProfileInfo").invoke(pack) + " shadow=" + size;
         } catch (ClassNotFoundException missing) {
@@ -262,7 +277,7 @@ public final class ShaderBenchmark {
 
     private static void prepare(ServerPlayer player, int stage) {
         ServerLevel level = player.serverLevel();
-        if (stage == 0 || S0013 && stage == 15 || Boolean.getBoolean("toe.s001.oneScene")) {
+        if (stage == 0 || (S0013 || S0014) && stage == 15 || Boolean.getBoolean("toe.s001.oneScene")) {
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOBLOCKDROPS).set(false, level.getServer());
@@ -274,8 +289,24 @@ public final class ShaderBenchmark {
         mobs.clear();
         for (var item : level.getEntitiesOfClass(ItemEntity.class, new AABB(-20, Y - 5, -16, 20, Y + 15, 30))) item.discard();
         var random = new Random(30791);
-        level.setWeatherParameters(stage == 11 ? 0 : 10000, stage == 11 ? 10000 : 0, stage == 11, false);
-        level.setDayTime(stage == 5 ? 17700 : (stage == 8 || stage == 13 || stage == 14) ? 3000 : stage == 0 ? 1500 : stage == 10 ? 11400 : 5500);
+        boolean rain = stage == 11 || stage == 23;
+        level.setWeatherParameters(rain ? 0 : 10000, rain ? 10000 : 0, rain, false);
+        if (S0014) {
+            level.setRainLevel(rain ? 1.0f : 0.0f);
+            level.setThunderLevel(0.0f);
+            player.connection.send(new net.minecraft.network.protocol.game.ClientboundGameEventPacket(
+                    net.minecraft.network.protocol.game.ClientboundGameEventPacket.RAIN_LEVEL_CHANGE,
+                    rain ? 1.0f : 0.0f));
+            level.setDayTime(switch (stage) {
+                case 0, 1, 15 -> 3500;
+                case 20 -> 1200;
+                case 21 -> 11200;
+                case 22 -> 17000;
+                default -> 6000;
+            });
+        } else {
+            level.setDayTime(stage == 5 ? 17700 : (stage == 8 || stage == 13 || stage == 14) ? 3000 : stage == 0 ? 1500 : stage == 10 ? 11400 : 5500);
+        }
         for (int x = -16; x <= 16; x++) for (int z = -12; z <= 25; z++) {
             put(level, x, Y - 2, z, Blocks.STONE);
             put(level, x, Y - 1, z, stage == 2 || stage == 8 || stage == 13 || stage == 14 ? Blocks.STONE
@@ -299,6 +330,13 @@ public final class ShaderBenchmark {
                             if (Math.abs(dx) + Math.abs(dz) + Math.abs(dy - 4) <= 4 && !(dx == 0 && dz == 0 && dy < 5))
                                 level.setBlock(new BlockPos(px + dx, Y + dy, pz + dz),
                                         Blocks.OAK_LEAVES.defaultBlockState().setValue(net.minecraft.world.level.block.LeavesBlock.PERSISTENT, true), Block.UPDATE_CLIENTS);
+                }
+            }
+            case 1 -> {
+                if (S0014) {
+                    for (int x = 5; x <= 13; ++x) for (int z = 7; z <= 16; ++z)
+                        for (int y = 0; y < Math.min(5, x - 4); ++y)
+                            put(level, x, Y + y, z, y < 2 ? Blocks.STONE : Blocks.GRASS_BLOCK);
                 }
             }
             case 2 -> {
@@ -337,7 +375,16 @@ public final class ShaderBenchmark {
                 for (int x = -3; x <= 3; x++) for (int z = -6; z <= 4; z++) put(level, x, Y + 2, z, Blocks.STONE);
                 for (int x = -1; x <= 1; x++) for (int y = 0; y < 2; y++) put(level, x, Y + y, 3, Blocks.DIAMOND_ORE);
             }
-            case 15, 16, 17, 18, 19 -> village(level);
+            case 15, 16, 17, 18, 19, 20, 21, 22, 23 -> {
+                village(level);
+                if (S0014) {
+                    for (int z = 3; z <= 23; z += 5) {
+                        put(level, -2, Y, z, Blocks.COBBLESTONE_WALL);
+                        put(level, -2, Y + 1, z, Blocks.COBBLESTONE_WALL);
+                        put(level, -2, Y + 2, z, Blocks.LANTERN);
+                    }
+                }
+            }
             default -> {}
         }
         if (stage == 7 || S0013 && stage == 15 || stage == 8 && Boolean.getBoolean("toe.s001.oneScene")) {

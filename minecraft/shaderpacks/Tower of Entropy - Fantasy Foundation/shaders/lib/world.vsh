@@ -1,9 +1,9 @@
 varying vec2 uv, lightUV;
 varying vec4 tint;
 varying vec3 viewPos, normalView;
-#ifdef TERRAIN
-uniform mat4 gbufferModelViewInverse, shadowModelView, shadowProjection;
-varying vec3 shadowPos;
+#ifdef WORLD_LIGHTING
+uniform mat4 gbufferModelViewInverse, shadowModelView;
+varying vec3 shadowViewPos, shadowViewNormal;
 #endif
 void main() {
     gl_Position = ftransform();
@@ -13,8 +13,9 @@ void main() {
     vec4 view = gl_ModelViewMatrix * gl_Vertex;
     viewPos = view.xyz;
     normalView = normalize(gl_NormalMatrix * gl_Normal);
-#ifdef TERRAIN
-    vec4 clip = shadowProjection * shadowModelView * gbufferModelViewInverse * view;
-    shadowPos = clip.xyz / clip.w * 0.5 + 0.5;
+#ifdef WORLD_LIGHTING
+    mat4 viewToShadow = shadowModelView * gbufferModelViewInverse;
+    shadowViewPos = (viewToShadow * view).xyz;
+    shadowViewNormal = mat3(viewToShadow) * normalView;
 #endif
 }

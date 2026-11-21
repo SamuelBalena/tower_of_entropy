@@ -6,4 +6,12 @@
 #define CONTRAST 1.05 // [0.95 1.00 1.05 1.10 1.15]
 #define MAGIC 0.60 // [0.00 0.30 0.60 1.00]
 const int shadowMapResolution = SHADOW_RESOLUTION;
-const float shadowDistance = 70.0;
+#if SHADOW_RESOLUTION == 512
+const float shadowDistance = 44.0;
+#elif SHADOW_RESOLUTION == 2048
+const float shadowDistance = 100.0;
+#else
+const float shadowDistance = 68.0;
+#endif
+const float shadowDistanceRenderMul = 1.0;
+const bool shadowtex0Nearest = true;
