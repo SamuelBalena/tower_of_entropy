@@ -1,49 +1,94 @@
 uniform vec3 cameraPosition;
 uniform float frameTimeCounter;
 
+#if SHADOW_RESOLUTION == 512
+const int cloudSteps = 8;
+const int maxCloudSteps = 20;
+#elif SHADOW_RESOLUTION == 1024
+const int cloudSteps = 14;
+const int maxCloudSteps = 28;
+#else
+const int cloudSteps = 22;
+const int maxCloudSteps = 38;
+#endif
+
+const float cloudBase = 174.0;
+const float cloudTop = 224.0;
+
 float cloudNoise(vec2 p) {
-    vec2 cell = floor(p);
-    vec2 s = fract(p);
-    s = s * s * (3.0 - 2.0 * s);
-    return mix(mix(skyHash(vec3(cell, 12.0)), skyHash(vec3(cell + vec2(1.0, 0.0), 12.0)), s.x),
-               mix(skyHash(vec3(cell + vec2(0.0, 1.0), 12.0)), skyHash(vec3(cell + 1.0, 12.0)), s.x), s.y);
+    vec2 i = floor(p);
+    vec2 f = smoothstep(vec2(0.0), vec2(1.0), fract(p));
+    return mix(mix(skyHash(vec3(i, 12.0)), skyHash(vec3(i + vec2(1.0, 0.0), 12.0)), f.x),
+               mix(skyHash(vec3(i + vec2(0.0, 1.0), 12.0)), skyHash(vec3(i + 1.0, 12.0)), f.x), f.y);
 }
 
-float cloudMass(vec2 p) {
-    float mass = cloudNoise(p) * 0.61 + cloudNoise(p * 2.08 + 7.2) * 0.26;
-    return mass + cloudNoise(p * 4.22 + vec2(18.4, -4.6)) * 0.13;
+float cloudDensity(vec2 p, float h, float cover) {
+    vec2 q = p + vec2(0.23, -0.17) * h;
+    float shape = cloudNoise(q) * 0.71 + cloudNoise(q * 2.27 + vec2(7.2, 1.6) + vec2(-0.52, 0.28) * h) * 0.29;
+    // Tall lobes grow above the broad base while the sides taper to clear sky.
+    float envelope = 0.29 * pow(abs(h - 0.40) * 1.67, 1.55);
+    float rim = smoothstep(0.0, 0.075, h) * (1.0 - smoothstep(0.84, 1.0, h));
+    return smoothstep(cover + envelope, cover + envelope + 0.17, shape) * rim;
 }
 
-vec3 shadeClouds(vec3 sky, vec3 ray, vec3 sun, float day, float twilight, float rain) {
-    if (ray.y < 0.014) return sky;
-    // A tilted sampling slice through a noise field gives soft relief at voxel scale.
-    float layerHeight = clamp(195.0 - cameraPosition.y, 24.0, 320.0);
-    vec2 p = (cameraPosition.xz + ray.xz * (layerHeight / max(0.035, ray.y))) / 112.0;
-    p += vec2(4.7, 13.2) + frameTimeCounter * vec2(0.008, 0.004);
-    float mass = cloudMass(p);
-#if SHADOW_RESOLUTION > 512
-    mass = mass * 0.94 + cloudNoise(p * 8.37 + vec2(-5.6, 26.3)) * 0.06;
-#endif
-    float threshold = 0.53 - rain * 0.15;
-    float coverage = smoothstep(threshold, threshold + 0.050, mass);
+float cloudSelfShadow(vec2 p, float h, vec3 light, float density, float cover) {
+#if SHADOW_RESOLUTION == 512
+    return 1.0 / (1.0 + 1.25 * density * (1.0 - h));
+#else
+    vec2 stepXZ = light.xz * 0.17;
+    float stepY = light.y * 0.30 + 0.047;
+    float blocker = cloudDensity(p + stepXZ, h + stepY, cover) * 0.93;
 #if SHADOW_RESOLUTION > 1024
-    float high = cloudNoise(p * 0.53 + 31.4) * cloudNoise(p * 1.7 + 14.2);
-    float veil = smoothstep(0.31, 0.62, high) * smoothstep(0.06, 0.32, ray.y);
-    sky = mix(sky, mix(vec3(0.18, 0.23, 0.38), vec3(0.73, 0.83, 0.93), day), veil * (0.22 - rain * 0.12));
+    blocker += 0.63 * cloudDensity(p + 2.35 * stepXZ, h + 2.35 * stepY, cover);
 #endif
-    if (coverage < 0.002) return sky;
-    float thickness = smoothstep(threshold + 0.01, threshold + 0.23, mass);
-    float facing = 0.80 - thickness * 0.49;
-#if SHADOW_RESOLUTION > 512
-    float sunward = cloudMass(p + sun.xz * 0.17);
-    facing = clamp(facing + (mass - sunward) * 2.55, 0.04, 0.99);
+    return exp(-1.65 * blocker);
 #endif
-    float towardSun = max(dot(ray, sun), 0.0);
-    vec3 underside = mix(vec3(0.084, 0.102, 0.22), vec3(0.49, 0.63, 0.79), day);
-    vec3 rim = mix(vec3(0.24, 0.29, 0.48), vec3(1.0, 0.99, 0.94), day);
-    underside = mix(underside, vec3(0.37, 0.25, 0.44), twilight * 0.58);
-    rim = mix(rim, vec3(1.0, 0.61, 0.40), twilight * (0.47 + towardSun * 0.45));
-    vec3 cloud = mix(underside, rim, facing);
-    cloud = mix(cloud, vec3(0.38, 0.43, 0.50) * (0.56 + 0.42 * day), rain * 0.78);
-    return mix(sky, cloud, coverage * smoothstep(0.015, 0.15, ray.y) * 0.91);
+}
+
+vec3 shadeClouds(vec3 sky, vec3 ray, vec3 sun, vec3 moon, float day, float twilight, float rain) {
+    // Slab bounds are fixed in world space. Every integration sample has its own altitude.
+    float vertical = abs(ray.y) < 0.004 ? (ray.y < 0.0 ? -0.004 : 0.004) : ray.y;
+    vec2 hit = (vec2(cloudBase, cloudTop) - cameraPosition.y) / vertical;
+    float start = max(min(hit.x, hit.y), 0.0);
+    float end = min(max(hit.x, hit.y), 830.0);
+    if (end <= start) return sky;
+
+    vec2 origin = cameraPosition.xz / 120.0 + vec2(4.7, 13.2) + frameTimeCounter * vec2(0.008, 0.004);
+    float cover = mix(0.535, 0.41, rain);
+    float sunWeight = smoothstep(-0.19, 0.10, sun.y);
+    vec3 light = normalize(mix(moon, sun, sunWeight) + vec3(0.0, 0.22, 0.0));
+    vec3 base = mix(vec3(0.067, 0.083, 0.17), vec3(0.43, 0.53, 0.65), day);
+    base = mix(base, vec3(0.25, 0.19, 0.34), twilight * 0.57);
+    vec3 sunlight = mix(vec3(1.0, 0.975, 0.91), vec3(1.0, 0.53, 0.29), twilight * 0.85);
+    vec3 bright = mix(vec3(0.27, 0.35, 0.54), sunlight, sunWeight);
+    base = mix(base, vec3(0.22, 0.25, 0.33), rain * 0.78);
+    bright = mix(bright, vec3(0.48, 0.53, 0.61), rain * 0.8);
+    float forwardLight = pow(max(dot(ray, light), 0.0), 7.0);
+    // A shorter interval near the horizon keeps shallow rays from skipping cloud lobes.
+    float samples = clamp((end - start) / 17.0, float(cloudSteps), float(maxCloudSteps));
+    float span = (end - start) / samples;
+    float transmission = 1.0;
+    vec3 scattering = vec3(0.0);
+
+    for (int i = 0; i < maxCloudSteps; ++i) {
+        float remaining = samples - float(i);
+        if (remaining <= 0.0) break;
+        float interval = span * min(1.0, remaining);
+        float t = start + float(i) * span + interval * 0.5;
+        vec2 p = origin + ray.xz * t / 120.0;
+        float h = (cameraPosition.y + ray.y * t - cloudBase) / (cloudTop - cloudBase);
+        float density = cloudDensity(p, h, cover);
+        if (density > 0.002) {
+            float lit = cloudSelfShadow(p, h, light, density, cover);
+            float exposure = clamp(0.10 + 0.31 * h + lit * (0.37 + 0.19 * forwardLight), 0.0, 1.0);
+            vec3 color = mix(base, bright, exposure);
+            float fade = 1.0 - smoothstep(390.0, 830.0, t);
+            float extinction = mix(0.052, 0.083, day) + 0.028 * rain;
+            float opacity = 1.0 - exp(-density * interval * extinction * fade);
+            scattering += color * opacity * transmission;
+            transmission *= 1.0 - opacity;
+            if (transmission < 0.025) break;
+        }
+    }
+    return sky * transmission + scattering;
 }
