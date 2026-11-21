@@ -1,22 +1,27 @@
 #version 120
 #include "/lib/options.glsl"
 #include "/lib/atmosphere.glsl"
+#include "/lib/skydome.glsl"
 uniform int renderStage;
 uniform mat4 gbufferModelViewInverse;
 varying vec3 ray;
 varying vec4 tint;
 /* DRAWBUFFERS:0 */
 void main() {
-    vec3 direction = normalize(ray);
-    vec3 sky = skyGradient(direction);
-    vec3 sunDirection = normalize(mat3(gbufferModelViewInverse) * sunPosition);
-    float halo = pow(max(dot(direction, sunDirection), 0.0), 12.0);
-    sky += vec3(0.26, 0.13, 0.044) * halo * goldenHour() * smoothstep(-0.12, 0.07, sunDirection.y);
+#ifdef MC_RENDER_STAGE_SUNSET
+    if (renderStage == MC_RENDER_STAGE_SUNSET) discard;
+#endif
 #ifdef MC_RENDER_STAGE_STARS
-    if (renderStage == MC_RENDER_STAGE_STARS) sky = tint.rgb;
+    if (renderStage == MC_RENDER_STAGE_STARS) discard;
 #endif
 #ifdef MC_RENDER_STAGE_CUSTOM_SKY
-    if (renderStage == MC_RENDER_STAGE_CUSTOM_SKY) sky = tint.rgb;
+    if (renderStage == MC_RENDER_STAGE_CUSTOM_SKY) {
+        gl_FragData[0] = tint;
+        return;
+    }
 #endif
-    gl_FragData[0] = vec4(sky, tint.a);
+    vec3 direction = normalize(ray);
+    vec3 sun = normalize(mat3(gbufferModelViewInverse) * sunPosition);
+    vec3 moon = normalize(mat3(gbufferModelViewInverse) * moonPosition);
+    gl_FragData[0] = vec4(renderSkydome(direction, sun, moon), tint.a);
 }
