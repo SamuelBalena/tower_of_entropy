@@ -2,7 +2,17 @@
 
 uniform mat4 gbufferModelViewInverse;
 
-vec3 worldLighting(vec3 viewPos, vec3 normal, vec2 lightUV) {
+struct WorldLight {
+    vec3 ambient;
+    vec3 sun;
+    vec3 direct;
+    vec3 blockLight;
+    vec3 irradiance;
+    vec3 skyColor;
+    float sky;
+};
+
+WorldLight sampleWorldLight(vec3 viewPos, vec3 normal, vec2 lightUV, vec3 geometryNormal) {
     vec3 sun = normalize(sunPosition);
     vec3 up = vec3(gbufferModelViewInverse[0].y, gbufferModelViewInverse[1].y, gbufferModelViewInverse[2].y);
     float elevation = dot(sun, up);
@@ -23,15 +33,27 @@ vec3 worldLighting(vec3 viewPos, vec3 normal, vec2 lightUV) {
     float incidence = max(dot(normal, sun), 0.0);
     float sunlight = incidence * smoothstep(0.015, 0.26, elevation) * (1.0 - rain * 0.88);
     sunlight *= smoothstep(0.42, 0.92, levels.y);
+    vec3 irradiance = vec3(0.0);
     if (sunlight > 0.001) {
         vec3 solarColor = mix(vec3(1.12, 1.04, 0.89), vec3(1.32, 0.79, 0.44), twilight);
-        direct = solarColor * sunlight * sunVisibility(viewPos, incidence) * 0.70;
+        float geometricIncidence = max(dot(geometryNormal, sun), 0.0);
+        float visibility = sunVisibility(viewPos, geometricIncidence);
+        direct = solarColor * sunlight * visibility * 0.70;
+        irradiance = solarColor * (sunlight / incidence) * visibility * 0.70;
     }
 
     vec3 emitted = vec3(1.18, 0.83, 0.49) * pow(levels.x, 2.0);
     // Combine illumination before multiplying albedo. Keep hot texels from washing out.
-    vec3 energy = ambient + direct + emitted * (1.0 - 0.36 * day * sky);
+    return WorldLight(ambient, sun, direct, emitted * (1.0 - 0.36 * day * sky), irradiance, skyColor, sky);
+}
+
+vec3 compressLighting(vec3 energy) {
     return energy / (1.0 + 0.20 * max(energy - 1.0, vec3(0.0)));
+}
+
+vec3 worldLighting(vec3 viewPos, vec3 normal, vec2 lightUV) {
+    WorldLight light = sampleWorldLight(viewPos, normal, lightUV, normal);
+    return compressLighting(light.ambient + light.direct + light.blockLight);
 }
 
 vec3 lightingFog() {

@@ -1,4 +1,14 @@
+#ifdef SOLID_MATERIALS
+#include "/lib/options.glsl"
+#endif
 varying vec2 uv, lightUV;
+#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
+varying float solidMaterial;
+#if MATERIAL_LABPBR == 1 && defined(MC_TEXTURE_FORMAT_LAB_PBR_1_3) && MATERIAL_QUALITY >= 2
+attribute vec4 at_tangent;
+varying vec4 materialTangent;
+#endif
+#endif
 varying vec4 tint;
 varying vec3 viewPos, normalView;
 #ifdef WORLD_LIGHTING
@@ -21,6 +31,12 @@ void main() {
     vec4 view = gl_ModelViewMatrix * gl_Vertex;
     viewPos = view.xyz;
     normalView = normalize(gl_NormalMatrix * gl_Normal);
+#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
+    solidMaterial = mc_Entity.x;
+#if MATERIAL_LABPBR == 1 && defined(MC_TEXTURE_FORMAT_LAB_PBR_1_3) && MATERIAL_QUALITY >= 2
+    materialTangent = vec4(gl_NormalMatrix * at_tangent.xyz, at_tangent.w);
+#endif
+#endif
 #ifdef WORLD_LIGHTING
     mat4 viewToShadow = shadowModelView * gbufferModelViewInverse;
     shadowViewPos = (viewToShadow * view).xyz;

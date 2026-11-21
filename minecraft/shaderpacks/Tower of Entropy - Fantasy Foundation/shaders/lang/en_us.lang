@@ -14,3 +14,13 @@ option.MAGIC=Magic intensity
 option.WATER_SSR=Scene reflections (SSR)
 screen.LAVA=Lava
 option.LAVA_DETAIL=Lava detail
+
+screen.MATERIAIS=Materials
+option.MATERIAL_QUALITY=Material quality
+value.MATERIAL_QUALITY.0=Off
+value.MATERIAL_QUALITY.1=Low
+value.MATERIAL_QUALITY.2=Balanced
+value.MATERIAL_QUALITY.3=High
+option.MATERIAL_SPECULAR=Specular intensity
+option.MATERIAL_NORMAL=Normal strength
+option.MATERIAL_LABPBR=LabPBR 1.3

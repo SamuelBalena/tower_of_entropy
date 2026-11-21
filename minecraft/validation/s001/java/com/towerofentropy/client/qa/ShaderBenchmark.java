@@ -37,7 +37,10 @@ public final class ShaderBenchmark {
             "lake_shallow", "river_trees", "lake_deep", "water_sunset", "water_moon", "water_rain",
             "water_swim", "water_submerged", "waterside_village", "water_cave", "water_turn", "water_edge",
             "lava_pool", "lava_nether", "lava_river", "lava_fall", "lava_cave", "lava_water", "lava_obsidian",
-            "lava_day", "lava_night", "lava_player", "lava_turn", "lava_close", "lava_mobs"};
+            "lava_day", "lava_night", "lava_player", "lava_turn", "lava_close", "lava_mobs",
+            "material_stone", "material_brick", "material_wood", "material_metals", "material_copper",
+            "material_ores", "material_ice", "material_rain", "material_rake", "material_dusk",
+            "material_torch", "material_armor", "material_mining", "material_water", "material_lava"};
     private static final boolean S0013 = Boolean.getBoolean("toe.s0013.qa");
     private static final int ORIGINAL_SCENES = 15;
     private static final int[] SHARPNESS_SCENES = {15, 16, 17, 18, 19, 12, 3, 8};
@@ -48,6 +51,10 @@ public final class ShaderBenchmark {
     private static final int[] LAVA_SCENES = Boolean.getBoolean("toe.s00161.quick")
             ? new int[]{44, 43, 46, 47}
             : new int[]{43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 44};
+    private static final boolean MATERIALS = Boolean.getBoolean("toe.s0017.qa");
+    private static final int[] MATERIAL_SCENES = Boolean.getBoolean("toe.s0017.quick")
+            ? new int[]{58, 59, 64, 67, 69}
+            : new int[]{56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70};
     private static final int[] WATER_SCENES = Boolean.getBoolean("toe.s0016.quick")
             ? new int[]{31, 32, 34, 35, 39, 41}
             : new int[]{31, 32, 33, 34, 35, 36, 7, 37, 38, 39, 40, 41, 42, 8, 9, 12};
@@ -73,7 +80,7 @@ public final class ShaderBenchmark {
         if (!opening && mc.screen instanceof TitleScreen && mc.getOverlay() == null && ++titleTicks > 40) {
             opening = true;
             mc.options.pauseOnLostFocus = false;
-            if ((S0016 || LAVA) && System.getProperty("toe.s0016.width") != null) {
+            if ((S0016 || LAVA || MATERIALS) && System.getProperty("toe.s0016.width") != null) {
                 mc.getWindow().setWindowed(Integer.getInteger("toe.s0016.width"), Integer.getInteger("toe.s0016.height"));
             }
             mc.createWorldOpenFlows().loadLevel(mc.screen, "Global Survival one");
@@ -103,6 +110,11 @@ public final class ShaderBenchmark {
             mc.player.setXRot(14.0f);
         }
         if (LAVA && scene == 53) mc.player.setYRot(34.0f * (float)Math.sin(tick * .27f));
+        if (MATERIALS && scene == 68 && tick >= 30 && tick % 6 == 0) {
+            // Reuse the normal input path so the mining animation and block interaction are exercised.
+            mc.options.keyAttack.setDown(true);
+            net.minecraft.client.KeyMapping.click(com.mojang.blaze3d.platform.InputConstants.Type.MOUSE.getOrCreate(0));
+        }
         if (scene == 12 && (tick == 43 || tick == 65 || tick == 86)) attack();
         if (tick == WARMUP) {
             samples.clear();
@@ -146,6 +158,9 @@ public final class ShaderBenchmark {
             scene = ++selectedScene < LIGHTING_SCENES.length ? LIGHTING_SCENES[selectedScene] : SCENES.length;
         } else if (S0015) {
             scene = ++selectedScene < SKY_SCENES.length ? SKY_SCENES[selectedScene] : SCENES.length;
+        } else if (MATERIALS) {
+            mc.options.keyAttack.setDown(false);
+            scene = ++selectedScene < MATERIAL_SCENES.length ? MATERIAL_SCENES[selectedScene] : SCENES.length;
         } else if (LAVA) {
             scene = ++selectedScene < LAVA_SCENES.length ? LAVA_SCENES[selectedScene] : SCENES.length;
         } else if (S0016) {
@@ -155,11 +170,11 @@ public final class ShaderBenchmark {
         } else {
             ++scene;
         }
-        if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA ? SCENES.length : ORIGINAL_SCENES)) {
+        if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA || MATERIALS ? SCENES.length : ORIGINAL_SCENES)) {
             mc.stop();
             return;
         }
-        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37 || scene == 52
+        mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37 || scene == 52 || scene == 67
                 ? CameraType.THIRD_PERSON_BACK : CameraType.FIRST_PERSON);
         setMinimumOpacity(scene == 13 ? 1.0 : scene == 14 ? 0.0 : .12);
         if (S0013 || S0014) setCameraOption("RIGHT_SHOULDER", true);
@@ -318,6 +333,10 @@ public final class ShaderBenchmark {
     }
 
     private static void prepare(ServerPlayer player, int stage) {
+        if (stage >= 56) {
+            prepareMaterialGallery(player, stage);
+            return;
+        }
         if (stage >= 43) {
             prepareLava(player, stage);
             return;
@@ -532,6 +551,78 @@ public final class ShaderBenchmark {
             put(level, 0, Y + 2, 0, Blocks.SANDSTONE);
             put(level, 0, Y + 3, 0, Blocks.SANDSTONE);
         }
+    }
+
+    private static void prepareMaterialGallery(ServerPlayer player, int stage) {
+        ServerLevel level = player.getServer().overworld();
+        int origin = 160;
+        boolean cave = stage == 61 || stage == 66;
+        boolean fluid = stage == 69 || stage == 70;
+        boolean raining = stage == 63;
+        for (var mob : mobs) mob.discard();
+        mobs.clear();
+        var server = level.getServer();
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, server);
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, server);
+        level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOFIRETICK).set(false, server);
+        level.setWeatherParameters(raining ? 0 : 20000, raining ? 20000 : 0, raining, false);
+        level.setRainLevel(raining ? 1.0f : 0.0f);
+        level.setThunderLevel(0.0f);
+        player.connection.send(new net.minecraft.network.protocol.game.ClientboundGameEventPacket(
+                net.minecraft.network.protocol.game.ClientboundGameEventPacket.RAIN_LEVEL_CHANGE, raining ? 1.0f : 0.0f));
+        level.setDayTime(stage == 65 ? 11300 : stage == 64 ? 1450 : 3100);
+        player.setGameMode(GameType.SURVIVAL);
+        player.setInvulnerable(true);
+        player.getInventory().clearContent();
+        Block[] materials = switch (stage) {
+            case 56 -> new Block[]{Blocks.COBBLESTONE, Blocks.DEEPSLATE, Blocks.STONE, Blocks.TUFF};
+            case 57 -> new Block[]{Blocks.STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, Blocks.BRICKS, Blocks.NETHER_BRICKS};
+            case 58 -> new Block[]{Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.STRIPPED_OAK_LOG, Blocks.SPRUCE_LOG};
+            case 59 -> new Block[]{Blocks.IRON_BLOCK, Blocks.GOLD_BLOCK, Blocks.IRON_BLOCK, Blocks.GOLD_BLOCK};
+            case 60 -> new Block[]{Blocks.COPPER_BLOCK, Blocks.EXPOSED_COPPER, Blocks.WEATHERED_COPPER, Blocks.OXIDIZED_COPPER};
+            case 61, 66 -> new Block[]{Blocks.DIAMOND_ORE, Blocks.EMERALD_ORE, Blocks.DEEPSLATE, Blocks.NETHER_QUARTZ_ORE};
+            case 62 -> new Block[]{Blocks.SNOW_BLOCK, Blocks.PACKED_ICE, Blocks.BLUE_ICE, Blocks.ICE};
+            case 63 -> new Block[]{Blocks.SPRUCE_PLANKS, Blocks.STONE_BRICKS, Blocks.COPPER_BLOCK, Blocks.DEEPSLATE};
+            default -> new Block[]{Blocks.STONE_BRICKS, Blocks.OAK_PLANKS, Blocks.IRON_BLOCK, Blocks.GOLD_BLOCK};
+        };
+        for (int x = -14; x <= 15; ++x) for (int z = -15; z <= 15; ++z) {
+            boolean basin = fluid && x >= -1 && x <= 5 && Math.abs(z) <= 8;
+            put(level, x, Y - 3, origin + z, Blocks.STONE);
+            put(level, x, Y - 2, origin + z, basin ? Blocks.SAND : Blocks.DEEPSLATE);
+            put(level, x, Y - 1, origin + z, basin ? (stage == 69 ? Blocks.WATER : Blocks.LAVA)
+                    : Math.abs(z) % 5 == 0 ? Blocks.STONE_BRICKS : Blocks.COBBLESTONE);
+            for (int y = 0; y <= 7; ++y) {
+                Block block = Blocks.AIR;
+                if (cave && (y == 6 || Math.abs(z) == 15 || x == -14 || x == 15)) block = Blocks.DEEPSLATE;
+                if (x == 7 && y <= 4 && Math.abs(z) <= 9) block = materials[(z + 9) / 5];
+                if (x == 6 && y == 0 && Math.abs(z) <= 9 && z % 5 == 0) block = Blocks.STONE_BRICK_STAIRS;
+                put(level, x, Y + y, origin + z, block);
+            }
+        }
+        if (cave) for (int z : new int[]{-8, -2, 4, 8}) put(level, 5, Y, origin + z, Blocks.TORCH);
+        if (stage == 68) {
+            put(level, 1, Y + 1, origin + 1, Blocks.DIAMOND_ORE);
+            player.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_PICKAXE));
+        }
+        if (stage == 67) {
+            player.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.DIAMOND_CHESTPLATE));
+            player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+            player.setItemSlot(EquipmentSlot.LEGS, new ItemStack(Items.NETHERITE_LEGGINGS));
+            player.setItemSlot(EquipmentSlot.FEET, new ItemStack(Items.IRON_BOOTS));
+            for (int x = 1; x <= 4; ++x) for (int z = -8; z <= 8; z += 2) {
+                var mob = EntityType.HUSK.create(level);
+                if (mob == null) continue;
+                mob.setNoAi(true);
+                mob.setInvulnerable(true);
+                mob.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
+                mob.setPos(x + .5, Y, origin + z + .5);
+                level.addFreshEntity(mob);
+                mobs.add(mob);
+            }
+        }
+        float yaw = stage == 59 || stage == 60 ? -96 : -90;
+        player.teleportTo(level, stage == 68 ? -1.5 : fluid || stage == 67 ? -4.5 : -2.5, Y, origin + 1.5, yaw, stage == 68 ? 0 : -3);
+        player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
     }
 
     private static void prepareLava(ServerPlayer player, int stage) {

@@ -17,6 +17,10 @@ varying float waterMaterial;
 varying float lavaMaterial;
 #include "/lib/lava.glsl"
 #endif
+#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
+varying float solidMaterial;
+#include "/lib/materials.glsl"
+#endif
 /* DRAWBUFFERS:0 */
 void main() {
     vec4 base = texture2D(gtexture, uv) * tint;
@@ -32,7 +36,12 @@ void main() {
     }
 #endif
 #ifdef WORLD_LIGHTING
-    vec3 rgb = base.rgb * worldLighting(viewPos, normalize(normalView), lightUV);
+    vec3 normal = normalize(normalView);
+#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
+    vec3 rgb = shadeSolidMaterial(base.rgb, normal);
+#else
+    vec3 rgb = base.rgb * worldLighting(viewPos, normal, lightUV);
+#endif
     vec3 haze = lightingFog();
 #else
     vec3 lm = texture2D(lightmap, lightUV).rgb;

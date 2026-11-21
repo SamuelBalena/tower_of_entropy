@@ -46,6 +46,11 @@ def preparePack = tasks.register('prepareRunClientShaderpack', Copy) {
     into(new File(developmentDirectory, 'shaderpacks'))
 }
 
+def prepareLabPbrDemo = tasks.register('prepareRunClientLabPbrDemo', Copy) {
+    from(file('resourcepacks/Tower of Entropy - LabPBR Demo.zip'))
+    into(new File(developmentDirectory, 'resourcepacks'))
+}
+
 def initializePreferences = tasks.register('initializeRunClientOculusPreferences') {
     doLast {
         def config = new File(developmentDirectory, 'config/oculus.properties').toPath()
@@ -64,5 +69,5 @@ def initializePreferences = tasks.register('initializeRunClientOculusPreferences
 }
 
 tasks.matching { it.name == 'runClient' }.configureEach {
-    dependsOn(preparePack, initializePreferences)
+    dependsOn(preparePack, prepareLabPbrDemo, initializePreferences)
 }

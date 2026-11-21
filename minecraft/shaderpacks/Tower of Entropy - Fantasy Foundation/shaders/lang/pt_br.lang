@@ -14,3 +14,13 @@ option.MAGIC=Intensidade mágica
 option.WATER_SSR=Reflexos do cenário (SSR)
 screen.LAVA=Lava
 option.LAVA_DETAIL=Detalhe da lava
+
+screen.MATERIAIS=Materiais
+option.MATERIAL_QUALITY=Qualidade dos materiais
+value.MATERIAL_QUALITY.0=Desligada
+value.MATERIAL_QUALITY.1=Leve
+value.MATERIAL_QUALITY.2=Equilibrada
+value.MATERIAL_QUALITY.3=Alta
+option.MATERIAL_SPECULAR=Intensidade especular
+option.MATERIAL_NORMAL=Intensidade das normais
+option.MATERIAL_LABPBR=LabPBR 1.3
