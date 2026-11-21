@@ -63,6 +63,7 @@ public final class ShaderBenchmark {
     private static long lastFrame, initialArmor, initialComposites;
     private static long initialDraws, initialPipeline, initialCapture, initialComposite, initialOculus, initialOculusBinds;
     private static volatile boolean ready;
+    private static float lavaOceanYaw;
     private static boolean opening;
 
     @SubscribeEvent
@@ -97,6 +98,10 @@ public final class ShaderBenchmark {
             mc.options.keySprint.setDown(tick >= 24);
         }
         if (S0016 && scene == 41) mc.player.setYRot(39.0f * (float)Math.sin(tick * 0.23f));
+        if (LAVA && scene == 44) {
+            mc.player.setYRot(lavaOceanYaw);
+            mc.player.setXRot(14.0f);
+        }
         if (LAVA && scene == 53) mc.player.setYRot(34.0f * (float)Math.sin(tick * .27f));
         if (scene == 12 && (tick == 43 || tick == 65 || tick == 86)) attack();
         if (tick == WARMUP) {
@@ -560,6 +565,7 @@ public final class ShaderBenchmark {
             put(level, x, Y - 1, anchorZ + z, lava || water ? Blocks.SMOOTH_BASALT : Blocks.STONE);
             Block shore = stage == 49 ? Blocks.OBSIDIAN : random.nextInt(5) == 0 ? Blocks.SMOOTH_BASALT
                     : cave || random.nextInt(4) == 0 ? Blocks.BLACKSTONE : Blocks.STONE;
+            if (stage == 43 && !lava && random.nextInt(4) == 0) shore = Blocks.DIRT;
             put(level, x, Y, anchorZ + z, water ? Blocks.WATER : lava && !river ? Blocks.LAVA : lava ? Blocks.AIR : shore);
             for (int y = 1; y <= 8; ++y) {
                 boolean caveWall = cave && (y == 5 || Math.abs(x) == 16 || z == -12 || z == 24);
@@ -607,7 +613,7 @@ public final class ShaderBenchmark {
             }
         }
         double x = river ? 4.5 : 0.5;
-        double z = stage == 54 ? -0.5 : stage == 52 ? -2.5 : fall ? -5.5 : -2.5;
+        double z = stage == 54 || stage == 43 ? -0.5 : fall ? -5.5 : -2.5;
         player.teleportTo(level, x, Y + 1, anchorZ + z, river ? 26 : 0, fall ? -2 : stage == 54 ? 56 : 21);
         player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
     }
@@ -645,6 +651,7 @@ public final class ShaderBenchmark {
                 yaw = angle;
             }
         }
+        lavaOceanYaw = yaw;
         level.setBlock(best, Blocks.BLACKSTONE.defaultBlockState(), Block.UPDATE_CLIENTS);
         player.teleportTo(level, best.getX() + .5, best.getY() + 1, best.getZ() + .5, yaw, 14);
         player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);

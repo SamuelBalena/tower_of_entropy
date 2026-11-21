@@ -2,6 +2,7 @@ uniform vec3 cameraPosition;
 uniform float frameTimeCounter;
 
 float lavaHash(vec2 cell) {
+    cell = mod(cell, 720.0);
     vec3 p = fract(cell.xyx * vec3(0.1031, 0.11369, 0.13787));
     p += dot(p, p.yzx + 19.19);
     return fract((p.x + p.y) * p.z);
@@ -19,35 +20,33 @@ vec3 lavaColor(vec3 view, vec3 face, bool flowing, vec2 atlas) {
     vec3 world = (gbufferModelViewInverse * vec4(view, 1.0)).xyz + cameraPosition;
     vec3 axis = abs(mat3(gbufferModelViewInverse) * face);
     bool vertical = max(axis.x, axis.z) > 1.5 * axis.y;
-    vec2 p = vertical ? vec2(axis.x > axis.z ? world.z : world.x, world.y) : world.xz;
-    float time = frameTimeCounter;
-    // Vertical runoff follows gravity. Horizontal motion models local circulation.
-    if (vertical) p = p * vec2(1.35, 0.64) + vec2(0.0, time * 0.31);
-    vec2 curl = vec2(lavaNoise(p * 0.24 + vec2(time * 0.025, 17.0)),
-                     lavaNoise(p * 0.27 + vec2(31.0, -time * 0.032))) - 0.5;
-    p += curl * (flowing ? 2.3 : 1.7);
-    float field = lavaNoise(p * 0.79 + vec2(8.4, 13.0));
-    float grain = 0.5 + 0.7 * curl.y;
+    const mat2 rotation = mat2(0.8, 0.6, -0.6, 0.8);
+    vec2 p = vertical ? vec2(axis.x > axis.z ? world.z : world.x, world.y) * vec2(6.0, 3.4)
+                      : rotation * world.xz * 5.8;
+    float phase = frameTimeCounter * (6.2831853 / 3600.0);
+    // Integer harmonics and a 720-cell period meet at the Oculus timer rollover.
+    vec2 drift = vec2(sin(phase * 17.0 + p.y * 0.075), cos(phase * 13.0 + p.x * 0.086));
+    p += drift * (flowing ? 0.95 : 0.54);
+    if (vertical) p.y += frameTimeCounter * 0.2;
+
+    float distanceToEye = length(view);
+    float textureWeight = 1.0 - smoothstep(21.0, 72.0, distanceToEye);
+    float body = lavaNoise(p + vec2(8.4, 13.1));
+    float sparks = lavaNoise(p * 2.0 + vec2(19.2, 11.7));
 #if LAVA_DETAIL > 0
-    grain = lavaNoise(p * 1.9 + vec2(-time * 0.052, 29.0));
-    field += (grain - 0.5) * 0.19;
+    float eddies = lavaNoise(p * 3.0 + vec2(27.1, 5.2));
+    sparks = mix(sparks, eddies, 0.24 * (1.0 - smoothstep(12.0, 36.0, distanceToEye)));
 #endif
 #if LAVA_DETAIL > 1
-    float pores = lavaNoise(p * 4.25 + vec2(51.0, time * 0.044));
-    float detail = 1.0 - smoothstep(9.0, 25.0, length(view));
-    field += (pores - 0.5) * 0.09 * detail;
-    grain = mix(grain, pores, 0.36 * detail);
+    float speck = lavaNoise(p * 5.0 + vec2(8.2, 37.4));
+    body += (speck - 0.5) * 0.20 * (1.0 - smoothstep(6.0, 21.0, distanceToEye));
 #endif
-    float distant = smoothstep(18.0, 52.0, length(view));
-    float seam = 1.0 - smoothstep(0.019, mix(0.072, 0.12, distant), abs(field - 0.44));
-    seam *= 1.0 - distant * 0.55;
-    float heat = smoothstep(0.33, 0.79, field);
-    vec3 crust = mix(vec3(0.108, 0.042, 0.023), vec3(0.42, 0.090, 0.031), heat);
-    crust *= mix(0.77, 1.18, grain);
-    vec3 liquid = mix(vec3(0.79, 0.14, 0.031), vec3(0.96, 0.63, 0.15), smoothstep(0.30, 0.91, heat));
-    float whiteHot = smoothstep(0.87, 0.98, field) * smoothstep(0.45, 0.82, grain);
-    liquid = mix(liquid, vec3(0.97, 0.86, 0.67), whiteHot * 0.70);
-    vec3 color = mix(crust, liquid, max(smoothstep(0.43, 0.60, field), seam * 0.82));
-    // Keep only a small contribution from the animated vanilla sprites.
-    return color * (0.93 + dot(atlas, vec2(0.045, 0.035)));
+
+    vec3 cooler = vec3(0.75, 0.225, 0.041);
+    vec3 orange = vec3(0.93, 0.395, 0.070);
+    vec3 gold = vec3(0.98, 0.69, 0.23);
+    float heat = mix(0.53, smoothstep(0.12, 0.86, body), textureWeight);
+    float flecks = smoothstep(0.63, 0.93, sparks) * mix(0.31, 0.94, heat) * textureWeight;
+    vec3 color = mix(mix(cooler, orange, heat), gold, flecks);
+    return color * (0.98 + dot(atlas, vec2(0.012, 0.008)));
 }
