@@ -11,6 +11,7 @@ varying vec3 viewPos, normalView;
 #endif
 #ifdef WATER
 varying float waterMaterial;
+varying float translucentMaterial;
 #include "/lib/water_optics.glsl"
 #endif
 #ifdef LAVA
@@ -41,6 +42,11 @@ void main() {
     vec3 rgb = shadeSolidMaterial(base.rgb, normal);
 #else
     vec3 rgb = base.rgb * worldLighting(viewPos, normal, lightUV);
+#if defined(BLOCK_ENTITY_MATERIAL) && MATERIAL_QUALITY > 0
+    // Block-entity textures are not the terrain atlas. Keep their tint and geometric normal.
+    float edge = 1.0 - max(dot(normal, normalize(-viewPos)), 0.0);
+    rgb += base.rgb * lightUV.y * MATERIAL_SPECULAR * 0.022 * edge * edge;
+#endif
 #endif
     vec3 haze = lightingFog();
 #else
@@ -53,6 +59,14 @@ void main() {
         gl_FragData[0] = vec4(waterColor(viewPos, normalView, lightUV), 1.0);
         return;
     }
+#if MATERIAL_QUALITY > 0
+    // Keep the original alpha and write order for every non-fluid translucent model.
+    if (abs(translucentMaterial - 11112.0) < 0.5) {
+        float edge = 1.0 - abs(dot(normalize(normalView), normalize(-viewPos)));
+        float sheen = MATERIAL_SPECULAR * lightUV.y * (0.014 + 0.045 * edge * edge);
+        rgb += rgb * sheen;
+    }
+#endif
 #endif
     float fog = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
 #ifdef WORLD_LIGHTING

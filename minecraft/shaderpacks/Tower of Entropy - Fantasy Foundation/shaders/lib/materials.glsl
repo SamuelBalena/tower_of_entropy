@@ -6,8 +6,10 @@ struct SurfaceMaterial {
     float emission;
 };
 
-SurfaceMaterial fallbackMaterial(float id) {
-    SurfaceMaterial m = SurfaceMaterial(0.80, vec3(0.035), 0.0, 1.0, 0.0);
+SurfaceMaterial fallbackMaterial(float encodedId) {
+    // GLSL 1.20 interpolates varyings. Even identical vertex IDs can drift by a fraction of a unit.
+    float id = floor(encodedId + 0.5);
+    SurfaceMaterial m = SurfaceMaterial(0.84, vec3(0.025), 0.0, 1.0, 0.0);
     if (id == 11101.0) m.roughness = 0.86;
     if (id == 11102.0) m.roughness = 0.73;
     if (id == 11103.0) { m.roughness = 0.69; m.f0 = vec3(0.026); }
@@ -17,6 +19,12 @@ SurfaceMaterial fallbackMaterial(float id) {
     if (id == 11107.0) m.roughness = 0.82;
     if (id == 11108.0 || id == 11110.0) { m.roughness = 0.92; m.f0 = vec3(0.020); }
     if (id == 11109.0) { m.roughness = 0.44; m.f0 = vec3(0.047); }
+    if (id == 11111.0) { m.roughness = 0.95; m.f0 = vec3(0.018); }
+    if (id == 11112.0) { m.roughness = 0.28; m.f0 = vec3(0.042); }
+    if (id == 11113.0) { m.roughness = 0.74; m.emission = 0.44; }
+    if (id == 11114.0) { m.roughness = 0.51; m.f0 = vec3(0.20, 0.33, 0.28); m.metal = 0.21; }
+    if (id == 11115.0) { m.roughness = 0.66; m.f0 = vec3(0.030); }
+    if (id == 11116.0) { m.roughness = 0.62; m.f0 = vec3(0.035); }
     return m;
 }
 
@@ -48,8 +56,9 @@ vec3 labMetalF0(float code, vec3 albedo) {
 bool readLabPbr(inout SurfaceMaterial m, inout vec3 normal, vec3 albedo) {
     vec4 packedSpec = texture2D(specular, uv);
     // Oculus uses transparent black for atlas entries missing a specular map.
-    bool hasMap = any(greaterThan(packedSpec, vec4(0.5 / 255.0)));
-    if (hasMap) {
+
+    bool hasSpec = any(greaterThan(packedSpec, vec4(0.5 / 255.0)));
+    if (hasSpec) {
         float perceptualRoughness = 1.0 - packedSpec.r;
         m.roughness = clamp(perceptualRoughness * perceptualRoughness, 0.13, 1.0);
         float code = floor(packedSpec.g * 255.0 + 0.5);
@@ -59,11 +68,11 @@ bool readLabPbr(inout SurfaceMaterial m, inout vec3 normal, vec3 albedo) {
     }
 #if MATERIAL_QUALITY >= 2
     vec3 packedNormal = texture2D(normals, uv).rgb;
-    hasMap = hasMap || packedNormal.b < 254.5 / 255.0 || length(packedNormal.rg * 2.0 - 1.0) > 2.0 / 255.0;
+
     m.ao = packedNormal.b;
     vec3 tangent = materialTangent.xyz - normal * dot(normal, materialTangent.xyz);
     float tangentLength = dot(tangent, tangent);
-    if (tangentLength < 0.00001 || abs(materialTangent.w) < 0.5) return hasMap;
+    if (tangentLength < 0.00001 || abs(materialTangent.w) < 0.5) return hasSpec;
 
     tangent *= inversesqrt(tangentLength);
     vec3 bitangent = cross(tangent, normal) * sign(materialTangent.w);
@@ -74,7 +83,7 @@ bool readLabPbr(inout SurfaceMaterial m, inout vec3 normal, vec3 albedo) {
     float z = sqrt(max(1.0 - dot(xy, xy), 0.0001));
     normal = normalize(tangent * xy.x + bitangent * xy.y + normal * z);
 #endif
-    return hasMap;
+    return hasSpec;
 }
 #endif
 
@@ -108,17 +117,17 @@ vec3 materialSpecular(SurfaceMaterial m, WorldLight light, vec3 normal, vec3 eye
 #endif
     float lobe = min(distribution * visibility, 1.8);
 #endif
-    return fresnel * light.irradiance * nl * lobe;
+    return fresnel * light.irradiance * nl * lobe * mix(0.32, 1.0, clamp(max(m.f0.r, max(m.f0.g, m.f0.b)) * 3.0, 0.0, 1.0));
 }
 
 vec3 shadeSolidMaterial(vec3 albedo, vec3 geometryNormal) {
     SurfaceMaterial m = fallbackMaterial(solidMaterial);
     vec3 normal = geometryNormal;
-    bool known = solidMaterial >= 11101.0 && solidMaterial <= 11110.0;
+    bool mappedEmission = false;
 #if MATERIAL_LABPBR == 1 && defined(MC_TEXTURE_FORMAT_LAB_PBR_1_3)
-    known = readLabPbr(m, normal, albedo) || known;
+    mappedEmission = readLabPbr(m, normal, albedo);
 #endif
-    if (!known) return albedo * worldLighting(viewPos, normal, lightUV);
+
     WorldLight light = sampleWorldLight(viewPos, normal, lightUV, geometryNormal);
     vec3 eye = normalize(-viewPos);
     vec3 energy = light.ambient * mix(1.0, m.ao, 0.65) + light.direct + light.blockLight;
@@ -129,5 +138,7 @@ vec3 shadeSolidMaterial(vec3 albedo, vec3 geometryNormal) {
     vec3 skySheen = light.skyColor * light.sky * m.f0 * m.metal *
         (0.32 + 0.38 * fresnelWeight(max(dot(normal, eye), 0.0))) * (1.0 - 0.5 * m.roughness);
     body *= 1.0 - MATERIAL_SPECULAR * (0.32 * m.metal + 0.10 * max(m.f0.r, max(m.f0.g, m.f0.b)));
-    return body + MATERIAL_SPECULAR * (highlight + skySheen) + albedo * m.emission * 0.85;
+    vec3 specularLight = MATERIAL_SPECULAR * (highlight + skySheen);
+    return mappedEmission ? body + specularLight + albedo * m.emission * 0.85
+                          : max(body, albedo * m.emission) + specularLight;
 }
