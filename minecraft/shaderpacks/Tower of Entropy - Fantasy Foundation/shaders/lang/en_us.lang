@@ -24,3 +24,10 @@ value.MATERIAL_QUALITY.3=High
 option.MATERIAL_SPECULAR=Specular intensity
 option.MATERIAL_NORMAL=Normal strength
 option.MATERIAL_LABPBR=LabPBR 1.3
+
+screen.ANTISSERRILHADO=Anti-aliasing
+option.ANTIALIASING=Method
+value.ANTIALIASING.0=Off
+value.ANTIALIASING.1=FXAA
+option.AA_QUALITY=FXAA quality
+option.AA_STRENGTH=Strength

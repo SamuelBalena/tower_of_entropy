@@ -4,10 +4,17 @@ uniform sampler2D colortex0, depthtex0;
 uniform mat4 gbufferProjectionInverse;
 uniform int isEyeInWater;
 varying vec2 uv;
+#if ANTIALIASING == 1
+#include "/lib/fxaa.glsl"
+#endif
 
 void main() {
-    // Grade the resolved pixel in place. Sampling displaced scene colors creates duplicate edges.
-    vec3 color = texture2D(colortex0, uv).rgb * EXPOSURE;
+    // Resolve only spatially detected edges before grading the current frame.
+    vec3 source = texture2D(colortex0, uv).rgb;
+#if ANTIALIASING == 1
+    source = resolveFxaa(uv, source);
+#endif
+    vec3 color = source * EXPOSURE;
     if (isEyeInWater == 1) {
         float depth = min(texture2D(depthtex0, uv).r, 0.999998);
         vec4 point = gbufferProjectionInverse * vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
