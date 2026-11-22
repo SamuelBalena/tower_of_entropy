@@ -1,7 +1,7 @@
 #define SHADOW_RESOLUTION 1024 // [512 1024 2048]
 #define SHADOW_FILTER 1 // [0 1 2]
 #define LAVA_DETAIL 1 // [0 1 2]
-#define ANTIALIASING 1 // [0 1]
+#define ANTIALIASING 2 // [0 1 2]
 #define AA_QUALITY 2 // [1 2 3]
 #define AA_STRENGTH 0.85 // [0.60 0.75 0.85 1.00]
 #define MATERIAL_QUALITY 2 // [0 1 2 3]

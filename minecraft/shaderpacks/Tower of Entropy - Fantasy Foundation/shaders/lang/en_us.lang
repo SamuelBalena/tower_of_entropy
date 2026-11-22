@@ -31,3 +31,5 @@ value.ANTIALIASING.0=Off
 value.ANTIALIASING.1=FXAA
 option.AA_QUALITY=FXAA quality
 option.AA_STRENGTH=Strength
+
+value.ANTIALIASING.2=SMAA 1x

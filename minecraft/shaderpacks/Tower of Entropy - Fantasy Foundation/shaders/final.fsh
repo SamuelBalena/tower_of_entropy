@@ -1,4 +1,4 @@
-#version 120
+#version 330 compatibility
 #include "/lib/options.glsl"
 uniform sampler2D colortex0, depthtex0;
 uniform mat4 gbufferProjectionInverse;
@@ -6,6 +6,9 @@ uniform int isEyeInWater;
 varying vec2 uv;
 #if ANTIALIASING == 1
 #include "/lib/fxaa.glsl"
+#elif ANTIALIASING == 2
+#include "/lib/smaa/integration.glsl"
+uniform sampler2D colortex2;
 #endif
 
 void main() {
@@ -13,6 +16,10 @@ void main() {
     vec3 source = texture2D(colortex0, uv).rgb;
 #if ANTIALIASING == 1
     source = resolveFxaa(uv, source);
+#elif ANTIALIASING == 2
+    vec4 offset;
+    SMAANeighborhoodBlendingVS(uv, offset);
+    source = SMAANeighborhoodBlendingPS(uv, offset, colortex0, colortex2).rgb;
 #endif
     vec3 color = source * EXPOSURE;
     if (isEyeInWater == 1) {

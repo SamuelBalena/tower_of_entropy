@@ -1,4 +1,4 @@
-#version 120
+#version 330 compatibility
 varying vec2 uv;
 void main() {
     gl_Position = ftransform();

@@ -31,3 +31,5 @@ value.ANTIALIASING.0=Desligado
 value.ANTIALIASING.1=FXAA
 option.AA_QUALITY=Qualidade do FXAA
 option.AA_STRENGTH=Intensidade
+
+value.ANTIALIASING.2=SMAA 1x
