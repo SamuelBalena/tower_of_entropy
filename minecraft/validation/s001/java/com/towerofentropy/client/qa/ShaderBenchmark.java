@@ -9,6 +9,8 @@ import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -113,7 +115,8 @@ public final class ShaderBenchmark {
             mc.createWorldOpenFlows().loadLevel(mc.screen, "Global Survival one");
         }
         if (preparationFailure != null) throw preparationFailure;
-        if (mc.player == null || mc.screen != null) return;
+        boolean inventoryCapture = ATMOSPHERE && scene == 5 && ready && tick >= WARMUP - 20 && tick < WARMUP - 12;
+        if (mc.player == null || (mc.screen != null && !inventoryCapture)) return;
         if (scene < 0) {
             mc.options.enableVsync().set(false);
             mc.options.framerateLimit().set(260);
@@ -149,6 +152,8 @@ public final class ShaderBenchmark {
                 mc.getMainRenderTarget(), ignored -> {});
         if (ATMOSPHERE && SCENES[scene].equals("expansion_held_light")) {
             mc.options.keyUp.setDown(tick >= WARMUP && tick < WARMUP + 24);
+            if (tick == WARMUP && !mc.player.getMainHandItem().is(Items.TORCH))
+                throw new IllegalStateException("The client must be holding a torch for " + SCENES[scene]);
             if (tick == WARMUP || tick == WARMUP + 24)
                 Screenshot.grab(new File("."), "s002-held-light" + effectSuffix + "-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
         }
@@ -361,9 +366,11 @@ public final class ShaderBenchmark {
         if (tick == WARMUP - 24) mc.options.hideGui = false;
         if (tick == WARMUP - 20) {
             Screenshot.grab(new File("."), "s002-hud.png", mc.getMainRenderTarget(), ignored -> {});
-            mc.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(mc.player));
+            mc.setScreen(new InventoryScreen(mc.player));
         }
         if (tick == WARMUP - 12) {
+            if (!(mc.screen instanceof AbstractContainerScreen<?>))
+                throw new IllegalStateException("Inventory screen was not open for the screenshot");
             Screenshot.grab(new File("."), "s002-inventory.png", mc.getMainRenderTarget(), ignored -> {});
             mc.setScreen(null);
             mc.options.hideGui = true;
@@ -501,6 +508,7 @@ public final class ShaderBenchmark {
             return;
         }
         ServerLevel level = ATMOSPHERE ? player.getServer().overworld() : player.serverLevel();
+        if (ATMOSPHERE && stage == 5) player.setGameMode(GameType.SURVIVAL);
         if (stage == 0 || (S0013 || S0014) && stage == 15 || S0015 && stage == 24 || S0016 && stage == 31 || Boolean.getBoolean("toe.s001.oneScene")) {
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, level.getServer());

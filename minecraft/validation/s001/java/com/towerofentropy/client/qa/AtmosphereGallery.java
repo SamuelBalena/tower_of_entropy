@@ -100,8 +100,9 @@ final class AtmosphereGallery {
             }
         }
         boolean gallery = scene.name().startsWith("expansion_");
-        player.teleportTo(level, ORIGIN + (gallery ? -3.5 : 0.5), cameraHeight, 0.5, -91.0F,
-                elevated ? -27.0F : scene.name().startsWith("aurora") ? -15.0F : -6.0F);
+        float pitch = elevated ? -27.0F : scene.name().startsWith("aurora") ? -15.0F : -6.0F;
+        if (scene.name().equals("expansion_held_light")) pitch = 32.0F;
+        player.teleportTo(level, ORIGIN + (gallery ? -3.5 : 0.5), cameraHeight, 0.5, -91.0F, pitch);
         var biome = level.getBiome(BlockPos.containing(ORIGIN + 0.5, cameraHeight, 0.5)).unwrapKey().orElseThrow();
         if (!biome.location().getPath().equals(scene.biome())) {
             throw new IllegalStateException("Expected biome " + scene.biome() + ", received " + biome.location());
