@@ -19,7 +19,7 @@ SurfaceMaterial fallbackMaterial(float encodedId) {
     if (id == 11107.0) m.roughness = 0.82;
     if (id == 11108.0 || id == 11110.0) { m.roughness = 0.92; m.f0 = vec3(0.020); }
     if (id == 11109.0) { m.roughness = 0.44; m.f0 = vec3(0.047); }
-    if (id == 11111.0) { m.roughness = 0.95; m.f0 = vec3(0.018); }
+    if (id == 11111.0 || (id >= 11201.0 && id <= 11207.0)) { m.roughness = 0.95; m.f0 = vec3(0.018); }
     if (id == 11112.0) { m.roughness = 0.28; m.f0 = vec3(0.042); }
     if (id == 11113.0) { m.roughness = 0.74; m.emission = 0.44; }
     if (id == 11114.0) { m.roughness = 0.51; m.f0 = vec3(0.20, 0.33, 0.28); m.metal = 0.21; }
@@ -120,6 +120,10 @@ vec3 materialSpecular(SurfaceMaterial m, WorldLight light, vec3 normal, vec3 eye
     return fresnel * light.irradiance * nl * lobe * mix(0.32, 1.0, clamp(max(m.f0.r, max(m.f0.g, m.f0.b)) * 3.0, 0.0, 1.0));
 }
 
+#if WET_SURFACES > 0
+#include "/lib/rain_surface.glsl"
+#endif
+
 vec3 shadeSolidMaterial(vec3 albedo, vec3 geometryNormal) {
     SurfaceMaterial m = fallbackMaterial(solidMaterial);
     vec3 normal = geometryNormal;
@@ -128,6 +132,10 @@ vec3 shadeSolidMaterial(vec3 albedo, vec3 geometryNormal) {
     mappedEmission = readLabPbr(m, normal, albedo);
 #endif
 
+    float puddle = 0.0;
+#if WET_SURFACES > 0
+    puddle = rainSurface(m, albedo, normal, geometryNormal);
+#endif
     WorldLight light = sampleWorldLight(viewPos, normal, lightUV, geometryNormal);
     vec3 eye = normalize(-viewPos);
     vec3 energy = light.ambient * mix(1.0, m.ao, 0.65) + light.direct + light.blockLight;
@@ -138,7 +146,29 @@ vec3 shadeSolidMaterial(vec3 albedo, vec3 geometryNormal) {
     vec3 skySheen = light.skyColor * light.sky * m.f0 * m.metal *
         (0.32 + 0.38 * fresnelWeight(max(dot(normal, eye), 0.0))) * (1.0 - 0.5 * m.roughness);
     body *= 1.0 - MATERIAL_SPECULAR * (0.32 * m.metal + 0.10 * max(m.f0.r, max(m.f0.g, m.f0.b)));
-    vec3 specularLight = MATERIAL_SPECULAR * (highlight + skySheen);
+    vec3 wetSky = vec3(0.0);
+#if PUDDLE_REFLECTIONS == 1 && WET_SURFACES >= 2
+    wetSky = light.skyColor * light.sky * puddle * (0.025 + 0.17 * fresnelWeight(max(dot(normal, eye), 0.0)));
+#endif
+    vec3 specularLight = MATERIAL_SPECULAR * (highlight + skySheen + wetSky);
+#if SELECTIVE_BLOOM > 0
+    gl_FragData[1] = vec4(albedo * m.emission * smoothstep(0.10, 0.68, max(albedo.r, max(albedo.g, albedo.b))), 1.0);
+#endif
+#if SOLID_REFLECTIONS > 0
+    float nv = max(dot(normal, eye), 0.0);
+    float metal = m.metal * (1.0 - m.roughness) * 0.16;
+    float polished = float(abs(solidMaterial - 11109.0) < 0.5) * 0.05;
+#if PUDDLE_REFLECTIONS == 1 && WET_SURFACES >= 2
+    polished += puddle * 0.31;
+#endif
+    float coverage = (metal + polished * (0.10 + 0.90 * fresnelWeight(nv))) * MATERIAL_SPECULAR;
+    if (coverage > 0.005 && tint.a > 0.99) {
+        vec3 oct = normal / (abs(normal.x) + abs(normal.y) + abs(normal.z));
+        if (oct.z < 0.0)
+            oct.xy = (1.0 - abs(oct.yx)) * vec2(oct.x < 0.0 ? -1.0 : 1.0, oct.y < 0.0 ? -1.0 : 1.0);
+        gl_FragData[TOE_REFLECTION_TARGET] = vec4(oct.xy * 0.5 + 0.5, coverage, -viewPos.z);
+    }
+#endif
     return mappedEmission ? body + specularLight + albedo * m.emission * 0.85
                           : max(body, albedo * m.emission) + specularLight;
 }

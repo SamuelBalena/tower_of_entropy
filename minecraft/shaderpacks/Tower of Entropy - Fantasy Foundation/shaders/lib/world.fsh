@@ -18,9 +18,8 @@ varying float translucentMaterial;
 varying float lavaMaterial;
 #include "/lib/lava.glsl"
 #endif
-#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
-varying float solidMaterial;
-#include "/lib/materials.glsl"
+#if DIMENSION_FOG > 0
+#include "/lib/dimension_atmosphere.glsl"
 #endif
 #if FOG_MODE > 0
 #include "/lib/region.glsl"
@@ -35,12 +34,54 @@ uniform int isEyeInWater, moonPhase;
 uniform vec3 moonPosition;
 #endif
 uniform int worldDay;
+#if (WINTER_WEATHER > 0 || (defined(SOLID_MATERIALS) && WET_SURFACES > 0)) && !defined(WATER) && !defined(LAVA)
+uniform float frameTimeCounter;
+#endif
 #include "/lib/cinematic_fog.glsl"
 #endif
+#if SELECTIVE_BLOOM > 0
+#define TOE_REFLECTION_TARGET 2
+#else
+#define TOE_REFLECTION_TARGET 1
+#endif
+#if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
+varying float solidMaterial;
+#include "/lib/materials.glsl"
+#endif
+#if defined(EQUIPMENT) && EQUIPMENT_PBR == 1
+#include "/lib/equipment.glsl"
+#endif
+#if SOLID_REFLECTIONS > 0
+const int RGBA16F = 34842;
+const int colortex6Format = RGBA16F;
+const bool colortex6Clear = true;
+const vec4 colortex6ClearColor = vec4(0.0, 0.0, 0.0, 0.0);
+#endif
+#if SELECTIVE_BLOOM > 0
+const bool colortex3Clear = true;
+const vec4 colortex3ClearColor = vec4(0.0, 0.0, 0.0, 0.0);
+#endif
+#if defined(WEATHER) && WINTER_WEATHER > 0 && FOG_MODE == 0
+uniform float toeCold, thunderStrength;
+#endif
+#if (SELECTIVE_BLOOM == 0 && SOLID_REFLECTIONS == 0) || defined(WEATHER)
 /* DRAWBUFFERS:0 */
+#elif SELECTIVE_BLOOM == 0
+/* DRAWBUFFERS:06 */
+#elif SOLID_REFLECTIONS == 0
+/* DRAWBUFFERS:03 */
+#else
+/* DRAWBUFFERS:036 */
+#endif
 void main() {
     vec4 base = texture2D(gtexture, uv) * tint;
     if (base.a < alphaTestRef) discard;
+#if SELECTIVE_BLOOM > 0 && !defined(WEATHER)
+    gl_FragData[1] = vec4(0.0, 0.0, 0.0, base.a);
+#endif
+#if SOLID_REFLECTIONS > 0 && !defined(WEATHER)
+    gl_FragData[TOE_REFLECTION_TARGET] = vec4(0.0);
+#endif
 #ifdef LAVA
     // Derivatives of the actual mesh also identify fluid sides with an up-facing vertex normal.
     vec3 face = cross(dFdx(viewPos), dFdy(viewPos));
@@ -51,6 +92,9 @@ void main() {
         molten = applyCinematicFog(molten, lightingFog(), fog, viewPos, lightUV.y);
 #else
         molten = mix(molten, lightingFog(), fog);
+#endif
+#if SELECTIVE_BLOOM > 0
+        gl_FragData[1] = vec4(clamp(molten - 0.28, 0.0, 1.0) * 0.60, 1.0);
 #endif
         gl_FragData[0] = vec4(molten, 1.0);
         return;
@@ -73,6 +117,12 @@ void main() {
     vec3 lm = texture2D(lightmap, lightUV).rgb;
     vec3 rgb = base.rgb * lm;
     vec3 haze = fogColor;
+#endif
+#if defined(WEATHER) && WINTER_WEATHER > 0
+    rgb = mix(rgb, rgb * vec3(1.01, 1.06, 1.13), toeCold * rainStrength * (0.34 + 0.30 * thunderStrength));
+#endif
+#if defined(EQUIPMENT) && EQUIPMENT_PBR == 1
+    rgb = equipmentResponse(base.rgb, rgb, normalize(normalView));
 #endif
 #ifdef WATER
     if (waterMaterial > 0.5) {
@@ -105,7 +155,15 @@ void main() {
 #if FOG_MODE > 0
     rgb = applyCinematicFog(rgb, haze, fog, viewPos, lightUV.y);
 #else
-    rgb = mix(rgb, haze, fog);
+#if DIMENSION_FOG > 0
+    if (toeNether + toeEnd > 0.5) rgb = dimensionFog(rgb, haze, fog, viewPos);
+    else
 #endif
-    gl_FragData[0] = vec4(rgb, base.a);
+        rgb = mix(rgb, haze, fog);
+#endif
+    float opacity = base.a;
+#if defined(WEATHER) && WINTER_WEATHER > 0
+    opacity *= 1.0 - 0.65 * toeCold * (1.0 - smoothstep(0.65, 2.4, length(viewPos)));
+#endif
+    gl_FragData[0] = vec4(rgb, opacity);
 }

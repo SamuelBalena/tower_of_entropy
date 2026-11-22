@@ -52,3 +52,85 @@ value.FOG_MODE.3=High
 value.FOG_MODE.4=Automatic by biome
 option.FOG_QUALITY=Height fog quality
 option.FOG_INTENSITY=Fog intensity
+
+screen.RAIOS_SOLARES=Sun rays
+option.SUN_RAYS=Volumetric rays
+value.SUN_RAYS.0=Off
+value.SUN_RAYS.1=Low
+value.SUN_RAYS.2=Medium
+value.SUN_RAYS.3=High
+
+screen.OCLUSAO=Ambient occlusion
+option.SCREEN_AO=Ambient occlusion
+value.SCREEN_AO.0=Off
+value.SCREEN_AO.1=Low
+value.SCREEN_AO.2=Medium
+value.SCREEN_AO.3=High
+
+option.CONTACT_SHADOWS=Contact shadows
+value.CONTACT_SHADOWS.0=Off
+value.CONTACT_SHADOWS.1=Low
+value.CONTACT_SHADOWS.2=Medium
+value.CONTACT_SHADOWS.3=High
+
+screen.CHUVA=Rain and wet surfaces
+option.WET_SURFACES=Wet surfaces and puddles
+value.WET_SURFACES.0=Off
+value.WET_SURFACES.1=Low
+value.WET_SURFACES.2=Medium
+value.WET_SURFACES.3=High
+
+screen.VENTO=Vegetation and wind
+option.VEGETATION_WIND=Wind strength
+value.VEGETATION_WIND.0=Off
+value.VEGETATION_WIND.1=Low
+value.VEGETATION_WIND.2=Medium
+value.VEGETATION_WIND.3=High
+
+screen.BLOOM=Bloom
+option.SELECTIVE_BLOOM=Selective bloom
+value.SELECTIVE_BLOOM.0=Off
+value.SELECTIVE_BLOOM.1=Low
+value.SELECTIVE_BLOOM.2=Medium
+value.SELECTIVE_BLOOM.3=High
+
+screen.DIMENSOES=Dimension atmospheres
+option.DIMENSION_FOG=Dimension atmosphere intensity
+value.DIMENSION_FOG.0=Off
+value.DIMENSION_FOG.1=Low
+value.DIMENSION_FOG.2=Medium
+value.DIMENSION_FOG.3=High
+
+screen.INVERNO=Winter weather
+option.WINTER_WEATHER=Snowstorm intensity
+value.WINTER_WEATHER.0=Off
+value.WINTER_WEATHER.1=Low
+value.WINTER_WEATHER.2=Medium
+value.WINTER_WEATHER.3=High
+
+screen.LUZ_DINAMICA=Dynamic light
+option.DYNAMIC_LIGHT=Held light range and strength
+value.DYNAMIC_LIGHT.0=Off
+value.DYNAMIC_LIGHT.1=Low
+value.DYNAMIC_LIGHT.2=Medium
+value.DYNAMIC_LIGHT.3=High
+
+screen.REFLEXOS=Reflections
+option.SOLID_REFLECTIONS=Solid surface reflections
+value.SOLID_REFLECTIONS.0=Off
+value.SOLID_REFLECTIONS.1=Low
+value.SOLID_REFLECTIONS.2=Medium
+value.SOLID_REFLECTIONS.3=High
+
+option.ADVANCED_SHADOWS=Variable penumbra
+value.ADVANCED_SHADOWS.0=Off
+value.ADVANCED_SHADOWS.1=Soft
+value.ADVANCED_SHADOWS.2=Variable
+value.ADVANCED_SHADOWS.3=Wide
+
+option.EQUIPMENT_PBR=Armor and equipment materials
+value.EQUIPMENT_PBR.0=Off
+value.EQUIPMENT_PBR.1=On
+option.PUDDLE_REFLECTIONS=Puddle reflections
+value.PUDDLE_REFLECTIONS.0=Off
+value.PUDDLE_REFLECTIONS.1=On

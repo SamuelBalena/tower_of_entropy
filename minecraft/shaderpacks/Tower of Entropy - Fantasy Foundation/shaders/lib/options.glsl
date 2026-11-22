@@ -36,3 +36,18 @@ const bool shadowtex0Nearest = true;
 #define FOG_MODE 4 // [0 1 2 3 4]
 #define FOG_QUALITY 2 // [1 2 3]
 #define FOG_INTENSITY 1.0 // [0.50 0.65 0.80 1.0 1.20 1.40]
+#define SUN_RAYS 2 // [0 1 2 3]
+#define WET_SURFACES 2 // [0 1 2 3]
+#define WINTER_WEATHER 2 // [0 1 2 3]
+#define ADVANCED_SHADOWS 2 // [0 1 2 3]
+#define DYNAMIC_LIGHT 2 // [0 1 2 3]
+#define DIMENSION_FOG 2 // [0 1 2 3]
+#define VEGETATION_WIND 2 // [0 1 2 3]
+#define SCREEN_AO 2 // [0 1 2 3]
+#define CONTACT_SHADOWS 2 // [0 1 2 3]
+#define SOLID_REFLECTIONS 2 // [0 1 2 3]
+#define SELECTIVE_BLOOM 1 // [0 1 2 3]
+#define EQUIPMENT_PBR 1 // [0 1]
+#define PUDDLE_REFLECTIONS 1 // [0 1]
+const float wetnessHalflife = 4.0;
+const float drynessHalflife = 14.0;

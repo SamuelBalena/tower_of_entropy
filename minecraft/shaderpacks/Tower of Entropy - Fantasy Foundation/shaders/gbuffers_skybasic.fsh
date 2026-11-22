@@ -16,7 +16,11 @@ void main() {
     if (renderStage == MC_RENDER_STAGE_STARS) discard;
 #endif
 #ifdef MC_RENDER_STAGE_CUSTOM_SKY
-    if (renderStage == MC_RENDER_STAGE_CUSTOM_SKY) {
+    if (renderStage == MC_RENDER_STAGE_CUSTOM_SKY
+#if DIMENSION_FOG > 0
+        && toeEnd < 0.5
+#endif
+    ) {
         gl_FragData[0] = tint;
         return;
     }

@@ -11,6 +11,10 @@ varying vec2 uv;
 uniform sampler2D colortex2;
 #endif
 
+#if SELECTIVE_BLOOM > 0
+#include "/lib/bloom.glsl"
+#endif
+
 void main() {
     // Resolve only spatially detected edges before grading the current frame.
     vec3 source = texture2D(colortex0, uv).rgb;
@@ -20,6 +24,9 @@ void main() {
     vec4 offset;
     SMAANeighborhoodBlendingVS(uv, offset);
     source = SMAANeighborhoodBlendingPS(uv, offset, colortex0, colortex2).rgb;
+#endif
+#if SELECTIVE_BLOOM > 0
+    source += selectiveBloom(uv);
 #endif
     vec3 color = source * EXPOSURE;
     if (isEyeInWater == 1) {

@@ -55,14 +55,27 @@ float lowFogDensity(float height, float ceiling) {
     return x * x * (3.0 - 2.0 * x);
 }
 
+#if SUN_RAYS > 0 && defined(WORLD_LIGHTING)
+#include "/lib/sun_rays.glsl"
+#endif
+
 vec3 applyCinematicFog(vec3 color, vec3 legacyTint, float legacyFog, vec3 view, float skyLight) {
+#if DIMENSION_FOG > 0
+    if (isEyeInWater == 0 && (toeNether + toeEnd) > 0.5) return dimensionFog(color, fogColor, legacyFog, view);
+#endif
     if (toeOverworld < 0.5 || isEyeInWater != 0 || fogEnd < 28.0) {
         return mix(color, legacyTint, legacyFog);
     }
 
     float distanceToEye = length(view);
     float exposed = smoothstep(0.27, 0.88, skyLight);
+#if SUN_RAYS > 0 && defined(WORLD_LIGHTING)
+    float eyeSky = float(eyeBrightnessSmooth.y) / 240.0;
+    float rayExposure = max(exposed, 0.26 * smoothstep(0.18, 0.72, eyeSky));
+    if (distanceToEye < 4.0 || rayExposure < 0.002) return mix(color, legacyTint, legacyFog);
+#else
     if (distanceToEye < 5.0 || exposed < 0.002) return mix(color, legacyTint, legacyFog);
+#endif
 
     FogProfile profile = fogProfile();
     vec3 displacement = mat3(gbufferModelViewInverse) * view;
@@ -91,12 +104,26 @@ vec3 applyCinematicFog(vec3 color, vec3 legacyTint, float legacyFog, vec3 view, 
     float heightOptics = min(max(distanceToEye - 5.0, 0.0), 148.0) * profile.heightDensity * layer
         * (0.40 + 0.92 * morning + 0.46 * rainStrength);
     float depth = (distanceOptics + heightOptics) * exposed * weather * fogAmount();
+#if WINTER_WEATHER > 0
+    float storm = toeCold * rainStrength * (0.32 + 0.68 * thunderStrength);
+    float drift = 0.72 + 0.28 * sin(dot(cameraPosition.xz + displacement.xz * 0.5, vec2(0.064, -0.038))
+                                    - frameTimeCounter * 0.65);
+    float winter = exposed * storm * drift * (0.12 + 0.09 * float(WINTER_WEATHER));
+    depth += winter * smoothstep(5.0, 77.0, distanceToEye);
+#endif
     float extinction = min(1.0 - exp(-depth), 0.76);
     vec3 sun = normalize(mat3(gbufferModelViewInverse) * sunPosition);
     vec3 moon = normalize(mat3(gbufferModelViewInverse) * moonPosition);
     vec3 scattering = fogScattering(profile, sun, moon);
+#if WINTER_WEATHER > 0
+    vec3 stormTint = mix(vec3(0.29, 0.35, 0.47), vec3(0.69, 0.76, 0.83), smoothstep(-0.2, 0.22, sun.y));
+    scattering = mix(scattering, stormTint, storm * 0.40);
+#endif
     // Blend once. Retain only the engine's far-plane fade on top of the new optical depth.
     float combined = extinction + legacyFog * (1.0 - extinction);
     vec3 inscatter = scattering * extinction + legacyTint * (combined - extinction);
+#if SUN_RAYS > 0 && defined(WORLD_LIGHTING)
+    inscatter += solarScattering(view, displacement, sun, ceiling) * rayExposure * fogAmount() * (1.0 - combined);
+#endif
     return color * (1.0 - combined) + inscatter;
 }

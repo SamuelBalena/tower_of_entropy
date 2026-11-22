@@ -52,3 +52,85 @@ value.FOG_MODE.3=Alta
 value.FOG_MODE.4=Automática por bioma
 option.FOG_QUALITY=Qualidade da névoa de altitude
 option.FOG_INTENSITY=Intensidade da neblina
+
+screen.RAIOS_SOLARES=Raios solares
+option.SUN_RAYS=Raios volumétricos
+value.SUN_RAYS.0=Desligado
+value.SUN_RAYS.1=Baixo
+value.SUN_RAYS.2=Médio
+value.SUN_RAYS.3=Alto
+
+screen.OCLUSAO=Oclusão ambiente
+option.SCREEN_AO=Oclusão ambiente
+value.SCREEN_AO.0=Desligado
+value.SCREEN_AO.1=Baixo
+value.SCREEN_AO.2=Médio
+value.SCREEN_AO.3=Alto
+
+option.CONTACT_SHADOWS=Sombras de contato
+value.CONTACT_SHADOWS.0=Desligado
+value.CONTACT_SHADOWS.1=Baixo
+value.CONTACT_SHADOWS.2=Médio
+value.CONTACT_SHADOWS.3=Alto
+
+screen.CHUVA=Chuva e superfícies molhadas
+option.WET_SURFACES=Umidade e poças
+value.WET_SURFACES.0=Desligado
+value.WET_SURFACES.1=Baixo
+value.WET_SURFACES.2=Médio
+value.WET_SURFACES.3=Alto
+
+screen.VENTO=Vegetação e vento
+option.VEGETATION_WIND=Intensidade do vento
+value.VEGETATION_WIND.0=Desligado
+value.VEGETATION_WIND.1=Baixo
+value.VEGETATION_WIND.2=Médio
+value.VEGETATION_WIND.3=Alto
+
+screen.BLOOM=Bloom
+option.SELECTIVE_BLOOM=Bloom seletivo
+value.SELECTIVE_BLOOM.0=Desligado
+value.SELECTIVE_BLOOM.1=Baixo
+value.SELECTIVE_BLOOM.2=Médio
+value.SELECTIVE_BLOOM.3=Alto
+
+screen.DIMENSOES=Atmosferas das dimensões
+option.DIMENSION_FOG=Intensidade da atmosfera dimensional
+value.DIMENSION_FOG.0=Desligado
+value.DIMENSION_FOG.1=Baixo
+value.DIMENSION_FOG.2=Médio
+value.DIMENSION_FOG.3=Alto
+
+screen.INVERNO=Clima de inverno
+option.WINTER_WEATHER=Intensidade da nevasca
+value.WINTER_WEATHER.0=Desligado
+value.WINTER_WEATHER.1=Baixo
+value.WINTER_WEATHER.2=Médio
+value.WINTER_WEATHER.3=Alto
+
+screen.LUZ_DINAMICA=Luz dinâmica
+option.DYNAMIC_LIGHT=Alcance e intensidade da luz na mão
+value.DYNAMIC_LIGHT.0=Desligado
+value.DYNAMIC_LIGHT.1=Baixo
+value.DYNAMIC_LIGHT.2=Médio
+value.DYNAMIC_LIGHT.3=Alto
+
+screen.REFLEXOS=Reflexos
+option.SOLID_REFLECTIONS=Reflexos em superfícies sólidas
+value.SOLID_REFLECTIONS.0=Desligado
+value.SOLID_REFLECTIONS.1=Baixo
+value.SOLID_REFLECTIONS.2=Médio
+value.SOLID_REFLECTIONS.3=Alto
+
+option.ADVANCED_SHADOWS=Penumbra variável
+value.ADVANCED_SHADOWS.0=Desligada
+value.ADVANCED_SHADOWS.1=Suave
+value.ADVANCED_SHADOWS.2=Variável
+value.ADVANCED_SHADOWS.3=Ampla
+
+option.EQUIPMENT_PBR=Materiais de armaduras e equipamentos
+value.EQUIPMENT_PBR.0=Desligado
+value.EQUIPMENT_PBR.1=Ligado
+option.PUDDLE_REFLECTIONS=Reflexos em poças
+value.PUDDLE_REFLECTIONS.0=Desligado
+value.PUDDLE_REFLECTIONS.1=Ligado

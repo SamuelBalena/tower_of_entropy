@@ -7,7 +7,15 @@
 #endif
 #endif
 
+#if DIMENSION_FOG > 0
+#include "/lib/dimension_atmosphere.glsl"
+#endif
+
 vec3 renderSkydome(vec3 ray, vec3 sun, vec3 moon) {
+#if DIMENSION_FOG > 0
+    if (toeNether > 0.5) return fogColor;
+    if (toeEnd > 0.5) return endSky(ray);
+#endif
     float rain = clamp(rainStrength, 0.0, 1.0);
     float day = smoothstep(-0.17, 0.24, sun.y);
     float twilight = (1.0 - smoothstep(0.07, 0.56, abs(sun.y))) * smoothstep(-0.32, -0.07, sun.y);
@@ -24,7 +32,11 @@ vec3 renderSkydome(vec3 ray, vec3 sun, vec3 moon) {
     sky = mix(sky, mix(vec3(0.12, 0.15, 0.23), vec3(0.43, 0.51, 0.62), day), rain * 0.82);
     float night = (1.0 - smoothstep(-0.29, -0.08, sun.y)) * (1.0 - rain);
 #if defined(TOE_MAIN_SKY) && AURORA == 1
+#if WINTER_WEATHER > 0
+    sky += auroraLight(ray, sun, max(rain, toeCold * rain * (1.0 + thunderStrength * 0.36)));
+#else
     sky += auroraLight(ray, sun, rain);
+#endif
 #endif
     if (night > 0.001) sky += starLight(ray, night);
     sky = celestialLight(sky, ray, sun, moon, 1.0 - rain);

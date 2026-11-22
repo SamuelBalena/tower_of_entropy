@@ -81,9 +81,19 @@ $lines = @(
     ''
     '# Generated from the Forge 1.20.1 inventory by validation/s001/classify-vanilla-materials.ps1.'
 )
+# Keep hand-curated wind IDs and the state predicates for upper/lower plants.
+$windSource = Join-Path $PSScriptRoot '../../shaderpacks/Tower of Entropy - Fantasy Foundation/shaders/block.properties'
+$windMappings = @(Get-Content -LiteralPath $windSource | Where-Object { $_ -match '^block\.1120[1-7]=' })
+foreach ($line in $windMappings) {
+    foreach ($entry in ($line.Split('=',2)[1] -split ' ')) {
+        $block = ($entry -split ':', 3)[0..1] -join ':'
+        $tokens.Remove($block)
+    }
+}
 foreach ($id in ($tokens.Values | Sort-Object -Unique)) {
     $members = @($tokens.Keys | Where-Object {$tokens[$_] -eq $id} | Sort-Object)
     $lines += "block.$id="+($members -join ' ')
 }
+$lines += $windMappings
 [IO.File]::WriteAllLines((Join-Path (Get-Location).Path $Mappings),[string[]]$lines,[Text.UTF8Encoding]::new($false))
 $coverage | Group-Object family | Sort-Object Name | Select-Object Name,Count

@@ -1,13 +1,9 @@
 uniform sampler2D colortex4, colortex5, depthtex1;
-uniform mat4 gbufferModelViewInverse, gbufferProjection, gbufferProjectionInverse;
+uniform mat4 gbufferModelViewInverse;
+#include "/lib/screen_projection.glsl"
 uniform vec3 cameraPosition, moonPosition;
 uniform float viewWidth, viewHeight, frameTimeCounter;
 uniform int isEyeInWater, moonPhase;
-
-vec3 waterViewPosition(vec2 uv, float depth) {
-    vec4 point = gbufferProjectionInverse * vec4(uv * 2.0 - 1.0, depth * 2.0 - 1.0, 1.0);
-    return point.xyz / point.w;
-}
 
 vec2 waveSlope(vec2 p, vec2 direction, float frequency, float speed, float amplitude) {
     float phase = dot(p, direction) * frequency - frameTimeCounter * speed;
@@ -25,6 +21,11 @@ vec3 waterNormal(vec3 normal, vec3 world, float distanceToEye) {
 #if WATER_DETAIL > 1
     slope += waveSlope(p, vec2(0.658, 0.753), 7.3, 2.04, 0.012);
 #endif
+#if WET_SURFACES == 3
+    if (rainStrength > 0.01 && distanceToEye < 24.0)
+        slope += rainStrength * (1.0 - smoothstep(6.0, 24.0, distanceToEye))
+               * waveSlope(p, vec2(-0.60, 0.80), 12.6, 3.1, 0.012);
+#endif
     float distant = 1.0 - smoothstep(18.0, 88.0, distanceToEye) * 0.68;
     return normalize(normal - vec3(slope.x, 0.0, slope.y) * abs(normal.y) * distant);
 }
@@ -40,13 +41,6 @@ vec3 waterSky(vec3 ray) {
 }
 
 #if WATER_SSR == 1 && WATER_DETAIL > 0
-bool waterProjection(vec3 point, out vec2 uv) {
-    vec4 projected = gbufferProjection * vec4(point, 1.0);
-    if (projected.w <= 0.0) return false;
-    uv = projected.xy / projected.w * 0.5 + 0.5;
-    return all(greaterThan(uv, vec2(0.0))) && all(lessThan(uv, vec2(1.0)));
-}
-
 vec4 waterSceneReflection(vec3 origin, vec3 direction) {
 #if WATER_DETAIL == 1
     const int steps = 12;
@@ -59,25 +53,25 @@ vec4 waterSceneReflection(vec3 origin, vec3 direction) {
         float stride = 0.20 + float(i + 1) * (0.24 + float(i + 1) * 0.075);
         vec3 point = origin + direction * stride;
         vec2 uv;
-        if (!waterProjection(point, uv)) break;
+        if (!screenProjection(point, uv)) break;
         float raw = texture2D(depthtex1, uv).r;
-        float gap = raw < 0.999999 ? waterViewPosition(uv, raw).z - point.z : -1.0;
+        float gap = raw < 0.999999 ? screenViewPosition(uv, raw).z - point.z : -1.0;
         if (lastGap < 0.0 && gap >= 0.0) {
             float lo = previous;
             float hi = stride;
             for (int j = 0; j < 4; ++j) {
                 float mid = (lo + hi) * 0.5;
                 point = origin + direction * mid;
-                waterProjection(point, uv);
+                screenProjection(point, uv);
                 raw = texture2D(depthtex1, uv).r;
-                if (raw < 0.999999 && waterViewPosition(uv, raw).z >= point.z) hi = mid;
+                if (raw < 0.999999 && screenViewPosition(uv, raw).z >= point.z) hi = mid;
                 else lo = mid;
             }
             point = origin + direction * hi;
-            if (!waterProjection(point, uv)) break;
+            if (!screenProjection(point, uv)) break;
             raw = texture2D(depthtex1, uv).r;
             if (raw >= 0.999999) break;
-            vec3 hit = waterViewPosition(uv, raw);
+            vec3 hit = screenViewPosition(uv, raw);
             vec3 worldOffset = mat3(gbufferModelViewInverse) * (hit - origin);
             float error = hit.z - point.z;
             if (error < 0.0 || error > 0.26 + hi * 0.025 || worldOffset.y < 0.09) break;
@@ -108,7 +102,7 @@ vec3 waterColor(vec3 position, vec3 normalView, vec2 lightUV) {
     float fresnel = 0.0204 + 0.9796 * pow(1.0 - cosine, 5.0);
 
     float raw = texture2D(depthtex1, uv).r;
-    vec3 back = waterViewPosition(uv, min(raw, 0.999998));
+    vec3 back = screenViewPosition(uv, min(raw, 0.999998));
     float thickness = raw < 0.999999 && back.z < position.z ? min(length(back - position), 36.0) : 36.0;
     vec2 bottomUV = uv;
 #if WATER_DETAIL > 0
@@ -117,7 +111,7 @@ vec3 waterColor(vec3 position, vec3 normalView, vec2 lightUV) {
         vec2 candidate = uv + delta * (0.028 * smoothstep(0.02, 0.55, thickness));
         if (all(greaterThan(candidate, vec2(0.004))) && all(lessThan(candidate, vec2(0.996)))) {
             float shifted = texture2D(depthtex1, candidate).r;
-            vec3 shiftedView = waterViewPosition(candidate, min(shifted, 0.999998));
+            vec3 shiftedView = screenViewPosition(candidate, min(shifted, 0.999998));
             if (shifted < 0.999999 && shiftedView.z < position.z - 0.035
                     && abs(shiftedView.z - back.z) < max(0.20, thickness * 0.44)) bottomUV = candidate;
         }

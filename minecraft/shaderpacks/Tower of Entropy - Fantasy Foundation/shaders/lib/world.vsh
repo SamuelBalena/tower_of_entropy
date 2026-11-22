@@ -1,5 +1,9 @@
-#ifdef SOLID_MATERIALS
 #include "/lib/options.glsl"
+#if defined(SOLID_MATERIALS) && VEGETATION_WIND > 0
+#include "/lib/vegetation.glsl"
+#endif
+#if defined(WEATHER) && WINTER_WEATHER > 0
+#include "/lib/snow_precipitation.glsl"
 #endif
 varying vec2 uv, lightUV;
 #if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
@@ -16,7 +20,9 @@ uniform mat4 gbufferModelViewInverse, shadowModelView;
 varying vec3 shadowViewPos, shadowViewNormal;
 #endif
 #ifdef LAVA
+#if VEGETATION_WIND == 0
 attribute vec4 mc_Entity;
+#endif
 varying float lavaMaterial;
 #endif
 void main() {
@@ -29,6 +35,17 @@ void main() {
     lightUV = (gl_TextureMatrix[1] * gl_MultiTexCoord1).st;
     tint = gl_Color;
     vec4 view = gl_ModelViewMatrix * gl_Vertex;
+#if defined(SOLID_MATERIALS) && VEGETATION_WIND > 0
+    vec3 player = (gbufferModelViewInverse * view).xyz;
+    vec3 shift = vegetationOffset(player);
+    view.xyz += vec3(dot(gbufferModelViewInverse[0].xyz, shift),
+        dot(gbufferModelViewInverse[1].xyz, shift), dot(gbufferModelViewInverse[2].xyz, shift));
+    gl_Position = gl_ProjectionMatrix * view;
+#endif
+#if defined(WEATHER) && WINTER_WEATHER > 0
+    view.xyz += snowDrift(view.xyz);
+    gl_Position = gl_ProjectionMatrix * view;
+#endif
     viewPos = view.xyz;
     normalView = normalize(gl_NormalMatrix * gl_Normal);
 #if defined(SOLID_MATERIALS) && MATERIAL_QUALITY > 0
