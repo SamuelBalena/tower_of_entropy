@@ -22,6 +22,21 @@ varying float lavaMaterial;
 varying float solidMaterial;
 #include "/lib/materials.glsl"
 #endif
+#if FOG_MODE > 0
+#include "/lib/region.glsl"
+#if !defined(WATER) && !defined(LAVA)
+uniform vec3 cameraPosition;
+#endif
+#if !defined(WORLD_LIGHTING) && !defined(WATER)
+uniform mat4 gbufferModelViewInverse;
+#endif
+#ifndef WATER
+uniform int isEyeInWater, moonPhase;
+uniform vec3 moonPosition;
+#endif
+uniform int worldDay;
+#include "/lib/cinematic_fog.glsl"
+#endif
 /* DRAWBUFFERS:0 */
 void main() {
     vec4 base = texture2D(gtexture, uv) * tint;
@@ -32,7 +47,12 @@ void main() {
     if (lavaMaterial > 0.5) {
         float fog = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
         vec3 molten = lavaColor(viewPos, face, lavaMaterial > 1.5, base.rg);
-        gl_FragData[0] = vec4(mix(molten, lightingFog(), fog), 1.0);
+#if FOG_MODE > 0
+        molten = applyCinematicFog(molten, lightingFog(), fog, viewPos, lightUV.y);
+#else
+        molten = mix(molten, lightingFog(), fog);
+#endif
+        gl_FragData[0] = vec4(molten, 1.0);
         return;
     }
 #endif
@@ -56,7 +76,14 @@ void main() {
 #endif
 #ifdef WATER
     if (waterMaterial > 0.5) {
-        gl_FragData[0] = vec4(waterColor(viewPos, normalView, lightUV), 1.0);
+        vec3 water = waterColor(viewPos, normalView, lightUV);
+#if FOG_MODE > 0
+        if (toeOverworld > 0.5 && isEyeInWater == 0 && fogEnd >= 28.0) {
+            float planeFade = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
+            water = applyCinematicFog(water, haze, planeFade, viewPos, lightUV.y);
+        }
+#endif
+        gl_FragData[0] = vec4(water, 1.0);
         return;
     }
 #if MATERIAL_QUALITY > 0
@@ -69,8 +96,16 @@ void main() {
 #endif
 #endif
     float fog = smoothstep(fogStart, max(fogStart + 0.1, fogEnd), length(viewPos));
-#ifdef WORLD_LIGHTING
-    fog = max(fog, smoothstep(24.0, 112.0, length(viewPos)) * lightUV.y * (0.14 + rainStrength * 0.14));
+#if defined(WORLD_LIGHTING)
+#if FOG_MODE > 0
+    if (toeOverworld < 0.5 || isEyeInWater != 0 || fogEnd < 28.0)
 #endif
-    gl_FragData[0] = vec4(mix(rgb, haze, fog), base.a);
+        fog = max(fog, smoothstep(24.0, 112.0, length(viewPos)) * lightUV.y * (0.14 + rainStrength * 0.14));
+#endif
+#if FOG_MODE > 0
+    rgb = applyCinematicFog(rgb, haze, fog, viewPos, lightUV.y);
+#else
+    rgb = mix(rgb, haze, fog);
+#endif
+    gl_FragData[0] = vec4(rgb, base.a);
 }

@@ -31,3 +31,8 @@ const bool shadowtex0Nearest = true;
 #define AURORA_INTENSITY 0.85 // [0.45 0.60 0.75 0.85 1.00 1.20]
 #define AURORA_SPEED 1.0 // [0.5 0.75 1.0 1.25 1.5]
 #define AURORA_QUALITY 2 // [1 2 3]
+
+// Atmospheric extinction
+#define FOG_MODE 4 // [0 1 2 3 4]
+#define FOG_QUALITY 2 // [1 2 3]
+#define FOG_INTENSITY 1.0 // [0.50 0.65 0.80 1.0 1.20 1.40]

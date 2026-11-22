@@ -30,8 +30,16 @@ import org.lwjgl.opengl.GL11;
 
 @Mod.EventBusSubscriber(modid = "towerofentropy", value = Dist.CLIENT)
 public final class ShaderBenchmark {
+    private static final boolean ATMOSPHERE = Boolean.getBoolean("toe.atmosphere.qa");
+    private static final String[] ATMOSPHERE_SCENES = {
+        "aurora_snowy_plains", "aurora_ice_spikes", "aurora_frozen_ocean", "aurora_snowy_taiga",
+        "aurora_grove", "aurora_frozen_peaks", "aurora_dusk", "aurora_desert", "fog_forest_dawn",
+        "fog_forest_noon", "fog_swamp", "fog_mountain", "fog_plains_dawn", "fog_rain", "fog_storm",
+        "aa_forest", "aa_roof", "aa_motion", "material_armor", "camera_tunnel", "combat", "waterside_village",
+        "material_water", "material_lava", "material_ores", "material_nether", "material_end", "aa_stars"
+    };
     private static final boolean ENABLED = Boolean.getBoolean("toe.s001.bench");
-    private static final String[] SCENES = {"forest", "plains", "cave", "water", "underwater", "night_torches",
+    private static final String[] BASE_SCENES = {"forest", "plains", "cave", "water", "underwater", "night_torches",
             "crowd", "armor", "camera_tunnel", "camera_restore", "golden_hour", "rain", "combat", "camera_tunnel_opaque", "camera_tunnel_clear", "village_still", "village_walk", "village_sprint", "village_turn", "village_shoulder", "dawn", "sunset", "village_night", "village_rain",
             "sky_sunrise", "sky_morning", "sky_noon", "sky_afternoon", "sky_sunset", "sky_dusk", "sky_night",
             "lake_shallow", "river_trees", "lake_deep", "water_sunset", "water_moon", "water_rain",
@@ -43,6 +51,8 @@ public final class ShaderBenchmark {
             "material_torch", "material_armor", "material_mining", "material_water", "material_lava",
             "aa_forest", "aa_roof", "material_glass", "material_emission", "material_block_entities",
             "material_nether", "material_end", "aa_motion", "aa_stars", "material_soils"};
+    private static final String[] SCENES = java.util.stream.Stream.concat(java.util.Arrays.stream(BASE_SCENES),
+            java.util.Arrays.stream(AtmosphereGallery.SCENES).map(AtmosphereGallery.Scene::name)).toArray(String[]::new);
     private static final boolean S0013 = Boolean.getBoolean("toe.s0013.qa");
     private static final int ORIGINAL_SCENES = 15;
     private static final int[] SHARPNESS_SCENES = {15, 16, 17, 18, 19, 12, 3, 8};
@@ -77,6 +87,7 @@ public final class ShaderBenchmark {
     private static long lastFrame, initialArmor, initialComposites;
     private static long initialDraws, initialPipeline, initialCapture, initialComposite, initialOculus, initialOculusBinds;
     private static volatile boolean ready;
+    private static volatile RuntimeException preparationFailure;
     private static float lavaOceanYaw;
     private static boolean opening;
 
@@ -92,11 +103,12 @@ public final class ShaderBenchmark {
                 return;
             }
             mc.options.pauseOnLostFocus = false;
-            if ((S0016 || LAVA || MATERIALS || UNIVERSAL) && System.getProperty("toe.s0016.width") != null) {
+            if ((S0016 || LAVA || MATERIALS || UNIVERSAL || ATMOSPHERE) && System.getProperty("toe.s0016.width") != null) {
                 mc.getWindow().setWindowed(Integer.getInteger("toe.s0016.width"), Integer.getInteger("toe.s0016.height"));
             }
             mc.createWorldOpenFlows().loadLevel(mc.screen, "Global Survival one");
         }
+        if (preparationFailure != null) throw preparationFailure;
         if (mc.player == null || mc.screen != null) return;
         if (scene < 0) {
             mc.options.enableVsync().set(false);
@@ -111,6 +123,22 @@ public final class ShaderBenchmark {
         }
         if (!ready || scene >= SCENES.length) return;
         ++tick;
+        if (ATMOSPHERE && SCENES[scene].equals("aurora_boundary")) {
+            if (tick == 25 || tick == 45 || tick == 95) {
+                Screenshot.grab(new File("."), "s002-boundary-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
+            }
+            if (tick == 30) {
+                var server = mc.getSingleplayerServer();
+                var playerId = mc.player.getUUID();
+                server.execute(() -> {
+                    try {
+                        AtmosphereGallery.crossBoundary(server.getPlayerList().getPlayer(playerId));
+                    } catch (RuntimeException failure) {
+                        preparationFailure = failure;
+                    }
+                });
+            }
+        }
         if (S0013) sharpnessInput(mc);
         if (S0016 && scene == 37) {
             mc.options.keyUp.setDown(tick >= 24);
@@ -131,15 +159,16 @@ public final class ShaderBenchmark {
             if (tick == WARMUP + 8) {
                 Screenshot.grab(new File("."), "s001-aa-before-resize.png", mc.getMainRenderTarget(), ignored -> {});
                 mc.getWindow().setWindowed(1280, 720);
-                reloadHighWithFxaa();
+                reloadHigh(Boolean.getBoolean("toe.atmosphere.switch"));
             }
             if (tick == END - 8) {
-                LogUtils.getLogger().info("TOE_FXAA_SWITCH shader={} size={}x{}", shaderActive(),
+                LogUtils.getLogger().info("TOE_{}_SWITCH shader={} size={}x{}",
+                        Boolean.getBoolean("toe.atmosphere.switch") ? "SMAA" : "FXAA", shaderActive(),
                         mc.getWindow().getWidth(), mc.getWindow().getHeight());
                 Screenshot.grab(new File("."), "s001-aa-after-resize.png", mc.getMainRenderTarget(), ignored -> {});
             }
         }
-        if (UNIVERSAL && scene == 78) {
+        if ((UNIVERSAL || ATMOSPHERE) && scene == 78) {
             mc.player.setYRot(-90.0f + 34.0f * (float)Math.sin(tick * 0.24));
             if (tick == WARMUP + 12 || tick == WARMUP + 36)
                 Screenshot.grab(new File("."), "s001-aa-motion-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
@@ -179,7 +208,12 @@ public final class ShaderBenchmark {
     private static void advance(Minecraft mc) {
         ready = false;
         tick = 0;
-        if (S0013) {
+        if (ATMOSPHERE) {
+            String[] requested = System.getProperty("toe.atmosphere.scenes", String.join(",", ATMOSPHERE_SCENES)).split(",");
+            scene = ++selectedScene < requested.length ? java.util.Arrays.asList(SCENES).indexOf(requested[selectedScene]) : SCENES.length;
+            if (scene < 0) throw new IllegalArgumentException("Unknown atmosphere QA scene " + requested[selectedScene]);
+            if (selectedScene == 0 || scene == BASE_SCENES.length) tick = -100;
+        } else if (S0013) {
             mc.options.keyUp.setDown(false);
             mc.options.keySprint.setDown(false);
             scene = ++selectedScene < SHARPNESS_SCENES.length ? SHARPNESS_SCENES[selectedScene] : SCENES.length;
@@ -201,7 +235,7 @@ public final class ShaderBenchmark {
         } else {
             ++scene;
         }
-        if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA || MATERIALS || UNIVERSAL ? SCENES.length : ORIGINAL_SCENES)) {
+        if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA || MATERIALS || UNIVERSAL || ATMOSPHERE ? SCENES.length : ORIGINAL_SCENES)) {
             mc.stop();
             return;
         }
@@ -215,8 +249,12 @@ public final class ShaderBenchmark {
         server.execute(() -> {
             var player = server.getPlayerList().getPlayer(id);
             if (player == null) throw new IllegalStateException("Missing benchmark player");
-            prepare(player, stage);
-            ready = true;
+            try {
+                prepare(player, stage);
+                ready = true;
+            } catch (RuntimeException failure) {
+                preparationFailure = failure;
+            }
         });
     }
 
@@ -364,6 +402,10 @@ public final class ShaderBenchmark {
     }
 
     private static void prepare(ServerPlayer player, int stage) {
+        if (stage >= BASE_SCENES.length) {
+            AtmosphereGallery.prepare(player, AtmosphereGallery.SCENES[stage - BASE_SCENES.length]);
+            return;
+        }
         if (stage >= 56) {
             prepareMaterialGallery(player, stage);
             return;
@@ -387,7 +429,7 @@ public final class ShaderBenchmark {
         var random = new Random(30791);
         boolean rain = stage == 11 || stage == 23 || stage == 36;
         level.setWeatherParameters(rain ? 0 : 10000, rain ? 10000 : 0, rain, false);
-        if (S0016) {
+        if (S0016 || ATMOSPHERE && stage >= 31 && stage <= 42) {
             level.setRainLevel(rain ? 1.0f : 0.0f);
             level.setThunderLevel(0.0f);
             player.connection.send(new net.minecraft.network.protocol.game.ClientboundGameEventPacket(
@@ -664,7 +706,7 @@ public final class ShaderBenchmark {
         player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
     }
 
-    private static void reloadHighWithFxaa() {
+    private static void reloadHigh(boolean smaa) {
         try {
             Class<?> iris = Class.forName("net.irisshaders.iris.Iris");
             var options = new java.util.Properties();
@@ -674,7 +716,11 @@ public final class ShaderBenchmark {
             options.setProperty("LAVA_DETAIL", "2");
             options.setProperty("MATERIAL_QUALITY", "3");
             options.setProperty("AA_QUALITY", "3");
-            options.setProperty("ANTIALIASING", "1");
+            options.setProperty("ANTIALIASING", smaa ? "2" : "1");
+            if (smaa) {
+                options.setProperty("AURORA_QUALITY", "3");
+                options.setProperty("FOG_QUALITY", "3");
+            }
             iris.getMethod("queueShaderPackOptionsFromProperties", java.util.Properties.class).invoke(null, options);
             iris.getMethod("reload").invoke(null);
         } catch (ReflectiveOperationException e) {

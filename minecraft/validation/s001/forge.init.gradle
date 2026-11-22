@@ -24,6 +24,9 @@ gradle.beforeProject { p ->
             }
             p.minecraft.runs.client.workingDirectory(p.file(p.property('toeS001Bench')))
             p.minecraft.runs.client.property('toe.s001.bench', 'true')
+            if (p.hasProperty('toeAtmosphereSwitch')) p.minecraft.runs.client.property('toe.atmosphere.switch', 'true')
+            if (p.hasProperty('toeAtmosphereQa')) p.minecraft.runs.client.property('toe.atmosphere.qa', 'true')
+            if (p.hasProperty('toeAtmosphereScenes')) p.minecraft.runs.client.property('toe.atmosphere.scenes', p.property('toeAtmosphereScenes'))
             if (p.hasProperty('toeUniversalQa')) p.minecraft.runs.client.property('toe.universal.qa', 'true')
             if (p.hasProperty('toeUniversalMetal')) p.minecraft.runs.client.property('toe.universal.metal', 'true')
             if (p.hasProperty('toeUniversalSwitch')) p.minecraft.runs.client.property('toe.universal.switch', 'true')

@@ -42,3 +42,13 @@ option.AURORA_FREQUENCY=Frequency
 option.AURORA_INTENSITY=Intensity
 option.AURORA_SPEED=Speed
 option.AURORA_QUALITY=Curtain quality
+
+screen.NEBLINA=Fog
+option.FOG_MODE=Atmospheric fog
+value.FOG_MODE.0=Off
+value.FOG_MODE.1=Low
+value.FOG_MODE.2=Medium
+value.FOG_MODE.3=High
+value.FOG_MODE.4=Automatic by biome
+option.FOG_QUALITY=Height fog quality
+option.FOG_INTENSITY=Fog intensity

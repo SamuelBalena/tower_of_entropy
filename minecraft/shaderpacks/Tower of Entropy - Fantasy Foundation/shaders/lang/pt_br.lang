@@ -42,3 +42,13 @@ option.AURORA_FREQUENCY=Frequência
 option.AURORA_INTENSITY=Intensidade
 option.AURORA_SPEED=Velocidade
 option.AURORA_QUALITY=Qualidade das cortinas
+
+screen.NEBLINA=Neblina
+option.FOG_MODE=Neblina atmosférica
+value.FOG_MODE.0=Desligada
+value.FOG_MODE.1=Baixa
+value.FOG_MODE.2=Média
+value.FOG_MODE.3=Alta
+value.FOG_MODE.4=Automática por bioma
+option.FOG_QUALITY=Qualidade da névoa de altitude
+option.FOG_INTENSITY=Intensidade da neblina
