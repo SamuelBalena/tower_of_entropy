@@ -1,6 +1,7 @@
 #version 120
 #include "/lib/options.glsl"
 #include "/lib/atmosphere.glsl"
+#define TOE_MAIN_SKY
 #include "/lib/skydome.glsl"
 uniform int renderStage;
 uniform mat4 gbufferModelViewInverse;

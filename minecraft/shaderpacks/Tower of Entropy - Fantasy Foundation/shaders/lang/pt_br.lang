@@ -33,3 +33,12 @@ option.AA_QUALITY=Qualidade do FXAA
 option.AA_STRENGTH=Intensidade
 
 value.ANTIALIASING.2=SMAA 1x
+
+screen.AURORA=Aurora boreal
+option.AURORA=Aurora boreal
+value.AURORA.0=Desligada
+value.AURORA.1=Ligada
+option.AURORA_FREQUENCY=Frequência
+option.AURORA_INTENSITY=Intensidade
+option.AURORA_SPEED=Velocidade
+option.AURORA_QUALITY=Qualidade das cortinas

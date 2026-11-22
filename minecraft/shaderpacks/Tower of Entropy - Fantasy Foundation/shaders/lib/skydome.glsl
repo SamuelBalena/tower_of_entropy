@@ -1,5 +1,11 @@
 #include "/lib/celestial.glsl"
 #include "/lib/cloudscape.glsl"
+#ifdef TOE_MAIN_SKY
+#include "/lib/region.glsl"
+#if AURORA == 1
+#include "/lib/aurora.glsl"
+#endif
+#endif
 
 vec3 renderSkydome(vec3 ray, vec3 sun, vec3 moon) {
     float rain = clamp(rainStrength, 0.0, 1.0);
@@ -17,6 +23,9 @@ vec3 renderSkydome(vec3 ray, vec3 sun, vec3 moon) {
     vec3 sky = mix(mix(horizon, dome, smoothstep(0.0, 0.42, up)), zenith, smoothstep(0.19, 1.0, up));
     sky = mix(sky, mix(vec3(0.12, 0.15, 0.23), vec3(0.43, 0.51, 0.62), day), rain * 0.82);
     float night = (1.0 - smoothstep(-0.29, -0.08, sun.y)) * (1.0 - rain);
+#if defined(TOE_MAIN_SKY) && AURORA == 1
+    sky += auroraLight(ray, sun, rain);
+#endif
     if (night > 0.001) sky += starLight(ray, night);
     sky = celestialLight(sky, ray, sun, moon, 1.0 - rain);
 #ifdef REFLECTION_SKY_WITHOUT_CLOUDS

@@ -33,3 +33,12 @@ option.AA_QUALITY=FXAA quality
 option.AA_STRENGTH=Strength
 
 value.ANTIALIASING.2=SMAA 1x
+
+screen.AURORA=Aurora borealis
+option.AURORA=Aurora borealis
+value.AURORA.0=Off
+value.AURORA.1=On
+option.AURORA_FREQUENCY=Frequency
+option.AURORA_INTENSITY=Intensity
+option.AURORA_SPEED=Speed
+option.AURORA_QUALITY=Curtain quality

@@ -24,3 +24,10 @@ const float shadowDistance = 68.0;
 #endif
 const float shadowDistanceRenderMul = 1.0;
 const bool shadowtex0Nearest = true;
+
+// Regional sky
+#define AURORA 1 // [0 1]
+#define AURORA_FREQUENCY 0.65 // [0.25 0.40 0.50 0.65 0.80 1.00]
+#define AURORA_INTENSITY 0.85 // [0.45 0.60 0.75 0.85 1.00 1.20]
+#define AURORA_SPEED 1.0 // [0.5 0.75 1.0 1.25 1.5]
+#define AURORA_QUALITY 2 // [1 2 3]
