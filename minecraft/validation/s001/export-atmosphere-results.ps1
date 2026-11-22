@@ -6,12 +6,14 @@ function AtSecond([string]$stamp) {
 }
 
 $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log' -File) {
-    if ($file.BaseName -notmatch '^(?<size>\d+x\d+)-(?<variant>[A-F]|Off|High|FXAA)$') { continue }
+    if ($file.BaseName -notmatch '^(?<size>\d+x\d+)-(?<variant>[A-F]|Off|High|FXAA|Before|ExpansionOff|Leve|Equilibrado(?:-[A-Z_]+|-Effects)?|Alto)$') { continue }
     $requested, $variant = $Matches.size, $Matches.variant
-    $lines = Select-String -LiteralPath $file.FullName -Pattern 'TOE_S001_(SETUP|RESULT)|TOE_S0011_TIMING|^BUILD SUCCESSFUL'
+    $lines = Select-String -LiteralPath $file.FullName -Pattern 'TOE_S001_(SETUP|RESULT)|TOE_S0011_TIMING|^BUILD SUCCESSFUL|Creating pipeline for dimension|Reloading pipeline on dimension change'
     $setup = $lines | Where-Object Line -Match 'TOE_S001_SETUP' | Select-Object -First 1
     if (!$setup -or $setup.Line -match 'shader=off' -or $setup.Line -notmatch 'size=(\d+x\d+)') { continue }
     $actual = $Matches[1]
+    $hashPath = Join-Path $file.DirectoryName "$($file.BaseName)/pack-sha256.txt"
+    $hash = if (Test-Path -LiteralPath $hashPath) { (Get-Content -Raw -LiteralPath $hashPath).Trim() }
     if (!($lines | Where-Object Line -Match '^BUILD SUCCESSFUL')) { continue }
     $gpuPath = Join-Path $file.DirectoryName "$($file.BaseName)-gpu.csv"
     $gpu = if (Test-Path -LiteralPath $gpuPath) {
@@ -27,7 +29,12 @@ $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log'
             $timing[$Matches[1]] = [double]::Parse($Matches[2],$culture)
         }
     }
+    $pipelineDimension = $null
     foreach ($line in $lines) {
+        if ($line.Line -match "(?:Creating pipeline for dimension|Reloading pipeline on dimension change).*NamespacedId\{namespace='([^']+)', name='([^']+)'\}") {
+            $pipelineDimension = "$($Matches[1]):$($Matches[2])"
+            continue
+        }
         if ($line.Line -notmatch '^\[(\d{2}:\d{2}:\d{2})\].*TOE_S001_RESULT (\S+) n=(\d+) fps=([\d.]+) low=([\d.]+) p95=([\d.]+)') { continue }
         $second = AtSecond $Matches[1]
         $scene = $Matches[2]
@@ -35,12 +42,15 @@ $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log'
         $fps = [double]::Parse($Matches[4],$culture)
         $low = [double]::Parse($Matches[5],$culture)
         $p95 = [double]::Parse($Matches[6],$culture)
+        $dimension = if ($line.Line -match ' dimension=(\S+)') { $Matches[1] } else { $pipelineDimension }
         $window = @($gpu | Where-Object { $age = ($second - $_.second + 86400) % 86400; $age -ge 1 -and $age -le 3 })
         [pscustomobject]@{
+            sha256 = $hash
             requested = $requested
             framebuffer = $actual
             variant = $variant
             scene = $scene
+            dimension = $dimension
             frames = $frames
             fps = $fps.ToString("F2",$culture)
             low1 = $low.ToString("F2",$culture)

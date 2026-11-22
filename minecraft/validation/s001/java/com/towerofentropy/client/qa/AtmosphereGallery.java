@@ -35,7 +35,20 @@ final class AtmosphereGallery {
         new Scene("aurora_boundary", "snowy_plains", 18000, 0),
         new Scene("aurora_clear_air", "frozen_peaks", 16300, 0),
         new Scene("fog_before_sunrise", "forest", 23980, 0),
-        new Scene("fog_after_sunrise", "forest", 24020, 0)
+        new Scene("fog_after_sunrise", "forest", 24020, 0),
+        new Scene("expansion_window", "forest", 1300, 0),
+        new Scene("expansion_window_rain", "forest", 1300, 1),
+        new Scene("expansion_dry", "plains", 3700, 0),
+        new Scene("expansion_rain", "plains", 3700, 1),
+        new Scene("expansion_wind", "plains", 3700, 2),
+        new Scene("expansion_snow", "snowy_plains", 18000, 2),
+        new Scene("expansion_held_light", "forest", 18000, 0),
+        new Scene("expansion_snow_clear", "snowy_plains", 18000, 0),
+        new Scene("expansion_nether_wastes", "nether_wastes", 6000, 0),
+        new Scene("expansion_nether_crimson", "crimson_forest", 6000, 0),
+        new Scene("expansion_nether_warped", "warped_forest", 6000, 0),
+        new Scene("expansion_nether_soul", "soul_sand_valley", 6000, 0),
+        new Scene("expansion_nether_basalt", "basalt_deltas", 6000, 0)
     };
     private static boolean prepared;
 
@@ -72,6 +85,13 @@ final class AtmosphereGallery {
             String warmerSide = (ORIGIN + 8) + " -64 -20 " + (ORIGIN + 20) + " 319 20";
             dispatcher.performPrefixedCommand(source, "fillbiome " + warmerSide + " minecraft:plains");
         }
+        if (scene.name().startsWith("expansion_")) {
+            buildExpansion(level, scene);
+            if (scene.name().equals("expansion_held_light")) {
+                player.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND,
+                    new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.TORCH));
+            }
+        }
         boolean elevated = scene.name().equals("aurora_clear_air");
         int cameraHeight = elevated ? 244 : BASE + 2;
         if (elevated) {
@@ -79,7 +99,8 @@ final class AtmosphereGallery {
                 for (int z = -4; z <= 4; ++z) place(level, x, cameraHeight - 1, z, Blocks.SNOW_BLOCK);
             }
         }
-        player.teleportTo(level, ORIGIN + 0.5, cameraHeight, 0.5, -91.0F,
+        boolean gallery = scene.name().startsWith("expansion_");
+        player.teleportTo(level, ORIGIN + (gallery ? -3.5 : 0.5), cameraHeight, 0.5, -91.0F,
                 elevated ? -27.0F : scene.name().startsWith("aurora") ? -15.0F : -6.0F);
         var biome = level.getBiome(BlockPos.containing(ORIGIN + 0.5, cameraHeight, 0.5)).unwrapKey().orElseThrow();
         if (!biome.location().getPath().equals(scene.biome())) {
@@ -87,6 +108,33 @@ final class AtmosphereGallery {
         }
         LogUtils.getLogger().info("TOE_ATMOS_SCENE {} biome={} time={} weather={} cells={}",
                 scene.name(), biome.location(), scene.time(), scene.weather(), replaced);
+    }
+
+    static void prepareNether(ServerPlayer player, Scene scene) {
+        ServerLevel level = player.serverLevel();
+        level.setDayTime(scene.time());
+        var server = level.getServer();
+        var source = server.createCommandSourceStack().withSuppressedOutput().withLevel(level);
+        server.getCommands().performPrefixedCommand(source, "gamerule commandModificationBlockLimit 1000000");
+        int floorY = 107, zCenter = 248;
+        for (int x = -14; x <= 46; ++x) for (int z = zCenter - 5; z <= zCenter + 5; ++z) {
+            level.setBlock(new BlockPos(x, floorY, z), Blocks.BASALT.defaultBlockState(), Block.UPDATE_CLIENTS);
+            for (int y = 1; y <= 6; ++y) {
+                boolean edge = x == -14 || x == 46 || Math.abs(z - zCenter) == 5;
+                Block block = edge || y == 6 ? Blocks.BLACKSTONE : Blocks.AIR;
+                if (y == 1 && z == zCenter - 4 && x % 9 == 0) block = Blocks.SHROOMLIGHT;
+                if (y == 1 && z == zCenter + 4 && x % 9 == 0) block = Blocks.SOUL_LANTERN;
+                level.setBlock(new BlockPos(x, floorY + y, z), block.defaultBlockState(), Block.UPDATE_CLIENTS);
+            }
+        }
+        for (int x = -1; x <= 2; ++x) level.getChunk(x, 15);
+        server.getCommands().performPrefixedCommand(source,
+            "fillbiome -16 96 240 47 125 255 minecraft:" + scene.biome());
+        player.teleportTo(level, -11.5, floorY + 1, zCenter + 0.5, -90.0F, -3.0F);
+        String actual = level.getBiome(player.blockPosition()).unwrapKey().orElseThrow().location().getPath();
+        if (!actual.equals(scene.biome()))
+            throw new IllegalStateException("Expected Nether biome " + scene.biome() + ", received " + actual);
+        LogUtils.getLogger().info("TOE_ATMOS_SCENE {} biome={} time={} weather=0", scene.name(), actual, scene.time());
     }
 
     static void crossBoundary(ServerPlayer player) {
@@ -126,7 +174,44 @@ final class AtmosphereGallery {
         }
     }
 
+    private static void buildExpansion(ServerLevel level, Scene scene) {
+        boolean room = scene.name().startsWith("expansion_window") || scene.name().equals("expansion_held_light");
+        boolean winter = scene.name().startsWith("expansion_snow");
+        var floor = new Block[]{Blocks.STONE_BRICKS, Blocks.SPRUCE_PLANKS, Blocks.SMOOTH_STONE, Blocks.GRASS_BLOCK};
+        for (int x = -6; x <= 18; x++) for (int z = -9; z <= 9; z++) {
+            place(level, x, BASE, z, winter ? Blocks.SNOW_BLOCK : floor[(z + 9) / 5]);
+            for (int y = 1; y <= 6; y++) {
+                boolean roof = room && x < 9 && y == 5;
+                boolean wall = room && (z == -9 || z == 9 || x == -6 || x == 8) && y < 5;
+                boolean window = x == 8 && Math.abs(z) <= 3 && y >= 2 && y <= 4;
+                place(level, x, BASE + y, z, (roof || wall && !window) ? Blocks.STONE_BRICKS : Blocks.AIR);
+            }
+        }
+        if (!room && !winter) {
+            for (int x = 0; x <= 16; x += 2) {
+                place(level, x, BASE + 1, 6, Blocks.FERN);
+                place(level, x, BASE + 1, 8, Blocks.POPPY);
+                place(level, x, BASE, -8, Blocks.FARMLAND);
+                place(level, x, BASE + 1, -8, Blocks.WHEAT.defaultBlockState()
+                    .setValue(net.minecraft.world.level.block.CropBlock.AGE, 7));
+            }
+            for (int x = 5; x <= 12; x++) for (int z = -3; z <= 0; z++) {
+                place(level, x, BASE - 1, z, Blocks.SAND);
+                place(level, x, BASE, z, (x + z) % 2 == 0 ? Blocks.SEAGRASS : Blocks.WATER);
+            }
+        }
+        if (!scene.name().equals("expansion_held_light")) {
+            place(level, 5, BASE + 1, -4, Blocks.IRON_BLOCK);
+            place(level, 5, BASE + 2, -4, Blocks.LANTERN);
+            place(level, 3, BASE + 1, 3, Blocks.STONE_BRICK_STAIRS);
+        }
+    }
+
     private static void place(ServerLevel level, int x, int y, int z, Block block) {
-        level.setBlock(new BlockPos(ORIGIN + x, y, z), block.defaultBlockState(), Block.UPDATE_CLIENTS);
+        place(level, x, y, z, block.defaultBlockState());
+    }
+
+    private static void place(ServerLevel level, int x, int y, int z, net.minecraft.world.level.block.state.BlockState state) {
+        level.setBlock(new BlockPos(ORIGIN + x, y, z), state, Block.UPDATE_CLIENTS);
     }
 }

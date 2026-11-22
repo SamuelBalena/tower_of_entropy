@@ -31,6 +31,10 @@ import org.lwjgl.opengl.GL11;
 @Mod.EventBusSubscriber(modid = "towerofentropy", value = Dist.CLIENT)
 public final class ShaderBenchmark {
     private static final boolean ATMOSPHERE = Boolean.getBoolean("toe.atmosphere.qa");
+    private static final String EFFECT_PLAN = System.getProperty("toe.atmosphere.effects", "");
+    private static final String[] EFFECT_TRIALS = EFFECT_PLAN.isBlank() ? new String[0] : EFFECT_PLAN.split(",");
+    private static java.util.Properties referenceEffects;
+    private static String effectSuffix = "";
     private static final String[] ATMOSPHERE_SCENES = {
         "aurora_snowy_plains", "aurora_ice_spikes", "aurora_frozen_ocean", "aurora_snowy_taiga",
         "aurora_grove", "aurora_frozen_peaks", "aurora_dusk", "aurora_desert", "fog_forest_dawn",
@@ -79,8 +83,8 @@ public final class ShaderBenchmark {
     private static final int[] LIGHTING_SCENES = {15, 0, 1, 20, 21, 22, 23, 7, 8, 9, 12, 4, 3};
     private static int selectedScene = -1;
     private static final int Y = 108;
-    private static final int WARMUP = 48;
-    private static final int END = 108;
+    private static final int WARMUP = Integer.getInteger("toe.s001.warmup", 48);
+    private static final int END = WARMUP + 60;
     private static final ArrayList<Double> samples = new ArrayList<>();
     private static final ArrayList<Zombie> mobs = new ArrayList<>();
     private static int titleTicks, scene = -1, tick;
@@ -139,12 +143,22 @@ public final class ShaderBenchmark {
                 });
             }
         }
+        if (ATMOSPHERE && (SCENES[scene].equals("expansion_wind") || SCENES[scene].equals("expansion_dry"))
+                && (tick == WARMUP - 20 || tick == WARMUP))
+            Screenshot.grab(new File("."), "s002-" + SCENES[scene] + effectSuffix + "-" + tick + ".png",
+                mc.getMainRenderTarget(), ignored -> {});
+        if (ATMOSPHERE && SCENES[scene].equals("expansion_held_light")) {
+            mc.options.keyUp.setDown(tick >= WARMUP && tick < WARMUP + 24);
+            if (tick == WARMUP || tick == WARMUP + 24)
+                Screenshot.grab(new File("."), "s002-held-light" + effectSuffix + "-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
+        }
+        if (ATMOSPHERE && scene == 5) captureHud(mc);
         if (S0013) sharpnessInput(mc);
-        if (S0016 && scene == 37) {
+        if ((S0016 || ATMOSPHERE) && scene == 37) {
             mc.options.keyUp.setDown(tick >= 24);
             mc.options.keySprint.setDown(tick >= 24);
         }
-        if (S0016 && scene == 41) mc.player.setYRot(39.0f * (float)Math.sin(tick * 0.23f));
+        if ((S0016 || ATMOSPHERE) && scene == 41) mc.player.setYRot(39.0f * (float)Math.sin(tick * 0.23f));
         if (LAVA && scene == 44) {
             mc.player.setYRot(lavaOceanYaw);
             mc.player.setXRot(14.0f);
@@ -170,10 +184,17 @@ public final class ShaderBenchmark {
         }
         if ((UNIVERSAL || ATMOSPHERE) && scene == 78) {
             mc.player.setYRot(-90.0f + 34.0f * (float)Math.sin(tick * 0.24));
-            if (tick == WARMUP + 12 || tick == WARMUP + 36)
+            if (!ATMOSPHERE && (tick == WARMUP + 12 || tick == WARMUP + 36))
                 Screenshot.grab(new File("."), "s001-aa-motion-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
         }
-        if (scene == 12 && (tick == 43 || tick == 65 || tick == 86)) attack();
+        if (ATMOSPHERE && (scene == 78 || scene == 41) && tick >= WARMUP - 16 && tick < WARMUP - 8) {
+            Screenshot.grab(new File("."), "s002-sequence-" + SCENES[scene] + "-" + (tick - WARMUP + 16) + ".png",
+                    mc.getMainRenderTarget(), ignored -> {});
+        }
+        if (scene == 12) {
+            int attackTick = tick - (WARMUP - 48);
+            if (attackTick == 43 || attackTick == 65 || attackTick == 86) attack();
+        }
         if (tick == WARMUP) {
             samples.clear();
             lastFrame = 0;
@@ -188,7 +209,8 @@ public final class ShaderBenchmark {
         }
         if (tick == END) {
             report(mc);
-            Screenshot.grab(new File("."), "s001-" + SCENES[scene] + ".png", mc.getMainRenderTarget(), ignored -> {});
+            Screenshot.grab(new File("."), "s001-" + SCENES[scene] + effectSuffix + ".png",
+                    mc.getMainRenderTarget(), ignored -> {});
             if (Boolean.getBoolean("toe.s001.oneScene")) {
                 mc.stop();
                 return;
@@ -209,6 +231,12 @@ public final class ShaderBenchmark {
         ready = false;
         tick = 0;
         if (ATMOSPHERE) {
+            mc.options.keyUp.setDown(false);
+            mc.options.keySprint.setDown(false);
+        }
+        if (EFFECT_TRIALS.length > 0) {
+            selectEffectTrial();
+        } else if (ATMOSPHERE) {
             String[] requested = System.getProperty("toe.atmosphere.scenes", String.join(",", ATMOSPHERE_SCENES)).split(",");
             scene = ++selectedScene < requested.length ? java.util.Arrays.asList(SCENES).indexOf(requested[selectedScene]) : SCENES.length;
             if (scene < 0) throw new IllegalArgumentException("Unknown atmosphere QA scene " + requested[selectedScene]);
@@ -258,6 +286,44 @@ public final class ShaderBenchmark {
         });
     }
 
+    private static void selectEffectTrial() {
+        if (++selectedScene >= EFFECT_TRIALS.length * 2) {
+            scene = SCENES.length;
+            return;
+        }
+        String[] trial = EFFECT_TRIALS[selectedScene / 2].split("=", 2);
+        if (trial.length != 2) throw new IllegalArgumentException("Expected OPTION=scene: " + EFFECT_TRIALS[selectedScene / 2]);
+        scene = java.util.Arrays.asList(SCENES).indexOf(trial[1]);
+        if (scene < 0) throw new IllegalArgumentException("Unknown effect QA scene " + trial[1]);
+        boolean enabled = selectedScene % 2 == 0;
+        effectSuffix = "-" + trial[0] + (enabled ? "-on" : "-off");
+        try {
+            Class<?> iris = Class.forName("net.irisshaders.iris.Iris");
+            if (referenceEffects == null) {
+                referenceEffects = new java.util.Properties();
+                // Oculus rewrites its live preferences to omit options that equal pack defaults.
+                try (var input = java.nio.file.Files.newInputStream(java.nio.file.Path.of("effect-reference.properties"))) {
+                    referenceEffects.load(input);
+                }
+            }
+            var options = new java.util.Properties();
+            options.putAll(referenceEffects);
+            String value = options.getProperty(trial[0]);
+            if (value == null || value.equals("0"))
+                throw new IllegalStateException("The reference preset must enable " + trial[0]);
+            if (!enabled) options.setProperty(trial[0], "0");
+            iris.getMethod("queueShaderPackOptionsFromProperties", java.util.Properties.class).invoke(null, options);
+            iris.getMethod("reload").invoke(null);
+            String active = shaderActive();
+            if (active.equals("off") || active.equals("no-loader"))
+                throw new IllegalStateException("Oculus is inactive for " + effectSuffix);
+            LogUtils.getLogger().info("TOE_S002_EFFECT {}={} scene={} shader={}", trial[0],
+                    options.getProperty(trial[0]), SCENES[scene], active);
+        } catch (ReflectiveOperationException | java.io.IOException failure) {
+            throw new IllegalStateException("Unable to load effect trial " + effectSuffix, failure);
+        }
+    }
+
     private static void report(Minecraft mc) {
         if (samples.isEmpty()) throw new IllegalStateException("Benchmark recorded no frames");
         samples.sort(Comparator.naturalOrder());
@@ -267,13 +333,14 @@ public final class ShaderBenchmark {
         double worst = samples.subList(n - tail, n).stream().mapToDouble(Double::doubleValue).average().orElseThrow();
         double p95 = samples.get((int)Math.ceil(n * .95) - 1);
         double p99 = samples.get((int)Math.ceil(n * .99) - 1);
-        LogUtils.getLogger().info("TOE_S001_RESULT {} n={} fps={} low={} p95={} opacity={} armor={} composites={}",
-                SCENES[scene], n, 1000 / average, 1000 / worst, p95, opacity(mc),
-                delta("PlayerRendererR3", "armorDraws", initialArmor), delta("ContextualPlayerLayer", "composites", initialComposites));
+        LogUtils.getLogger().info("TOE_S001_RESULT {} n={} fps={} low={} p95={} opacity={} armor={} composites={} dimension={}",
+                SCENES[scene] + effectSuffix, n, 1000 / average, 1000 / worst, p95, opacity(mc),
+                delta("PlayerRendererR3", "armorDraws", initialArmor), delta("ContextualPlayerLayer", "composites", initialComposites),
+                mc.level.dimension().location());
         long draws = delta("PlayerRendererR3", "drawCalls", initialDraws);
         long blends = delta("ContextualPlayerLayer", "composites", initialComposites);
         LogUtils.getLogger().info("TOE_S0011_TIMING {} p99={} draws={} r3Ms={} captureMs={} compositeMs={}",
-                SCENES[scene], p99, draws, meanMillis(delta("PlayerRendererR3", "pipelineNanos", initialPipeline), draws),
+                SCENES[scene] + effectSuffix, p99, draws, meanMillis(delta("PlayerRendererR3", "pipelineNanos", initialPipeline), draws),
                 meanMillis(delta("ContextualPlayerLayer", "captureNanos", initialCapture), blends),
                 meanMillis(delta("ContextualPlayerLayer", "compositeNanos", initialComposite), blends));
         LogUtils.getLogger().info("TOE_S0011_OCULUS {} composites={} binds={}", SCENES[scene],
@@ -287,6 +354,19 @@ public final class ShaderBenchmark {
             LogUtils.getLogger().info("TOE_S0016_MOTION {} swimming={} submerged={} pos={} yaw={}",
                     SCENES[scene], mc.player.isSwimming(), mc.player.isUnderWater(),
                     mc.player.position(), mc.player.getYRot());
+        }
+    }
+
+    private static void captureHud(Minecraft mc) {
+        if (tick == WARMUP - 24) mc.options.hideGui = false;
+        if (tick == WARMUP - 20) {
+            Screenshot.grab(new File("."), "s002-hud.png", mc.getMainRenderTarget(), ignored -> {});
+            mc.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(mc.player));
+        }
+        if (tick == WARMUP - 12) {
+            Screenshot.grab(new File("."), "s002-inventory.png", mc.getMainRenderTarget(), ignored -> {});
+            mc.setScreen(null);
+            mc.options.hideGui = true;
         }
     }
 
@@ -403,7 +483,13 @@ public final class ShaderBenchmark {
 
     private static void prepare(ServerPlayer player, int stage) {
         if (stage >= BASE_SCENES.length) {
-            AtmosphereGallery.prepare(player, AtmosphereGallery.SCENES[stage - BASE_SCENES.length]);
+            var scene = AtmosphereGallery.SCENES[stage - BASE_SCENES.length];
+            if (scene.name().startsWith("expansion_nether_")) {
+                prepareMaterialGallery(player, 76);
+                AtmosphereGallery.prepareNether(player, scene);
+            } else {
+                AtmosphereGallery.prepare(player, scene);
+            }
             return;
         }
         if (stage >= 56) {
@@ -414,7 +500,7 @@ public final class ShaderBenchmark {
             prepareLava(player, stage);
             return;
         }
-        ServerLevel level = player.serverLevel();
+        ServerLevel level = ATMOSPHERE ? player.getServer().overworld() : player.serverLevel();
         if (stage == 0 || (S0013 || S0014) && stage == 15 || S0015 && stage == 24 || S0016 && stage == 31 || Boolean.getBoolean("toe.s001.oneScene")) {
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DOMOBSPAWNING).set(false, level.getServer());
             level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, level.getServer());
@@ -901,7 +987,7 @@ public final class ShaderBenchmark {
     }
 
     private static void prepareWater(ServerPlayer player, int stage) {
-        ServerLevel level = player.serverLevel();
+        ServerLevel level = ATMOSPHERE ? player.getServer().overworld() : player.serverLevel();
         int halfWidth = stage == 32 ? 7 : 15;
         int deep = stage == 33 ? 8 : stage == 31 ? 2 : 5;
         for (int x = -16; x <= 16; ++x) for (int z = -12; z <= 25; ++z) {
