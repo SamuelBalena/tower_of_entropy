@@ -5,12 +5,14 @@ No mundo, pressione **F8** ou execute **`/toe_animstudio`**. O atalho é configu
 Para experimentar a sequência de 2 segundos pronta, copie o exemplo validado para o diretório de projetos da instância e abra-o pela biblioteca. [Projeto Classic teste_aceno](../validation/m003e1/examples/teste_aceno.json)
 
 1. Abra **Ajustes** para escolher Classic ou Slim, a pose neutra ou Idle, a duração e o FPS de edição. Para reproduzir o exemplo `teste_aceno`, defina 2 segundos e 30 FPS.
-2. Escolha um osso no painel **Esqueleto** ou clique em sua articulação no viewport. Arraste um dos controles coloridos para girar em torno do eixo local. Digite valores no Inspector e pressione **Enter** para aplicá-los.
+2. Escolha um osso no painel **Esqueleto** ou clique em sua articulação no viewport. Arraste um anel colorido em torno do pivô. Para os braços, azul é frontal, verde abre e fecha lateralmente e vermelho torce. **Modo** alterna para os eixos locais X/Y/Z. Digite valores no Inspector e pressione **Enter** para aplicá-los.
 3. Na timeline, coloque o playhead em 0, 0,50, 1,00, 1,50 e 2,00 segundos. Ajuste o braço direito e use **+ Key** a cada pose. Arraste marcadores para mudar seu tempo e use **Apagar** para excluir a chave selecionada.
 4. Use **Play** ou **Espaço** para reproduzir ou pausar. **Loop** repete a sequência e **Vel.** alterna entre 0,25×, 0,50×, 1×, 1,50× e 2×.
-5. Salve o projeto e reabra-o pela biblioteca. **Salvar +** cria outra cópia. A biblioteca permite renomear e excluir projetos.
+5. Salve o projeto e reabra-o pela biblioteca. **Salvar +** cria outra cópia. A biblioteca permite renomear, duplicar, excluir, importar e exportar projetos JSON. A opção **Recuperar** lista rascunhos preservados.
 
-Botão direito arrastado orbita a câmera. Botão do meio ou Shift com botão direito move o enquadramento. A roda aproxima ou afasta. Os botões **Ossos**, **Câmera** e **Foco** alternam os controles do esqueleto, restauram a vista e centralizam a articulação selecionada.
+Botão direito arrastado orbita a câmera. Botão do meio ou Shift com botão direito move o enquadramento. A roda aproxima ou afasta. **Ossos** alterna os controles do esqueleto e **Foco** centraliza a articulação selecionada.
+
+Pressione **Shift** durante o arraste para reduzir a sensibilidade. **Snap** alterna entre livre, 1°, 5° e 15°. **Câmera** abre as vistas fixas e a orbital. [Controles e persistência da M003.E1.1](M003_E1_1_ANIMATION_STUDIO_PRECISION.md)
 
 | Atalho | Ação |
 | --- | --- |
@@ -20,11 +22,11 @@ Botão direito arrastado orbita a câmera. Botão do meio ou Shift com botão di
 | Ctrl + Y ou Ctrl + Shift + Z | Refazer |
 | Delete | Apagar a chave selecionada |
 | Home | Voltar ao início |
-| Esc | Fechar o editor ou sair do campo. Alterações pendentes abrem uma confirmação ao fechar. |
+| Esc | Cancelar o arraste ativo, sair do campo ou fechar o editor. Alterações pendentes abrem uma confirmação ao fechar. |
 
 ## Pose e reprodução
 
-A árvore vem das juntas dos skins do `RuntimeModel`. Ela exibe os 12 ossos do R3, incluindo quadril, cintura, ombros, cotovelos, pernas e joelhos. Identificadores internos são usados nas chaves. O Inspector expressa a rotação local em graus XYZ e a translação da raiz em unidades do modelo. Translações da raiz são limitadas a duas unidades por eixo.
+A árvore vem das juntas dos skins do `RuntimeModel`. Ela exibe os 12 ossos do R3, incluindo quadril, cintura, ombros, cotovelos, pernas e joelhos. Identificadores internos são usados nas chaves. O Inspector expressa a rotação em graus no modo ativo e a translação da raiz em unidades do modelo. Translações da raiz são limitadas a duas unidades por eixo.
 
 A pose salva é um deslocamento relativo à referência local. A opção Idle copia o primeiro instante de `UAL_idle` com um controlador exclusivo do editor. A avaliação recompõe as matrizes globais dos descendentes na hierarquia original e envia o resultado ao `GltfModelRenderer`. A prévia usa os pesos, malhas e UVs dos GLBs de runtime e a skin do jogador ou uma skin Steve da variante correspondente.
 
@@ -34,7 +36,7 @@ O editor é uma `Screen` cliente com sessão isolada. No singleplayer, a tela pa
 
 ## Projetos JSON
 
-Os projetos ficam em `config/towerofentropy/animation_studio/projects/` dentro da instância do Minecraft. A persistência usa a fila de I/O do jogo. Para salvar, são verificados modelo, assinatura do esqueleto, quadros, curvas e valores finitos. O salvamento prepara um arquivo temporário no mesmo diretório. **Salvar +** exige um nome livre. **Salvar** substitui o projeto ativo. A substituição usa movimentação atômica quando suportada.
+Os projetos ficam em `config/towerofentropy/animation_studio/projects/` dentro da instância do Minecraft. A persistência usa a fila de I/O do jogo. Para salvar, são verificados modelo, assinatura do esqueleto, quadros, curvas e valores finitos. O salvamento prepara um arquivo temporário no mesmo diretório. **Salvar +** exige um nome livre. **Salvar** pede confirmação antes de substituir o projeto ativo e guarda a versão anterior. A substituição usa movimentação atômica quando suportada.
 
 | Campo | Schema 1 |
 | --- | --- |
