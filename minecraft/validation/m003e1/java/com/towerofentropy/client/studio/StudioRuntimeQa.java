@@ -29,6 +29,7 @@ public final class StudioRuntimeQa {
     private static int step, ticks, wait;
     private static boolean opening, finished;
     private static StudioProject saved;
+    private static StudioProject recoveryExpected;
     private static Vec3 position;
     private static int selectedSlot;
     private static String forced;
@@ -57,7 +58,7 @@ public final class StudioRuntimeQa {
                 }
                 case 1 -> {
                     var screen = studio(mc);
-                    if (screen == null) return;
+                    if (screen == null || (boolean) field(screen, "loading")) return;
                     click(screen, "Ajustes");
                     fields(mc.screen, "2", "30", "neutra", SLIM ? "slim" : "classic");
                 }
@@ -66,6 +67,7 @@ public final class StudioRuntimeQa {
                     var rig = rig(screen);
                     require(rig.bones.size() == 12, "esqueleto real");
                     require(rig.resource.getPath().contains("slim") == SLIM, "variante");
+                    click(screen, "Modo");
                     select(screen, "3");
                     click(screen, "+ Key");
                 }
@@ -116,14 +118,8 @@ public final class StudioRuntimeQa {
                 case 9 -> {
                     var s = studio(mc);
                     StudioViewport view = field(s, "viewport");
-                    Vector3f[] axes = field(view, "axes");
-                    var point = axes[0];
-                    int axis = view.axis(point.x, point.y);
-                    require(axis >= 0, "handle do gizmo");
                     long input = System.nanoTime();
-                    s.mouseClicked(point.x, point.y, 0);
-                    s.mouseDragged(point.x + 20, point.y, 0, 20, 0);
-                    s.mouseReleased(point.x + 20, point.y, 0);
+                    dragRing(mc, s, 1, true, false);
                     gizmoNanos = System.nanoTime() - input;
                     require(!session(s).transform("0").equals(StudioProject.Transform.IDENTITY), "gizmo alterou a pose");
                     click(s, "Desfazer");
@@ -140,6 +136,7 @@ public final class StudioRuntimeQa {
                     require((float) field(view, "zoom") > 1, "zoom e órbita");
                     click(s, "Foco");
                     click(s, "Câmera");
+                    click(mc.screen, "Livre");
                 }
                 case 10 -> {
                     var s = studio(mc);
@@ -293,6 +290,216 @@ public final class StudioRuntimeQa {
                             && !projects.contains("copia_renomeada"), "biblioteca após exclusão");
                     click(library, "Voltar");
                     var s = studio(mc);
+                    var root = mc.gameDirectory.toPath().resolve("config/towerofentropy/animation_studio/projects");
+                    var files = new StudioFiles(mc.gameDirectory.toPath());
+                    var original = files.read("teste_aceno");
+                    if (!SLIM) {
+                        var originalPath = mc.gameDirectory.toPath().resolve("teste_aceno_m003e1.json");
+                        var previous = StudioFiles.readPath(originalPath);
+                        require(original.equals(previous), "schema 1 e cinco poses M003.E1");
+                        Files.copy(originalPath, root.resolve("legado.json"));
+                    } else {
+                        files.write(original.settings("legado", original.frames(), original.fps(), original.loop(), original.idle()), false);
+                    }
+                    s.libraryOpen("legado");
+                }
+                case 26 -> {
+                    var s = studio(mc);
+                    if ((boolean) field(s, "loading")) return;
+                    var p = session(s).project;
+                    require(p.keys().equals(saved.keys()) && p.frames() == 60, "reabrir projeto anterior");
+                    select(s, "0");
+                    rotate(s, "15", "0", "0");
+                    click(s, "Salvar");
+                    require(mc.screen instanceof ConfirmScreen, "substituição pede confirmação");
+                    click(mc.screen, ComponentNames.YES);
+                }
+                case 27 -> {
+                    var s = studio(mc);
+                    if ((boolean) field(s, "loading")) return;
+                    var root = mc.gameDirectory.toPath().resolve("config/towerofentropy/animation_studio/projects");
+                    require(StudioFiles.readPath(root.resolve(".backups/legado.json")).keys().equals(saved.keys()), "backup anterior");
+                    var files = new StudioFiles(mc.gameDirectory.toPath());
+                    var p = session(s).project;
+                    rejectWrite(files, p.settings("../inválido", p.frames(), p.fps(), p.loop(), p.idle()), "nome inválido");
+                    rejectWrite(files, p, "conflito de nome");
+                    Files.createDirectory(root.resolve("bloqueado.json"));
+                    rejectWrite(files, p.settings("bloqueado", p.frames(), p.fps(), p.loop(), p.idle()), "falha de destino");
+                    var exported = mc.gameDirectory.toPath().resolve("copia-exportada.json");
+                    StudioFiles.export(p, exported);
+                    require(StudioFiles.readPath(exported).equals(p), "cópia JSON externa");
+                    s.libraryImport(exported.toString(), "importado");
+                }
+                case 28 -> {
+                    if (!(mc.screen instanceof StudioLibrary library)) return;
+                    librarySelect(library, "importado");
+                    click(library, "Duplicar");
+                    fields(mc.screen, "duplicado");
+                }
+                case 29 -> {
+                    if (!(mc.screen instanceof StudioLibrary library)) return;
+                    List<String> names = field(library, "projects");
+                    require(names.containsAll(List.of("legado", "importado", "duplicado")), "importar e duplicar");
+                    click(library, "Voltar");
+                    var s = studio(mc);
+                    click(s, "Novo");
+                    click(s, "Ajustes");
+                    fields(mc.screen, "2", "30", "neutra", SLIM ? "slim" : "classic");
+                    if (!(boolean) field(s, "anatomical")) click(s, "Modo");
+                }
+                case 30 -> {
+                    var s = studio(mc);
+                    require((boolean) field(s, "anatomical"), "modo anatômico padrão");
+                    for (String leg : List.of("4", "5")) {
+                        select(s, leg);
+                        var neutral = limb(s, leg);
+                        rotate(s, "0", "0", "45");
+                        require(limb(s, leg).z < neutral.z - .10f, "perna para frente " + leg);
+                        rotate(s, "0", "45", "0");
+                        require((limb(s, leg).x - neutral.x) * (leg.equals("4") ? 1 : -1) > .10f,
+                                "abertura espelhada da perna " + leg);
+                        rotate(s, "0", "0", "0");
+                    }
+                    for (String hinge : List.of("102", "103", "104", "105")) {
+                        select(s, hinge);
+                        List<EditBox> fields = field(s, "transforms");
+                        require(!fields.get(0).visible && !fields.get(1).visible && fields.get(2).visible,
+                                "modo anatômico expõe só flexão " + hinge);
+                        fields.get(2).setValue("45");
+                        enter(s, fields.get(2));
+                        require(Math.abs(session(s).transform(hinge).qw() - .92388f) < .001, "flexão " + hinge);
+                        fields = field(s, "transforms");
+                        fields.get(2).setValue("0");
+                        enter(s, fields.get(2));
+                    }
+                    for (String arm : List.of("3", "2")) {
+                        select(s, arm);
+                        Vector3f neutral = limb(s, arm);
+                        rotate(s, "0", "0", "45");
+                        require(limb(s, arm).z < neutral.z - .10f, "azul para frente " + arm);
+                        rotate(s, "0", "0", "-45");
+                        require(limb(s, arm).z > neutral.z + .10f, "azul para trás " + arm);
+                        rotate(s, "0", "45", "0");
+                        require((limb(s, arm).x - neutral.x) * (arm.equals("2") ? 1 : -1) > .10f, "verde abre " + arm);
+                        rotate(s, "0", "-45", "0");
+                        require((limb(s, arm).x - neutral.x) * (arm.equals("2") ? -1 : 1) > .10f, "verde fecha " + arm);
+                        rotate(s, "45", "0", "0");
+                        require(limb(s, arm).distance(neutral) < .0001f, "vermelho torce sem deslocar " + arm);
+                        rotate(s, "15", "-15", "90");
+                        var q = session(s).transform(arm);
+                        click(s, "Modo");
+                        click(s, "Modo");
+                        require(q.equals(session(s).transform(arm)), "troca de modo preserva pose");
+                        rotate(s, "0", "0", "0");
+                    }
+                    select(s, "3");
+                    click(s, "+ Key");
+                    click(s, "Câmera");
+                    click(mc.screen, "Frente");
+                }
+                case 31 -> {
+                    var s = studio(mc);
+                    dragRing(mc, s, 2, true, false);
+                    require(limb(s, "3").z < -.03, "arraste azul frontal");
+                    pose(s, 15, "0", "0", "45");
+                    click(s, "Câmera");
+                    click(mc.screen, "Esquerda");
+                }
+                case 32 -> {
+                    shot(mc, "braco-direito-frente");
+                    var s = studio(mc);
+                    var before = limb(s, "3");
+                    dragRing(mc, s, 2, false, true);
+                    require(limb(s, "3").distance(before) < .0001, "arraste lateral cancelado");
+                    select(s, "2");
+                    rotate(s, "0", "45", "0");
+                    click(s, "Câmera");
+                    click(mc.screen, "Costas");
+                }
+                case 33 -> {
+                    shot(mc, "braco-esquerdo-abertura");
+                    var s = studio(mc);
+                    dragRing(mc, s, 2, true, true);
+                    require(limb(s, "2").z > -.001, "Esc restaurou o rascunho");
+                    rotate(s, "0", "0", "0");
+                    select(s, "3");
+                    pose(s, 30, "0", "45", "0");
+                    click(s, "Câmera");
+                    click(mc.screen, "Superior");
+                }
+                case 34 -> {
+                    var s = studio(mc);
+                    dragRing(mc, s, 0, true, true);
+                    pose(s, 45, "30", "30", "35");
+                    pose(s, 60, "0", "0", "0");
+                    click(s, "Câmera");
+                    click(mc.screen, "Livre");
+                }
+                case 35 -> {
+                    shot(mc, "anatomico-orbital");
+                    var s = studio(mc);
+                    dragRing(mc, s, 1, true, true);
+                    seek(s, 0);
+                    click(s, "Play");
+                    started = System.nanoTime();
+                }
+                case 36 -> {
+                    if (System.nanoTime() - started < 400_000_000L) return;
+                    var s = studio(mc);
+                    require(session(s).frame > 10 && session(s).frame < 21, "reprodução a 1x");
+                    click(s, "Play");
+                    seek(s, 0);
+                    for (int i = 0; i < 3; i++) click(s, "Vel.");
+                    click(s, "Play");
+                    started = System.nanoTime();
+                }
+                case 37 -> {
+                    if (System.nanoTime() - started < 750_000_000L) return;
+                    var s = studio(mc);
+                    require(session(s).frame > 3 && session(s).frame < 9, "reprodução a 0,25x");
+                    click(s, "Play");
+                    click(s, "Salvar");
+                    fields(mc.screen, "teste_bracos_precisao");
+                }
+                case 38 -> {
+                    var s = studio(mc);
+                    if ((boolean) field(s, "loading")) return;
+                    require(session(s).project.keys().stream().filter(k -> k.bone().equals("3")).count() == 5, "cinco chaves anatômicas");
+                    select(s, "2");
+                    rotate(s, "30", "15", "0");
+                    recoveryExpected = session(s).recoverySnapshot();
+                    setField(s, "lastAutosave", System.nanoTime() - 16_000_000_000L);
+                    s.tick();
+                }
+                case 39 -> {
+                    var s = studio(mc);
+                    var files = new StudioFiles(mc.gameDirectory.toPath());
+                    if (files.recoveries().isEmpty()) return;
+                    require(files.readRecovery(files.recoveries().get(0)).equals(recoveryExpected), "autosave separado incluiu o rascunho");
+                    mc.setScreen(null);
+                    open();
+                }
+                case 40 -> {
+                    if (mc.screen == null || !mc.screen.getTitle().getString().equals("Recuperação de projetos")) return;
+                    click(mc.screen, "Ignorar");
+                    click(studio(mc), "Abrir");
+                }
+                case 41 -> {
+                    if (!(mc.screen instanceof StudioLibrary library)) return;
+                    click(library, "Recuperar");
+                }
+                case 42 -> {
+                    if (mc.screen == null || !mc.screen.getTitle().getString().equals("Recuperação de projetos")) return;
+                    click(mc.screen, "Recuperar");
+                }
+                case 43 -> {
+                    var s = studio(mc);
+                    if (s == null || (boolean) field(s, "loading")) return;
+                    require(session(s).project.equals(recoveryExpected) && session(s).dirty()
+                            && field(s, "currentFile") == null, "recuperação sem substituir");
+                    var p = new StudioFiles(mc.gameDirectory.toPath()).read("teste_bracos_precisao");
+                    require(!p.equals(recoveryExpected) && p.keys().stream().filter(k -> k.bone().equals("3")).count() == 5,
+                            "reabertura da animação e original protegido");
                     var rig = rig(s);
                     LogUtils.getLogger().info("TOE_STUDIO PASS slim={} oculus={} draws={} evalMs={} renderMs={} heapMiB={} fps={}",
                             SLIM, ModList.get().isLoaded("oculus"), rig.draws, rig.evaluationNanos / 1e6, rig.renderNanos / 1e6,
@@ -342,6 +549,64 @@ public final class StudioRuntimeQa {
         require(index >= 0, "biblioteca " + name);
         library.mouseClicked(library.width / 2.0, 36 + index * 14, 0);
     }
+
+    private static void rejectWrite(StudioFiles files, StudioProject project, String reason) throws Exception {
+        try { files.write(project, false); }
+        catch (java.io.IOException expected) { return; }
+        throw new AssertionError(reason);
+    }
+
+    private static Vector3f limb(AnimationStudioScreen s, String arm) throws Exception {
+        var rig = rig(s);
+        var pose = rig.evaluate(session(s));
+        return pose[rig.bone("10" + arm).index()].getTranslation(new Vector3f())
+                .sub(pose[rig.bone(arm).index()].getTranslation(new Vector3f()));
+    }
+
+    private static void dragRing(Minecraft mc, AnimationStudioScreen s, int channel, boolean positive, boolean cancel) throws Exception {
+        StudioViewport view = field(s, "viewport");
+        List<StudioRing> rings = field(view, "rings");
+        var ring = rings.stream().filter(r -> r.channel() == channel).findFirst().orElseThrow();
+        double best = -1;
+        Vector3f start = null;
+        StudioRing.Hit picked = null;
+        double determinant = ring.u().x * ring.v().y - ring.u().y * ring.v().x;
+        boolean edge = Math.abs(determinant) <= .17 * Math.max(ring.u().lengthSquared(), ring.v().lengthSquared());
+        for (int i = 0; i < StudioRing.SEGMENTS; i++) {
+            var point = ring.point(i * StudioRing.STEP);
+            if (point.x <= (int) field(s, "left") + 3 || point.x >= (int) field(s, "right") - 3
+                    || point.y <= 62 || point.y >= (int) field(s, "bottom") - 3) continue;
+            if (view.pick(point.x, point.y, 2) >= 0) continue;
+            var hit = view.ring(point.x, point.y);
+            if (hit == null || hit.ring() != ring) continue;
+            double tangent = Math.hypot(-Math.sin(hit.angle()) * ring.u().x + Math.cos(hit.angle()) * ring.v().x,
+                    -Math.sin(hit.angle()) * ring.u().y + Math.cos(hit.angle()) * ring.v().y);
+            if (tangent > best) { best = tangent; start = point; picked = hit; }
+        }
+        require(start != null && best > 4, "anel selecionável channel=" + channel);
+        double direction = positive ? 1 : -1;
+        var mouse = mc.mouseHandler;
+        var move = mouse.getClass().getDeclaredMethod("onMove", long.class, double.class, double.class);
+        var press = mouse.getClass().getDeclaredMethod("onPress", long.class, int.class, int.class, int.class);
+        move.setAccessible(true);
+        press.setAccessible(true);
+        var window = mc.getWindow();
+        double scaleX = (double) window.getScreenWidth() / s.width, scaleY = (double) window.getScreenHeight() / s.height;
+        move.invoke(mouse, window.getWindow(), start.x * scaleX, start.y * scaleY);
+        press.invoke(mouse, window.getWindow(), 0, GLFW.GLFW_PRESS, 0);
+        require((int) field(s, "axis") == channel, "MouseHandler selecionou o anel " + channel);
+        for (int i = 1; i <= 6; i++) {
+            double phase = direction * i * .09;
+            var point = edge ? new Vector3f(start)
+                    .fma((float)(-Math.sin(picked.angle()) * phase), ring.u())
+                    .fma((float)(Math.cos(picked.angle()) * phase), ring.v())
+                    : ring.point(picked.angle() + phase);
+            move.invoke(mouse, window.getWindow(), point.x * scaleX, point.y * scaleY);
+        }
+        require((double) field(s, "dragDegrees") * direction > 10, "ângulo assinado, edge=" + edge);
+        if (cancel) s.keyPressed(GLFW.GLFW_KEY_ESCAPE, 0, 0);
+        press.invoke(mouse, window.getWindow(), 0, GLFW.GLFW_RELEASE, 0);
+    }
     private static void enter(Screen screen, EditBox box) {
         screen.mouseClicked(box.getX() + 2, box.getY() + 2, 0);
         screen.mouseReleased(box.getX() + 2, box.getY() + 2, 0);
@@ -389,5 +654,10 @@ public final class StudioRuntimeQa {
         var field = instance.getClass().getDeclaredField(name);
         field.setAccessible(true);
         return (T) field.get(instance);
+    }
+    private static void setField(Object instance, String name, Object value) throws Exception {
+        var field = instance.getClass().getDeclaredField(name);
+        field.setAccessible(true);
+        field.set(instance, value);
     }
 }

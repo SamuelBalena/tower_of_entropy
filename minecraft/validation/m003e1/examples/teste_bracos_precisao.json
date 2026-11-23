@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "name": "teste_bracos_precisao",
+  "model": "towerofentropy:steve_a3_wall_prototypes",
+  "skeleton": "e846924e-b06f-3aae-b6e5-267b2c90f9f2",
+  "idle": false,
+  "frames": 60,
+  "fps": 30,
+  "loop": false,
+  "tracks": [
+    {
+      "bone": "2",
+      "keyframes": [
+        {
+          "frame": 0,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 1.0
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 15,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 1.0
+          },
+          "curve": "LINEAR"
+        }
+      ]
+    },
+    {
+      "bone": "3",
+      "keyframes": [
+        {
+          "frame": 0,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.26673135,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 0.9637709
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 15,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.38268346,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 0.9238795
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 30,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.38268346,
+            "qw": 0.9238795
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 45,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.2166754,
+            "qy": 0.16325282,
+            "qz": 0.31360573,
+            "qw": 0.9099735
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 60,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 1.0
+          },
+          "curve": "LINEAR"
+        }
+      ]
+    }
+  ]
+}

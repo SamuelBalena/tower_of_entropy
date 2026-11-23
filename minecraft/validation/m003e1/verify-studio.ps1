@@ -19,6 +19,7 @@ try {
         if (Test-Path -LiteralPath $instance) { throw "QA instance already exists: $instance" }
         New-Item -ItemType Directory -Path "$instance/config","$instance/shaderpacks" | Out-Null
         Copy-Item -LiteralPath "$templatePath/saves","$templatePath/options.txt" -Destination $instance -Recurse
+        Copy-Item -LiteralPath 'validation/m003e1/examples/teste_aceno.json' -Destination "$instance/teste_aceno_m003e1.json"
         $args = @('--offline','-I','validation/s001/forge.init.gradle','-I','validation/m003e1/forge.init.gradle','runClient',
             "-PtoeStudioQa=$instance")
         if ($skin -eq 'classic') {

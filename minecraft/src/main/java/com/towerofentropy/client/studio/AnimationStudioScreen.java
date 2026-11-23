@@ -319,12 +319,19 @@ final class AnimationStudioScreen extends Screen {
     }
     private void drawInspector(GuiGraphics gui) {
         gui.drawString(font, "TRANSFORMAÇÃO", right + 6, 43, GOLD);
-        gui.drawString(font, font.plainSubstrByWidth(selected.label(), width - right - 13), right + 6, 56, TEXT);
+        gui.drawString(font, font.plainSubstrByWidth(selected.label(), width - right - 13), right + 6, 54, TEXT);
         var rotation = rig.rotation(selected, anatomical);
         int labelWidth = transforms.get(0).getX() - right - 10;
         for (int i = 0; i < 3; i++) {
-            gui.drawString(font, font.plainSubstrByWidth(rotation.labels()[i], labelWidth),
-                    right + 7, 64 + i * fieldStep, StudioViewport.AXIS_COLORS[i]);
+            String label = rotation.labels()[i];
+            if (font.width(label) > labelWidth) label = switch (label) {
+                case "Abrir/fechar", "Olhar lados", "Inclinação lateral" -> "Lateral";
+                case "Frente/trás", "Inclinação frontal" -> "Frontal";
+                case "Flexão/extensão" -> "Flexão";
+                case "Olhar cima/baixo" -> "Vertical";
+                default -> label;
+            };
+            gui.drawString(font, label, right + 7, 64 + i * fieldStep, StudioViewport.AXIS_COLORS[i]);
             if (selected.parent() < 0)
                 gui.drawString(font, "T" + "XYZ".charAt(i), right + 7, 64 + (i + 3) * fieldStep, MUTED);
         }
