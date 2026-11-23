@@ -127,6 +127,22 @@ function initializeCoreMod() {
             'target': {'type': 'CLASS', 'name': (ROOT + 'pipeline/programs/FallbackShader').replace(/\//g, '.')},
             'transformer': wrapShader
         },
+        'oculus_equipped_light_sampler': {
+            'target': {'type': 'CLASS', 'name': (ROOT + 'samplers/IrisSamplers').replace(/\//g, '.')},
+            'transformer': function (target) {
+                for (var i = 0; i < target.methods.size(); i++) {
+                    var method = target.methods.get(i);
+                    if (method.name !== 'addLevelSamplers' ||
+                        !method.desc.startsWith('(L' + ROOT + 'gl/sampler/SamplerHolder;')) continue;
+                    var code = new InsnList();
+                    code.add(new VarInsnNode(Opcodes.ALOAD, 0));
+                    code.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                        'com/towerofentropy/client/lighting/DynamicLightTexture', 'addSampler', '(Ljava/lang/Object;)V', false));
+                    method.instructions.insert(code);
+                }
+                return target;
+            }
+        },
         'oculus_world': {
             'target': {'type': 'CLASS', 'name': PIPELINE.replace(/\//g, '.')},
             'transformer': wrapPipeline

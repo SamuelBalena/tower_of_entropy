@@ -49,7 +49,7 @@ WorldLight sampleWorldLight(vec3 viewPos, vec3 normal, vec2 lightUV, vec3 geomet
     vec3 emitted = vec3(1.18, 0.83, 0.49) * pow(levels.x, 2.0);
     emitted *= 1.0 - 0.36 * day * sky;
 #if DYNAMIC_LIGHT > 0
-    emitted += heldLighting(viewPos, normal, levels);
+    emitted += equippedLighting(viewPos, normal, geometryNormal, levels);
 #endif
     // Combine illumination before multiplying albedo. Keep hot texels from washing out.
     return WorldLight(ambient, sun, direct, emitted, irradiance, skyColor, sky);

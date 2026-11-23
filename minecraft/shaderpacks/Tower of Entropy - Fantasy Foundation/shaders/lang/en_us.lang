@@ -109,7 +109,7 @@ value.WINTER_WEATHER.2=Medium
 value.WINTER_WEATHER.3=High
 
 screen.LUZ_DINAMICA=Dynamic light
-option.DYNAMIC_LIGHT=Held light range and strength
+option.DYNAMIC_LIGHT=Equipped light quality and source budget
 value.DYNAMIC_LIGHT.0=Off
 value.DYNAMIC_LIGHT.1=Low
 value.DYNAMIC_LIGHT.2=Medium

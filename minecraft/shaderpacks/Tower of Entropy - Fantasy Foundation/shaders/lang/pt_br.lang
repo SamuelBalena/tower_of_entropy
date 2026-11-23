@@ -109,7 +109,7 @@ value.WINTER_WEATHER.2=Médio
 value.WINTER_WEATHER.3=Alto
 
 screen.LUZ_DINAMICA=Luz dinâmica
-option.DYNAMIC_LIGHT=Alcance e intensidade da luz na mão
+option.DYNAMIC_LIGHT=Qualidade e limite de fontes equipadas
 value.DYNAMIC_LIGHT.0=Desligado
 value.DYNAMIC_LIGHT.1=Baixo
 value.DYNAMIC_LIGHT.2=Médio

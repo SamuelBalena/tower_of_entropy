@@ -67,6 +67,7 @@ public final class ContextualPlayerLayer {
 
     /** Called only by the active Oculus shader-world pipeline. */
     public static void beginOculusWorld() {
+        com.towerofentropy.client.lighting.DynamicLightTexture.beginFrame();
         oculusWorld = true;
         pendingOpacity = 0;
     }
@@ -229,6 +230,7 @@ public final class ContextualPlayerLayer {
 
     @SubscribeEvent
     public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
+        com.towerofentropy.client.lighting.DynamicLightTexture.resetWorld();
         endOculusWorld();
         worldPass = null;
         pendingOpacity = 0;

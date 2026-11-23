@@ -3,6 +3,7 @@ package com.towerofentropy.client;
 import java.util.UUID;
 import com.google.gson.*;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.towerofentropy.client.lighting.EquippedLightSources;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
 import com.towerofentropy.animation.ToeCpmPlugin;
@@ -191,11 +192,16 @@ public final class PlayerRendererR3 {
             if(!PREVIOUS&&!VisualContext.PREVIOUS&&forcedClip==null&&(airSword||wanted.equals("idle")||wanted.equals("walk")||wanted.equals("jog")||wanted.equals("sprint")||wanted.startsWith("jump_")||wanted.startsWith("swim")))
                 lastYaw=HorizontalLocomotion.travelYaw(event.getPartialTick(),lastYaw);
             long start=System.nanoTime();var ps=event.getPoseStack();ps.pushPose();
+            Matrix4f lightRoot = EquippedLightSources.needsAttachments(player) ? new Matrix4f(ps.last().pose()).invert() : null;
             try{
                 // glTF is Y-up. Reflect X to preserve the original Minecraft model handedness.
                 ps.mulPose(Axis.YP.rotationDegrees(180-lastYaw));ps.scale(-.9375f,.9375f,.9375f);
                 if(wanted.startsWith("swim"))ps.translate(0,-.40,0);
                 ps.last().pose().normal(ps.last().normal()); // exact inverse transpose for the handedness reflection
+                if (lightRoot != null) {
+                    var torso = new Matrix4f(ps.last().pose()).mul(globals[c.getNodeIndex("1")]);
+                    EquippedLightSources.captureBody(player, lightRoot, torso);
+                }
                 renderer.renderModel(model,globals,ps.last(),event.getMultiBufferSource(),event.getPackedLight(),OverlayTexture.NO_OVERLAY,0xffffffff);
                 if (hasArmor(player)) {
                     long armorStarted = System.nanoTime();
@@ -222,7 +228,7 @@ public final class PlayerRendererR3 {
                     }
                     boolean left=dedicatedLeft?hand==actionHand
                         :(hand==InteractionHand.MAIN_HAND)==(player.getMainArm()==HumanoidArm.LEFT);
-                    attachment(player,stack,left,bow&&hand==actionHand,dedicatedLeft,ps,event,c,globals,anchorTransform);
+                    attachment(player,stack,left,bow&&hand==actionHand,dedicatedLeft,ps,event,c,globals,anchorTransform,hand,lightRoot);
                 }
             }finally{ps.popPose();}
             long elapsed=System.nanoTime()-start;renderNanos+=elapsed;maxNanos=Math.max(maxNanos,elapsed);++drawCalls;
@@ -300,7 +306,7 @@ public final class PlayerRendererR3 {
         }finally{pose.popPose();}
     }
 
-    private static void attachment(AbstractClientPlayer player,ItemStack stack,boolean leftItem,boolean bow,boolean dedicatedLeft,PoseStack ps,RenderPlayerEvent.Pre e,AnimationController c,Matrix4f[] globals,Matrix4f blendedAnchor){
+    private static void attachment(AbstractClientPlayer player,ItemStack stack,boolean leftItem,boolean bow,boolean dedicatedLeft,PoseStack ps,RenderPlayerEvent.Pre e,AnimationController c,Matrix4f[] globals,Matrix4f blendedAnchor,InteractionHand logicalHand,Matrix4f lightRoot){
         String hand=leftItem?"102":"103";
         Matrix4f forearm=R3VisualPose.LEGACY?c.getNodeGlobalTransform(hand,0):globals[c.getNodeIndex(hand)];if(forearm==null)return;
         if(leftItem)blendedAnchor=sampleAnchor(c.getAnimationName().replace("UAL_",""),c.getAnimationTime(),302);
@@ -317,6 +323,8 @@ public final class PlayerRendererR3 {
             if(blendedAnchor!=null)ps.mulPoseMatrix(blendedAnchor);
             else{String name=c.getAnimationName().replace("UAL_","");var a=anchor(name,c.getAnimationTime());var p=a.getAsJsonObject("pos");var r=a.getAsJsonObject("rotation");ps.translate(p.get("x").getAsFloat()/16,p.get("y").getAsFloat()/16,p.get("z").getAsFloat()/16);var q=new Quaternionf().rotationZYX(rad(r,"z"),rad(r,"y"),rad(r,"x"));ps.mulPose(q);}
             ps.mulPose(Axis.XP.rotationDegrees(-90));ps.mulPose(Axis.YP.rotationDegrees(180));ps.translate((leftItem&&!dedicatedLeft?-1:1)/16f,.125,-.625);
+            EquippedLightSources.captureHand(player, logicalHand, logicalHand == InteractionHand.MAIN_HAND
+                    ? player.getMainArm() : player.getMainArm().getOpposite(), lightRoot, ps.last().pose());
             ps.last().pose().normal(ps.last().normal()); // mulPoseMatrix does not update normals in MC 1.20.1
             Minecraft.getInstance().getItemRenderer().renderStatic(player,stack,leftItem?ItemDisplayContext.THIRD_PERSON_LEFT_HAND:ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,leftItem,ps,e.getMultiBufferSource(),player.level(),e.getPackedLight(),OverlayTexture.NO_OVERLAY,player.getId());
             ++attachmentDraws;
