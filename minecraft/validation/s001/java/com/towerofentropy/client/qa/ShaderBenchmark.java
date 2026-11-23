@@ -37,6 +37,7 @@ public final class ShaderBenchmark {
     private static final String[] EFFECT_TRIALS = EFFECT_PLAN.isBlank() ? new String[0] : EFFECT_PLAN.split(",");
     private static java.util.Properties referenceEffects;
     private static String effectSuffix = "";
+    private static EquippedLightFixture equippedFixture;
     private static final String[] ATMOSPHERE_SCENES = {
         "aurora_snowy_plains", "aurora_ice_spikes", "aurora_frozen_ocean", "aurora_snowy_taiga",
         "aurora_grove", "aurora_frozen_peaks", "aurora_dusk", "aurora_desert", "fog_forest_dawn",
@@ -157,6 +158,8 @@ public final class ShaderBenchmark {
             if (tick == WARMUP || tick == WARMUP + 24)
                 Screenshot.grab(new File("."), "s002-held-light" + effectSuffix + "-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
         }
+        if (ATMOSPHERE && SCENES[scene].startsWith("equipped_"))
+            equippedFixture.tick(mc, SCENES[scene], tick, WARMUP);
         if (ATMOSPHERE && scene == 5) captureHud(mc);
         if (S0013) sharpnessInput(mc);
         if ((S0016 || ATMOSPHERE) && scene == 37) {
@@ -269,11 +272,15 @@ public final class ShaderBenchmark {
             ++scene;
         }
         if (scene >= (S0013 || S0014 || S0015 || S0016 || LAVA || MATERIALS || UNIVERSAL || ATMOSPHERE ? SCENES.length : ORIGINAL_SCENES)) {
+            if (equippedFixture != null) equippedFixture.setClientScene(mc, "");
             mc.stop();
             return;
         }
         mc.options.setCameraType((scene >= 7 && scene <= 9) || (scene >= 12 && scene < 24) || scene == 37 || scene == 52 || scene == 67
                 ? CameraType.THIRD_PERSON_BACK : CameraType.FIRST_PERSON);
+        if (ATMOSPHERE && SCENES[scene].startsWith("equipped_") && equippedFixture == null)
+            equippedFixture = EquippedLightFixture.load();
+        if (equippedFixture != null) equippedFixture.setClientScene(mc, SCENES[scene]);
         setMinimumOpacity(scene == 13 ? 1.0 : scene == 14 ? 0.0 : .12);
         if (S0013 || S0014) setCameraOption("RIGHT_SHOULDER", true);
         var server = mc.getSingleplayerServer();
@@ -491,7 +498,9 @@ public final class ShaderBenchmark {
     private static void prepare(ServerPlayer player, int stage) {
         if (stage >= BASE_SCENES.length) {
             var scene = AtmosphereGallery.SCENES[stage - BASE_SCENES.length];
-            if (scene.name().startsWith("expansion_nether_")) {
+            if (scene.name().startsWith("equipped_")) {
+                equippedFixture.prepare(player, scene.name());
+            } else if (scene.name().startsWith("expansion_nether_")) {
                 prepareMaterialGallery(player, 76);
                 AtmosphereGallery.prepareNether(player, scene);
             } else {

@@ -48,7 +48,28 @@ final class AtmosphereGallery {
         new Scene("expansion_nether_crimson", "crimson_forest", 6000, 0),
         new Scene("expansion_nether_warped", "warped_forest", 6000, 0),
         new Scene("expansion_nether_soul", "soul_sand_valley", 6000, 0),
-        new Scene("expansion_nether_basalt", "basalt_deltas", 6000, 0)
+        new Scene("expansion_nether_basalt", "basalt_deltas", 6000, 0),
+        new Scene("equipped_torch_main", "plains", 18000, 0),
+        new Scene("equipped_torch_off", "plains", 18000, 0),
+        new Scene("equipped_lantern_main", "plains", 18000, 0),
+        new Scene("equipped_lantern_off", "plains", 18000, 0),
+        new Scene("equipped_dual", "plains", 18000, 0),
+        new Scene("equipped_back", "plains", 18000, 0),
+        new Scene("equipped_inventory", "plains", 18000, 0),
+        new Scene("equipped_wall", "plains", 18000, 0),
+        new Scene("equipped_glass", "plains", 18000, 0),
+        new Scene("equipped_slab", "plains", 18000, 0),
+        new Scene("equipped_door_closed", "plains", 18000, 0),
+        new Scene("equipped_door_open", "plains", 18000, 0),
+        new Scene("equipped_redstone", "plains", 18000, 0),
+        new Scene("equipped_bars", "plains", 18000, 0),
+        new Scene("equipped_fence", "plains", 18000, 0),
+        new Scene("equipped_stairs", "plains", 18000, 0),
+        new Scene("equipped_trapdoor", "plains", 18000, 0),
+        new Scene("equipped_leaves", "plains", 18000, 0),
+        new Scene("equipped_soul", "plains", 18000, 0),
+        new Scene("equipped_back_motion", "plains", 18000, 0),
+        new Scene("equipped_swap", "plains", 18000, 0)
     };
     private static boolean prepared;
 

@@ -3,6 +3,7 @@ param(
     [string]$Baseline,
     [string]$ShaderPack,
     [switch]$LabPbr,
+    [switch]$Slim,
     [ValidateSet('A','B','C','D','E','F','Off','High','FXAA','Before','ExpansionOff','Leve','Equilibrado','Alto')][string[]]$Variant = @('A','B','C','D','E','F'),
     [ValidateSet('854x480','1280x720','1920x1080')][string[]]$Size = @('854x480','1280x720','1920x1080'),
     [string]$Scenes = 'aa_forest,fog_mountain,aurora_snowy_plains,fog_forest_dawn,waterside_village,material_water,material_lava,material_ores,material_armor,aa_stars',
@@ -112,6 +113,7 @@ try {
                     "-PtoeS001Bench=$instance","-PtoeS0016Width=$width","-PtoeS0016Height=$height",
                     '-PtoeAtmosphereQa',"-PtoeAtmosphereScenes=$Scenes","-PtoeAtmosphereWarmup=$Warmup")
                 if ($EffectMatrix) { $gradleArgs += "-PtoeAtmosphereEffects=$EffectMatrix" }
+                if ($Slim) { $gradleArgs += '-PtoeGlobalSlim' }
                 $ErrorActionPreference = 'Continue'
                 & .\gradlew @gradleArgs *> "$instance.log"
                 $ErrorActionPreference = 'Stop'
