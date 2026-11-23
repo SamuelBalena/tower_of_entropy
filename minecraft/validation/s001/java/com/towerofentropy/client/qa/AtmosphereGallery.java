@@ -68,6 +68,9 @@ final class AtmosphereGallery {
         new Scene("equipped_trapdoor", "plains", 18000, 0),
         new Scene("equipped_leaves", "plains", 18000, 0),
         new Scene("equipped_soul", "plains", 18000, 0),
+        new Scene("equipped_corridor", "plains", 18000, 0),
+        new Scene("equipped_partition", "plains", 18000, 0),
+        new Scene("equipped_column", "plains", 18000, 0),
         new Scene("equipped_back_motion", "plains", 18000, 0),
         new Scene("equipped_swap", "plains", 18000, 0)
     };

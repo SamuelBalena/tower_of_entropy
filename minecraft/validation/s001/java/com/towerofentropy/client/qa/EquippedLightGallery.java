@@ -20,7 +20,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
@@ -28,6 +27,7 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -60,7 +60,8 @@ public final class EquippedLightGallery implements EquippedLightFixture {
             rear = DynamicLightAttachments.register(BACK_ID, (player, partial) ->
                     List.of(new Attachment(BACK_ID, Socket.BACK_CENTER, LANTERN, null, null, true)));
         }
-        if (scene.startsWith("equipped_back") || scene.equals("equipped_dual") || scene.equals("equipped_swap"))
+        if (scene.startsWith("equipped_back") || scene.equals("equipped_dual")
+                || scene.equals("equipped_swap") || scene.equals("equipped_partition"))
             mc.options.setCameraType(CameraType.THIRD_PERSON_BACK);
     }
 
@@ -75,10 +76,11 @@ public final class EquippedLightGallery implements EquippedLightFixture {
         pose.pushPose();
         try {
             pose.translate(offset.x, offset.y, offset.z);
-            pose.scale(.72f, .72f, .72f);
-            Minecraft.getInstance().getItemRenderer().renderStatic(LANTERN, ItemDisplayContext.GROUND,
-                    LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, pose, event.getMultiBufferSource(),
-                    player.level(), player.getId());
+            pose.scale(.62f, .62f, .62f);
+            pose.translate(-.5, -.30, -.5);
+            var hanging = Blocks.LANTERN.defaultBlockState().setValue(LanternBlock.HANGING, true);
+            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(hanging, pose,
+                    event.getMultiBufferSource(), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
         } finally {
             pose.popPose();
         }
@@ -132,12 +134,34 @@ public final class EquippedLightGallery implements EquippedLightFixture {
                 level.setBlock(base.offset(0, 1, z), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
             }
         }
-        player.teleportTo(level, X+.5, Y+1, Z+.5, -90, pitch(scene));
+        if (scene.equals("equipped_corridor")) {
+            for (int x = -4; x <= 8; x++) for (int y = 1; y <= 3; y++) {
+                level.setBlock(new BlockPos(X+x, Y+y, Z+1), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+                if (x < 3) level.setBlock(new BlockPos(X+x, Y+y, Z-1), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+            }
+            for (int x = -4; x <= 8; x++) {
+                level.setBlock(new BlockPos(X+x, Y+3, Z), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+            }
+        }
+        if (scene.equals("equipped_partition")) {
+            for (int y = 1; y <= 5; y++) for (int z = -8; z <= 8; z++) {
+                if (z != -3 || y > 2) {
+                    level.setBlock(new BlockPos(X+1, Y+y, Z+z), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+                }
+            }
+        }
+        if (scene.equals("equipped_column")) {
+            for (int y = 1; y <= 5; y++) {
+                level.setBlock(new BlockPos(X+2, Y+y, Z), Blocks.STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
+            }
+        }
+        double startX = scene.equals("equipped_partition") ? X + 3.15 : X + .5;
+        player.teleportTo(level, startX, Y+1, Z+.5, yaw(scene), pitch(scene));
     }
 
     @Override
     public void tick(Minecraft mc, String scene, int tick, int warmup) {
-        mc.player.setYRot(-90);
+        mc.player.setYRot(yaw(scene));
         mc.player.setXRot(pitch(scene));
         if (tick == warmup) assertEquipment(mc, scene);
         boolean swap = scene.equals("equipped_swap");
@@ -199,10 +223,14 @@ public final class EquippedLightGallery implements EquippedLightFixture {
         return expected == Items.AIR ? stack.isEmpty() : stack.is(expected);
     }
 
+    private static float yaw(String scene) {
+        return scene.equals("equipped_partition") ? 90 : -90;
+    }
+
     private static Item main(String scene) {
         return switch (scene) {
             case "equipped_torch_off", "equipped_lantern_off", "equipped_back", "equipped_back_motion", "equipped_inventory" -> Items.AIR;
-            case "equipped_lantern_main", "equipped_dual" -> Items.LANTERN;
+            case "equipped_lantern_main", "equipped_dual", "equipped_column" -> Items.LANTERN;
             case "equipped_redstone" -> Items.REDSTONE_TORCH;
             case "equipped_soul" -> Items.SOUL_TORCH;
             default -> Items.TORCH;
