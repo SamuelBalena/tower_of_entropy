@@ -87,7 +87,9 @@ public final class ShaderBenchmark {
     private static int selectedScene = -1;
     private static final int Y = 108;
     private static final int WARMUP = Integer.getInteger("toe.s001.warmup", 48);
-    private static final int END = WARMUP + 60;
+    private static final int END = WARMUP + Integer.getInteger("toe.s001.measure", 60);
+    private static final boolean LIGHT_PROFILE = Boolean.getBoolean("toe.equippedLight.profile");
+    private static final LightingFrameProfile lightingProfile = new LightingFrameProfile();
     private static final ArrayList<Double> samples = new ArrayList<>();
     private static final ArrayList<Zombie> mobs = new ArrayList<>();
     private static int titleTicks, scene = -1, tick;
@@ -205,6 +207,7 @@ public final class ShaderBenchmark {
         }
         if (tick == WARMUP) {
             samples.clear();
+            if (LIGHT_PROFILE) lightingProfile.reset();
             lastFrame = 0;
             initialArmor = counter("PlayerRendererR3", "armorDraws");
             initialComposites = counter("ContextualPlayerLayer", "composites");
@@ -229,7 +232,9 @@ public final class ShaderBenchmark {
 
     @SubscribeEvent
     public static void render(TickEvent.RenderTickEvent event) {
-        if (!ENABLED || event.phase != TickEvent.Phase.END || !ready || tick < WARMUP || tick >= END) return;
+        if (!ENABLED || !ready || tick < WARMUP || tick >= END) return;
+        if (LIGHT_PROFILE) lightingProfile.sample(event.phase);
+        if (event.phase != TickEvent.Phase.END) return;
         long now = System.nanoTime();
         if (lastFrame != 0) samples.add((now - lastFrame) / 1e6);
         lastFrame = now;
@@ -338,6 +343,7 @@ public final class ShaderBenchmark {
 
     private static void report(Minecraft mc) {
         if (samples.isEmpty()) throw new IllegalStateException("Benchmark recorded no frames");
+        if (LIGHT_PROFILE) lightingProfile.report(SCENES[scene] + effectSuffix);
         samples.sort(Comparator.naturalOrder());
         int n = samples.size();
         double average = samples.stream().mapToDouble(Double::doubleValue).average().orElseThrow();
@@ -498,7 +504,20 @@ public final class ShaderBenchmark {
     private static void prepare(ServerPlayer player, int stage) {
         if (stage >= BASE_SCENES.length) {
             var scene = AtmosphereGallery.SCENES[stage - BASE_SCENES.length];
-            if (scene.name().startsWith("equipped_")) {
+            if (scene.name().startsWith("equipped_env_")) {
+                int location = switch (scene.name()) {
+                    case "equipped_env_cave" -> 2;
+                    case "equipped_env_forest" -> 0;
+                    case "equipped_env_village" -> 22;
+                    default -> throw new IllegalArgumentException(scene.name());
+                };
+                prepare(player, location);
+                var level = player.serverLevel();
+                level.getGameRules().getRule(net.minecraft.world.level.GameRules.RULE_DAYLIGHT).set(false, level.getServer());
+                level.setDayTime(scene.time());
+                player.getInventory().clearContent();
+                player.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.TORCH));
+            } else if (scene.name().startsWith("equipped_")) {
                 equippedFixture.prepare(player, scene.name());
             } else if (scene.name().startsWith("expansion_nether_")) {
                 prepareMaterialGallery(player, 76);

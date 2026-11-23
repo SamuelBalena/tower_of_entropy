@@ -54,9 +54,12 @@ final class AtmosphereGallery {
         new Scene("equipped_lantern_main", "plains", 18000, 0),
         new Scene("equipped_lantern_off", "plains", 18000, 0),
         new Scene("equipped_dual", "plains", 18000, 0),
+        new Scene("equipped_four", "plains", 18000, 0),
         new Scene("equipped_back", "plains", 18000, 0),
         new Scene("equipped_inventory", "plains", 18000, 0),
         new Scene("equipped_wall", "plains", 18000, 0),
+        new Scene("equipped_wall_toggle", "plains", 18000, 0),
+        new Scene("equipped_wood_wall", "plains", 18000, 0),
         new Scene("equipped_glass", "plains", 18000, 0),
         new Scene("equipped_slab", "plains", 18000, 0),
         new Scene("equipped_door_closed", "plains", 18000, 0),
@@ -72,6 +75,11 @@ final class AtmosphereGallery {
         new Scene("equipped_partition", "plains", 18000, 0),
         new Scene("equipped_column", "plains", 18000, 0),
         new Scene("equipped_back_motion", "plains", 18000, 0),
+        new Scene("equipped_back_combat", "plains", 18000, 0),
+        new Scene("equipped_hand_swap", "plains", 18000, 0),
+        new Scene("equipped_env_cave", "plains", 18000, 0),
+        new Scene("equipped_env_forest", "forest", 18000, 0),
+        new Scene("equipped_env_village", "plains", 18000, 0),
         new Scene("equipped_swap", "plains", 18000, 0)
     };
     private static boolean prepared;

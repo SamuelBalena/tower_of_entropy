@@ -2,6 +2,7 @@ param(
     [Parameter(Mandatory)][string]$Template,
     [string]$Baseline,
     [string]$ShaderPack,
+    [string]$BaselineSources,
     [switch]$LabPbr,
     [switch]$Slim,
     [ValidateSet('A','B','C','D','E','F','Off','High','FXAA','Before','ExpansionOff','Leve','Equilibrado','Alto')][string[]]$Variant = @('A','B','C','D','E','F'),
@@ -9,6 +10,9 @@ param(
     [string]$Scenes = 'aa_forest,fog_mountain,aurora_snowy_plains,fog_forest_dawn,waterside_village,material_water,material_lava,material_ores,material_armor,aa_stars',
     [ValidateRange(2,32)][int]$Distance = 8,
     [ValidateRange(48,1200)][int]$Warmup = 48,
+    [ValidateRange(60,1200)][int]$Measure = 60,
+    [switch]$ProfileLighting,
+    [switch]$FullCollisionScan,
     [ValidateSet('SUN_RAYS','SCREEN_AO','CONTACT_SHADOWS','WET_SURFACES','PUDDLE_REFLECTIONS','VEGETATION_WIND','SELECTIVE_BLOOM','DIMENSION_FOG','DYNAMIC_LIGHT','ADVANCED_SHADOWS','WINTER_WEATHER','EQUIPMENT_PBR','SOLID_REFLECTIONS')]
     [string]$DisableEffect,
     [string]$EffectMatrix,
@@ -18,6 +22,7 @@ $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $templatePath = (Resolve-Path -LiteralPath $Template).Path
 $baselinePath = if ($Baseline) { (Resolve-Path -LiteralPath $Baseline).Path }
+$baselineSourcePath = if ($BaselineSources) { (Resolve-Path -LiteralPath $BaselineSources).Path }
 $runPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($RunRoot)
 $pack = 'Tower of Entropy - Fantasy Foundation.zip'
 $archivePath = if ($ShaderPack) { (Resolve-Path -LiteralPath $ShaderPack).Path } else { Join-Path $root "shaderpacks/$pack" }
@@ -111,7 +116,11 @@ try {
             try {
                 $gradleArgs = @('--offline','-I','validation/s001/forge.init.gradle','runClient','-PtoeS001Loader',
                     "-PtoeS001Bench=$instance","-PtoeS0016Width=$width","-PtoeS0016Height=$height",
-                    '-PtoeAtmosphereQa',"-PtoeAtmosphereScenes=$Scenes","-PtoeAtmosphereWarmup=$Warmup")
+                    '-PtoeAtmosphereQa',"-PtoeAtmosphereScenes=$Scenes","-PtoeAtmosphereWarmup=$Warmup",
+                    "-PtoeAtmosphereMeasure=$Measure")
+                if ($ProfileLighting) { $gradleArgs += '-PtoeEquippedLightProfile' }
+                if ($FullCollisionScan) { $gradleArgs += '-PtoeEquippedLightFullScan' }
+                if ($baselineSourcePath) { $gradleArgs += "-PtoeEquippedLightBaselineSources=$baselineSourcePath" }
                 if ($EffectMatrix) { $gradleArgs += "-PtoeAtmosphereEffects=$EffectMatrix" }
                 if ($Slim) { $gradleArgs += '-PtoeGlobalSlim' }
                 $ErrorActionPreference = 'Continue'

@@ -6,10 +6,16 @@ import com.towerofentropy.client.lighting.DynamicLightAttachments.Socket;
 import com.towerofentropy.client.lighting.EquippedLightSources;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import com.mojang.logging.LogUtils;
+import com.towerofentropy.animation.ActionKeys;
+import com.towerofentropy.client.ClientCombatState;
+import com.towerofentropy.client.ClientRollMotion;
+import com.towerofentropy.combat.EffectiveEquipment;
+import com.towerofentropy.combat.WeaponReadiness;
 import java.util.Map;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.CameraType;
+import net.minecraft.client.KeyMapping;
 import java.io.File;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -39,15 +45,18 @@ import net.minecraftforge.fml.common.Mod;
 public final class EquippedLightGallery implements EquippedLightFixture {
     private static final int X = 1060, Y = 84, Z = 18;
     private static final ResourceLocation BACK_ID = new ResourceLocation("towerofentropy", "qa_back_lantern");
+    private static final ResourceLocation BELT_ID = new ResourceLocation("towerofentropy", "qa_belt_lantern");
     private static final ItemStack LANTERN = new ItemStack(Items.LANTERN);
     private static DynamicLightAttachments.Registration rear;
 
     private boolean skinInstalled;
+    private int rollAt, attackAt;
 
     public EquippedLightGallery() {}
 
     @Override
     public void setClientScene(Minecraft mc, String scene) {
+        rollAt = attackAt = -1;
         if (scene.startsWith("equipped_") && !skinInstalled) {
             installSkin(mc);
             skinInstalled = true;
@@ -56,12 +65,16 @@ public final class EquippedLightGallery implements EquippedLightFixture {
             rear.close();
             rear = null;
         }
-        if (scene.startsWith("equipped_back")) {
+        if (scene.equals("equipped_four")) {
+            rear = DynamicLightAttachments.register(BACK_ID, (player, partial) -> List.of(
+                    new Attachment(BACK_ID, Socket.BACK_CENTER, LANTERN, null, null, true),
+                    new Attachment(BELT_ID, Socket.BELT_LEFT, LANTERN, null, null, true)));
+        } else if (scene.startsWith("equipped_back")) {
             rear = DynamicLightAttachments.register(BACK_ID, (player, partial) ->
                     List.of(new Attachment(BACK_ID, Socket.BACK_CENTER, LANTERN, null, null, true)));
         }
         if (scene.startsWith("equipped_back") || scene.equals("equipped_dual")
-                || scene.equals("equipped_swap") || scene.equals("equipped_partition"))
+                || scene.equals("equipped_swap") || scene.equals("equipped_partition") || scene.equals("equipped_four"))
             mc.options.setCameraType(CameraType.THIRD_PERSON_BACK);
     }
 
@@ -101,6 +114,7 @@ public final class EquippedLightGallery implements EquippedLightFixture {
         player.getInventory().clearContent();
         player.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(main(scene)));
         player.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(off(scene)));
+        if (scene.equals("equipped_back_combat")) WeaponReadiness.toggle(player);
         if (scene.equals("equipped_inventory")) player.getInventory().setItem(15, new ItemStack(Items.TORCH));
         for (int x = -8; x <= 12; x++) for (int z = -9; z <= 9; z++) {
             level.setBlock(new BlockPos(X+x, Y, Z+z), Blocks.SMOOTH_STONE.defaultBlockState(), Block.UPDATE_CLIENTS);
@@ -111,7 +125,8 @@ public final class EquippedLightGallery implements EquippedLightFixture {
             }
         }
         Block screen = switch (scene) {
-            case "equipped_wall" -> Blocks.STONE;
+            case "equipped_wall", "equipped_wall_toggle" -> Blocks.STONE;
+            case "equipped_wood_wall" -> Blocks.OAK_PLANKS;
             case "equipped_glass" -> Blocks.GLASS;
             case "equipped_slab" -> Blocks.STONE_SLAB;
             case "equipped_bars" -> Blocks.IRON_BARS;
@@ -161,9 +176,35 @@ public final class EquippedLightGallery implements EquippedLightFixture {
 
     @Override
     public void tick(Minecraft mc, String scene, int tick, int warmup) {
-        mc.player.setYRot(yaw(scene));
-        mc.player.setXRot(pitch(scene));
+        if (!scene.startsWith("equipped_env_")) {
+            mc.player.setYRot(yaw(scene));
+            mc.player.setXRot(pitch(scene));
+        }
         if (tick == warmup) assertEquipment(mc, scene);
+        if (scene.equals("equipped_wall_toggle")) {
+            toggleWall(mc, tick - warmup);
+            return;
+        }
+        if (scene.equals("equipped_hand_swap")) {
+            if (tick == warmup + 10) {
+                var server = mc.getSingleplayerServer();
+                var id = mc.player.getUUID();
+                server.execute(() -> {
+                    var player = server.getPlayerList().getPlayer(id);
+                    player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+                    player.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.TORCH));
+                });
+            }
+            if (tick == warmup + 30 && (!mc.player.getMainHandItem().isEmpty()
+                    || !mc.player.getOffhandItem().is(Items.TORCH))) {
+                throw new IllegalStateException("Client did not receive the hand swap");
+            }
+            return;
+        }
+        if (scene.equals("equipped_back_combat")) {
+            moveWithLantern(mc, tick - warmup);
+            return;
+        }
         boolean swap = scene.equals("equipped_swap");
         if (!swap && !scene.equals("equipped_back_motion")) return;
         mc.options.keyUp.setDown(tick >= warmup - 12 && tick < warmup + 32);
@@ -183,15 +224,61 @@ public final class EquippedLightGallery implements EquippedLightFixture {
             Screenshot.grab(new File("."), "s00281-" + scene + "-" + tick + ".png", mc.getMainRenderTarget(), ignored -> {});
     }
 
+    private static void toggleWall(Minecraft mc, int step) {
+        if (step == 10 || step == 30) {
+            var server = mc.getSingleplayerServer();
+            var level = server.overworld();
+            var target = (step == 10 ? Blocks.AIR : Blocks.STONE).defaultBlockState();
+            server.execute(() -> {
+                for (int z = -5; z < 6; z++) level.setBlock(new BlockPos(X+1, Y+1, Z+z), target, Block.UPDATE_CLIENTS);
+            });
+        }
+        if (step == 3 || step == 24 || step == 51) {
+            var expected = step == 24 ? Blocks.AIR : Blocks.STONE;
+            if (!mc.level.getBlockState(new BlockPos(X+1, Y+1, Z)).is(expected)) {
+                throw new IllegalStateException("Client did not receive the occlusion update");
+            }
+            Screenshot.grab(new File("."), "s00282-wall-toggle-" + step + ".png", mc.getMainRenderTarget(), ignored -> {});
+        }
+    }
+
+    private void moveWithLantern(Minecraft mc, int step) {
+        mc.options.keyUp.setDown(step >= 5 && step < 49);
+        mc.options.keyShift.setDown(step >= 5 && step < 14);
+        mc.options.keySprint.setDown(step >= 30 && step < 49);
+        mc.options.keyJump.setDown(step == 40);
+        mc.options.keyLeft.setDown(step >= 57 && step <= 58);
+        if (step == 57) KeyMapping.click(ActionKeys.ROLL.getKey());
+        if (step == 80 || step == 94) KeyMapping.click(ActionKeys.SWORD.getKey());
+        if (step >= 57 && ClientRollMotion.visual() && rollAt < 0) rollAt = step;
+        if (step >= 80 && !ClientCombatState.clip().isEmpty() && attackAt < 0) attackAt = step;
+        if (rollAt >= 0 && step == rollAt + 2) {
+            Screenshot.grab(new File("."), "s00282-back-roll.png", mc.getMainRenderTarget(), ignored -> {});
+        }
+        if (attackAt >= 0 && step == attackAt + 2) {
+            Screenshot.grab(new File("."), "s00282-back-attack.png", mc.getMainRenderTarget(), ignored -> {});
+        }
+        if (step == 110) {
+            if (rollAt < 0 || attackAt < 0) {
+                throw new IllegalStateException("Lantern motion fixture did not observe both roll and sword attack");
+            }
+            LogUtils.getLogger().info("TOE_LIGHT_LANTERN_MOTION rollTick={} attackTick={}", rollAt, attackAt);
+        }
+        if (step == 3 || step == 11 || step == 22 || step == 35 || step == 44) {
+            Screenshot.grab(new File("."), "s00282-back-motion-" + step + ".png", mc.getMainRenderTarget(), ignored -> {});
+        }
+    }
+
     private static float pitch(String scene) {
-        return scene.equals("equipped_wall") || scene.equals("equipped_glass") ? 18 : 27;
+        return scene.equals("equipped_wall") || scene.equals("equipped_wall_toggle")
+                || scene.equals("equipped_wood_wall") || scene.equals("equipped_glass") ? 18 : 27;
     }
 
     private static void assertEquipment(Minecraft mc, String scene) {
         String expected = Boolean.getBoolean("toe.s001.slim") ? "slim" : "default";
         if (!mc.player.getModelName().equals(expected)) throw new IllegalStateException("Wrong skin model in " + scene);
         LogUtils.getLogger().info("TOE_EQUIPPED_QA {} skin={} camera={}", scene, expected, mc.options.getCameraType());
-        if (!matches(mc.player.getMainHandItem(), main(scene)) || !matches(mc.player.getOffhandItem(), off(scene)))
+        if (!matches(EffectiveEquipment.selected(mc.player), main(scene)) || !matches(mc.player.getOffhandItem(), off(scene)))
             throw new IllegalStateException("Wrong client hand equipment in " + scene);
     }
 
@@ -229,8 +316,10 @@ public final class EquippedLightGallery implements EquippedLightFixture {
 
     private static Item main(String scene) {
         return switch (scene) {
-            case "equipped_torch_off", "equipped_lantern_off", "equipped_back", "equipped_back_motion", "equipped_inventory" -> Items.AIR;
-            case "equipped_lantern_main", "equipped_dual", "equipped_column" -> Items.LANTERN;
+            case "equipped_torch_off", "equipped_lantern_off", "equipped_back", "equipped_back_motion",
+                    "equipped_inventory" -> Items.AIR;
+            case "equipped_back_combat" -> Items.IRON_SWORD;
+            case "equipped_lantern_main", "equipped_dual", "equipped_four", "equipped_column" -> Items.LANTERN;
             case "equipped_redstone" -> Items.REDSTONE_TORCH;
             case "equipped_soul" -> Items.SOUL_TORCH;
             default -> Items.TORCH;
@@ -241,7 +330,7 @@ public final class EquippedLightGallery implements EquippedLightFixture {
         return switch (scene) {
             case "equipped_torch_off" -> Items.TORCH;
             case "equipped_lantern_off" -> Items.LANTERN;
-            case "equipped_dual" -> Items.SOUL_LANTERN;
+            case "equipped_dual", "equipped_four" -> Items.SOUL_LANTERN;
             default -> Items.AIR;
         };
     }

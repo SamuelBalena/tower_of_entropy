@@ -20,6 +20,11 @@ gradle.beforeProject { p ->
                 p.sourceSets.main.java.exclude('**/EquippedLightGallery.java')
                 p.sourceSets.main.resources.setSrcDirs(['validation/s001/resources'])
             } else {
+                if (p.hasProperty('toeEquippedLightBaselineSources')) {
+                    def baseline = p.file(p.property('toeEquippedLightBaselineSources'))
+                    p.sourceSets.main.java.setSrcDirs([new File(baseline, 'java')])
+                    p.sourceSets.main.resources.setSrcDirs([new File(baseline, 'resources')])
+                }
                 p.sourceSets.main.java.srcDir('validation/s001/java')
                 p.sourceSets.main.java.exclude('**/ShaderBenchmarkMod.java')
             }
@@ -28,6 +33,9 @@ gradle.beforeProject { p ->
             if (p.hasProperty('toeGlobalSlim')) p.minecraft.runs.client.property('toe.s001.slim', 'true')
             if (p.hasProperty('toeAtmosphereEffects')) p.minecraft.runs.client.property('toe.atmosphere.effects', p.property('toeAtmosphereEffects'))
             if (p.hasProperty('toeAtmosphereWarmup')) p.minecraft.runs.client.property('toe.s001.warmup', p.property('toeAtmosphereWarmup'))
+            if (p.hasProperty('toeAtmosphereMeasure')) p.minecraft.runs.client.property('toe.s001.measure', p.property('toeAtmosphereMeasure'))
+            if (p.hasProperty('toeEquippedLightProfile')) p.minecraft.runs.client.property('toe.equippedLight.profile', 'true')
+            if (p.hasProperty('toeEquippedLightFullScan')) p.minecraft.runs.client.property('toe.equippedLight.fullScan', 'true')
             if (p.hasProperty('toeAtmosphereSwitch')) p.minecraft.runs.client.property('toe.atmosphere.switch', 'true')
             if (p.hasProperty('toeAtmosphereQa')) p.minecraft.runs.client.property('toe.atmosphere.qa', 'true')
             if (p.hasProperty('toeAtmosphereScenes')) p.minecraft.runs.client.property('toe.atmosphere.scenes', p.property('toeAtmosphereScenes'))

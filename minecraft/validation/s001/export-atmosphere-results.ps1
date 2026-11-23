@@ -8,7 +8,7 @@ function AtSecond([string]$stamp) {
 $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log' -File) {
     if ($file.BaseName -notmatch '^(?<size>\d+x\d+)-(?<variant>[A-F]|Off|High|FXAA|Before|ExpansionOff|Leve|Equilibrado(?:-[A-Z_]+|-Effects)?|Alto)$') { continue }
     $requested, $variant = $Matches.size, $Matches.variant
-    $lines = Select-String -LiteralPath $file.FullName -Pattern 'TOE_S001_(SETUP|RESULT)|TOE_S0011_TIMING|^BUILD SUCCESSFUL|Creating pipeline for dimension|Reloading pipeline on dimension change'
+    $lines = Select-String -LiteralPath $file.FullName -Pattern 'TOE_S001_(SETUP|RESULT)|TOE_S0011_TIMING|TOE_LIGHT_(FRAME|BRIDGE)|^BUILD SUCCESSFUL|Creating pipeline for dimension|Reloading pipeline on dimension change'
     $setup = $lines | Where-Object Line -Match 'TOE_S001_SETUP' | Select-Object -First 1
     if (!$setup -or $setup.Line -match 'shader=off' -or $setup.Line -notmatch 'size=(\d+x\d+)') { continue }
     $actual = $Matches[1]
@@ -24,9 +24,15 @@ $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log'
         }
     }
     $timing = @{}
+    $render = @{}
+    $bridge = @{}
     foreach ($line in $lines) {
         if ($line.Line -match 'TOE_S0011_TIMING (\S+) p99=([\d.]+)') {
             $timing[$Matches[1]] = [double]::Parse($Matches[2],$culture)
+        } elseif ($line.Line -match 'TOE_LIGHT_FRAME (\S+) cpuFrames=(\d+) cpuMs=([\d.E+-]+) gpuFrames=(\d+) gpuMs=([\d.E+-]+)') {
+            $render[$Matches[1]] = @($Matches[2], $Matches[3], $Matches[4], $Matches[5])
+        } elseif ($line.Line -match 'TOE_LIGHT_BRIDGE (\S+) sourceMs=([\d.E+-]+) collisionMs=([\d.E+-]+) uploadMs=([\d.E+-]+) boundRows=(\d+) activeFrames=(\d+) cellReads=(\d+)') {
+            $bridge[$Matches[1]] = @($Matches[2], $Matches[3], $Matches[4], $Matches[5], $Matches[6], $Matches[7])
         }
     }
     $pipelineDimension = $null
@@ -43,7 +49,13 @@ $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log'
         $low = [double]::Parse($Matches[5],$culture)
         $p95 = [double]::Parse($Matches[6],$culture)
         $dimension = if ($line.Line -match ' dimension=(\S+)') { $Matches[1] } else { $pipelineDimension }
-        $window = @($gpu | Where-Object { $age = ($second - $_.second + 86400) % 86400; $age -ge 1 -and $age -le 3 })
+        $windowSeconds = [Math]::Max(1, [Math]::Round($frames / $fps))
+        $window = @($gpu | Where-Object {
+            $age = ($second - $_.second + 86400) % 86400
+            $age -ge 1 -and $age -le $windowSeconds
+        })
+        $renderMetrics = $render[$scene]
+        $bridgeMetrics = $bridge[$scene]
         [pscustomobject]@{
             sha256 = $hash
             requested = $requested
@@ -58,6 +70,16 @@ $results = foreach ($file in Get-ChildItem -LiteralPath $RunRoot -Filter '*.log'
             p99_ms = $timing[$scene].ToString("F3",$culture)
             gpu_pct = $(if ($window.Count) { ($window | Measure-Object load -Average).Average.ToString("F1",$culture) })
             vram_mib = $(if ($window.Count) { [int](($window | Measure-Object memory -Maximum).Maximum) })
+            frame_ms = (1000 / $fps).ToString("F3",$culture)
+            cpu_render_ms = $(if ($renderMetrics -and [int]$renderMetrics[0]) { $renderMetrics[1] })
+            gpu_render_ms = $(if ($renderMetrics -and [int]$renderMetrics[2]) { $renderMetrics[3] })
+            gpu_samples = $(if ($renderMetrics) { $renderMetrics[2] })
+            bridge_source_ms_total = $(if ($bridgeMetrics) { $bridgeMetrics[0] })
+            bridge_collision_ms_total = $(if ($bridgeMetrics) { $bridgeMetrics[1] })
+            bridge_upload_ms_total = $(if ($bridgeMetrics) { $bridgeMetrics[2] })
+            bridge_bound_rows = $(if ($bridgeMetrics) { $bridgeMetrics[3] })
+            bridge_active_frames = $(if ($bridgeMetrics) { $bridgeMetrics[4] })
+            bridge_cell_reads = $(if ($bridgeMetrics) { $bridgeMetrics[5] })
         }
     }
 }
