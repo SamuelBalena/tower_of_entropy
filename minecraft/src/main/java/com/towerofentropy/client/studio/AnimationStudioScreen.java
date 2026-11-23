@@ -337,9 +337,9 @@ final class AnimationStudioScreen extends Screen {
                                 && Math.abs(frameX(candidate.frame()) - x) < 6)
                         .min(java.util.Comparator.comparingDouble(candidate -> Math.abs(frameX(candidate.frame()) - x))).orElse(null);
                 if (key != null) {
-                    selectedKey = key;
-                    curve = key.curve();
                     seek(key.frame());
+                    selectedKey = keyAt(bone.id(), key.frame());
+                    curve = selectedKey.curve();
                     dragFrame = key.frame();
                     keyDrag = true;
                     return true;

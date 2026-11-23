@@ -66,7 +66,7 @@ final class StudioSession {
     void edit(String bone, StudioProject.Transform value) {
         playing = false;
         edits.put(bone, value);
-        if (autoKey) key(bone, StudioProject.Curve.LINEAR);
+        if (autoKey) key(bone, currentCurve(bone));
     }
     void key(String bone, StudioProject.Curve curve) {
         project = project.replace(null, new StudioProject.Key(bone, (int) Math.round(frame), transform(bone), curve));
@@ -75,11 +75,11 @@ final class StudioSession {
     void captureEdits() {
         if (edits.isEmpty()) return;
         checkpoint();
-        for (String bone : List.copyOf(edits.keySet())) {
-            int at = (int) Math.round(frame);
-            var curve = project.keys().stream().filter(key -> key.bone().equals(bone) && key.frame() == at)
-                    .findFirst().map(StudioProject.Key::curve).orElse(StudioProject.Curve.LINEAR);
-            key(bone, curve);
-        }
+        for (String bone : List.copyOf(edits.keySet())) key(bone, currentCurve(bone));
+    }
+    private StudioProject.Curve currentCurve(String bone) {
+        int at = (int) Math.round(frame);
+        return project.keys().stream().filter(key -> key.bone().equals(bone) && key.frame() == at)
+                .findFirst().map(StudioProject.Key::curve).orElse(StudioProject.Curve.LINEAR);
     }
 }

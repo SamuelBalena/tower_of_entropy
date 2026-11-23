@@ -25,6 +25,10 @@ public final class StudioProjectCases {
         var retimed = clip.retime(60, 60, false);
         close(retimed.sample("pelvis", 10).x(), quarter);
         if (retimed.keys().get(1).frame() != 40) throw new AssertionError("reference FPS retiming");
+        var session = new StudioSession(clip);
+        session.autoKey = true;
+        session.edit("pelvis", end);
+        if (session.project.keys().get(0).curve() != curve) throw new AssertionError("auto key keeps the outgoing curve");
     }
 
     private static void close(float actual, float expected) {

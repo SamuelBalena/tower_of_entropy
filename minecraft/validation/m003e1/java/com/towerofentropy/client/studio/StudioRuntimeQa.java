@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.ChatScreen;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
@@ -146,10 +147,13 @@ public final class StudioRuntimeQa {
                     int row = rig(s).bones.indexOf((StudioRig.Bone) field(s, "selected")) - (int) field(s, "trackScroll");
                     int y = (int) field(s, "bottom") + 47 + row * 12;
                     int a = frameX(s, 15), b = frameX(s, 18);
+                    rotate(s, "0", "0", "-80");
                     s.mouseClicked(a, y, 0);
                     s.mouseDragged(b, y, 0, b - a, 0);
                     s.mouseReleased(b, y, 0);
-                    require(session.project.keys().stream().anyMatch(k -> k.frame() == 18), "arraste de chave");
+                    require(session.project.keys().stream().anyMatch(k -> k.frame() == 18
+                            && Math.abs(k.transform().qz() + .642788f) < .002)
+                            && session.project.keys().stream().noneMatch(k -> k.frame() == 15), "arraste leva a pose atual");
                     click(s, "Desfazer");
                     require(session.project.keys().stream().anyMatch(k -> k.frame() == 15), "desfazer arraste");
                     click(s, "Refazer");
@@ -161,6 +165,7 @@ public final class StudioRuntimeQa {
                     click(s, "Desfazer");
                     click(s, "Desfazer");
                     require(session.project.keys().size() == 5, "restaurar cinco chaves");
+                    pose(s, 15, "0", "0", "-75");
                     seek(s, 9);
                     click(s, "Auto");
                     rotate(s, "0", "0", "-20");
@@ -219,7 +224,8 @@ public final class StudioRuntimeQa {
                     require(mc.screen == null, "fechamento");
                     require(mc.player.getInventory().selected == selectedSlot && mc.player.position().distanceTo(position) < .20
                             && java.util.Objects.equals(forced, com.towerofentropy.client.PlayerRendererR3.forcedClip), "isolamento");
-                    open();
+                    mc.setScreen(new ChatScreen("/toe_animstudio"));
+                    require(mc.screen.keyPressed(GLFW.GLFW_KEY_ENTER, 0, 0), "comando cliente");
                 }
                 case 17 -> {
                     var s = studio(mc);
