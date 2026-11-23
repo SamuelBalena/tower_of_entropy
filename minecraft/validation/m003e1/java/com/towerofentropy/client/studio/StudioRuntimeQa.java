@@ -500,6 +500,41 @@ public final class StudioRuntimeQa {
                     var p = new StudioFiles(mc.gameDirectory.toPath()).read("teste_bracos_precisao");
                     require(!p.equals(recoveryExpected) && p.keys().stream().filter(k -> k.bone().equals("3")).count() == 5,
                             "reabertura da animação e original protegido");
+                    saved = p;
+                    s.libraryOpen("teste_bracos_precisao");
+                    require(mc.screen instanceof ConfirmScreen, "reabrir pede confirmação sobre o rascunho recuperado");
+                    click(mc.screen, ComponentNames.YES);
+                }
+                case 44 -> {
+                    var s = studio(mc);
+                    if (s == null || (boolean) field(s, "loading")) return;
+                    require(session(s).project.equals(saved), "animação anatômica reaberta no editor");
+                    seek(s, 0);
+                    for (String arm : List.of("2", "3")) {
+                        select(s, arm);
+                        rotate(s, "0", "0", "-45");
+                    }
+                    click(s, "Câmera");
+                    click(mc.screen, "Direita");
+                }
+                case 45 -> {
+                    shot(mc, "bracos-para-tras");
+                    var s = studio(mc);
+                    for (String arm : List.of("2", "3")) {
+                        select(s, arm);
+                        rotate(s, "45", "25", "30");
+                        select(s, "10" + arm);
+                        List<EditBox> fields = field(s, "transforms");
+                        fields.get(2).setValue("65");
+                        enter(s, fields.get(2));
+                    }
+                    select(s, "3");
+                    click(s, "Câmera");
+                    click(mc.screen, "Livre");
+                }
+                case 46 -> {
+                    shot(mc, "bracos-torcao");
+                    var s = studio(mc);
                     var rig = rig(s);
                     LogUtils.getLogger().info("TOE_STUDIO PASS slim={} oculus={} draws={} evalMs={} renderMs={} heapMiB={} fps={}",
                             SLIM, ModList.get().isLoaded("oculus"), rig.draws, rig.evaluationNanos / 1e6, rig.renderNanos / 1e6,
