@@ -1,0 +1,10 @@
+gradle.beforeProject { p ->
+    p.afterEvaluate {
+        if (!p.hasProperty('toeStudioQa')) return
+        p.sourceSets.main.java.srcDir('validation/m003e1/java')
+        p.minecraft.runs.client.workingDirectory(p.file(p.property('toeStudioQa')))
+        p.minecraft.runs.client.property('toe.studio.qa', 'true')
+        if (p.hasProperty('toeStudioSlim')) p.minecraft.runs.client.property('toe.studio.qa.slim', 'true')
+        p.minecraft.runs.client.args('--width', '854', '--height', '480')
+    }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "name": "teste_aceno",
+  "model": "towerofentropy:steve_a3_wall_prototypes",
+  "skeleton": "e846924e-b06f-3aae-b6e5-267b2c90f9f2",
+  "idle": false,
+  "frames": 60,
+  "fps": 30,
+  "loop": true,
+  "tracks": [
+    {
+      "bone": "3",
+      "keyframes": [
+        {
+          "frame": 0,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 1.0
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 15,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": -0.6087614,
+            "qw": 0.7933534
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 30,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": -0.16938742,
+            "qy": 0.13473684,
+            "qz": -0.7640572,
+            "qw": 0.6077586
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 45,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.12136945,
+            "qy": -0.1472329,
+            "qz": -0.6243917,
+            "qw": 0.75744766
+          },
+          "curve": "LINEAR"
+        },
+        {
+          "frame": 60,
+          "transform": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "qw": 1.0
+          },
+          "curve": "LINEAR"
+        }
+      ]
+    }
+  ]
+}
