@@ -4,35 +4,29 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.logging.LogUtils;
 import java.lang.reflect.Method;
 import java.nio.FloatBuffer;
-import java.util.IdentityHashMap;
 import java.util.function.IntSupplier;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.Tags;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.GL45;
 
 /** Oculus bridge and a camera-relative metadata row followed by block collision bounds. */
 public final class DynamicLightTexture {
     private static final String SAMPLER = "toeEquippedLightData";
-    private static final int WIDTH = 256, SIDE = 23, CELLS = SIDE * SIDE * SIDE;
+    private static final int WIDTH = 256, CELLS = EquippedLightCollisionGrid.CELLS;
     private static final int MAX_LIGHTS = 4, HEIGHT = 1 + (CELLS + WIDTH - 1) / WIDTH;
     private static final float VERSION = -281;
-    private static final long FULL_BLOCK = 0xffffff000000L;
-    private static final IdentityHashMap<BlockState, Long> SHAPES = new IdentityHashMap<>();
-    private static final long[] cells = new long[CELLS];
-    private static final BlockPos.MutableBlockPos query = new BlockPos.MutableBlockPos();
+    private static final boolean PROFILE = Boolean.getBoolean("toe.equippedLight.profile");
+    private static final EquippedLightCollisionGrid grid = EquippedLightCollisionGrid.instance();
     private static FloatBuffer metadata, bounds;
     private static int texture;
+    private static boolean directUpload;
     private static int previousCount = -1;
-    private static long writtenFrame = -1, worldTick = Long.MIN_VALUE;
-    private static ClientLevel world;
-    private static BlockPos origin;
+    private static long writtenFrame = -1;
+    private static long sourceNanos, collisionNanos, uploadNanos, boundRows, activeFrames;
     private static Method registerSampler;
     private static boolean failed;
 
@@ -40,13 +34,16 @@ public final class DynamicLightTexture {
 
     public static void beginFrame() {
         EquippedLightSources.beginFrame();
+        grid.releaseOtherLevel(Minecraft.getInstance().level);
     }
 
     public static void resetWorld() {
-        world = null;
-        origin = null;
-        SHAPES.clear();
+        grid.reset();
         EquippedLightSources.reset();
+    }
+
+    public static long[] profileCounters() {
+        return new long[]{sourceNanos, collisionNanos, uploadNanos, boundRows, activeFrames, grid.queries()};
     }
 
     /** Invoked from IrisSamplers.addLevelSamplers; uses reflection to keep Oculus optional. */
@@ -73,28 +70,27 @@ public final class DynamicLightTexture {
         var player = minecraft.player;
         var camera = minecraft.gameRenderer.getMainCamera().getPosition();
         float partial = minecraft.getFrameTime();
+        long start = PROFILE ? System.nanoTime() : 0;
         var sources = player == null || level == null
                 ? java.util.List.<EquippedLightSources.Source>of() : EquippedLightSources.collect(player, partial);
+        if (PROFILE) sourceNanos += System.nanoTime() - start;
         int count = Math.min(MAX_LIGHTS, sources.size());
         if (count == 0 && previousCount == 0) return texture;
         previousCount = count;
-        int oldBinding = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+        int oldBinding = directUpload ? -1 : GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         try {
             if (texture == 0) allocate();
-            else GlStateManager._bindTexture(texture);
-            if (world != level) {
-                world = level;
-                origin = null;
-                SHAPES.clear();
-            }
+            else if (oldBinding >= 0) GlStateManager._bindTexture(texture);
             metadata.clear();
             if (count > 0) {
-                var base = player.blockPosition().offset(-SIDE / 2, -SIDE / 2, -SIDE / 2);
-                if (!base.equals(origin) || worldTick != level.getGameTime()) {
-                    if (collectBounds(level, base) || origin == null) uploadBounds();
-                    origin = base;
-                    worldTick = level.getGameTime();
+                start = PROFILE ? System.nanoTime() : 0;
+                grid.update(level, player.blockPosition());
+                var base = grid.origin();
+                if (PROFILE) {
+                    collisionNanos += System.nanoTime() - start;
+                    activeFrames++;
                 }
+                if (grid.lastChanged() >= 0) uploadBounds();
                 metadata.put((float) (base.getX() - camera.x)).put((float) (base.getY() - camera.y))
                         .put((float) (base.getZ() - camera.z)).put(VERSION);
                 for (int i = 0; i < count; i++) {
@@ -113,10 +109,11 @@ public final class DynamicLightTexture {
             }
             while (metadata.hasRemaining()) metadata.put(0);
             metadata.flip();
-            GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 1 + 2 * MAX_LIGHTS, 1,
-                    GL11.GL_RGBA, GL11.GL_FLOAT, metadata);
+            start = PROFILE ? System.nanoTime() : 0;
+            upload(0, 1 + 2 * MAX_LIGHTS, 1, metadata);
+            if (PROFILE) uploadNanos += System.nanoTime() - start;
         } finally {
-            GlStateManager._bindTexture(oldBinding);
+            if (oldBinding >= 0) GlStateManager._bindTexture(oldBinding);
         }
         return texture;
     }
@@ -132,49 +129,7 @@ public final class DynamicLightTexture {
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
         GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, WIDTH, HEIGHT, 0,
                 GL11.GL_RGBA, GL11.GL_FLOAT, (FloatBuffer) null);
-    }
-
-    private static boolean collectBounds(ClientLevel level, BlockPos base) {
-        boolean changed = false;
-        for (int z = 0; z < SIDE; z++) {
-            for (int x = 0; x < SIDE; x++) {
-                int worldX = base.getX() + x, worldZ = base.getZ() + z;
-                boolean loaded = level.hasChunk(worldX >> 4, worldZ >> 4);
-                for (int y = 0; y < SIDE; y++) {
-                    query.set(worldX, base.getY() + y, worldZ);
-                    long shape = loaded ? shape(level, level.getBlockState(query)) : FULL_BLOCK;
-                    int index = (z * SIDE + y) * SIDE + x;
-                    changed |= cells[index] != shape;
-                    cells[index] = shape;
-                }
-            }
-        }
-        return changed;
-    }
-
-    private static long shape(ClientLevel level, BlockState state) {
-        if (state.isAir()) return 0;
-        boolean dynamic = state.getBlock().hasDynamicShape();
-        if (!dynamic) {
-            Long cached = SHAPES.get(state);
-            if (cached != null) return cached;
-        }
-        long result = 0;
-        if (!state.is(Tags.Blocks.GLASS) && !state.is(Tags.Blocks.GLASS_PANES) && !state.is(BlockTags.LEAVES)) {
-            var collision = state.getCollisionShape(level, query);
-            if (!collision.isEmpty()) {
-                var box = collision.bounds();
-                result = quantize(box.minX, false) | quantize(box.minY, false) << 8 | quantize(box.minZ, false) << 16
-                       | quantize(box.maxX, true) << 24 | quantize(box.maxY, true) << 32 | quantize(box.maxZ, true) << 40;
-            }
-        }
-        if (!dynamic) SHAPES.put(state, result);
-        return result;
-    }
-
-    private static long quantize(double coordinate, boolean upper) {
-        // Clip bounds to their voxel. Collision above fences is approximated.
-        return (long) Math.max(0, Math.min(255, upper ? Math.ceil(coordinate * 255) : Math.floor(coordinate * 255)));
+        directUpload = GL.getCapabilities().OpenGL45;
     }
 
     private static float packedAxis(long shape, int shift) {
@@ -182,14 +137,29 @@ public final class DynamicLightTexture {
     }
 
     private static void uploadBounds() {
+        long start = PROFILE ? System.nanoTime() : 0;
+        int firstRow = grid.firstChanged() / WIDTH;
+        int lastRow = grid.lastChanged() / WIDTH;
         bounds.clear();
-        for (long shape : cells) {
+        for (int i = firstRow * WIDTH; i < (lastRow + 1) * WIDTH; i++) {
+            long shape = i < CELLS ? grid.cell(i) : 0;
             bounds.put(packedAxis(shape, 0)).put(packedAxis(shape, 8)).put(packedAxis(shape, 16))
                     .put(shape == 0 ? 0 : 1);
         }
-        while (bounds.hasRemaining()) bounds.put(0);
         bounds.flip();
-        GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 1, WIDTH, HEIGHT - 1,
-                GL11.GL_RGBA, GL11.GL_FLOAT, bounds);
+        int rows = lastRow - firstRow + 1;
+        upload(firstRow + 1, WIDTH, rows, bounds);
+        if (PROFILE) {
+            uploadNanos += System.nanoTime() - start;
+            boundRows += rows;
+        }
+    }
+
+    private static void upload(int y, int width, int height, FloatBuffer data) {
+        if (directUpload) {
+            GL45.glTextureSubImage2D(texture, 0, 0, y, width, height, GL11.GL_RGBA, GL11.GL_FLOAT, data);
+        } else {
+            GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, y, width, height, GL11.GL_RGBA, GL11.GL_FLOAT, data);
+        }
     }
 }
