@@ -20,6 +20,14 @@ final class StudioSession {
     StudioSession(StudioProject project) { this.project = saved = project; }
     boolean dirty() { return !project.equals(saved) || !edits.isEmpty(); }
     void saved(StudioProject snapshot) { saved = snapshot; }
+    void recovered() { saved = null; }
+    StudioProject recoverySnapshot() {
+        var result = project;
+        int at = (int) Math.round(frame);
+        for (var entry : edits.entrySet())
+            result = result.replace(null, new StudioProject.Key(entry.getKey(), at, entry.getValue(), currentCurve(entry.getKey())));
+        return result;
+    }
     StudioProject.Transform transform(String bone) {
         var edited = edits.get(bone);
         return edited == null ? project.sample(bone, frame) : edited;

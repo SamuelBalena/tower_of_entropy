@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 final class StudioRig extends GltfModelRenderer {
     record Bone(int index, String id, String label, int parent, int depth) {}
@@ -32,6 +33,7 @@ final class StudioRig extends GltfModelRenderer {
     private final Matrix4f[] rest, idle, globals, locals;
     private final boolean[] ready;
     private final Map<Integer, Bone> byIndex = new HashMap<>();
+    private final Map<Integer, StudioRotation> anatomy = new HashMap<>();
     private StudioProject lastProject;
     private Map<String, StudioProject.Transform> lastEdits = Map.of();
     private double lastFrame = -1;
@@ -84,6 +86,68 @@ final class StudioRig extends GltfModelRenderer {
             globals[i] = new Matrix4f();
             locals[i] = new Matrix4f();
         }
+        mapAnatomy();
+    }
+
+    private void mapAnatomy() {
+        var bind = new Matrix4f[rest.length];
+        for (int i = 0; i < bind.length; i++) bindGlobal(i, bind);
+        var up = position(bind, "1").sub(position(bind, "pelvis")).normalize();
+        var left = position(bind, "2").sub(position(bind, "3")).normalize();
+        var forward = new Vector3f(up).cross(left).normalize();
+        left.set(forward).cross(up).normalize();
+        for (var bone : bones) {
+            String child = switch (bone.id) {
+                case "2", "3", "4", "5" -> "10" + bone.id;
+                default -> null;
+            };
+            Vector3f[] axes;
+            int[] order;
+            String[] labels;
+            int count = 3;
+            if (child != null) {
+                var down = position(bind, child).sub(position(bind, bone.id)).normalize();
+                var outward = new Vector3f(left).mul(bone.id.equals("2") || bone.id.equals("4") ? 1 : -1);
+                var frontAxis = new Vector3f(down).cross(forward).normalize();
+                var sideAxis = new Vector3f(down).cross(outward);
+                sideAxis.fma(-sideAxis.dot(frontAxis), frontAxis).normalize();
+                axes = new Vector3f[]{down, sideAxis, frontAxis};
+                labels = new String[]{"Torção", "Abrir/fechar", "Frente/trás"};
+                order = new int[]{2, 1, 0};
+            } else if (bone.id.startsWith("10")) {
+                var down = position(bind, bone.id).sub(position(bind, byIndex.get(bone.parent).id)).normalize();
+                var hinge = new Vector3f(down).cross(forward).normalize().mul(bone.id.endsWith("2") || bone.id.endsWith("3") ? 1 : -1);
+                var third = new Vector3f(hinge).cross(down).normalize();
+                axes = new Vector3f[]{down, third, hinge};
+                labels = new String[]{"", "", "Flexão/extensão"};
+                order = new int[]{2, 0, 1};
+                count = 1;
+            } else {
+                axes = new Vector3f[]{new Vector3f(up), new Vector3f(forward), new Vector3f(left).negate()};
+                labels = bone.id.equals("0") ? new String[]{"Olhar lados", "Inclinar", "Olhar cima/baixo"}
+                        : new String[]{"Torção", "Inclinação lateral", "Inclinação frontal"};
+                order = new int[]{2, 1, 0};
+            }
+            var inverse = new Matrix4f(bind[bone.index]).invert();
+            for (var axis : axes) inverse.transformDirection(axis).normalize();
+            anatomy.put(bone.index, new StudioRotation(axes, labels, order, count, true));
+        }
+    }
+
+    private Vector3f position(Matrix4f[] bind, String id) {
+        return bind[bone(id).index].getTranslation(new Vector3f());
+    }
+
+    private Matrix4f bindGlobal(int index, Matrix4f[] bind) {
+        if (bind[index] == null) {
+            int parent = getModel().getNodes().get(index).getParentIndex();
+            bind[index] = parent < 0 ? new Matrix4f(rest[index]) : new Matrix4f(bindGlobal(parent, bind)).mul(rest[index]);
+        }
+        return bind[index];
+    }
+
+    StudioRotation rotation(Bone bone, boolean anatomical) {
+        return anatomical ? anatomy.get(bone.index) : StudioRotation.local();
     }
 
     private void visit(int index, int parent, int depth, java.util.Set<Integer> joints, List<Bone> order) {

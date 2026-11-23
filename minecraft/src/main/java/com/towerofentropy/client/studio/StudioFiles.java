@@ -43,6 +43,7 @@ final class StudioFiles {
         }
     }
     private final Path directory;
+    record Summary(String model, int frames, int fps) {}
 
     StudioFiles(Path game) {
         directory = game.resolve("config/towerofentropy/animation_studio/projects").toAbsolutePath().normalize();
@@ -58,9 +59,10 @@ final class StudioFiles {
     }
 
     List<String> names() throws IOException {
-        Files.createDirectories(directory);
-        if (!directory.toRealPath().equals(directory)) throw new IOException("Diretório de projetos inválido");
-        try (var files = Files.list(directory)) {
+        return names(folder(directory));
+    }
+    private static List<String> names(Path folder) throws IOException {
+        try (var files = Files.list(folder)) {
             return files.filter(path -> Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS))
                     .map(path -> path.getFileName().toString()).filter(name -> name.endsWith(".json"))
                     .map(name -> name.substring(0, name.length() - 5)).sorted().toList();
@@ -68,7 +70,11 @@ final class StudioFiles {
     }
 
     StudioProject read(String name) throws IOException {
-        Path path = file(name);
+        return readPath(file(name));
+    }
+
+    static StudioProject readPath(Path path) throws IOException {
+        if (!Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Arquivo JSON indisponível");
         if (Files.size(path) > 4_000_000) throw new IOException("Projeto excede 4 MB");
         try (var input = Files.newBufferedReader(path)) {
             var stored = JSON.fromJson(input, Stored.class);
@@ -80,12 +86,40 @@ final class StudioFiles {
     }
 
     void write(StudioProject project, boolean replace) throws IOException {
-        Files.createDirectories(directory);
+        folder(directory);
         var target = file(project.name());
-        if (!replace && Files.exists(target, LinkOption.NOFOLLOW_LINKS)) throw new FileAlreadyExistsException(project.name());
-        var temp = Files.createTempFile(directory, "studio-", ".tmp");
+        if (replace && Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
+            byte[] previous = readBytes(target);
+            byte[] next = encode(project);
+            if (java.util.Arrays.equals(previous, next)) return;
+            var backup = folder(directory.resolve(".backups")).resolve(target.getFileName());
+            writeBytes(backup, previous, true);
+            writeBytes(target, next, true);
+        } else writeBytes(target, encode(project), false);
+    }
+
+    static void export(StudioProject project, Path path) throws IOException {
+        if (path.getFileName() == null || !path.getFileName().toString().endsWith(".json"))
+            throw new IOException("Escolha um arquivo .json");
+        writeBytes(path.toAbsolutePath().normalize(), encode(project), false);
+    }
+
+    private static byte[] encode(StudioProject project) {
+        return JSON.toJson(Stored.fromProject(project)).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    private static byte[] readBytes(Path path) throws IOException {
+        if (!Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS) || Files.size(path) > 4_000_000)
+            throw new IOException("Arquivo de projeto inválido ou acima de 4 MB");
+        return Files.readAllBytes(path);
+    }
+
+    private static void writeBytes(Path target, byte[] data, boolean replace) throws IOException {
+        if (Files.isSymbolicLink(target)) throw new IOException("Caminho de projeto inválido");
+        if (!replace && Files.exists(target, LinkOption.NOFOLLOW_LINKS)) throw new FileAlreadyExistsException(target.toString());
+        var temp = Files.createTempFile(target.getParent(), "studio-", ".tmp");
         try {
-            try (var output = Files.newBufferedWriter(temp)) { JSON.toJson(Stored.fromProject(project), output); }
+            Files.write(temp, data);
             if (!replace) Files.move(temp, target);
             else {
                 try { Files.move(temp, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING); }
@@ -94,6 +128,42 @@ final class StudioFiles {
                 }
             }
         } finally { Files.deleteIfExists(temp); }
+    }
+
+    private static Path folder(Path path) throws IOException {
+        Files.createDirectories(path);
+        if (!path.toRealPath().equals(path)) throw new IOException("Diretório de projetos inválido");
+        return path;
+    }
+
+    Path directory() throws IOException { return folder(directory); }
+    private Path recovery() throws IOException { return folder(directory.resolve(".recovery")); }
+    List<String> recoveries() throws IOException { return names(recovery()); }
+    StudioProject readRecovery(String slot) throws IOException { return readPath(recoveryPath(slot)); }
+    void writeRecovery(String slot, StudioProject snapshot) throws IOException {
+        writeBytes(recoveryPath(slot), encode(snapshot), true);
+    }
+    void clearRecovery(String slot) throws IOException {
+        if (slot != null) Files.deleteIfExists(recoveryPath(slot));
+    }
+    private Path recoveryPath(String slot) throws IOException {
+        try { if (!java.util.UUID.fromString(slot).toString().equals(slot)) throw new IllegalArgumentException(); }
+        catch (IllegalArgumentException invalid) { throw new IOException("Identificador de recuperação inválido", invalid); }
+        return recovery().resolve(slot + ".json");
+    }
+
+    java.util.Map<String, Summary> summaries(List<String> names) {
+        var result = new java.util.HashMap<String, Summary>();
+        for (String name : names) {
+            try {
+                StudioProject project = read(name);
+                if (project.schema() == 1 && project.fps() > 0)
+                    result.put(name, new Summary(project.model(), project.frames(), project.fps()));
+            } catch (IOException invalid) {
+                // An invalid file remains visible and can still be inspected or removed explicitly.
+            }
+        }
+        return result;
     }
 
     void rename(String oldName, String newName) throws IOException {
@@ -108,7 +178,12 @@ final class StudioFiles {
             throw failure;
         }
     }
-    void delete(String name) throws IOException { Files.delete(file(name)); }
+    void delete(String name) throws IOException {
+        Path target = file(name);
+        var backups = folder(directory.resolve(".backups"));
+        Files.delete(target);
+        Files.deleteIfExists(backups.resolve(target.getFileName()));
+    }
 
     static void validate(StudioProject project, StudioRig rig) throws IOException {
         if (project == null || project.schema() != 1 || !rig.signature.equals(project.skeleton())

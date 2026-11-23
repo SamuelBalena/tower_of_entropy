@@ -31,7 +31,7 @@ final class StudioDialog extends Screen {
         y = (height - 44 - labels.size() * 29) / 2;
         for (int i = 0; i < labels.size(); i++) {
             var field = new EditBox(font, x + 9, y + 26 + i * 29, 208, 15, Component.literal(labels.get(i)));
-            field.setMaxLength(48);
+            field.setMaxLength(labels.get(i).startsWith("Caminho") ? 1024 : 48);
             field.setValue(values.get(i));
             fields.add(addRenderableWidget(field));
         }

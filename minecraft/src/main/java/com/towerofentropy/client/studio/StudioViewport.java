@@ -13,12 +13,18 @@ final class StudioViewport {
     static final int[] AXIS_COLORS = {0xffe27f72, 0xff9dcc86, 0xff8cace4};
     private float yaw, pitch, zoom, panX, panY;
     private final Map<Integer, Vector3f> handles = new HashMap<>();
-    private final Vector3f[] axes = {new Vector3f(), new Vector3f(), new Vector3f()};
+    private final java.util.List<StudioRing> rings = new java.util.ArrayList<>(3);
     private Matrix4f[] globals;
     boolean overlay = true;
 
     StudioViewport() { reset(); }
     void reset() { yaw = 200; pitch = 9; zoom = 1; panX = panY = 0; }
+    void view(int index) {
+        if (index == 0) { reset(); return; }
+        yaw = switch (index) { case 1 -> 180; case 2 -> 0; case 3 -> 90; case 4 -> 270; default -> 180; };
+        pitch = index == 5 ? 90 : 0;
+        panX = panY = 0;
+    }
     void drag(double x, double y, boolean pan) {
         if (pan) { panX += (float) x; panY += (float) y; }
         else { yaw += (float) x * .8f; pitch = Math.max(-80, Math.min(80, pitch + (float) y * .8f)); }
@@ -29,7 +35,7 @@ final class StudioViewport {
         if (point != null) { panX += cx - point.x; panY += cy - point.y; }
     }
     void render(GuiGraphics gui, StudioRig rig, StudioSession session, StudioRig.Bone selected,
-                int x, int y, int right, int bottom) {
+                int x, int y, int right, int bottom, boolean anatomical, int active) {
         gui.enableScissor(x, y, right, bottom);
         try {
             gui.fill(x, y, right, bottom, 0xff1a1b1e);
@@ -57,45 +63,66 @@ final class StudioViewport {
             handles.clear();
             for (var bone : rig.bones)
                 handles.put(bone.index(), projection.transformPosition(globals[bone.index()].getTranslation(new Vector3f())));
+            rings.clear();
             if (!overlay) return;
             stack.pushPose();
             try {
                 stack.translate(0, 0, 420);
                 for (var bone : rig.bones) {
                     var point = handles.get(bone.index());
-                    if (bone.parent() >= 0) line(gui, handles.get(bone.parent()), point, 0xffaa935f);
+                    if (bone.parent() >= 0) line(gui, handles.get(bone.parent()), point,
+                            selected != null && bone.parent() == selected.index() ? 0xffffdb8b : 0xffaa935f);
                     dot(gui, point, bone.equals(selected) ? 0xffffdb8b : 0xffd9c9a6, bone.equals(selected) ? 3 : 1);
                 }
                 if (selected != null) {
                     var pivot = handles.get(selected.index());
-                    var local = new Matrix4f(projection).mul(globals[selected.index()]);
-                    for (int i = 0; i < axes.length; i++) {
-                        axes[i].zero().setComponent(i, .37f);
-                        local.transformPosition(axes[i]);
-                        var direction = new Vector3f(axes[i]).sub(pivot);
-                        float length = (float) Math.hypot(direction.x, direction.y);
-                        if (length < 4) axes[i].set(pivot.x + (i - 1) * 10, pivot.y + 14, 0);
-                        line(gui, pivot, axes[i], AXIS_COLORS[i]);
-                        dot(gui, axes[i], AXIS_COLORS[i], 2);
+                    var delta = session.transform(selected.id()).rotation();
+                    var posed = globals[selected.index()];
+                    var reference = new Matrix4f(posed).rotate(delta.conjugate());
+                    var rotation = rig.rotation(selected, anatomical);
+                    for (int i = 0; i < 3; i++) {
+                        if (rotation.labels()[i].isEmpty()) continue;
+                        var world = (rotation.followsPose(i) ? posed : reference)
+                                .transformDirection(new Vector3f(rotation.axes()[i])).normalize();
+                        var seed = Math.abs(world.y) < .85f ? new Vector3f(0, 1, 0) : new Vector3f(0, 0, 1);
+                        var u = seed.cross(world).normalize();
+                        var v = new Vector3f(world).cross(u);
+                        float radius = 18 + i * 3;
+                        float pixels = projection.transformDirection(new Vector3f(1, 0, 0)).length();
+                        var ring = new StudioRing(i, pivot, projection.transformDirection(u.mul(radius / pixels)),
+                                projection.transformDirection(v.mul(radius / pixels)));
+                        rings.add(ring);
+                        Vector3f start = ring.point(0);
+                        for (int segment = 1; segment <= StudioRing.SEGMENTS; segment++) {
+                            var end = ring.point(segment * StudioRing.STEP);
+                            int opacity = start.z + end.z < 2 * pivot.z ? 0x85000000 : 0xe0000000;
+                            int color = active == i ? AXIS_COLORS[i] : (AXIS_COLORS[i] & 0xffffff) | opacity;
+                            line(gui, start, end, color);
+                            start = end;
+                        }
                     }
                 }
             } finally { stack.popPose(); }
         } finally { gui.disableScissor(); }
     }
-    int axis(double x, double y) {
-        if (!overlay) return -1;
-        int axis = -1;
-        double closest = 5;
-        for (int i = 0; i < axes.length; i++) {
-            double distance = distance(axes[i], x, y);
-            if (distance < closest) { closest = distance; axis = i; }
+    StudioRing.Hit ring(double x, double y) {
+        if (!overlay) return null;
+        StudioRing.Hit nearest = null;
+        double closest = 4;
+        for (var ring : rings) {
+            if (distance(ring.pivot(), x, y) < 6) continue;
+            var hit = ring.hit(x, y);
+            if (hit.distance() < closest) { closest = hit.distance(); nearest = hit; }
         }
-        return axis;
+        return nearest;
     }
     int pick(double x, double y) {
+        return pick(x, y, 8);
+    }
+    int pick(double x, double y, double radius) {
         if (!overlay) return -1;
         int index = -1;
-        double closest = 8;
+        double closest = radius;
         for (var entry : handles.entrySet()) {
             double distance = distance(entry.getValue(), x, y);
             if (distance < closest) { closest = distance; index = entry.getKey(); }
